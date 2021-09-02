@@ -19,13 +19,13 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "en-US"
 title                    : "용찬이의 블로그"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "this is subtitle"
 name                     : "Yong Chan Chun"
 description              : "An amazing website."
 url                      : "https://cyc9805.github.io"
-baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+baseurl                  : "/blog"
+repository               : "cyc9805/cyc9805.github.io"
+teaser                   : "/Users/yongchanchun/Downloads/2871143b-04c9-4259-9a3e-a0dda6358df8.png"
 logo                     : "/Users/yongchanchun/Downloads/2871143b-04c9-4259-9a3e-a0dda6358df8.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
