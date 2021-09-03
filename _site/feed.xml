@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-09-04T04:21:27+09:00</updated><id>/feed.xml</id><title type="html">My first website</title><subtitle>Welcome to my website!
+</subtitle><author><name>yongchan</name></author><entry><title type="html">this is my first post</title><link href="/2021/09/04/my-first-post.html" rel="alternate" type="text/html" title="this is my first post" /><published>2021-09-04T00:00:00+09:00</published><updated>2021-09-04T00:00:00+09:00</updated><id>/2021/09/04/my-first-post</id><content type="html" xml:base="/2021/09/04/my-first-post.html">&lt;h3 id=&quot;hello-guys-&quot;&gt;hello guys :)&lt;/h3&gt;
+
+&lt;p&gt;this is my first Jekyll blog post.&lt;/p&gt;
+
+&lt;p&gt;I hope you like it!&lt;/p&gt;</content><author><name>yongchan</name></author><summary type="html">hello guys :)</summary></entry><entry><title type="html">this is my second post</title><link href="/2021/09/04/my-second-post.html" rel="alternate" type="text/html" title="this is my second post" /><published>2021-09-04T00:00:00+09:00</published><updated>2021-09-04T00:00:00+09:00</updated><id>/2021/09/04/my-second-post</id><content type="html" xml:base="/2021/09/04/my-second-post.html">&lt;h3 id=&quot;testing-in-local-environment&quot;&gt;testing in local environment&lt;/h3&gt;
+
+&lt;p&gt;this is my second Jekyll blog post.&lt;/p&gt;
+
+&lt;p&gt;I’m not sure if this is posted correctly&lt;/p&gt;
+
+&lt;p&gt;wonder why the picture doesn’t appear&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/70227484/132055539-5e64c40a-c777-4e5d-83db-7312185c2469.PNG&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;80%&quot; /&gt;&lt;/p&gt;</content><author><name>yongchan</name></author><summary type="html">testing in local environment</summary></entry></feed>
