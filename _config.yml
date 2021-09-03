@@ -5,7 +5,7 @@ email: cyc9805@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Welcome to my website!
 # social links
-facebook_username: 전용찬 # DO NOT include the @ character, or else the build will fail!
+facebook_username: yongchanskii # DO NOT include the @ character, or else the build will fail!
 github_username:  cyc9805 # DO NOT include the @ character, or else the build will fail!
 instagram_username: yongchanskii
 show_excerpts: true # set to false to remove excerpts on the homepage
