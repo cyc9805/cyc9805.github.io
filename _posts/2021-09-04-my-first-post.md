@@ -9,10 +9,6 @@ title:  "Welcome to Jekyll!"
 
 I hope you like it!
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+
+![My helpful screenshot](https://github.com/cyc9805/cyc9805.github.io/blob/main/assets/IMG_1343.PNG)
+
