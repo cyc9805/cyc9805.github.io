@@ -1,10 +1,15 @@
-theme: minima
+# site author
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 title: My first website
 author: yongchan
 email: cyc9805@gmail.com
 base_url: /gh-pages-minima-starter
 description: > # this means to ignore newlines until "baseurl:"
   Welcome to my website!
+avatar: "/Users/yongchanchun/cyc9805.github.io/assets/profile1.JPG"
+minima:
+  skin: dark
   
 # social links
 facebook_username: yongchanskii # DO NOT include the @ character, or else the build will fail!
