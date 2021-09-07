@@ -1,7 +1,9 @@
 ---
-permalink: /archive
-layout: page
-title: Blog archive
+permalink: /archive/
+title: "Archive"
+toc: true
+toc_sticky: true
+toc_label: "MYSELF"
 ---
 
 

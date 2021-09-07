@@ -1,21 +1,107 @@
-# site author
+# site theme
 theme: minimal-mistakes-jekyll
-minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
-title: My first website
-author: yongchan
-email: cyc9805@gmail.com
-base_url: /gh-pages-minima-starter
-description: > # this means to ignore newlines until "baseurl:"
-  Welcome to my website!
-avatar: "/Users/yongchanchun/cyc9805.github.io/assets/profile1.JPG"
-minima:
-  skin: dark
+minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+
+# site setting
+locale: "ko-KR"
+title: "yongchan's website"
+subtitle: "Welcome :)"
+name: "yongchan"
+description: "Welcome to my website! I'm currently rebuilding my website"
+url: https://cyc9805.github.io
+repository: https://github.com/cyc9805/cyc9805.github.io
+teaser: #/Users/yongchanchun/cyc9805.github.io/assets/image/profile1.JPG
+logo: #"/Users/yongchanchun/cyc9805.github.io/assets/profile1.JPG"
+masthead_title: "Welcome to my website!!"
+
+# Site Author
+author:
+ name: "yongchanchun"
+ avatar: "assets/image/profile1.JPG"
+ bio: "I'm trying to post on a daily basis<br>this may be hard but **Nothing is gained without trying!**"
+
+ location : "Seoul, South Korea"
+ email:
+ links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: mailto:cyc9805@gmail.com
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/cyc9805"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+      url: "https://www.facebook.com/yongchanchun"
+    - label: "Instagram"                            # 표시되는 이름입니다.
+      icon: "fab fa-fw fa-instagram"                # fab fa-fw fa-{SNS NAME} 으로 해주세요.
+      url: "https://www.instagram.com/yongchanskii"  # 개인 SNS 계정 링크를 기재하면 됩니다.
+
+# Site Footer
+footer:
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: mailto:cyc9805@gmail.com
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      # url:                                        # 이런식으로 url을 주석처리하면 노출되지 않습니다.
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+      url: "https://www.facebook.com/yongchanchun"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/cyc9805"
+    - label: "GitLab"
+      icon: "fab fa-fw fa-gitlab"
+      # url:
+    - label: "Bitbucket"
+      icon: "fab fa-fw fa-bitbucket"
+      # url:
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      url: "https://www.instagram.com/yongchanskii"
+      
+# Outputting
+permalink: /:categories/:title/
+paginate: 5                                   # Defaults : 5
+paginate_path: /page:num/
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: # true
+      share: true
+      related: true
   
-# social links
-facebook_username: yongchanskii # DO NOT include the @ character, or else the build will fail!
-github_username:  cyc9805 # DO NOT include the @ character, or else the build will fail!
-instagram_username: yongchanskii
-show_excerpts: true 
+  # _pages                      : 해당 하단 영역이 새로 추가되었습니다.
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+# main links
+main:
+  #- title: "Home"
+  #  url: "/"
+  - title: "Introduce"
+    url: /about/
+  - title: "Category"
+    url: "/categories/"
+  - title: "Tags"
+    url: /tags/
+  - title: "Archive"
+    url: /archive
+    
 
 minima:
   date_format: "%Y-%m-%d"

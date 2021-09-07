@@ -1,9 +1,9 @@
 ---
-permalink: /about
-layout: page
-title: About me
+permalink: /about/
+title: "About"
+toc: true
+toc_sticky: true
+toc_label: "MYSELF"
 ---
-
-More details about me on this page with links to my social media profiles and so on.
-
-![](http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/waving-hand.png)
+![icon](assets/image/waving-hand.png)
+Hi! I'm interested in anything that involves programming :) 
