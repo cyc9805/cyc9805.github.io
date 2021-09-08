@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>yongchan's website</title>
+<!-- begin _includes/seo.html --><title>Posts by Year - yongchan’s website</title>
 <meta name="description" content="Welcome to my website! I’m currently rebuilding my website">
 
 
@@ -20,8 +20,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="yongchan’s website">
-<meta property="og:url" content="http://localhost:4000/">
+<meta property="og:title" content="Posts by Year">
+<meta property="og:url" content="http://localhost:4000/posts/">
 
 
   <meta property="og:description" content="Welcome to my website! I’m currently rebuilding my website">
@@ -37,7 +37,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="http://localhost:4000/posts/">
 
 
 
@@ -88,7 +88,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--posts">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -257,120 +257,8 @@
   
 
   
-    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
-
-
-
-<nav class="nav__list">
-  <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc"></label>
-  <ul class="nav__items" id="category_tag_menu">
-      <!--전체 글 수-->
-      <li>
-            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">1</style> <span style="font-family:'Cafe24Oneprettynight';">개</style>
-      </li>
-      <li>
-        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
-        <span class="nav__sub-title">Programming</span>
-            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
-            <ul>
-                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
-                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
-                
-                    
-                
-                    
-                        <li><a href="/categories/python" class="">Python (1)</a></li>
-                    
-                
-            </ul>
-            <ul>
-                
-                    
-                        <li><a href="/categories/data-analysis" class="">Data Analysis (1)</a></li>
-                    
-                
-                    
-                
-            </ul>
-            <ul>
-                
-                    
-                
-                    
-                
-            </ul>
-            <ul>
-                
-                    
-                
-                    
-                
-            </ul>
-      </li>
-  </ul>
-</nav>
-
-
-  
 
   </div>
-
-
-
-  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
-
-
-
-<nav class="nav__list">
-  <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc"></label>
-  <ul class="nav__items" id="category_tag_menu">
-      <!--전체 글 수-->
-      <li>
-            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">1</style> <span style="font-family:'Cafe24Oneprettynight';">개</style>
-      </li>
-      <li>
-        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
-        <span class="nav__sub-title">Programming</span>
-            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
-            <ul>
-                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
-                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
-                
-                    
-                
-                    
-                        <li><a href="/categories/python" class="">Python (1)</a></li>
-                    
-                
-            </ul>
-            <ul>
-                
-                    
-                        <li><a href="/categories/data-analysis" class="">Data Analysis (1)</a></li>
-                    
-                
-                    
-                
-            </ul>
-            <ul>
-                
-                    
-                
-                    
-                
-            </ul>
-            <ul>
-                
-                    
-                
-                    
-                
-            </ul>
-      </li>
-  </ul>
-</nav>
 
 
 
@@ -378,18 +266,30 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title"></h1>
+      <h1 id="page-title" class="page__title">Posts by Year</h1>
     
     
 
-<h3 class="archive__subtitle">Recent Posts</h3>
 
-
-
-
-<div class="entries-list">
+<ul class="taxonomy__index">
   
-    
+  
+    <li>
+      <a href="#2021">
+        <strong>2021</strong> <span class="taxonomy__count">1</span>
+      </a>
+    </li>
+  
+</ul>
+
+
+
+
+  <section id="2021" class="taxonomy__section">
+    <h2 class="archive__subtitle">2021</h2>
+    <div class="entries-list">
+      
+        
 
 
 
@@ -429,10 +329,10 @@
   </article>
 </div>
 
-  
-</div>
-
-
+      
+    </div>
+    <a href="#page-title" class="back-to-top">Back to Top &uarr;</a>
+  </section>
 
 
   </div>

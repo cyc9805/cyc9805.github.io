@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/data-analysis/python/Chapter-2-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C%EC%9D%98-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/</loc>
+<lastmod>2021-09-08T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/about/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/computer-vision</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/data-analysis</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/markdown</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/python</loc>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tags/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/posts/</loc>
+</url>
+</urlset>

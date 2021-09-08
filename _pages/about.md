@@ -1,9 +1,9 @@
 ---
 permalink: /about/
 title: "About"
-toc: true
-toc_sticky: true
-toc_label: "MYSELF"
 ---
-![icon](assets/image/waving-hand.png)
-Hi! I'm interested in anything that involves programming :) 
+
+Hi! My name is Yong Chan and I'm interested anything that involves programming :)
+
+![wonder why this image doesnt show up...](/assets/image/waving-hand.png)
+
