@@ -1,5 +1,9 @@
 # site theme
+<<<<<<< HEAD
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+=======
+theme: "minimal-mistakes-jekyll"
+>>>>>>> e6c1b7a71c961dce923dbe1cea48530af8476d8c
 minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 
 # site setting
