@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 # Build settings
 markdown: kramdown
+=======
+# site theme
+>>>>>>> d5642371ecefcf636e0215d5c1ebfb8c4e0fb2d6
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 
