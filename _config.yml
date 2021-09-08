@@ -1,5 +1,5 @@
 # site theme
-theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 
 # site setting
@@ -9,7 +9,7 @@ subtitle: "Welcome :)"
 name: "yongchan"
 description: "Welcome to my website! I'm currently rebuilding my website"
 url: https://cyc9805.github.io
-repository: https://github.com/cyc9805/cyc9805.github.io
+repository: cyc9805/cyc9805.github.io
 teaser: #/Users/yongchanchun/cyc9805.github.io/assets/image/profile1.JPG
 logo: #"/Users/yongchanchun/cyc9805.github.io/assets/profile1.JPG"
 masthead_title: "Welcome to my website!!"
@@ -103,6 +103,9 @@ main:
     url: /archive
     
 
+plugins:
+  - jekyll-include-cache
+  
 minima:
   date_format: "%Y-%m-%d"
 
