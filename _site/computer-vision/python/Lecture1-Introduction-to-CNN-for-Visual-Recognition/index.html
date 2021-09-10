@@ -9,25 +9,24 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Python - yongchan’s website</title>
-<meta name="description" content="Welcome to my website! I’m currently rebuilding my website">
+<!-- begin _includes/seo.html --><title>Lecture 1: Introduction to CNN for Visual Recognition - yongchan’s website</title>
+<meta name="description" content="What is computer vision?">
 
 
   <meta name="author" content="yongchanchun">
   
+  <meta property="article:author" content="yongchanchun">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="Python">
-<meta property="og:url" content="http://localhost:4000/categories/python">
+<meta property="og:title" content="Lecture 1: Introduction to CNN for Visual Recognition">
+<meta property="og:url" content="http://localhost:4000/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/">
 
 
-  <meta property="og:description" content="Welcome to my website! I’m currently rebuilding my website">
-
-
-
+  <meta property="og:description" content="What is computer vision?">
 
 
 
@@ -35,9 +34,14 @@
 
 
 
+  <meta property="article:published_time" content="2021-09-11T00:00:00+09:00">
 
 
-<link rel="canonical" href="http://localhost:4000/categories/python">
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/">
 
 
 
@@ -88,7 +92,7 @@
 
   </head>
 
-  <body class="layout--archive">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -416,21 +420,18 @@
 
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Lecture 1: Introduction to CNN for Visual Recognition">
+    <meta itemprop="description" content="What is computer vision?">
+    <meta itemprop="datePublished" content="2021-09-11T00:00:00+09:00">
     
-      <h1 id="page-title" class="page__title">Python</h1>
-    
-    
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+
+    <div class="page__inner-wrap">
       
-        <a href="/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/" rel="permalink">Lecture 1: Introduction to CNN for Visual Recognition
-</a>
-      
-    </h2>
-    
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 1: Introduction to CNN for Visual Recognition
+</h1>
+          
 
   <p class="page__meta">
     
@@ -451,14 +452,170 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">What is computer vision?
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="what-is-computer-vision">What is computer vision?</h2>
+
+<p>컴퓨터 비전은 기계가 받아들이는 시각적 데이터를 연구하는 학문이다.</p>
+
+<p><img src="/assets/image/lecture1-1.png" alt="related studies to computer vision" /></p>
+
+<p>위 그림과 같이 컴퓨터 비전에는 여러 학문이 복합적으로 작용함을 알 수 있다.</p>
+
+<h2 id="history-of-computer-vision">History of computer vision</h2>
+
+<ol>
+  <li>biology vision
+    <ul>
+      <li>vision(시야)는 생물체가 살아가는데 있어 매우 중요한 요소이다.</li>
+      <li>시야의 생성으로 생물체는 급속도로 진화하기 시작했다.</li>
+    </ul>
+  </li>
+  <li>computer vision
+    <ul>
+      <li>1960년에 물질을 벡터 형식으로 나타내는 것으로 부터 시작 되었다.</li>
+      <li>
+        <p>ideal thinking process for vision: input image –&gt; edge image –&gt; 1/2D sketch –&gt; 3D image
+  <img src="/assets/image/lecture1-2.png" alt="related studies to computer vision" /><br /></p>
+      </li>
+      <li>object recognition 연구보다 object segmentation 연구가 선행해서 이루어 졌다.</li>
+      <li>다음 사진은 제일 방대한 이미지 데이터셋인 ImageNET 을 이용한 object recognition 의 발전과정이다. 2015년에 CNN 모델의 개발로 기계가 인간보다 object recognition의 성능이 더 좋다는 것을 확인할 수 있다.
+  <img src="/assets/image/lecture1-3.png" alt="growth of object recognition by ImageNET" /></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="complexity-of-computer-vision">Complexity of computer vision</h2>
+
+<p><br /><img src="/assets/image/lecture1-4.png" alt="" /></p>
+
+<p>위 사진을 한번 보자.
+우리는 위 사진에서 다음과 같은 요소들을 확인할 수 있다.</p>
+<ul>
+  <li>저울에 사람이 서있다.</li>
+  <li>저울을 뒤의 다른 사람이 발로 누르고 있다.</li>
+  <li>뒤의 사람은 버락 오바마다.</li>
+  <li>또 뒤에는 웃고 있는 사람들이 있다.</li>
+</ul>
+
+<p>이렇듯 우리는 이 사진을 보고 단순히 ‘저기 여러명의 웃고 있는 사람이 있다’ 라고 인식하는 것이 아닌 ‘미국 대통령이 격식에 맞지 않는 소탈한 행동을 보이고 있는 모습이 재밌네’ 라고 생각한다. 이렇듯 사진에서 전달하는 표면적인 정보 뿐만 아니라 사진 속에 숨겨진 여러 문맥들을 이해하는 것이 컴퓨터 비전의 최종 목표라고 할 수 있다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">computer-vision</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-11T00:00:00+09:00">September 11, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Lecture+1%3A+Introduction+to+CNN+for+Visual+Recognition%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture1-Introduction-to-CNN-for-Visual-Recognition%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture1-Introduction-to-CNN-for-Visual-Recognition%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture1-Introduction-to-CNN-for-Visual-Recognition%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/data-analysis/python/Chapter-2-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C%EC%9D%98-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" class="pagination--pager" title="Chapter 2: 경진대회의 평가지표
+">Previous</a>
+    
+    
+      <a href="/markdown/Markdown-grammar/" class="pagination--pager" title="마크다운(Markdown) 문법
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/markdown/Markdown-grammar/" rel="permalink">마크다운(Markdown) 문법
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">티스토리에서 깃허브 블로그로 바꾸면서 마크다운에 대해 처음 접하게 되었다. 원할한 블로그 정리를 위해 마크다운 문법에 대해 배울 필요성이 있다고 생각하여 이렇게 정리를 진행 중이다.
 
 </p>
   </article>
 </div>
 
-<div class="list__item">
-  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
@@ -493,9 +650,13 @@
   </article>
 </div>
 
-
-  </div>
+        
+      </div>
+    </div>
+  
+  
 </div>
+
     </div>
 
     
@@ -553,6 +714,25 @@
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-cyc9805-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

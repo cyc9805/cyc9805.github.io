@@ -43,7 +43,7 @@ author:
       url: "https://github.com/cyc9805"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://www.facebook.com/yongchanchun"
+      url: "https://www.facebook.com/yongchanskii"
     - label: "Instagram"                            # 표시되는 이름입니다.
       icon: "fab fa-fw fa-instagram"                # fab fa-fw fa-{SNS NAME} 으로 해주세요.
       url: "https://www.instagram.com/yongchanskii"  # 개인 SNS 계정 링크를 기재하면 됩니다.
@@ -92,7 +92,7 @@ comments:
               # false (default), "disqus", "discourse", "facebook"
               # "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname : "cyc9805-github-io"                    # disqus의 shortname 기재
+    shortname : https-cyc9805-github-io                    # disqus의 shortname 기재
               # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
               
 # Defaults
