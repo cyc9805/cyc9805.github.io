@@ -955,21 +955,26 @@
 
 
 
-    
-  <script>
-    var disqus_config = function () {
-      this.page.url = "http://localhost:4000/data-analysis/python/Chapter-2-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C%EC%9D%98-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/data-analysis/python/Chapter-2-경진대회의-평가지표"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
-    };
-    (function() { /* DON'T EDIT BELOW THIS LINE */
-      var d = document, s = d.createElement('script');
-      s.src = 'https://https-cyc9805-github-io.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script>
+  'use strict';
 
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/cyc9805-comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
 
   
 
