@@ -11,7 +11,7 @@ var store = [{
         "url": "/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/",
         "teaser": null
       },{
-        "title": "마크다운(Markdown) 문법 ",
+        "title": "마크다운(Markdown) 문법",
         "excerpt":"티스토리에서 깃허브 블로그로 바꾸면서 마크다운에 대해 처음 접하게 되었다. 원할한 블로그 정리를 위해 마크다운 문법에 대해 배울 필요성이 있다고 생각하여 이렇게 정리를 진행 중이다. reference: https://ansohxxn.github.io/blog/markdown/ 줄바꿈 줄바꿈을 하는 방법은 다음과 같이 2가지가 있다. 스페이스바를 두번+엔터 를 해준다. &lt;br&gt; 또한 줄바꿈을 해주는 HTML 태그이다. 문단 나누기 한 줄의 공백을 두고...","categories": ["markdown"],
         "tags": [],
         "url": "/markdown/Markdown-grammar/",

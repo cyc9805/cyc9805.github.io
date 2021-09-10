@@ -1,6 +1,7 @@
 ---
 layout: single
-title:  "마크다운(Markdown) 문법 "
+title:  "마크다운(Markdown) 문법"
+comments: true
 categories:
   - markdown
 ---
