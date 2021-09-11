@@ -147,7 +147,7 @@ Softmax Classifier 의 몇가지 특징을 살펴보면 다음과 같다.
     while True:
         weights_grad = evaluate_gradient(loss_fun, data, weights)
         weights += -step_size * weights_grad    #step size는 포인트를 어느정도 움직일지를 나타낸다.
-        ```
+    ```
     
 3. Stochastic Gradient Descent(SGD): 사진의 모든 픽셀에 대해 가중치 값을 구하는 것은 너무나도 복잡하고 오래 걸리는 작업이다. 따라서 일부 픽셀들만 선택해서 그 픽셀들끼리의 가중치 값을 구한다. 여기서 선택한 픽셀들을 ***Minibatch*** 라고 한다. Minibatch에 Gradient descent를 적용한 것이 Stochastic Gradient Descent 이다.
 
