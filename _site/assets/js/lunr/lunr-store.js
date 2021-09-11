@@ -16,4 +16,10 @@ var store = [{
         "tags": [],
         "url": "/markdown/Markdown-grammar/",
         "teaser": null
+      },{
+        "title": "Lecture 3: Loss Function and Optimization",
+        "excerpt":"What is Loss Function? 손실함수(loss function) 은 분류기 (classifier)가 얼마나 잘 작동하는지 알려주는 중요한 지표이다. 손실함수의 공식은 다음과 같다. $L=\\frac{1}{N}\\sum_i L_i(f(x_i,w),y_i)$ 여기서 $x_i$는 이미지, $y_i$는 레이블이다. Multiclass SVM(Support Vector Machine) loss Multiclass SVM loss 는 예측한 레이블의 점수 와 카테고리별 점수 의 차를 계산하여 만약 0보다 작으면 0이, 0보다 크면...","categories": ["computer-vision","python"],
+        "tags": [],
+        "url": "/computer-vision/python/Lecture3-Loss-Function-&-Optimization/",
+        "teaser": null
       }]

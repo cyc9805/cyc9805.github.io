@@ -1,5 +1,9 @@
 # Build settings
 markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
 
 # site theme
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
