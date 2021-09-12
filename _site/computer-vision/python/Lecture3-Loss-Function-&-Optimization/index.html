@@ -631,11 +631,10 @@ $L_3=max(0,2.2-(-3.1)+1)+max(0,2.5-(-3.1)+1) = 6.3+6.6 = 12.9$</p>
 
     <p>Gradient descent 를 파이썬 코드로 다음과 같이 나타낼 수 있다.</p>
 
-    <p><code class="language-plaintext highlighter-rouge">python
- while True:
-     weights_grad = evaluate_gradient(loss_fun, data, weights)
-     weights += -step_size * weights_grad    #step size는 포인트를 어느정도 움직일지를 나타낸다.
-    </code></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+     <span class="n">weights_grad</span> <span class="o">=</span> <span class="n">evaluate_gradient</span><span class="p">(</span><span class="n">loss_fun</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+     <span class="n">weights</span> <span class="o">+=</span> <span class="o">-</span><span class="n">step_size</span> <span class="o">*</span> <span class="n">weights_grad</span>    <span class="c1">#step size는 포인트를 어느정도 움직일지를 나타낸다.
+</span></code></pre></div>    </div>
   </li>
   <li>
     <p>Stochastic Gradient Descent(SGD): 사진의 모든 픽셀에 대해 가중치 값을 구하는 것은 너무나도 복잡하고 오래 걸리는 작업이다. 따라서 일부 픽셀들만 선택해서 그 픽셀들끼리의 가중치 값을 구한다. 여기서 선택한 픽셀들을 <strong><em>Minibatch</em></strong> 라고 한다. Minibatch에 Gradient descent를 적용한 것이 Stochastic Gradient Descent 이다.</p>
