@@ -22,4 +22,10 @@ var store = [{
         "tags": [],
         "url": "/computer-vision/python/Lecture3-Loss-Function-&-Optimization/",
         "teaser": null
+      },{
+        "title": "Chapter 3: 특징 생성",
+        "excerpt":"챕터 3는 내용이 이전 챕터보다 많으므로 2개의 파트로 나누어서 작성하였다. 첫번째 파트에서는 모델의 성능을 높이기 위해서 새로운 특징을 만드는 방법에 대해 다루고 있다. 3.2 모델과 특징 3.2.1 모델과 특징의 관계 특징을 만들 때는 어떤 모델의 입력값으로써 해당 특징을 사용할 것인지 미리 알아두면 좋다. 대표적으로 사용되는 모델은 다음과 같이 두가지의 모델이...","categories": ["data-analysis","python"],
+        "tags": [],
+        "url": "/data-analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1/",
+        "teaser": null
       }]
