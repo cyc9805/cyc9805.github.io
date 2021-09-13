@@ -11,6 +11,12 @@ var store = [{
         "url": "/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/",
         "teaser": null
       },{
+        "title": "Lecture 2: Image Classification pipeline",
+        "excerpt":"원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다. Challenges of Computer vision 다음과 같은 고양이 사진을 컴퓨터가 알맞는 레이블로 분류해야 한다고 해보자. 이미지를 분류하는데는 다음과 같은 난관이 존재한다. Viewpoint variation 고양이를 보는 카메라의 시점이 달라지면 고양이를 못알아볼 가능성이 생긴다. Deformation 고양이가 위 사진처럼...","categories": ["computer-vision","python"],
+        "tags": [],
+        "url": "/computer-vision/python/Lecture2-Image-Classification-pipeline/",
+        "teaser": null
+      },{
         "title": "마크다운(Markdown) 문법",
         "excerpt":"티스토리에서 깃허브 블로그로 바꾸면서 마크다운에 대해 처음 접하게 되었다. 원할한 블로그 정리를 위해 마크다운 문법에 대해 배울 필요성이 있다고 생각하여 이렇게 정리를 진행 중이다. reference: https://ansohxxn.github.io/blog/markdown/ 줄바꿈 줄바꿈을 하는 방법은 다음과 같이 2가지가 있다. 스페이스바를 두번+엔터 를 해준다. &lt;br&gt; 또한 줄바꿈을 해주는 HTML 태그이다. 문단 나누기 한 줄의 공백을 두고...","categories": ["markdown"],
         "tags": [],
