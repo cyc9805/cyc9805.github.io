@@ -34,4 +34,10 @@ var store = [{
         "tags": [],
         "url": "/data-analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1/",
         "teaser": null
+      },{
+        "title": "Lecture 4: Backpropagation and Neural Network",
+        "excerpt":"What is Backpropagation? 역전파(Backpropagtion)는 원하는 값을 출력하는 최적의 모델을 만들기 위해서 가중치를 조정하는 방법이다. 역전파 과정을 쉽게 알아보기 위한 방법으로 computational graph 가 사용된다. Structure of Computational graph 위 그림을 보면 처음에 가중치 행렬 W 와 사진 데이터 x 를 곱한 후 정규화 행렬 R을 더한다. 이렇게 계산과정을 직접 그림으로...","categories": ["computer-vision","python"],
+        "tags": [],
+        "url": "/computer-vision/python/Lecture4-Backpropagation-&-Neural-Network/",
+        "teaser": null
       }]
