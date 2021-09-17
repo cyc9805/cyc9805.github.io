@@ -56,12 +56,24 @@ $\frac{\partial f}{\partial y}=\frac{\partial f}{\partial q}\frac{\partial q}{\p
 
 ### Patterns in backward flow
 
+역전파 과정에는 일정한 규칙이 있다. 이러한 규칙에는 크게 3가지가 있다.
+  1. add gate: gradient distributor, 즉 local gradient 가 항상 1인 상태로 upstream gradient 만 존재한다. 
+  2. max gate: gradient router, 즉 gradient가 단순히 통과하는 효과를 가진다.
+  3. mul gate: gradient switcher, 즉 곱하는 다른 값의 변수를 갖는다.
 
 
 
+### Vectorzied operations
 
+앞서 살펴본 예시는 정말 간단한 예시이다. 이미지 데이터는 행과 열의 수가 100단위가 넘어가는 경우가 많으므로 위와 같이 computational graph를 일일히 그리는 것은 매우 오래걸리고 번거로운 일이다. 이때 간단하게 각각의 변수들을 편미분하여 이를 행렬의 형태로 나타낸 ***Jacobian Matrix*** 가 사용된다. 이 Jacobian Matrix의 몇가지 특징은 다음과 같다. 
 
-
+  1. 4096차원(열) 을 가진 데이터가 input 되고 같은 차원의 데이터가 output 되면 Jacobian Matrix의 크기는 4096x4096이 된다.
+  2. input data의 각각의 차원은 output data의 일치하는 차원에만 영향을 준다.
+  3. 대각행렬이다.
+  
+위 내용을 최종적으로 정리해보면 다음과 같다.
+  - Foward pass(포워드 패스): 노드의 값을 구하기 위해 함수에 값을 넣어가며 계산하는 방법이다.
+  - Backward pass (백워드 패스): 노드의 gradient를 구하기 위해 Forward pass를 통해 구한 값을 바탕으로 Jacobian Matrix를 구하는 과정이다. 역전파를 위해 사용되는 과정이다.
 
 ## Multiclass SVM(Support Vector Machine) loss
 
