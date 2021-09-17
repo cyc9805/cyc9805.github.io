@@ -75,6 +75,8 @@ $\frac{\partial f}{\partial y}=\frac{\partial f}{\partial q}\frac{\partial q}{\p
   - Foward pass(포워드 패스): 노드의 값을 구하기 위해 함수에 값을 넣어가며 계산하는 방법이다.
   - Backward pass (백워드 패스): 노드의 gradient를 구하기 위해 Forward pass를 통해 구한 값을 바탕으로 Jacobian Matrix를 구하는 과정이다. 역전파를 위해 사용되는 과정이다.
 
+
+
 ## Multiclass SVM(Support Vector Machine) loss
 
 Multiclass SVM loss 는 ***예측한 레이블의 점수*** 와 ***카테고리별 점수*** 의 차를 계산하여 만약 0보다 작으면 0이, 0보다 크면 그 차이값이 채택이 된다. 그리고 채택이 된 값을 모두 더한다. 식으로 표현하면 다음과 같다. 
