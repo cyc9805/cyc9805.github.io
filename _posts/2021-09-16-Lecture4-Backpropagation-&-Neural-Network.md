@@ -71,7 +71,9 @@ $\frac{\partial f}{\partial y}=\frac{\partial f}{\partial q}\frac{\partial q}{\p
   2. input data의 각각의 차원은 output data의 일치하는 차원에만 영향을 준다.
   3. 대각행렬이다.
   
-위 내용을 최종적으로 정리해보면 다음과 같다.
+
+지금까지 배운 내용을 최종적으로 정리해보면 다음과 같다.
+
   - Foward pass(포워드 패스): 노드의 값을 구하기 위해 함수에 값을 넣어가며 계산하는 방법이다.
   - Backward pass (백워드 패스): 노드의 gradient를 구하기 위해 Forward pass를 통해 구한 값을 바탕으로 Jacobian Matrix를 구하는 과정이다. 역전파를 위해 사용되는 과정이다.
 
