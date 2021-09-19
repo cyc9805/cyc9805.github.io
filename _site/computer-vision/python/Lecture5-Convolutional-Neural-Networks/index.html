@@ -9,8 +9,33 @@
   <head>
     <meta charset="utf-8">
     <!-- MATH EQUATION -->
-      <!-- begin _includes/seo.html --><title>Lecture 2: Image Classification pipeline - yongchan’s website</title>
-<meta name="description" content="원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다.">
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>Lecture 5: Convolutional Neural Networks - yongchan’s website</title>
+<meta name="description" content="History of Neural Networks">
 
 
   <meta name="author" content="yongchanchun">
@@ -22,26 +47,26 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="Lecture 2: Image Classification pipeline">
-<meta property="og:url" content="http://localhost:4000/computer-vision/python/Lecture2-Image-Classification-pipeline/">
+<meta property="og:title" content="Lecture 5: Convolutional Neural Networks">
+<meta property="og:url" content="http://localhost:4000/computer-vision/python/Lecture5-Convolutional-Neural-Networks/">
 
 
-  <meta property="og:description" content="원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-09-11T00:00:00+09:00">
+  <meta property="og:description" content="History of Neural Networks">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/computer-vision/python/Lecture2-Image-Classification-pipeline/">
+
+  <meta property="article:published_time" content="2021-09-19T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/computer-vision/python/Lecture5-Convolutional-Neural-Networks/">
 
 
 
@@ -421,15 +446,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Lecture 2: Image Classification pipeline">
-    <meta itemprop="description" content="원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다.">
-    <meta itemprop="datePublished" content="2021-09-11T00:00:00+09:00">
+    <meta itemprop="headline" content="Lecture 5: Convolutional Neural Networks">
+    <meta itemprop="description" content="History of Neural Networks">
+    <meta itemprop="datePublished" content="2021-09-19T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 2: Image Classification pipeline
+          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 5: Convolutional Neural Networks
 </h1>
           
 
@@ -457,125 +482,108 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다.</p>
+        <h2 id="history-of-neural-networks">History of Neural Networks</h2>
 
-<h2 id="challenges-of-computer-vision">Challenges of Computer vision</h2>
-
-<p>다음과 같은 고양이 사진을 컴퓨터가 알맞는 레이블로 분류해야 한다고 해보자.</p>
-
-<p><img src="/assets/image/lecture2-2.png" alt="" /></p>
-
-<p>이미지를 분류하는데는 다음과 같은 난관이 존재한다.</p>
-
-<ul>
-  <li>Viewpoint variation</li>
-</ul>
-
-<p><img src="/assets/image/lecture2-1.png" alt="" /></p>
-
-<p>고양이를 보는 카메라의 시점이 달라지면 고양이를 못알아볼 가능성이 생긴다.</p>
-
-<ul>
-  <li>Deformation</li>
-</ul>
-
-<p><img src="/assets/image/lecture2-3.png" alt="" /></p>
-
-<p>고양이가 위 사진처럼 드러 눕거나 훈련한 사진과는 다른 포즈를 취하면 고양이로 분류를 하지 못할 가능성이 생긴다.</p>
-
-<ul>
-  <li>illumination</li>
-</ul>
-
-<p><img src="/assets/image/lecture2-4.png" alt="" /></p>
-
-<p>고양이를 비추는 빛의 양이 변하면 못알아볼 가능성이 생긴다.</p>
-
-<ul>
-  <li>Occlusion</li>
-</ul>
-
-<p><img src="/assets/image/lecture2-5.png" alt="" /></p>
-
-<p>위 사진처럼 고양이가 물체에 가려져 일부만 노출된 경우 못알아볼 가능성이 생긴다.</p>
-
-<ul>
-  <li>그 밖에 고양이의 뒷배경이 바뀌는 <strong><em>background clutter</em></strong> 또는 고양이가 여러 마리가 추가되는 경우인 <strong><em>intraclass variation</em></strong>  와 같은 경우에도 분류에 어려움이 있을 수 있다.</li>
-</ul>
-
-<h2 id="classifiers">Classifiers</h2>
-
-<p>기계가 이미지를 분류하는 방법은 다음과 같은 과정으로 나타낼 수 있다.</p>
+<p>인공 신경망의 본격적인 연구가 이루어진 것은 비교적 최근이다. 컴퓨터가 개발되기 전에 사람들은 다음과 같은 이론은 내놓았다.</p>
 
 <ol>
-  <li>방대한 양의 이미지와 레이블 데이터를 수집한다.</li>
-  <li>머신러닝을 이용해 분류기를 훈련 시킨다.</li>
-  <li>새로운 이미지에 분류기를 적용시켜 제대로 작동하는지 테스트 해본다.</li>
+  <li>1957년에 Frank Rosenblatt는 알파벳을 인식하는 기계를 고안했다.</li>
+  <li>1986년에 역전파를 통해 최적의 가중치를 찾는 연구가 활발히 이루어졌다.</li>
 </ol>
 
-<p>이제부터 분류기를 훈련시키는데 사용되는 대표적인 알고리즘 두 개에 대해서 설명하도록 하겠다.</p>
+<h3 id="structure-of-computational-graph">Structure of Computational graph</h3>
 
-<h3 id="nearest-neighbor">Nearest Neighbor</h3>
+<p><img src="/assets/image/lecture4-1.png" alt="" /></p>
 
-<p>최근접 이웃 (Nearest Neighbor) 은 단순하게 <strong><em>테스트 이미지</em></strong> 와 <strong><em>훈련 이미지</em></strong> 의 대응되는 각 픽셀 값의 차이가 최소가 되게 만든다. 이 방법에는 다음과 같은 2가지 방법이 사용된다.</p>
+<p>위 그림을 보면 처음에 가중치 행렬 W 와 사진 데이터 x 를 곱한 후 정규화 행렬 R을 더한다. 이렇게 계산과정을 직접 그림으로 표현해 알아보기 쉽게 만든 것이 computational graph 이다.</p>
+
+<h3 id="example-of-backpropagtion">Example of Backpropagtion</h3>
+
+<p>다음과 같은 x=-2, y=5, z=-4 로 이루어진 간단한 함수가 있다고 하자.</p>
+
+<p>$f(x,y,z)=(x+y)z$</p>
+
+<p>이것을 computational graph 로 나타내면 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture4-2.png" alt="" /></p>
+
+<p>여기서 최적의 가중치를 찾기 위해서는 f 함수를 x,y,z 로 각각 미분한 값을 찾아야 한다. 한번에 이 값을 찾을 수 없으므로 f를 q와 z로, q를 x와 y로 미분한 값을 차례로 찾는다.</p>
+
+<p><img src="/assets/image/lecture4-3.png" alt="" />
+<img src="/assets/image/lecture4-4.png" alt="" /></p>
+
+<p>이 때, 연쇄법칙(chain rule)을 이용하여 원하는 미분 값을 얻을 수 있다. 즉, <strong><em>local gradient</em></strong> 와 <strong><em>upstream gradient</em></strong> (한국어로 대체 할만한 단어를 쓰지 못해 원어로 작성하겠다. ) 를 곱하는 것이다.</p>
+
+<p>$\frac{\partial f}{\partial x}=\frac{\partial f}{\partial q}\frac{\partial q}{\partial x}=z=-4$</p>
+
+<p>$\frac{\partial f}{\partial y}=\frac{\partial f}{\partial q}\frac{\partial q}{\partial y}=z=-4$</p>
+
+<p>이렇게 찾은 미분 값을 연쇄법칙을 이용해 차례로 곱하면 원하는 변수로 미분한 값을 쉽게 찾을 수 있다.</p>
+
+<p>다음은 좀 더 복잡한 공식을 활용한 예시이다.</p>
+
+<p><img src="/assets/image/lecture4-5.png" alt="" /></p>
+
+<p>계산 과정에 대한 설명은 다소 길어지고 중복된 내용이 나올 수 있으므로 생략하도록 하겠다. <strong><em>local gradient</em></strong> 와 <strong><em>upstream gradient</em></strong> 를 곱하면서 차례로 게산해 나가면 $w_0$, $w_1$, $x_0$, $x_1$, $w_2$ 로 미분한 값을 찾을 수 있다는 것만 명심하면 되겠다. 그리고 위와 같은 예시의 경우 여러개의 계산과정을 하나로 묶어 계산 과정을 쉽게 만드는 것도 가능하다.</p>
+
+<p><img src="/assets/image/lecture4-7.png" alt="" />
+<img src="/assets/image/lecture4-6.png" alt="" /></p>
+
+<h3 id="patterns-in-backward-flow">Patterns in backward flow</h3>
+
+<p>역전파 과정에는 일정한 규칙이 있다. 이러한 규칙에는 크게 3가지가 있다.</p>
+<ol>
+  <li>add gate: gradient distributor, 즉 local gradient 가 항상 1인 상태로 upstream gradient 만 존재한다.</li>
+  <li>max gate: gradient router, 즉 gradient가 단순히 통과하는 효과를 가진다.</li>
+  <li>mul gate: gradient switcher, 즉 곱하는 다른 값의 변수를 갖는다.</li>
+</ol>
+
+<h3 id="vectorzied-operations">Vectorzied operations</h3>
+
+<p>앞서 살펴본 예시는 정말 간단한 예시이다. 이미지 데이터는 행과 열의 수가 100단위가 넘어가는 경우가 많으므로 위와 같이 computational graph를 일일히 그리는 것은 매우 오래걸리고 번거로운 일이다. 이때 간단하게 각각의 변수들을 편미분하여 이를 행렬의 형태로 나타낸 <strong><em>Jacobian Matrix</em></strong> 가 사용된다. 이 Jacobian Matrix의 몇가지 특징은 다음과 같다.</p>
 
 <ol>
-  <li>L1 distance: 차이의 절댓값의 합이 최소가 되게 만든다.
-    <ul>
-      <li>좌표계에 따라 영향을 받는다</li>
-    </ul>
-  </li>
-  <li>L2 distance: 차이의 제곱의 합이 최소가 되게 만든다.
-    <ul>
-      <li>좌표계에 영향을 받지 않고 단순한 점들의 거리에 의해서만 영향을 받는다.</li>
-    </ul>
-  </li>
+  <li>4096차원(열) 을 가진 데이터가 입력되고 같은 차원의 데이터가 출력되면 Jacobian Matrix의 크기는 4096x4096이 된다.</li>
+  <li>입력 데이터의 각각의 차원은 출력 데이터의 일치하는 차원에만 영향을 준다.</li>
+  <li>대각행렬이다.</li>
 </ol>
 
-<p>최근접 이웃을 그림으로 다음과 같이 표현할 수 있다.</p>
+<hr />
+<p>지금까지 배운 내용을 최종적으로 정리해보면 다음과 같다.</p>
 
-<p><img src="/assets/image/lecture2-6.png" alt="" /></p>
+<ul>
+  <li>Foward pass(포워드 패스): 노드의 값을 구하기 위해 함수에 값을 넣어가며 계산하는 방법이다.</li>
+  <li>Backward pass (백워드 패스): 노드의 gradient를 구하기 위해 Forward pass를 통해 구한 값을 바탕으로 Jacobian Matrix를 구하는 과정이다. 역전파를 위해 사용되는 과정이다.</li>
+</ul>
 
-<p>위 사진에서 각각의 점들이 속해있는 영역을 점의 카테고리와 같은 색으로 칠하였다. 그러나 <span style="color:green">녹색</span>으로 칠해진 영역 한가운데에 <span style="color:yellow">노란색</span> 점이 있는 것을 확인 할 수 있을 것이다. 이처럼 점 한 개에 의해 분류를 정상적으로 하지 못하는 경우가 발생하기도 하는데, 이를 <strong><em>과적합</em></strong> 한다고 한다. 따라서 일반 최근접 이웃 방법은 과적합 문제 때문에 잘 사용되지 않고 K-최근접 이웃이 많이 사용된다.</p>
+<h2 id="neural-networks">Neural Networks</h2>
 
-<p><img src="/assets/image/lecture2-7.png" alt="" /></p>
+<p>신경망(Neural Networks)이란 간단하게 입력 데이터에 여러개의 가중치 행렬이 차례로 적용함으로써 노드의 값을 구하는 것이다. 만약 다음과 같이 2개의 층을 가진 신경망이 있다고 하자.</p>
 
-<p>왼쪽 사진은 K=3 으로 설정했을 때, 오른쪽 사진은 K=5 으로 설정했을 때의 모습이다. 기존의 최근접 이웃과는 달리 각 점에서 가장 가까운 K개의 점을 찾아 나타나는 빈도가 더 높은 점의 클래스로 분류한다. 이전보다 훨씬 더 융통성 있게 영역이 설정된 것을 확인할 수 있다.</p>
+<p><img src="/assets/image/lecture4-8.png" alt="" /></p>
 
-<p>그러나 정작 이미지 분류에서는 K-최근접 이웃이 <strong><em>잘 사용되지 않는다!</em></strong> 아래 사진을 한번 보자.</p>
+<p>위와 같은 모습의 신경망은 아래와 같은 공식으로 나타낼 수 있다.</p>
 
-<p><img src="/assets/image/lecture2-10.png" alt="" /></p>
+<p>$f(x)=W_2 max(0,W_1 x)$</p>
 
-<p>위 사진에서 오른쪽 3개 사진은 제일 왼쪽에 있는 사진과의 픽셀의 거리가 모두 동일하다. 그러므로 이러한 거리는 사진에 대한 아무런 정보도 가져다 주지 않는다. 
-또한 분류기는 훈련 시간에 오래 걸리나 테스트 시간은 짧게 걸리는 가벼운 모델이 되는 것이 제일 이상적이다. 그러나 K-최근접 이웃은 그 반대이다.</p>
+<p>이 신경망은 즉 3072의 차원을 $W_1$의 가중치를 가진 층을 거쳐 100차원으로 줄이고 이를 $W_2$의 가중치를 가진 층을 거쳐 10차원으로 줄인다. 층을 더 쌓을수록 High level(고차원)부터 Low level(저차원)적인 특징을 모두 고려하여 계산할 수 있게된다.</p>
 
-<h3 id="setting-hyperparameters">Setting Hyperparameters</h3>
+<h2 id="analogy-between-neurons-and-neural-networks">Analogy between neurons and neural networks</h2>
 
-<p>분류기에서 훈련을 위한 인수(hyperparameters)를 설정하는 것은 매우 중요하다. 인수를 지정하는 방법은 다음과 같이 3가지 방법이 있는데, 훈련 데이터에 대한 분류기의 과적합을 피하기 위해서 3번째 방법인 <strong><em>훈련 데이터, 검증 데이터, 테스트 데이터</em></strong> 로 나누는 것이 좋다.</p>
+<p>인공 신경망의 걔념은 우리 몸안에 있는 뉴런세포로 부터 차용한 것이다. 우선 뉴런은 다음과 같은 구조로 이루어져 있다.</p>
 
-<p><img src="/assets/image/lecture2-8.png" alt="" /></p>
+<p><img src="/assets/image/lecture4-9.png" alt="'뉴런'" /></p>
 
-<p>그리고 만약 데이터의 수가 많지 않다면 다음과 같이 데이터를 일정 수만큼의 fold로 나누고 훈련하는 fold와 검증하는 fold를 돌아가면서 설정하는 방법인 <strong><em>K-교차검증</em></strong> 도 추천한다.</p>
+<p>dendrite를 통해 cell body가 자극신호를 전달 받고 이를 다시 axon 으로 연결되있는 다른 cell body 에 전달을 하게 된다. 이 때 axon을 통해 전달할때 자극이 일정 기준치를 넘어야지 전달이 된다.
+다음은 인경 신경망의 기본적인 구조이다.</p>
 
-<p><img src="/assets/image/lecture2-9.png" alt="" /></p>
+<p><img src="/assets/image/lecture4-10.png" alt="" /></p>
 
-<h3 id="linear-classifier">Linear Classifier</h3>
+<p>인공신경망이 뉴런과 비슷한 원리로 작동하게 된다는 것을 알 수 있다. 여기서 <strong><em>activation function</em></strong> 이라는 개념이 나오는데, 이는 자극이 전달되도록 하기 위한 일정한 기준이 되는 함수이다. 활성화 함수(activation function)는 다양하게 존재하는데, 대표적인 함수는 다음과 같다.</p>
 
-<p><strong><em>선형 분류기(Linear Classifier)</em></strong> 은 우리가 곧 중점적으로 배우게 될 Convolution Neural Network 의 근간이 되는 중요한 분류기이다. 선형 분류기는 여러 개의 사진 데이터에서 공통된 특징을 찾아내 이러한 특징에 가중치를 부여하는 방법을 사용한다. 이를 그림으로 표현하면 다음과 같다.</p>
+<p><img src="/assets/image/lecture4-11.png" alt="" /></p>
 
-<p><img src="/assets/image/lecture2-11.png" alt="" /></p>
-
-<p>여기서 W는 가중치 행렬, x는 사진 데이터 행렬, b는 bias vector (별로 중요하지는 않다) 이다. 32x32x3의 크기를 가진 사진 데이터가 3072x1의 형태인 1차원의 데이터로 변경된 후 가중치 행렬을 곱하고 bias vector을 더하면 10개의 클래스에 대한 각각의 점수가 나타나게 된다. 그리고 10개의 클래스에 대한 점수 중 가장 높은 점수를 가진 클래스로 분류한다. 위의 사진이 이해하기 어렵다면 4개의 픽셀로 표현된 사진으로 같은 과정을 표현한 아래 사진을 한번 보자.</p>
-
-<p><img src="/assets/image/lecture2-12.png" alt="" /></p>
-
-<p>위에서 고양이 클래스의 점수는 -96.8, 개 클래스의 점수는 437.9, 배 클래스 점수는 61.95로 개 클래스의 점수가 가장 높아 해당 사진을 개로 분류했다는 것을 알 수 있다.</p>
-
-<p>다음은 선형 분류기로는 올바르게 분류하기 힘든 경우들이다.</p>
-
-<p><img src="/assets/image/lecture2-13.png" alt="" /></p>
-
-<p>그래프를 통해서만 알 수 있듯이 단 하나의 직선만으로 2개의 클래스를 올바르게 분류하기 힘들다는 것을 알 수 있다.</p>
+<p>여기서 ReLU 함수가 가장 자주 사용된다. 활성화 함수에 대한 자세한 내용은 추후 강의에 자세히 다룰 예정이다.</p>
 
         
       </section>
@@ -604,7 +612,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-11T00:00:00+09:00">September 11, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-19T00:00:00+09:00">September 19, 2021</time></p>
 
 
       </footer>
@@ -612,23 +620,22 @@
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Lecture+2%3A+Image+Classification+pipeline%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture2-Image-Classification-pipeline%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Lecture+5%3A+Convolutional+Neural+Networks%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture2-Image-Classification-pipeline%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture2-Image-Classification-pipeline%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer-vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/" class="pagination--pager" title="Lecture 1: Introduction to CNN for Visual Recognition
+      <a href="/computer-vision/python/Lecture4-Backpropagation-&-Neural-Network/" class="pagination--pager" title="Lecture 4: Backpropagation and Neural Network
 ">Previous</a>
     
     
-      <a href="/markdown/Markdown-grammar/" class="pagination--pager" title="마크다운(Markdown) 문법
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -642,47 +649,6 @@
     <div class="page__related">
       <h4 class="page__related-title">You May Also Enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer-vision/python/Lecture5-Convolutional-Neural-Networks/" rel="permalink">Lecture 5: Convolutional Neural Networks
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">History of Neural Networks
-
-</p>
-  </article>
-</div>
-
         
           
 
@@ -793,7 +759,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          12 minute read
+          11 minute read
         
       </span>
     
@@ -801,6 +767,47 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">챕터 3는 내용이 이전 챕터보다 많으므로 2개의 파트로 나누어서 작성하였다. 첫번째 파트에서는 모델의 성능을 높이기 위해서 새로운 특징을 만드는 방법에 대해 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer-vision/python/Lecture3-Loss-Function-&-Optimization/" rel="permalink">Lecture 3: Loss Function and Optimization
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">What is Loss Function?
 
 </p>
   </article>
