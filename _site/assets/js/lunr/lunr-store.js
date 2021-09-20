@@ -48,7 +48,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Lecture 5: Convolutional Neural Networks",
-        "excerpt":"History of Neural Networks 인공 신경망의 본격적인 연구가 이루어진 것은 비교적 최근이다. 컴퓨터가 개발되기 전에 사람들은 다음과 같은 이론은 내놓았다. 1957년에 Frank Rosenblatt는 알파벳을 인식하는 기계를 고안했다. 1986년에 역전파를 통해 최적의 가중치를 찾는 연구가 활발히 이루어졌다. Structure of Computational graph 위 그림을 보면 처음에 가중치 행렬 W 와 사진 데이터...","categories": ["computer vision","python"],
+        "excerpt":"History of Neural Networks 인공 신경망의 본격적인 연구가 이루어진 것은 비교적 최근이다. 컴퓨터가 개발되기 전에 사람들은 다음과 같은 이론은 내놓았다. 1957년에 Frank Rosenblatt는 알파벳을 인식하는 기계를 고안했다. 1986년에 역전파를 통해 최적의 가중치를 찾는 연구가 활발히 이루어졌다. 1998년에 LeCun, Bottou, Bengio, Haffner가 경사 하강법(gradient descent)를 처음으로 글자 인식에 적용해 보았다. 2012년에...","categories": ["computer vision","python"],
         "tags": [],
         "url": "/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/",
         "teaser": null

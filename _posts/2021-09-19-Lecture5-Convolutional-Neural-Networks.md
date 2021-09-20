@@ -15,99 +15,69 @@ categories:
 
  1. 1957년에 Frank Rosenblatt는 알파벳을 인식하는 기계를 고안했다.
  2. 1986년에 역전파를 통해 최적의 가중치를 찾는 연구가 활발히 이루어졌다.
+ 3. 1998년에 LeCun, Bottou, Bengio, Haffner가 경사 하강법(gradient descent)를 처음으로 글자 인식에 적용해 보았다.
+ 4. 2012년에 Alex Krizhevsky가 AlexNet을 개발하였다. 이는 현대 CNN 모델의 근간이 된 중요한 모델이다.
+ 5, 2021년 현재, CNN은 컴퓨터 비전 분야의 모든 곳에서 사용되고 있다.
+ 
+ 
 
-### Structure of Computational graph
-
-![](/assets/image/lecture4-1.png)
-
-위 그림을 보면 처음에 가중치 행렬 W 와 사진 데이터 x 를 곱한 후 정규화 행렬 R을 더한다. 이렇게 계산과정을 직접 그림으로 표현해 알아보기 쉽게 만든 것이 computational graph 이다.
-
-
-### Example of Backpropagtion
-
-다음과 같은 x=-2, y=5, z=-4 로 이루어진 간단한 함수가 있다고 하자.
-
-$f(x,y,z)=(x+y)z$
-
-이것을 computational graph 로 나타내면 다음과 같다.
-
-![](/assets/image/lecture4-2.png)
-
-여기서 최적의 가중치를 찾기 위해서는 f 함수를 x,y,z 로 각각 미분한 값을 찾아야 한다. 한번에 이 값을 찾을 수 없으므로 f를 q와 z로, q를 x와 y로 미분한 값을 차례로 찾는다.
-
-![](/assets/image/lecture4-3.png)
-![](/assets/image/lecture4-4.png)
-
-이 때, 연쇄법칙(chain rule)을 이용하여 원하는 미분 값을 얻을 수 있다. 즉, ***local gradient*** 와 ***upstream gradient*** (한국어로 대체 할만한 단어를 쓰지 못해 원어로 작성하겠다. ) 를 곱하는 것이다. 
-
-$\frac{\partial f}{\partial x}=\frac{\partial f}{\partial q}\frac{\partial q}{\partial x}=z=-4$
-
-$\frac{\partial f}{\partial y}=\frac{\partial f}{\partial q}\frac{\partial q}{\partial y}=z=-4$
-
-이렇게 찾은 미분 값을 연쇄법칙을 이용해 차례로 곱하면 원하는 변수로 미분한 값을 쉽게 찾을 수 있다.
-
-다음은 좀 더 복잡한 공식을 활용한 예시이다.
-
-![](/assets/image/lecture4-5.png)
-
-계산 과정에 대한 설명은 다소 길어지고 중복된 내용이 나올 수 있으므로 생략하도록 하겠다. ***local gradient*** 와 ***upstream gradient*** 를 곱하면서 차례로 게산해 나가면 $w_0$, $w_1$, $x_0$, $x_1$, $w_2$ 로 미분한 값을 찾을 수 있다는 것만 명심하면 되겠다. 그리고 위와 같은 예시의 경우 여러개의 계산과정을 하나로 묶어 계산 과정을 쉽게 만드는 것도 가능하다.
-
-![](/assets/image/lecture4-7.png)
-![](/assets/image/lecture4-6.png)
-
-
-### Patterns in backward flow
-
-역전파 과정에는 일정한 규칙이 있다. 이러한 규칙에는 크게 3가지가 있다.
-  1. add gate: gradient distributor, 즉 local gradient 가 항상 1인 상태로 upstream gradient 만 존재한다. 
-  2. max gate: gradient router, 즉 gradient가 단순히 통과하는 효과를 가진다.
-  3. mul gate: gradient switcher, 즉 곱하는 다른 값의 변수를 갖는다.
-
-
-
-### Vectorzied operations
-
-앞서 살펴본 예시는 정말 간단한 예시이다. 이미지 데이터는 행과 열의 수가 100단위가 넘어가는 경우가 많으므로 위와 같이 computational graph를 일일히 그리는 것은 매우 오래걸리고 번거로운 일이다. 이때 간단하게 각각의 변수들을 편미분하여 이를 행렬의 형태로 나타낸 ***Jacobian Matrix*** 가 사용된다. 이 Jacobian Matrix의 몇가지 특징은 다음과 같다. 
-
-  1. 4096차원(열) 을 가진 데이터가 입력되고 같은 차원의 데이터가 출력되면 Jacobian Matrix의 크기는 4096x4096이 된다.
-  2. 입력 데이터의 각각의 차원은 출력 데이터의 일치하는 차원에만 영향을 준다.
-  3. 대각행렬이다.
+## Convolutional Neural Networks
+ 
+Convolutional Neural Networks (이하 CNN) 은 다음과 같은 방법으로 작동한다.
+  1. 다음과 같은 ***이미지 데이터*** 와 ***필터*** 가 존재한다.
   
----
-지금까지 배운 내용을 최종적으로 정리해보면 다음과 같다.
+  ![](/assets/image/lecture5-1.png)
+   
+  2. 아래 사진과 같이 필터가 입력 이미지 데이터를 특정한 순서대로 하나씩 훑어나간다. 그리고 필터에 입력된 숫자와 해당되는 입력 이미지 픽셀의 숫자와 내적한 값을 출력한다. 
+  
+  ![](/assets/image/lecture5-2.png)   
+   
+  3. 이러한 과정을 한번 끝내게 되면 깊이가 1인 출력 이미지 데이터가 생성이 된다. 필터가 입력 이미지 데이터를 훑는 과정은 여러개의 필터에 의해서 연속적으로 이루어진다. 만약 필터의 개수가 6개라고 가정하면 최종적으로 출력되는 이미지 데이터의 깊이는 6이 된다.
+  
+  ![](/assets/image/lecture5-3.png)
+   
+  4. CNN의 마지막 층은 항상 fully connected layer, 즉 최종 출력 데이터를 1차원으로 만드는 레이어가 적용이 된다. 
+   
+  5. 여러개의 층(필터)를 많이 쌓을수록 모델은 이미지 데이터의 복잡한 디테일을 학습할 수 있게된다. 아래 사진에서는 층을 1개, 3개, 5개를 쌓았을때 모델이 학습하는 정도를 비교하고 있다.
+  
+  ![](/assets/image/lecture5-4.png)
+   
 
-  - Foward pass(포워드 패스): 노드의 값을 구하기 위해 함수에 값을 넣어가며 계산하는 방법이다.
-  - Backward pass (백워드 패스): 노드의 gradient를 구하기 위해 Forward pass를 통해 구한 값을 바탕으로 Jacobian Matrix를 구하는 과정이다. 역전파를 위해 사용되는 과정이다.
+### Parameters of CNN
+
+다음은 CNN 모델을 만들기 위해서 지정해야 하는 파라미터이다.
+
+1. Stride: 필터가 이미지 데이터를 훑고 지나갈때 몇 칸만큼 이동하는지 지정하는 인수이다.
+2. Pad: 입력 이미지 데이터의 모서리에 얼마만큼의 픽셀을 추가할지를 지정하는 인수이다. 이때, 추가된 픽셀은 출력 이미지 데이터의 값에 영향을 주지 않도록 하기위해 값이 0으로 설정된다.
+
+![](/assets/image/lecture5-5.png)
+
+다음 식은 ***입력 이미지 데이터의 크기*** 를 N, ***필터의 크기*** 를 F, ***stride*** 를 S, ***pad*** 를 P 라고 할 때 출력되는 이미지 데이터의 크기 M을 알기 위해 사용되는 공식이다.
+
+$ M = {(N+2P-F)/S}+1 $
 
 
 
-## Neural Networks
+### Other layers
 
-신경망(Neural Networks)이란 간단하게 입력 데이터에 여러개의 가중치 행렬이 차례로 적용함으로써 노드의 값을 구하는 것이다. 만약 다음과 같이 2개의 층을 가진 신경망이 있다고 하자.
+convolutional layer은 앞서 설명했다시피 필터에 입력된 숫자와 해당되는 입력 이미지 픽셀의 숫자와 내적한 값을 출력하는 방법으로 계산을 진행한다. convolutional layer외에도 다음과 같은 두가지의 layer 이 존재한다.
 
-![](/assets/image/lecture4-8.png)
+1. Pooling layer: 이미지 데이터에서 이루어지는 계산을 단순화 시키기 위해서 이미지의 크기를 줄이는 레이어이다.
 
-위와 같은 모습의 신경망은 아래와 같은 공식으로 나타낼 수 있다.
+![](/assets/image/lecture5-6.png)
 
-$f(x)=W_2 max(0,W_1 x)$
+2. Maxpooling layer: 이미지 데이터와 필터의 일치하는 픽셀의 내적 값을 구하는 대신 필터 안에 나타나는 이미지 데이터의 가장 큰 픽셀 값을 저장하는 레이어이다.
 
-이 신경망은 즉 3072의 차원을 $W_1$의 가중치를 가진 층을 거쳐 100차원으로 줄이고 이를 $W_2$의 가중치를 가진 층을 거쳐 10차원으로 줄인다. 층을 더 쌓을수록 High level(고차원)부터 Low level(저차원)적인 특징을 모두 고려하여 계산할 수 있게된다.
+![](/assets/image/lecture5-7.png)
+
+다음은 차 사진에 앞서 설명한 레이어들을 모두 적용했을때의 모습이다.
+
+![](/assets/image/lecture5-8.png)
 
 
 
-## Analogy between neurons and neural networks
-
-인공 신경망의 걔념은 우리 몸안에 있는 뉴런세포로 부터 차용한 것이다. 우선 뉴런은 다음과 같은 구조로 이루어져 있다.
-
-!['뉴런'](/assets/image/lecture4-9.png)
-
-dendrite를 통해 cell body가 자극신호를 전달 받고 이를 다시 axon 으로 연결되있는 다른 cell body 에 전달을 하게 된다. 이 때 axon을 통해 전달할때 자극이 일정 기준치를 넘어야지 전달이 된다.
-다음은 인경 신경망의 기본적인 구조이다.
-
-![](/assets/image/lecture4-10.png)
-
-인공신경망이 뉴런과 비슷한 원리로 작동하게 된다는 것을 알 수 있다. 여기서 ***activation function*** 이라는 개념이 나오는데, 이는 자극이 전달되도록 하기 위한 일정한 기준이 되는 함수이다. 활성화 함수(activation function)는 다양하게 존재하는데, 대표적인 함수는 다음과 같다.
-
-![](/assets/image/lecture4-11.png)
-
-여기서 ReLU 함수가 가장 자주 사용된다. 활성화 함수에 대한 자세한 내용은 추후 강의에 자세히 다룰 예정이다.
+### Trends of CNN
+ 
+  - 필터의 크기를 줄이고 최대한 층을 많이 쌓는다.
+  - Maxpooling layer과 fully connected layer을 빼고 오직 convolutional layer만 적용한다.
+  
