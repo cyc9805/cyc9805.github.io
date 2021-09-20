@@ -4,7 +4,7 @@ title:  "Lecture 5: Convolutional Neural Networks"
 comments: true
 use_math: true
 categories:
-  - computer-vision
+  - computer vision
   - python
 ---
 

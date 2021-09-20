@@ -4,7 +4,7 @@ title:  "Lecture 4: Backpropagation and Neural Network"
 comments: true
 use_math: true
 categories:
-  - computer-vision
+  - computer vision
   - python
 ---
 

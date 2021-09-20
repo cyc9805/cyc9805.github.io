@@ -257,10 +257,84 @@
   
 
   
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc"></label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂전체 글 수 9개
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Programming</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                
+                    
+                
+                    
+                        <li><a href="/categories/python" class="">Python (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/data analysis" class="">Data Analysis (3)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/computer vision" class="">Computer Vision (5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/markdown" class="">Markdown (1)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  
 
   </div>
-
-
 
 
 
@@ -320,7 +394,7 @@
       
         <li>
           <a href="#computer-vision">
-            <strong>computer-vision</strong> <span class="taxonomy__count">5</span>
+            <strong>computer vision</strong> <span class="taxonomy__count">5</span>
           </a>
         </li>
       
@@ -342,7 +416,7 @@
       
         <li>
           <a href="#data-analysis">
-            <strong>data-analysis</strong> <span class="taxonomy__count">3</span>
+            <strong>data analysis</strong> <span class="taxonomy__count">3</span>
           </a>
         </li>
       
@@ -401,7 +475,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture5-Convolutional-Neural-Networks/" rel="permalink">Lecture 5: Convolutional Neural Networks
+        <a href="/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/" rel="permalink">Lecture 5: Convolutional Neural Networks
 </a>
       
     </h2>
@@ -442,7 +516,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture4-Backpropagation-&-Neural-Network/" rel="permalink">Lecture 4: Backpropagation and Neural Network
+        <a href="/computer%20vision/python/Lecture4-Backpropagation-&-Neural-Network/" rel="permalink">Lecture 4: Backpropagation and Neural Network
 </a>
       
     </h2>
@@ -483,7 +557,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data-analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/" rel="permalink">Chapter 3: 특징 생성 part2
+        <a href="/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/" rel="permalink">Chapter 3: 특징 생성 part2
 </a>
       
     </h2>
@@ -524,7 +598,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data-analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/" rel="permalink">Chapter 3: 특징 생성 part1
+        <a href="/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/" rel="permalink">Chapter 3: 특징 생성 part1
 </a>
       
     </h2>
@@ -565,7 +639,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture3-Loss-Function-&-Optimization/" rel="permalink">Lecture 3: Loss Function and Optimization
+        <a href="/computer%20vision/python/Lecture3-Loss-Function-&-Optimization/" rel="permalink">Lecture 3: Loss Function and Optimization
 </a>
       
     </h2>
@@ -606,7 +680,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture2-Image-Classification-pipeline/" rel="permalink">Lecture 2: Image Classification pipeline
+        <a href="/computer%20vision/python/Lecture2-Image-Classification-pipeline/" rel="permalink">Lecture 2: Image Classification pipeline
 </a>
       
     </h2>
@@ -647,7 +721,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/" rel="permalink">Lecture 1: Introduction to CNN for Visual Recognition
+        <a href="/computer%20vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/" rel="permalink">Lecture 1: Introduction to CNN for Visual Recognition
 </a>
       
     </h2>
@@ -688,7 +762,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data-analysis/python/Chapter-2-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C%EC%9D%98-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" rel="permalink">Chapter 2: 경진대회의 평가지표
+        <a href="/data%20analysis/python/Chapter-2-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C%EC%9D%98-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" rel="permalink">Chapter 2: 경진대회의 평가지표
 </a>
       
     </h2>
@@ -757,7 +831,7 @@
   
     
       <section id="computer-vision" class="taxonomy__section">
-        <h2 class="archive__subtitle">computer-vision</h2>
+        <h2 class="archive__subtitle">computer vision</h2>
         <div class="entries-list">
           
             
@@ -769,7 +843,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture5-Convolutional-Neural-Networks/" rel="permalink">Lecture 5: Convolutional Neural Networks
+        <a href="/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/" rel="permalink">Lecture 5: Convolutional Neural Networks
 </a>
       
     </h2>
@@ -810,7 +884,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture4-Backpropagation-&-Neural-Network/" rel="permalink">Lecture 4: Backpropagation and Neural Network
+        <a href="/computer%20vision/python/Lecture4-Backpropagation-&-Neural-Network/" rel="permalink">Lecture 4: Backpropagation and Neural Network
 </a>
       
     </h2>
@@ -851,7 +925,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture3-Loss-Function-&-Optimization/" rel="permalink">Lecture 3: Loss Function and Optimization
+        <a href="/computer%20vision/python/Lecture3-Loss-Function-&-Optimization/" rel="permalink">Lecture 3: Loss Function and Optimization
 </a>
       
     </h2>
@@ -892,7 +966,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture2-Image-Classification-pipeline/" rel="permalink">Lecture 2: Image Classification pipeline
+        <a href="/computer%20vision/python/Lecture2-Image-Classification-pipeline/" rel="permalink">Lecture 2: Image Classification pipeline
 </a>
       
     </h2>
@@ -933,7 +1007,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer-vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/" rel="permalink">Lecture 1: Introduction to CNN for Visual Recognition
+        <a href="/computer%20vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/" rel="permalink">Lecture 1: Introduction to CNN for Visual Recognition
 </a>
       
     </h2>
@@ -986,7 +1060,7 @@
   
     
       <section id="data-analysis" class="taxonomy__section">
-        <h2 class="archive__subtitle">data-analysis</h2>
+        <h2 class="archive__subtitle">data analysis</h2>
         <div class="entries-list">
           
             
@@ -998,7 +1072,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data-analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/" rel="permalink">Chapter 3: 특징 생성 part2
+        <a href="/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/" rel="permalink">Chapter 3: 특징 생성 part2
 </a>
       
     </h2>
@@ -1039,7 +1113,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data-analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/" rel="permalink">Chapter 3: 특징 생성 part1
+        <a href="/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/" rel="permalink">Chapter 3: 특징 생성 part1
 </a>
       
     </h2>
@@ -1080,7 +1154,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data-analysis/python/Chapter-2-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C%EC%9D%98-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" rel="permalink">Chapter 2: 경진대회의 평가지표
+        <a href="/data%20analysis/python/Chapter-2-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C%EC%9D%98-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/" rel="permalink">Chapter 2: 경진대회의 평가지표
 </a>
       
     </h2>

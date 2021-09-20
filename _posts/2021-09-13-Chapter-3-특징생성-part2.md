@@ -2,7 +2,7 @@
 layout: single
 title:  "Chapter 3: 특징 생성 part2"
 categories:
-  - data-analysis
+  - data analysis
   - python
 ---
 

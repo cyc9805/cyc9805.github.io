@@ -4,7 +4,7 @@ title:  "Lecture 3: Loss Function and Optimization"
 comments: true
 use_math: true
 categories:
-  - computer-vision
+  - computer vision
   - python
 ---
 

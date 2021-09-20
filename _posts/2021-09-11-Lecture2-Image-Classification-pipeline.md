@@ -3,7 +3,7 @@ layout: single
 title:  "Lecture 2: Image Classification pipeline"
 comments: true
 categories:
-  - computer-vision
+  - computer vision
   - python
 ---
 

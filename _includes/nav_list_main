@@ -25,15 +25,15 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "data-analysis" %}
-                        <li><a href="/categories/data-analysis" class="">Data Analysis ({{category[1].size}})</a></li>
+                    {% if category[0] == "data analysis" %}
+                        <li><a href="/categories/data analysis" class="">Data Analysis ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "computer-vision" %}
-                        <li><a href="/categories/computer-vision" class="">Computer Vision ({{category[1].size}})</a></li>
+                    {% if category[0] == "computer vision" %}
+                        <li><a href="/categories/computer vision" class="">Computer Vision ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
