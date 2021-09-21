@@ -1,6 +1,8 @@
 ---
 layout: single
 title:  "Lecture 3: Loss Function and Optimization"
+toc: true
+toc_sticky: true
 comments: true
 use_math: true
 categories:
