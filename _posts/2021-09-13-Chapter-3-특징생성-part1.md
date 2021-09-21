@@ -1,6 +1,8 @@
 ---
 layout: single
 title:  "Chapter 3: 특징 생성 part1"
+toc: true
+toc_sticky: true
 categories:
   - data analysis
   - python

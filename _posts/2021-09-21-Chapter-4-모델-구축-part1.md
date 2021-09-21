@@ -1,6 +1,8 @@
 ---
 layout: single
 title:  "Chapter 4: 모델 구축 part1"
+toc: true
+toc_sticky: true
 categories:
   - data analysis
   - python

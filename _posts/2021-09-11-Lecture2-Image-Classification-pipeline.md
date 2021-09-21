@@ -2,6 +2,8 @@
 layout: single
 title:  "Lecture 2: Image Classification pipeline"
 comments: true
+toc: true
+toc_sticky: true
 categories:
   - computer vision
   - python

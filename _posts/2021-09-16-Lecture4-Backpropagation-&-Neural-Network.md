@@ -3,6 +3,8 @@ layout: single
 title:  "Lecture 4: Backpropagation and Neural Network"
 comments: true
 use_math: true
+toc: true
+toc_sticky: true
 categories:
   - computer vision
   - python

@@ -3,6 +3,8 @@ layout: single
 title:  "Lecture 5: Convolutional Neural Networks"
 comments: true
 use_math: true
+toc: true
+toc_sticky: true
 categories:
   - computer vision
   - python

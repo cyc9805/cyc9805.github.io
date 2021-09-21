@@ -2,6 +2,8 @@
 layout: single
 title:  "Lecture 1: Introduction to CNN for Visual Recognition"
 comments: true
+toc: true
+toc_sticky: true
 categories:
   - computer vision
   - python
