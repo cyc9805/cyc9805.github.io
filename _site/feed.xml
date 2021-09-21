@@ -1,4 +1,255 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-21T01:12:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 5: Convolutional Neural Networks</title><link href="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/" rel="alternate" type="text/html" title="Lecture 5: Convolutional Neural Networks" /><published>2021-09-19T00:00:00+09:00</published><updated>2021-09-19T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/">&lt;h2 id=&quot;history-of-neural-networks&quot;&gt;History of Neural Networks&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-21T16:47:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Chapter 4: 모델 구축 part1</title><link href="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/" rel="alternate" type="text/html" title="Chapter 4: 모델 구축 part1" /><published>2021-09-21T00:00:00+09:00</published><updated>2021-09-21T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/">&lt;p&gt;챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;41-모델의-기본-이해&quot;&gt;4.1 모델의 기본 이해&lt;/h2&gt;
+
+&lt;h3 id=&quot;411-모델이란&quot;&gt;4.1.1 모델이란?&lt;/h3&gt;
+
+&lt;p&gt;모델이란 특징을 입력 데이터로 사용해 예측값을 만들어 내는 것이다. 경진대회의 대부분은 지도학습에 해당 되므로 이 장에서는 지도 학습 모델에 대해서만 설명하고 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;412-모델-구축의-흐름&quot;&gt;4.1.2 모델 구축의 흐름&lt;/h3&gt;
+
+&lt;p&gt;모델 학습과 예측은 다음과 같은 순서로 실시한다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;모델 종류를 선택하고 하이퍼파라미터를 지정&lt;/li&gt;
+  &lt;li&gt;학습 데이터와 목적변수를 제공하여 학습을 진행&lt;/li&gt;
+  &lt;li&gt;테스트 데이터를 제공하여 예측&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이 때, 모델을 만들어 갈 때 모델의 좋고 나쁨을 평가해야 한다. 만약 모델의 기반이 된 학습 데이터를 그대로 평가에 이용하면 정답률이 100% 가 되므로 학습 데이터 중 일부 데이터를 평가용 데이터로 분류 해야한다. 이러한 방법을 검증(validation) 이라고 한다. 다음은 검증의 대표적인 방법인 &lt;strong&gt;&lt;em&gt;k 교차 검증(k-cross validation)&lt;/em&gt;&lt;/strong&gt; 방법을 통해 검증을 실시하는 코드이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# -----------------------------------
+# 교차 검증(crossvalidation)
+# -----------------------------------
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.metrics&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.model_selection&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KFold&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 학습 데이터를 4개로 나누고 그 중 1개를 검증 데이터로 지정
+# 분할한 검증 데이터를 바꾸어가며 학습 및 평가를 4회 실시
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;kf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KFold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_splits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shuffle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;71&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tr_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_idx&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tr_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tr_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tr_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;특징의 추가 및 변경, 모델 종류의 선택, 하이퍼파라미터의 선택은 서로 긴밀하게 연결되어 있다. 다음은 이 세가지 과정을 진행하는 과정에서의 중요한 팁이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;특징이 제일 중요하므로 경진 대회의 주어진 시간의 대부분을 특징 생성에 할애한다.&lt;/li&gt;
+  &lt;li&gt;하이퍼파리터를 변경했을 때 얼마나 영향을 주는지 살펴보다가 대회 후반부터 본격 조정한다.&lt;/li&gt;
+  &lt;li&gt;모델은 처음에는 GBDT 로 진행하다가 문제의 성질에 따라 신경망을 검토하거나, 앙상블을 고려할 때는 다른 모델로도 구축을 해본다.&lt;/li&gt;
+  &lt;li&gt;검증 구조를 변경해가며 학습을 시키기도 한다.&lt;/li&gt;
+  &lt;li&gt;Public Leaderboard 에만 집착하면 과적합 할 수 있으므로 과적합에 유의하도록 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;413-모델-관련-용어와-팁&quot;&gt;4.1.3 모델 관련 용어와 팁&lt;/h3&gt;
+
+&lt;p&gt;모델을 만들거나 그 사용 방법을 이해하는데 도움이 될 만한 용어와 팁들이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;과적합
+    &lt;ul&gt;
+      &lt;li&gt;학습 데이터의 노이즈까지 학습하여 학습 데이터 이외의 데이터에서 점수가 좋지 않은 현상을 과대적합(overfitting)이라고 한다.&lt;/li&gt;
+      &lt;li&gt;반대로 학습 데이터의 성질을 충분히 학습하지 않아 학습 데이터에서도 점수가 좋지 않으면 과소적합(underfitting) 이라고 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;정규화
+    &lt;ul&gt;
+      &lt;li&gt;학습 모델에 제약을 부여해 복잡성을 제어하는 것을 정규화(regularization) 라고 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;학습 데이터와 검증 데이터의 점수 모니터링
+    &lt;ul&gt;
+      &lt;li&gt;학습이 순차적으로 진행되는 모델에서는 학습 데이터와 목적변수 외에도 모니터링할 평가지표 및 검증 데이터와 그 목적변수를 전달함으로써 학습 데이터와 검증 데이터 각각의 점수 추이를 볼 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;조기종료
+    &lt;ul&gt;
+      &lt;li&gt;조기 종료(early stopping)란 학습 시 검증 데이터의 점수를 모니터링하다가 일정 시간 동안 점수가 오르지 않으면 중간에 학습을 중단하는 기능이다.&lt;/li&gt;
+      &lt;li&gt;조기 종료는 학습 데이터의 점수가 과적합 되어 일반화 성능이 떨어지는 것을 방지하는 목적으로 사용한다.&lt;/li&gt;
+      &lt;li&gt;학습이 진행하면서 학습 데이터의 점수는 계속 좋아지는 반면 검증 데이터의 점수는 일정한 선에서 멈추게 된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;배깅
+    &lt;ul&gt;
+      &lt;li&gt;배깅(bagging) 이란 여러 모델을 조합해 모델을 구축하는 방법 중 하나이다. 같은 종류의 모델을 여러 개 병렬로 구축하고, 이 예측값들의 평균 또는 최빈값을 이용해 예측한다.&lt;/li&gt;
+      &lt;li&gt;좁은 의미로는 부트스트랩 샘플, 넓은 의미로는 랜덤 포레스트 등의 모델이 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;부스팅
+    &lt;ul&gt;
+      &lt;li&gt;부스팅(boosting) 이란 여러 모델을 조합해 모델을 구축하는 방법 중 하나이다. 같은 종류의 모델을 직렬 조합하고 학습을 통해 예측값을 보정해 순서대로 하나씩 모델을 학습시킨다.&lt;/li&gt;
+      &lt;li&gt;GBDT 가 부스팅을 사용하는 대표적인 모델 중 하나이다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;42-경진-대회에서-사용하는-모델&quot;&gt;4.2 경진 대회에서 사용하는 모델&lt;/h2&gt;
+
+&lt;p&gt;정형 데이터를 다루는 경진대회에서 사용하는 모델은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;GBDT&lt;/li&gt;
+  &lt;li&gt;신경망&lt;/li&gt;
+  &lt;li&gt;선형 모델&lt;/li&gt;
+  &lt;li&gt;기타 모델 (k-최근접 이웃 알고리즘)&lt;/li&gt;
+  &lt;li&gt;랜덤 포레스트&lt;/li&gt;
+  &lt;li&gt;익스트림 랜덤 트리&lt;/li&gt;
+  &lt;li&gt;RGF, FFM&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;모델의 대체적인 선택 순서는 다음 그림에 나타나 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/chapter4-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음은 조금 더 세세한 조건에 맞게 모델을 선택하는 순서를 나타낸 그림이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/chapter4-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;43-gbdt&quot;&gt;4.3 GBDT&lt;/h2&gt;
+
+&lt;h3 id=&quot;431-gbdt의-개요&quot;&gt;4.3.1 GBDT의 개요&lt;/h3&gt;
+
+&lt;p&gt;GBDT는 Gradient Boosting Decision Tree (그래디언트 부스팅 결정 트리)의 약자로, &lt;strong&gt;&lt;em&gt;모델의 사용 편의성과 성능이 높아 경진대회에서 자주 사용된다&lt;/em&gt;&lt;/strong&gt;. GBDT는 다수의 결정 트리로 이루어져 있는데, 각 결정트리의 분기 및 잎의 가중치가 정해지는 과정으로 모델이 만들어진다. 이 때, 목적변수와 예측값의 오차를 줄여나가며 목적함수를 개선시킨다. 이 과정은 하이퍼파라미터에서 정한 결정트리의 개수만큼 반복한다. 랜덤 포레스트는 결정 트리를 병렬로 작성해나가는 반면 GBDT는 직렬로 작성해가며 직전까지 작성한 결정 트리의 예측값을 새로운 결정 트리의 예측값에 반영해가며 조금씩 수정해 나간다.&lt;/p&gt;
+
+&lt;h3 id=&quot;432-gbdt의-특징&quot;&gt;4.3.2 GBDT의 특징&lt;/h3&gt;
+
+&lt;p&gt;GBDT의 특징은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;특징은 수치로 표현해야 한다.&lt;/li&gt;
+  &lt;li&gt;결측값을 다룰 수 있다.&lt;/li&gt;
+  &lt;li&gt;변수 간 상호작용이 반영된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다른 모델에 비해 갖는 장점은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;모델 성능이 높다.&lt;/li&gt;
+  &lt;li&gt;매개변수 튜닝을 하지 않아도 모델 성능이 잘 나온다.&lt;/li&gt;
+  &lt;li&gt;불필요한 특징을 추가해도 모델 성능이 떨어지지 않는다.&lt;/li&gt;
+  &lt;li&gt;특징값의 범위를 스케일링 할 필요가 없다.&lt;/li&gt;
+  &lt;li&gt;범주형 변수를 원-핫 인코딩 할 필요가 없다.&lt;/li&gt;
+  &lt;li&gt;희소행렬에 대응한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;433-gbdt의-주요-라이브러리&quot;&gt;4.3.3 GBDT의 주요 라이브러리&lt;/h3&gt;
+
+&lt;p&gt;GBDT에서 사용되는 라이브러리는 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;xgboost: 제일 오래 사용된 GBDT 라이브러리로, 오래된 만큼 관련 정보와 자료가 많이 있다.&lt;/li&gt;
+  &lt;li&gt;lightgbm: xgboost 와 상당히 가까운 예측 알고리즘을 갖고 있으며, 성능이 높고 연산 속도가 빨라 인기가 높다.&lt;/li&gt;
+  &lt;li&gt;catboost: 범주형 특징이 있는 데이터를 다루는데 효과적이다.&lt;/li&gt;
+  &lt;li&gt;GradientBoostingRegressor/ GradientBoostingClassifier: xgboost 보다 모델 성능, 연산 속도 모두 떨어지므로 자주 사용되지 않는 모델이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;434-gbdt의-구현&quot;&gt;4.3.4 GBDT의 구현&lt;/h3&gt;
+
+&lt;p&gt;다음은 xgboost를 이용하여 모델링을 하는 코드이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# -----------------------------------
+# xgboost의 구현
+# -----------------------------------
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;xgboost&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.metrics&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 특징과 목적변수를 xgboost의 데이터 구조로 변환
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtrain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dvalid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dtest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 하이퍼파라미터 설정
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;objective&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;binary:logistic&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;silent&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;random_state&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;71&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;num_round&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 학습의 실행
+# 검증 데이터도 모델에 제공하여 학습 진행과 함께 점수가 어떻게 달라지는지 모니터링
+# watchlist로 학습 데이터 및 검증 데이터를 준비
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watchlist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtrain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;train&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dvalid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;eval&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dtrain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watchlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 검증 데이터의 점수를 확인
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dvalid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;logloss: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 예측 - 두 값(0 or 1)의 예측이 아닌 양성(1)일 확률을 출력
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;435-xgboost-사용-팁&quot;&gt;4.3.5 xgboost 사용 팁&lt;/h3&gt;
+
+&lt;p&gt;다음은 xgboost를 사용할때 사용할 수 있는 유용한 팁이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;xgboost 의 booster 매개변수에서 어떠한 모델을 사용할지 선택할 수 있다. GBDT를 사용하기 위해서는 &lt;strong&gt;&lt;em&gt;gbtree&lt;/em&gt;&lt;/strong&gt;, 선형모델을 사용하기 위해서는 &lt;strong&gt;&lt;em&gt;gblinear&lt;/em&gt;&lt;/strong&gt;, DART라는 알고리즘을 사용하기 위해서는 &lt;strong&gt;&lt;em&gt;dart&lt;/em&gt;&lt;/strong&gt; 로 설정한다.&lt;/li&gt;
+  &lt;li&gt;xgboost는 목적함수를 최소화하는 방법으로 학습을 진행한다. 매개변수는 objective이며, 회귀에는 &lt;strong&gt;&lt;em&gt;reg:squarederror&lt;/em&gt;&lt;/strong&gt;, 이진 분류에는 &lt;strong&gt;&lt;em&gt;binary:logistic&lt;/em&gt;&lt;/strong&gt;, 다중 클래스 분류에는 &lt;strong&gt;&lt;em&gt;multi:softprob&lt;/em&gt;&lt;/strong&gt; 으로 설정해준다.&lt;/li&gt;
+  &lt;li&gt;학습률, 결정 트리의 깊이, 정규화 강도 등을 하이퍼파라미터로 지정할 수 있다.&lt;/li&gt;
+  &lt;li&gt;train 메서드의 &lt;strong&gt;&lt;em&gt;evals 매개변수&lt;/em&gt;&lt;/strong&gt; 에 학습 데이터와 검증 데이터를 넘겨주어 결정 트리를 추가할 때마다 이들 데이터에 대한 점수를 출력하게 할 수 있다.&lt;/li&gt;
+  &lt;li&gt;train 메서드의 early_stopping_rounds 매개변수를 지정함으로써 조기 종료를 할 수 있다.&lt;/li&gt;
+  &lt;li&gt;모델 훈련시의 Learning API의 train 메서드와 Scikit-Learn API의 scikit-learn 클래스 중에 선택할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;436-lightgbm&quot;&gt;4.3.6 lightgbm&lt;/h3&gt;
+
+&lt;p&gt;lightgbm은 xgboost와 비교하여 모델성능은 비슷하나 연산 속도는 확실히 더 빠르다는 장점을 가지고 있는 라이브러리이다. lightgbm의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;히스토그램 기반의 결정 트리 분기에 따른 고속화가 가능하다.&lt;/li&gt;
+  &lt;li&gt;깊이 단위가 아닌 잎 단위에서의 분기 추가에 따른 모델 성능 향상이 이루어진다. 깊이 단위에서의 분기 추가와 잎 단위에서의 분기 추가의 차이는 다음 그림과 같다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/chapter4-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;범주형 변수의 분할 최적화로 모델 성능의 향상이 이루어진다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다음은 lightgbm을 이용하여 모델링을 하는 코드이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# -----------------------------------
+# lightgbm의 구현
+# -----------------------------------
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lightgbm&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.metrics&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 특징과 목적변수를 lightgbm의 데이터 구조로 변환
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lgb_train&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tr_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lgb_eval&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 하이퍼파라미터 설정
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;objective&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;binary&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;seed&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;71&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;verbose&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;metrics&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;binary_logloss&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;num_round&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 학습 실행
+# 범주형 변수를 파라미터로 지정
+# 검증 데이터도 추가 지정하여 학습 진행과 함께 점수가 어떻게 달라지는지 모니터링
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categorical_features&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;product&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;medical_info_b2&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;medical_info_b3&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_boost_round&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                  &lt;span class=&quot;n&quot;&gt;categorical_feature&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categorical_features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                  &lt;span class=&quot;n&quot;&gt;valid_names&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;train&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;valid&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;valid_sets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lgb_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb_eval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 검증 데이터에서의 점수 확인
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;logloss: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 예측
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;437-catboost&quot;&gt;4.3.7 catboost&lt;/h3&gt;
+
+&lt;p&gt;catboost의 특징은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;범주형 변수로서 지정한 특징을 자동으로 타깃 인코딩하여 수치로 변환한다.&lt;/li&gt;
+  &lt;li&gt;각 깊이별 분기 조건식에 모두 망각 결정 트리(oblivious decision tree)가 사용된다.&lt;/li&gt;
+  &lt;li&gt;데이터 수가 적을 때는 정렬 부스팅이라는 알고리즘이 사용된다.&lt;/li&gt;
+  &lt;li&gt;속도가 느려 xgboost나 lightgbm에 비해 많이 쓰이지는 않으나 상호작용이 중요한 경우 모델 성능이 잘 나오는 경우가 있어 사용할 가치가 있다.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다.</summary></entry><entry><title type="html">Lecture 5: Convolutional Neural Networks</title><link href="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/" rel="alternate" type="text/html" title="Lecture 5: Convolutional Neural Networks" /><published>2021-09-19T00:00:00+09:00</published><updated>2021-09-19T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/">&lt;h2 id=&quot;history-of-neural-networks&quot;&gt;History of Neural Networks&lt;/h2&gt;
 
 &lt;p&gt;인공 신경망의 본격적인 연구가 이루어진 것은 비교적 최근이다. 컴퓨터가 개발되기 전에 사람들은 다음과 같은 이론은 내놓았다.&lt;/p&gt;
 
@@ -1394,7 +1645,7 @@ $L_3=max(0,2.2-(-3.1)+1)+max(0,2.5-(-3.1)+1) = 6.3+6.6 = 12.9$&lt;/p&gt;
 
 &lt;h3 id=&quot;코드-블록&quot;&gt;코드 블록&lt;/h3&gt;
 
-&lt;p&gt;``` 이 문자가 코드 블록의 시작을 알리는 문자이나 맥북 키보드에서 보이지가 않는다. 혹시라도 이 문자를 맥북에서 치는 방법을 아는 분 있으면 연락 부탁드립니다!!&lt;/p&gt;
+&lt;p&gt;``` 이 문자가 코드 블록의 시작을 알리는 문자이나 맥북 키보드에서 보이지가 않는다. 혹시라도 이 문자를 맥북에서 치는 방법을 아는 분 있으면 연락 부탁드립니다!! (9/21 수정: 전원버튼 아래 위치한 원화키를 누르면 된다! )&lt;/p&gt;
 
 &lt;p&gt;코드블록은 다음과 같은 방법으로 적는다.&lt;/p&gt;
 

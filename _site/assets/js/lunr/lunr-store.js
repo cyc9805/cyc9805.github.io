@@ -52,4 +52,10 @@ var store = [{
         "tags": [],
         "url": "/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/",
         "teaser": null
+      },{
+        "title": "Chapter 4: 모델 구축 part1",
+        "excerpt":"챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다. 4.1 모델의 기본 이해 4.1.1 모델이란? 모델이란 특징을 입력 데이터로 사용해 예측값을 만들어 내는 것이다. 경진대회의 대부분은 지도학습에 해당 되므로 이 장에서는...","categories": ["data analysis","python"],
+        "tags": [],
+        "url": "/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/",
+        "teaser": null
       }]
