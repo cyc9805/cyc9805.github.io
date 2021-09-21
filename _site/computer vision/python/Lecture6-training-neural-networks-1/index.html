@@ -34,8 +34,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-      <!-- begin _includes/seo.html --><title>Lecture 5: Convolutional Neural Networks - yongchan’s website</title>
-<meta name="description" content="History of Neural Networks">
+      <!-- begin _includes/seo.html --><title>Lecture 6: Training Neural Networks 1 - yongchan’s website</title>
+<meta name="description" content="Activation Functions">
 
 
   <meta name="author" content="yongchanchun">
@@ -47,26 +47,26 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="Lecture 5: Convolutional Neural Networks">
-<meta property="og:url" content="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/">
+<meta property="og:title" content="Lecture 6: Training Neural Networks 1">
+<meta property="og:url" content="http://localhost:4000/computer%20vision/python/Lecture6-training-neural-networks-1/">
 
 
-  <meta property="og:description" content="History of Neural Networks">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-09-19T00:00:00+09:00">
+  <meta property="og:description" content="Activation Functions">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/">
+
+  <meta property="article:published_time" content="2021-09-22T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20vision/python/Lecture6-training-neural-networks-1/">
 
 
 
@@ -368,15 +368,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Lecture 5: Convolutional Neural Networks">
-    <meta itemprop="description" content="History of Neural Networks">
-    <meta itemprop="datePublished" content="2021-09-19T00:00:00+09:00">
+    <meta itemprop="headline" content="Lecture 6: Training Neural Networks 1">
+    <meta itemprop="description" content="Activation Functions">
+    <meta itemprop="datePublished" content="2021-09-22T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 5: Convolutional Neural Networks
+          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 6: Training Neural Networks 1
 </h1>
           
 
@@ -392,7 +392,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          3 minute read
         
       </span>
     
@@ -407,97 +407,195 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#history-of-neural-networks">History of Neural Networks</a></li><li><a href="#convolutional-neural-networks">Convolutional Neural Networks</a><ul><li><a href="#parameters-of-cnn">Parameters of CNN</a></li><li><a href="#other-layers">Other layers</a></li><li><a href="#trends-of-cnn">Trends of CNN</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#activation-functions">Activation Functions</a><ul><li><a href="#sigmoid">Sigmoid</a></li><li><a href="#tanh">tanh</a></li><li><a href="#relu">ReLU</a></li><li><a href="#leaky-relu-prerelu">Leaky ReLU, PreReLU</a></li><li><a href="#elu">ELU</a></li><li><a href="#maxout">Maxout</a></li><li><a href="#choosing-activation-functions">Choosing Activation Functions</a></li></ul></li><li><a href="#data-preprocessing">Data Preprocessing</a></li><li><a href="#weight-initalization">Weight initalization</a></li><li><a href="#batch-normalization">Batch Normalization</a></li><li><a href="#monitoring-the-training">Monitoring the training</a></li></ul>
 
             </nav>
           </aside>
         
-        <h2 id="history-of-neural-networks">History of Neural Networks</h2>
+        <h2 id="activation-functions">Activation Functions</h2>
 
-<p>인공 신경망의 본격적인 연구가 이루어진 것은 비교적 최근이다. 컴퓨터가 개발되기 전에 사람들은 다음과 같은 이론은 내놓았다.</p>
+<p>활성화 함수는 가중치와 입력 데이터를 곱한 값에 정규화를 한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 <strong><em>Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU</em></strong> 가 있다.</p>
 
-<ol>
-  <li>1957년에 Frank Rosenblatt는 알파벳을 인식하는 기계를 고안했다.</li>
-  <li>1986년에 역전파를 통해 최적의 가중치를 찾는 연구가 활발히 이루어졌다.</li>
-  <li>1998년에 LeCun, Bottou, Bengio, Haffner가 경사 하강법(gradient descent)를 처음으로 글자 인식에 적용해 보았다.</li>
-  <li>2012년에 Alex Krizhevsky가 AlexNet을 개발하였다. 이는 현대 CNN 모델의 근간이 된 중요한 모델이다.
- 5, 2021년 현재, CNN은 컴퓨터 비전 분야의 모든 곳에서 사용되고 있다.</li>
-</ol>
+<h3 id="sigmoid">Sigmoid</h3>
 
-<h2 id="convolutional-neural-networks">Convolutional Neural Networks</h2>
+<p>시그모이드 함수의 모습은 다음과 같다.</p>
 
-<p>Convolutional Neural Networks (이하 CNN) 은 다음과 같은 방법으로 작동한다.</p>
-<ol>
-  <li>다음과 같은 <strong><em>이미지 데이터</em></strong> 와 <strong><em>필터</em></strong> 가 존재한다.</li>
-</ol>
+<p><img src="/assets/image/lecture6-1.png" alt="" />
+$\sigma(x)=1/(1+e^{-x})$</p>
 
-<p><img src="/assets/image/lecture5-1.png" alt="" /></p>
+<p>이 함수는 입력 데이터를 0과 1사이로 변환한다. 그러나 이 함수에는 치명적인 단점 3개가 존재하기 때문에 잘 사용되지 않는데, 3가지 단점은 다음과 같다.</p>
 
 <ol>
-  <li>아래 사진과 같이 필터가 입력 이미지 데이터를 특정한 순서대로 하나씩 훑어나간다. 그리고 필터에 입력된 숫자와 해당되는 입력 이미지 픽셀의 숫자와 내적한 값을 출력한다.</li>
+  <li>입력 데이터가 특정 값을 넘어가거나 넘지 못하면 gradient가 0으로 수렴한다. 즉, gradient descent를 하지 못하기 때문에 역전파를 하지 못한다.</li>
+  <li>시그모이드 함수의 출력값의 중심이 0이 되지 않는다. 출력값의 중심이 0이 되지 않으면 가중치 행렬의 gradient가 모두 양수이거나 음수의 형태를 띄게된다. 이 말인즉슨 역전파를 할때 가중치 값이 모두 증가하거나 감소하여 최적의 가중치 행렬을 찾기 어렵다는 말이 된다.</li>
+  <li>자연함수 $e$ 가 들어가는 계산이므로 계산과정이 오래 걸린다.</li>
 </ol>
 
-<p><img src="/assets/image/lecture5-2.png" alt="" /></p>
+<h3 id="tanh">tanh</h3>
+
+<p>tanh 함수의 모습은 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture6-2.png" alt="" /></p>
+
+<p>이 함수는 출력값의 중심이 0이 되지 않는다는 점만 제외하면 시그모이드 함수와 같은 단점을 가지고 있어 마찬가지로 자주 사용되지는 않는다.</p>
+
+<h3 id="relu">ReLU</h3>
+
+<p>ReLU의 모습은 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture6-3.png" alt="" />  <br />
+$f(x)=max(0,x)$</p>
+
+<p>ReLU의 장점은 다음과 같다.</p>
 
 <ol>
-  <li>이러한 과정을 한번 끝내게 되면 깊이가 1인 출력 이미지 데이터가 생성이 된다. 필터가 입력 이미지 데이터를 훑는 과정은 여러개의 필터에 의해서 연속적으로 이루어진다. 만약 필터의 개수가 6개라고 가정하면 최종적으로 출력되는 이미지 데이터의 깊이는 6이 된다.</li>
+  <li>입력 데이터가 양수일때 gradient가 1로 수렴하지 않는다.</li>
+  <li>계산과정이 단순하고 빠르다.</li>
+  <li>실제 뉴런과 작동하는 방법이 비슷하다.</li>
 </ol>
 
-<p><img src="/assets/image/lecture5-3.png" alt="" /></p>
+<p>반면 단점은 다음과 같다.</p>
 
 <ol>
-  <li>
-    <p>CNN의 마지막 층은 항상 fully connected layer, 즉 최종 출력 데이터를 1차원으로 만드는 레이어가 적용이 된다.</p>
-  </li>
-  <li>
-    <p>여러개의 층(필터)를 많이 쌓을수록 모델은 이미지 데이터의 복잡한 디테일을 학습할 수 있게된다. 아래 사진에서는 층을 1개, 3개, 5개를 쌓았을때 모델이 학습하는 정도를 비교하고 있다.</p>
-  </li>
+  <li>입력 데이터가 음수일때 gradient가 0으로 수렴한다.</li>
+  <li>출력값의 중심이 0이 되지 않는다.</li>
+  <li>아래 사진과 같이 데이터들이 존재하는 지역 밖에 함수가 존재하면 dead ReLU, 즉 죽은 ReLU가 되어 더 이상 업데이트가 되지 않는 함수가 된다.</li>
 </ol>
 
-<p><img src="/assets/image/lecture5-4.png" alt="" /></p>
+<p><img src="/assets/image/lecture6-4.png" alt="" /></p>
 
-<h3 id="parameters-of-cnn">Parameters of CNN</h3>
+<h3 id="leaky-relu-prerelu">Leaky ReLU, PreReLU</h3>
 
-<p>다음은 CNN 모델을 만들기 위해서 지정해야 하는 파라미터이다.</p>
+<p>Leaky ReLU의 모습은 다음과 같다.</p>
 
-<ol>
-  <li>Stride: 필터가 이미지 데이터를 훑고 지나갈때 몇 칸만큼 이동하는지 지정하는 인수이다.</li>
-  <li>Pad: 입력 이미지 데이터의 모서리에 얼마만큼의 픽셀을 추가할지를 지정하는 인수이다. 이때, 추가된 픽셀은 출력 이미지 데이터의 값에 영향을 주지 않도록 하기위해 값이 0으로 설정된다.</li>
-</ol>
+<p><img src="/assets/image/lecture6-5.png" alt="" /> 
+$f(x)=max(0.01x,x)$</p>
 
-<p><img src="/assets/image/lecture5-5.png" alt="" /></p>
+<p>기본적인 형태는 ReLU와 비슷하나 ReLU에 비해 입력 데이터가 음수일때 gradient가 0으로 수렴하지 않는다는 장점을 가지고 있다.</p>
 
-<p>다음 식은 <strong><em>입력 이미지 데이터의 크기</em></strong> 를 N, <strong><em>필터의 크기</em></strong> 를 F, <strong><em>stride</em></strong> 를 S, <strong><em>pad</em></strong> 를 P 라고 할 때 출력되는 이미지 데이터의 크기 M을 알기 위해 사용되는 공식이다.</p>
+<p>PreReLU도 다음과 같이 ReLU와 비슷한 함수이다.
+$f(x)=max(\alpha x,x)$</p>
 
-<p>$ M = {(N+2P-F)/S}+1 $</p>
+<p>여기서 $\alpha$는 역전파 과정을 통해 찾아나간다.</p>
 
-<h3 id="other-layers">Other layers</h3>
+<h3 id="elu">ELU</h3>
 
-<p>convolutional layer은 앞서 설명했다시피 필터에 입력된 숫자와 해당되는 입력 이미지 픽셀의 숫자와 내적한 값을 출력하는 방법으로 계산을 진행한다. convolutional layer외에도 다음과 같은 두가지의 layer 이 존재한다.</p>
+<p>ELU의 모습은 다음과 같다.</p>
 
-<ol>
-  <li>Pooling layer: 이미지 데이터에서 이루어지는 계산을 단순화 시키기 위해서 이미지의 크기를 줄이는 레이어이다.</li>
-</ol>
+<p><img src="/assets/image/lecture6-6.png" alt="" /></p>
 
-<p><img src="/assets/image/lecture5-6.png" alt="" /></p>
+<p>ReLU의 모든 장점을 공유하고 있으나 자연함수 $e$가 포함된 계산과정이 있기 때문에 계산하는 시간이 오래 걸린다는 단점이 있다.</p>
 
-<ol>
-  <li>Maxpooling layer: 이미지 데이터와 필터의 일치하는 픽셀의 내적 값을 구하는 대신 필터 안에 나타나는 이미지 데이터의 가장 큰 픽셀 값을 저장하는 레이어이다.</li>
-</ol>
+<h3 id="maxout">Maxout</h3>
 
-<p><img src="/assets/image/lecture5-7.png" alt="" /></p>
+<p>Maxout의 모습은 다음과 같다.</p>
 
-<p>다음은 차 사진에 앞서 설명한 레이어들을 모두 적용했을때의 모습이다.</p>
+<p>$max(w_1^{T}x+b_1,w_2^{T}x+b_2)$</p>
 
-<p><img src="/assets/image/lecture5-8.png" alt="" /></p>
+<p>이 함수는 ReLU와 LeakyReLU를 일반화하여 ReLU의 단점을 모두 극복한 것에 의의가 있다. 그러나 기존 ReLU의 계산과정의 두배가 된다는 점이 단점이다.</p>
 
-<h3 id="trends-of-cnn">Trends of CNN</h3>
+<h3 id="choosing-activation-functions">Choosing Activation Functions</h3>
+
+<p>어떠한 활성화 함수를 써야되는지에 대한 간단한 팁이다.</p>
 
 <ul>
-  <li>필터의 크기를 줄이고 최대한 층을 많이 쌓는다.</li>
-  <li>Maxpooling layer과 fully connected layer을 빼고 오직 convolutional layer만 적용한다.</li>
+  <li>처음에는 ReLU 함수를 사용한다. 이때 learning rate를 잘 설정하는 것이 중요하다.</li>
+  <li>다음으로 Leaky ReLU, Maxout, ELU를 사용해본다.</li>
+  <li>tanh는 한번쯤 시도해보나 결과에 대한 기대는 하지 않는 것이 좋다.</li>
+  <li>sigmoid는 절대 사용하지 않는다.</li>
 </ul>
 
+<h2 id="data-preprocessing">Data Preprocessing</h2>
+
+<p>이미지를 훈련시키기 전에 전처리를 하는 것이 좋다. 추천되는 전처리 과정은 zero centering, 즉 데이터의 평균이 0이 되게 하는 것이다. 이때, 이미지 데이터의 분포와 크기를 보존하기 위해 정규화 과정은 잘 사용되지 않는다.</p>
+
+<p><img src="/assets/image/lecture6-7.png" alt="" /></p>
+
+<p>zero centering 외의 추천하는 전처리는 이미지의 차원을 줄이는 PCA, 분산을 1로 만드는 whitening 등이 있다.</p>
+
+<p><img src="/assets/image/lecture6-8.png" alt="" /></p>
+
+<p>여기서 정규화를 위해 평균을 구하는 2가지의 다른 방법이 있다.</p>
+
+<ol>
+  <li>이미지의 차원은 생각하지 않고 각 픽셀의 평균을 구한다. (ex: AlexNet)</li>
+  <li>차원별로 각 픽셀의 평균을 구한다. (ex: VGGNet)</li>
+</ol>
+
+<h2 id="weight-initalization">Weight initalization</h2>
+
+<p>정확한 훈련 모델을 만들기 위해 초기 가중치 값을 잘 설정하는 것은 매우 중요하다. 어떠한 값을 설정하는 것이 좋을지 여러가지 방법을 한번 살펴보자.</p>
+
+<ol>
+  <li>작은 랜덤 숫자로 설정한다
+    <ul>
+      <li>레이어가 중첩될수록 표준편차가 0에 가까워지므로 좋은 방법이 아니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="/assets/image/lecture6-9.png" alt="" /></p>
+
+<ol>
+  <li>큰 랜덤 숫자로 설정한다.
+    <ul>
+      <li>레이어가 중첩될수록 표준편차가 -1 또는 1에 가까워지므로 좋은 방법이 아니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="/assets/image/lecture6-10.png" alt="" /></p>
+
+<ol>
+  <li>Xavier initalization</li>
+</ol>
+
+<ul>
+  <li>입력 데이터의 분산과 출력 데이터의 분산을 같게 만드는 방법이다.</li>
+  <li>가장 이상적인 방법으로, 레이어를 중첩할수록 표준편차가 감소하며 특정 값으로 수렴하는 형태이다.</li>
+</ul>
+
+<p><img src="/assets/image/lecture6-11.png" alt="" /></p>
+
+<ul>
+  <li>ReLU를 사용할때는 입력 데이터를 2로 나누어야지 정상적으로 작동한다.</li>
+</ul>
+
+<p><img src="/assets/image/lecture6-12.png" alt="" /></p>
+
+<h2 id="batch-normalization">Batch Normalization</h2>
+
+<p><strong><em>배치 정규화(Batch Normalization)</em></strong> 는 이미지를 학습하면서 데이터의 분포가 변형되지 않도록 하기 위한 방법이다. 일반 정규화와 다른 점은 차원별로 배치의 정규화를 한다는 것에 있다. 배치 정규화의 기본적인 공식은 다음과 같다.</p>
+
+<p>$\hat{x}^{(k)}=\frac{x^{(k)}-E[x^{(k)}]}{\sqrt{Var[x^{(k)}]}}$</p>
+
+<p>배치 정규화는 주로 fully connected layer, convolutional layer 바로 다음에 이루어진다.</p>
+
+<p>그리고 배치 정규화된 데이터를 다시 정규화 되기 전의 데이터로 변경해야되는 경우가 많이 생긴다. 따라서 이전 데이터를 복구하기 위한 변수인 $\gamma$ 와 $\beta$ 또한 배치 정규화 과정에서 계산한다.</p>
+
+<p>$y^{(k)}=\gamma^{(k)} \hat{x}^{(k)}+\beta^{(k)}$</p>
+
+<p>배치 정규화의 장점은 다음과 같다.</p>
+<ol>
+  <li>gradient flow가 간단해진다.</li>
+  <li>높은 learning rate의 사용이 가능해진다.</li>
+  <li>초기 가중치 값 설정에 대한 부담을 덜어준다.</li>
+  <li>dropout 사용의 필요성이 다소 감소한다.</li>
+</ol>
+
+<p>아래 사진에 배치 정규화에 대해 배운 내용을 간단하게 정리한 내용이 나와있다.</p>
+
+<p><img src="/assets/image/lecture6-13.png" alt="" /></p>
+
+<h2 id="monitoring-the-training">Monitoring the training</h2>
+
+<p>이미지의 훈련은 다음과 같은 과정으로 이루어진다.</p>
+
+<ol>
+  <li>이미지 데이터를 전처리한다.</li>
+  <li>훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.</li>
+  <li></li>
+</ol>
 
         
       </section>
@@ -526,7 +624,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-19T00:00:00+09:00">September 19, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-22T00:00:00+09:00">September 22, 2021</time></p>
 
 
       </footer>
@@ -534,23 +632,22 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Lecture+5%3A+Convolutional+Neural+Networks%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Lecture+6%3A+Training+Neural+Networks+1%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture6-training-neural-networks-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture6-training-neural-networks-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture6-training-neural-networks-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/computer%20vision/python/Lecture4-Backpropagation-and-Neural-Network/" class="pagination--pager" title="Lecture 4: Backpropagation and Neural Network
+      <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/" class="pagination--pager" title="Chapter 4: 모델 구축 part1
 ">Previous</a>
     
     
-      <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/" class="pagination--pager" title="Chapter 4: 모델 구축 part1
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -564,47 +661,6 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <div class="page__related">
       <h4 class="page__related-title">You May Also Enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20vision/python/Lecture6-training-neural-networks-1/" rel="permalink">Lecture 6: Training Neural Networks 1
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Activation Functions
-
-</p>
-  </article>
-</div>
-
         
           
 
@@ -633,7 +689,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          6 minute read
+          5 minute read
         
       </span>
     
@@ -641,6 +697,47 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
     <p class="archive__item-excerpt" itemprop="description">챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/" rel="permalink">Lecture 5: Convolutional Neural Networks
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">History of Neural Networks
 
 </p>
   </article>
