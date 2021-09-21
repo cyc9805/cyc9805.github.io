@@ -26,7 +26,7 @@ var store = [{
         "title": "Lecture 3: Loss Function and Optimization",
         "excerpt":"What is Loss Function? 손실함수(loss function) 은 분류기 (classifier)가 얼마나 잘 작동하는지 알려주는 중요한 지표이다. 손실함수의 공식은 다음과 같다. $L=\\frac{1}{N}\\sum_i L_i(f(x_i,w),y_i)$ 여기서 $x_i$는 이미지, $y_i$는 레이블이다. Multiclass SVM(Support Vector Machine) loss Multiclass SVM loss 는 예측한 레이블의 점수 와 카테고리별 점수 의 차를 계산하여 만약 0보다 작으면 0이, 0보다 크면...","categories": ["computer vision","python"],
         "tags": [],
-        "url": "/computer%20vision/python/Lecture3-Loss-Function-&-Optimization/",
+        "url": "/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/",
         "teaser": null
       },{
         "title": "Chapter 3: 특징 생성 part1",
@@ -44,7 +44,7 @@ var store = [{
         "title": "Lecture 4: Backpropagation and Neural Network",
         "excerpt":"What is Backpropagation? 역전파(Backpropagtion)는 원하는 값을 출력하는 최적의 모델을 만들기 위해서 가중치를 조정하는 방법이다. 역전파 과정을 쉽게 알아보기 위한 방법으로 computational graph 가 사용된다. Structure of Computational graph 위 그림을 보면 처음에 가중치 행렬 W 와 사진 데이터 x 를 곱한 후 정규화 행렬 R을 더한다. 이렇게 계산과정을 직접 그림으로...","categories": ["computer vision","python"],
         "tags": [],
-        "url": "/computer%20vision/python/Lecture4-Backpropagation-&-Neural-Network/",
+        "url": "/computer%20vision/python/Lecture4-Backpropagation-and-Neural-Network/",
         "teaser": null
       },{
         "title": "Lecture 5: Convolutional Neural Networks",
