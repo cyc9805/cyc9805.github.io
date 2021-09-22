@@ -392,7 +392,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 minute read
+          5 minute read
         
       </span>
     
@@ -407,7 +407,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#activation-functions">Activation Functions</a><ul><li><a href="#sigmoid">Sigmoid</a></li><li><a href="#tanh">tanh</a></li><li><a href="#relu">ReLU</a></li><li><a href="#leaky-relu-prerelu">Leaky ReLU, PreReLU</a></li><li><a href="#elu">ELU</a></li><li><a href="#maxout">Maxout</a></li><li><a href="#choosing-activation-functions">Choosing Activation Functions</a></li></ul></li><li><a href="#data-preprocessing">Data Preprocessing</a></li><li><a href="#weight-initalization">Weight initalization</a></li><li><a href="#batch-normalization">Batch Normalization</a></li><li><a href="#monitoring-the-training">Monitoring the training</a></li></ul>
+              <ul class="toc__menu"><li><a href="#activation-functions">Activation Functions</a><ul><li><a href="#sigmoid">Sigmoid</a></li><li><a href="#tanh">tanh</a></li><li><a href="#relu">ReLU</a></li><li><a href="#leaky-relu-prerelu">Leaky ReLU, PreReLU</a></li><li><a href="#elu">ELU</a></li><li><a href="#maxout">Maxout</a></li><li><a href="#choosing-activation-functions">Choosing Activation Functions</a></li></ul></li><li><a href="#data-preprocessing">Data Preprocessing</a></li><li><a href="#weight-initalization">Weight initalization</a></li><li><a href="#batch-normalization">Batch Normalization</a></li><li><a href="#monitoring-the-training">Monitoring the training</a></li><li><a href="#hyperparameter-optimization">Hyperparameter Optimization</a><ul><li><a href="#cross-validation">Cross validation</a></li><li><a href="#random-search">Random search</a></li><li><a href="#visualization-of-loss-curve">Visualization of loss curve</a></li></ul></li><li><a href="#summary">Summary</a></li></ul>
 
             </nav>
           </aside>
@@ -593,9 +593,131 @@ $f(x)=max(\alpha x,x)$</p>
 
 <ol>
   <li>이미지 데이터를 전처리한다.</li>
-  <li>훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.</li>
-  <li></li>
 </ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># zero-centering 방법을 이용
+</span><span class="n">X</span> <span class="o">-=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ol>
+  <li>훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 레이어의 수는 50개, 레이어당 노드 수는 10개로 설정한다.
+</span></code></pre></div></div>
+
+<ol>
+  <li>모델을 훈련시킨다. 이때, 정직화(regularization)값은 0, learning rate는 적당히 작게 설정한다. 또한 이미지 데이터의 일부에 과적합 할 수 있도록 20개의 데이터만 훈련시킨다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">init_two_layer_model</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#input size, hidden layer size, number of classes
+</span><span class="n">trainer</span> <span class="o">=</span> <span class="n">ClassifierTrainer</span><span class="p">()</span>
+<span class="n">X_tiny</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>   <span class="c1"># 20개의 데이터만 훈련시킨다.
+</span><span class="n">y_tiny</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
+<span class="n">best_model</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">trainer</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_tiny</span><span class="p">,</span><span class="n">y_tiny</span><span class="p">,</span><span class="n">X_tiny</span><span class="p">,</span><span class="n">y_tiny</span><span class="p">,</span>
+                                        <span class="n">model</span><span class="p">,</span><span class="n">two_layer_net</span><span class="p">,</span>
+                                        <span class="n">num_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                        <span class="n">update</span><span class="o">=</span><span class="s">'sgd'</span><span class="p">,</span> <span class="n">learning_rate_decay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                        <span class="n">sample_batch</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 코드를 실행시키면 다음과 같이 epoch별 훈련 결과가 나온다.</p>
+
+<p><img src="/assets/image/lecture6-14.png" alt="" /></p>
+
+<p>훈련을 진행할수록 손실값(cost)은 감소하고 정확도(train)은 증가하여 훈련이 정상적으로 이루어지고 있다는 사실을 확인할 수 있다.</p>
+
+<ol>
+  <li>정직화 값을 변경하고 learning rate 값을 더 작게 설정하여 모델을 다시 훈련시켜본다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">init_two_layer_model</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#input size, hidden layer size, number of classes
+</span><span class="n">trainer</span> <span class="o">=</span> <span class="n">ClassifierTrainer</span><span class="p">()</span>
+<span class="n">best_model</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">trainer</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">X_val</span><span class="p">,</span><span class="n">y_val</span><span class="p">,</span>
+                                        <span class="n">model</span><span class="p">,</span><span class="n">two_layer_net</span><span class="p">,</span>
+                                        <span class="n">num_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.000001</span><span class="p">,</span>
+                                        <span class="n">update</span><span class="o">=</span><span class="s">'sgd'</span><span class="p">,</span> <span class="n">learning_rate_decay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                        <span class="n">sample_batch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/image/lecture6-15.png" alt="" /></p>
+
+<p>훈련이 진행할수록 손실값과 정확도 값이 거의 그대로 인것을 확인할 수 있다. 이러한 현상은 learning rate을 너무 낮게 하였기 때문이다.</p>
+
+<ol>
+  <li>그렇다면 learning rate를 크게 설정하여 모델을 다시 훈련시켜보자.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">init_two_layer_model</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#input size, hidden layer size, number of classes
+</span><span class="n">trainer</span> <span class="o">=</span> <span class="n">ClassifierTrainer</span><span class="p">()</span>
+<span class="n">best_model</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">trainer</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">X_val</span><span class="p">,</span><span class="n">y_val</span><span class="p">,</span>
+                                        <span class="n">model</span><span class="p">,</span><span class="n">two_layer_net</span><span class="p">,</span>
+                                        <span class="n">num_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.000001</span><span class="p">,</span>
+                                        <span class="n">update</span><span class="o">=</span><span class="s">'sgd'</span><span class="p">,</span> <span class="n">learning_rate_decay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                        <span class="n">sample_batch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/image/lecture6-16.png" alt="" /></p>
+
+<p>손실값이 NaN이 나왔다. 이러한 현상은 learning rate가 지나치게 크게 설정되었기 때문에 나타나였다.</p>
+
+<h2 id="hyperparameter-optimization">Hyperparameter Optimization</h2>
+
+<h3 id="cross-validation">Cross validation</h3>
+<p>최적의 parameter을 찾기 위한 과정으로 교차 검증(cross-validation)가 있다. 정직화 변수와 learning rate 변수를 일정한 범위로 설정한 후 그 범위 안에서 가장 좋은 성능을 보이는 모델의 parameter을 찾는 방법이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">max_count</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">for</span> <span class="n">count</span> <span class="nb">int</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">max_count</span><span class="p">):</span>
+    <span class="n">reg</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">lr</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">trainer</span> <span class="o">=</span> <span class="n">ClassifierTrainer</span><span class="p">()</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">init_two_layer_model</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#input size, hidden layer size, number of classes
+</span>    <span class="n">trainer</span> <span class="o">=</span> <span class="n">ClassifierTrainer</span><span class="p">()</span>
+    <span class="n">best_model_local</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">trainer</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">X_val</span><span class="p">,</span><span class="n">y_val</span><span class="p">,</span>
+                                        <span class="n">model</span><span class="p">,</span><span class="n">two_layer_net</span><span class="p">,</span>
+                                        <span class="n">num_epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="n">reg</span><span class="p">,</span>
+                                        <span class="n">update</span><span class="o">=</span><span class="s">'momentum'</span><span class="p">,</span> <span class="n">learning_rate_decay</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+                                        <span class="n">sample_batches</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                        <span class="n">learning_rate</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/image/lecture6-17.png" alt="" /></p>
+
+<p>빨간색 박스가 쳐진 모델의 검증 데이터의 정확도(val_acc)가 높게 나타나 이 모델에 사용된 정직화 변수와 learning rate 변수를 범위로 지정해 다시 교차검증을 실시할 수 있다.</p>
+
+<h3 id="random-search">Random search</h3>
+
+<p>이전 단원에서 랜덤서치(Random search)는 상당히 무식하고 잘 쓰이지 않는 알고리즘이라고 한적이 있다. 그러나 이미지 데이터를 훈련시킬때는 랜덤서치가 상당히 유용할 수 있는데, 일정한 규칙에 따라 정렬된 parameter보다 완전히 랜덤한 parameter을 쓰는 것이 예상치 못하게 더 효과적인 결과를 보일수 있기 때문이다.</p>
+
+<p><img src="/assets/image/lecture6-18.png" alt="" /></p>
+
+<h3 id="visualization-of-loss-curve">Visualization of loss curve</h3>
+
+<p>다음은 learning rate를 어떻게 설정하느냐에 따라 나타나는 손실값을 그래프로 표현한 것이다.</p>
+
+<p><img src="/assets/image/lecture6-19.png" alt="" /></p>
+
+<p>만약 아래 사진과 같이 loss 값이 한동안 일정하면 초기 가중치 값을 잘못 설정하였다는 의미이다.</p>
+
+<p><img src="/assets/image/lecture6-20.png" alt="" /></p>
+
+<p>아래 그래프를 한번 보자. 
+<span style="color:red">빨간색 그래프</span>와 <span style="color:green">초록색 그래프</span>의 차이가 큰 경우는 훈련 데이터에 지나치게 과적합하여 정직화 과정이 필요한 경우이다.</p>
+
+<p><img src="/assets/image/lecture6-21.png" alt="" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<ul>
+  <li>활성화 함수는 ReLU를 사용한다.</li>
+  <li>전처리과정은 zero-centering 방법을 이용한다.</li>
+  <li>초기 가중치 값 설정은 Xavier initalization 방법을 이용한다</li>
+  <li>배치 정규화를 사용하는 것을 추천한다.</li>
+  <li>최적의 parameter를 찾기 위한 방법으로 교차 검증을 이용하나, 가능하면 랜덤 서치도 시도해본다.</li>
+</ul>
 
         
       </section>

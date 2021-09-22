@@ -178,5 +178,132 @@ $y^{(k)}=\gamma^{(k)} \hat{x}^{(k)}+\beta^{(k)}$
 이미지의 훈련은 다음과 같은 과정으로 이루어진다.
 
 1. 이미지 데이터를 전처리한다.
+
+~~~python
+# zero-centering 방법을 이용
+X -= np.mean(X, axis=0)
+~~~
+
 2. 훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.
-3. 
+
+~~~python
+# 레이어의 수는 50개, 레이어당 노드 수는 10개로 설정한다.
+~~~
+
+3. 모델을 훈련시킨다. 이때, 정직화(regularization)값은 0, learning rate는 적당히 작게 설정한다. 또한 이미지 데이터의 일부에 과적합 할 수 있도록 20개의 데이터만 훈련시킨다.
+
+~~~python
+model = init_two_layer_model(32*32*3,50,10) #input size, hidden layer size, number of classes
+trainer = ClassifierTrainer()
+X_tiny = X_train[:20]   # 20개의 데이터만 훈련시킨다.
+y_tiny = y_train[:20]
+best_model, stats = trainer.train(X_tiny,y_tiny,X_tiny,y_tiny,
+                                        model,two_layer_net,
+                                        num_epochs=200, reg=0.0,
+                                        update='sgd', learning_rate_decay=1,
+                                        sample_batch=False,
+                                        learning_rate=1e-3, verbose=True)
+~~~
+
+위 코드를 실행시키면 다음과 같이 epoch별 훈련 결과가 나온다.
+
+![](/assets/image/lecture6-14.png)
+
+훈련을 진행할수록 손실값(cost)은 감소하고 정확도(train)은 증가하여 훈련이 정상적으로 이루어지고 있다는 사실을 확인할 수 있다.
+
+4. 정직화 값을 변경하고 learning rate 값을 더 작게 설정하여 모델을 다시 훈련시켜본다.
+
+~~~python
+model = init_two_layer_model(32*32*3,50,10) #input size, hidden layer size, number of classes
+trainer = ClassifierTrainer()
+best_model, stats = trainer.train(X_train,y_train,X_val,y_val,
+                                        model,two_layer_net,
+                                        num_epochs=10, reg=0.000001,
+                                        update='sgd', learning_rate_decay=1,
+                                        sample_batch=True,
+                                        learning_rate=1e-6, verbose=True)
+~~~
+
+![](/assets/image/lecture6-15.png)
+
+훈련이 진행할수록 손실값과 정확도 값이 거의 그대로 인것을 확인할 수 있다. 이러한 현상은 learning rate을 너무 낮게 하였기 때문이다.
+
+5. 그렇다면 learning rate를 크게 설정하여 모델을 다시 훈련시켜보자.
+
+~~~python
+model = init_two_layer_model(32*32*3,50,10) #input size, hidden layer size, number of classes
+trainer = ClassifierTrainer()
+best_model, stats = trainer.train(X_train,y_train,X_val,y_val,
+                                        model,two_layer_net,
+                                        num_epochs=10, reg=0.000001,
+                                        update='sgd', learning_rate_decay=1,
+                                        sample_batch=True,
+                                        learning_rate=1e6, verbose=True)
+~~~
+
+![](/assets/image/lecture6-16.png)
+
+손실값이 NaN이 나왔다. 이러한 현상은 learning rate가 지나치게 크게 설정되었기 때문에 나타나였다.
+
+
+
+##  Hyperparameter Optimization
+
+### Cross validation
+최적의 parameter을 찾기 위한 과정으로 교차 검증(cross-validation)가 있다. 정직화 변수와 learning rate 변수를 일정한 범위로 설정한 후 그 범위 안에서 가장 좋은 성능을 보이는 모델의 parameter을 찾는 방법이다.
+
+~~~python
+max_count = 100
+for count int xrange(max_count):
+    reg = 10**uniform(-4,0)
+    lr = 10**uniform(-3,-4)
+    trainer = ClassifierTrainer()
+    model = init_two_layer_model(32*32*3,50,10) #input size, hidden layer size, number of classes
+    trainer = ClassifierTrainer()
+    best_model_local, stats = trainer.train(X_train,y_train,X_val,y_val,
+                                        model,two_layer_net,
+                                        num_epochs=5, reg=reg,
+                                        update='momentum', learning_rate_decay=0.9,
+                                        sample_batches=True, batch_size=100,
+                                        learning_rate=lr, verbose=True)
+~~~
+
+![](/assets/image/lecture6-17.png)
+
+빨간색 박스가 쳐진 모델의 검증 데이터의 정확도(val_acc)가 높게 나타나 이 모델에 사용된 정직화 변수와 learning rate 변수를 범위로 지정해 다시 교차검증을 실시할 수 있다.
+
+
+
+### Random search
+
+이전 단원에서 랜덤서치(Random search)는 상당히 무식하고 잘 쓰이지 않는 알고리즘이라고 한적이 있다. 그러나 이미지 데이터를 훈련시킬때는 랜덤서치가 상당히 유용할 수 있는데, 일정한 규칙에 따라 정렬된 parameter보다 완전히 랜덤한 parameter을 쓰는 것이 예상치 못하게 더 효과적인 결과를 보일수 있기 때문이다.
+
+![](/assets/image/lecture6-18.png)
+
+
+
+### Visualization of loss curve
+
+다음은 learning rate를 어떻게 설정하느냐에 따라 나타나는 손실값을 그래프로 표현한 것이다.
+
+![](/assets/image/lecture6-19.png)
+
+만약 아래 사진과 같이 loss 값이 한동안 일정하면 초기 가중치 값을 잘못 설정하였다는 의미이다.
+
+![](/assets/image/lecture6-20.png)
+
+아래 그래프를 한번 보자. 
+<span style="color:red">빨간색 그래프</span>와 <span style="color:green">초록색 그래프</span>의 차이가 큰 경우는 훈련 데이터에 지나치게 과적합하여 정직화 과정이 필요한 경우이다. 
+
+![](/assets/image/lecture6-21.png)
+
+
+
+
+## Summary
+
+  - 활성화 함수는 ReLU를 사용한다.
+  - 전처리과정은 zero-centering 방법을 이용한다.
+  - 초기 가중치 값 설정은 Xavier initalization 방법을 이용한다
+  - 배치 정규화를 사용하는 것을 추천한다.
+  - 최적의 parameter를 찾기 위한 방법으로 교차 검증을 이용하나, 가능하면 랜덤 서치도 시도해본다.
