@@ -64,4 +64,10 @@ var store = [{
         "tags": [],
         "url": "/computer%20vision/python/Lecture6-training-neural-networks-1/",
         "teaser": null
+      },{
+        "title": "Chapter 4: 모델 구축 part2",
+        "excerpt":"챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다. 3.10 시계열 데이터 처리 3.10.1 시계열 데이터란? 시계열 데이터 에는 특유의 성질이나 주의점이 있다. 그래서 시간적 정보를 적절히 다루지 않을 경우 본래대로라면 예측에 사용이불가능한 정보를 이용해 특징을 만들 때도 있다. 시계열...","categories": ["data analysis","python"],
+        "tags": [],
+        "url": "/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/",
+        "teaser": null
       }]
