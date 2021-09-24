@@ -70,4 +70,10 @@ var store = [{
         "tags": [],
         "url": "/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/",
         "teaser": null
+      },{
+        "title": "Lecture 7: Training Neural Networks 2",
+        "excerpt":"Optimization 전에 최적화 과정에서 SGD(stochastic gradient descent)에 대해 배운적이 있다. SGD는 다른 알고리즘에 비해 가장 합리적이면서 효과가 좋은 알고리즘이나 많은 문제점을 가지고 있다. 다음과 같은 경우가 있다고 가정하자. 위 경우에서 빨간 점은 실선을 향하는 방향으로는 빠르게 이동하나 최적의 점(웃고 있는 점)을 향해서는 느리게 이동한다. 이럴때는 각 방향으로 이동하는 속도가 다르기...","categories": ["computer vision","python"],
+        "tags": [],
+        "url": "/computer%20vision/python/Lecture7-training-neural-networks-2/",
+        "teaser": null
       }]

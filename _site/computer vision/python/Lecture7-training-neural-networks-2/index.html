@@ -9,25 +9,49 @@
   <head>
     <meta charset="utf-8">
     <!-- MATH EQUATION -->
-      <!-- begin _includes/seo.html --><title>yongchan's website - Page 2</title>
-<meta name="description" content="Welcome to my website! I’m currently rebuilding my website">
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>Lecture 7: Training Neural Networks 2 - yongchan’s website</title>
+<meta name="description" content="Optimization">
 
 
   <meta name="author" content="yongchanchun">
   
+  <meta property="article:author" content="yongchanchun">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="yongchan’s website">
-<meta property="og:url" content="http://localhost:4000/page2/">
+<meta property="og:title" content="Lecture 7: Training Neural Networks 2">
+<meta property="og:url" content="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/">
 
 
-  <meta property="og:description" content="Welcome to my website! I’m currently rebuilding my website">
-
-
-
+  <meta property="og:description" content="Optimization">
 
 
 
@@ -35,15 +59,16 @@
 
 
 
+  <meta property="article:published_time" content="2021-09-25T00:00:00+09:00">
 
 
-<link rel="canonical" href="http://localhost:4000/page2/">
 
 
-  <link rel="prev" href="http://localhost:4000/">
 
 
-  <link rel="next" href="http://localhost:4000/page3/">
+<link rel="canonical" href="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/">
+
+
 
 
 <script type="application/ld+json">
@@ -92,7 +117,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -342,34 +367,18 @@
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title"></h1>
-    
-    
-
-
-<h3 class="archive__subtitle">Recent Posts</h3>
-
-
-
-
-<div class="entries-list">
-  
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Lecture 7: Training Neural Networks 2">
+    <meta itemprop="description" content="Optimization">
+    <meta itemprop="datePublished" content="2021-09-25T00:00:00+09:00">
     
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="/computer%20vision/python/Lecture4-Backpropagation-and-Neural-Network/" rel="permalink">Lecture 4: Backpropagation and Neural Network
-</a>
-      
-    </h2>
-    
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 7: Training Neural Networks 2
+</h1>
+          
 
   <p class="page__meta">
     
@@ -383,30 +392,175 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">What is Backpropagation?
+        </header>
+      
 
-</p>
-  </article>
-</div>
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#optimization">Optimization</a><ul><li><a href="#sgdmomentum">SGD+Momentum</a></li><li><a href="#adagrad">AdaGrad</a></li><li><a href="#rmsprop">RMSprop</a></li><li><a href="#adam">Adam</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="optimization">Optimization</h2>
+
+<p>전에 최적화 과정에서 SGD(stochastic gradient descent)에 대해 배운적이 있다. SGD는 다른 알고리즘에 비해 가장 합리적이면서 효과가 좋은 알고리즘이나 많은 문제점을 가지고 있다. 다음과 같은 경우가 있다고 가정하자.</p>
+
+<p><img src="/assets/image/lecture7-1.png" alt="" /></p>
+
+<p>위 경우에서 빨간 점은 실선을 향하는 방향으로는 빠르게 이동하나 최적의 점(웃고 있는 점)을 향해서는 느리게 이동한다. 이럴때는 각 방향으로 이동하는 속도가 다르기 때문에 다음과 같이 지그재그로 움직여 최적의 점까지 도달하는데 매우 오래 걸린다.</p>
+
+<p><img src="/assets/image/lecture7-2.png" alt="" /></p>
+
+<p>또한 손실함수가 다음과 같은 모습을 가지고 있다고 생각해보자.</p>
+
+<p><img src="/assets/image/lecture7-3.png" alt="" width="50%" height="50%" class="align-center" /></p>
+
+<p>빨간 점이 위치한 곳은 손실함수의 미분 값이 0이 되는 곳이므로 점이 더이상 이동하지 않고 그대로 위치하게 된다.</p>
+
+<p>위와 같은 SGD의 문제를 해결하기 위해 고안된 것이 SGD+Momentum 이다.</p>
+
+<h3 id="sgdmomentum">SGD+Momentum</h3>
+
+<p>SGD와 SGD+Momentum을 비교한 함수를 한번 보자.</p>
+
+<p><img src="/assets/image/lecture7-4.png" alt="" /></p>
+
+<p>SGD는 미분값만 고려하는 반면 SGD+Momentum은 미분값뿐만 아니라 점의 속도 또한 고려한다. 이렇게 진행 방향의 속도를 고려하게 되면 SGD가 가지고 있던 문제점을 완벽하게 보완할 수 있다.</p>
+
+<p><img src="/assets/image/lecture7-5.png" alt="" /></p>
+
+<p>Momentum에는 두가지 방법이 있다.</p>
+
+<ol>
+  <li>Momentum update</li>
+</ol>
+
+<p><img src="/assets/image/lecture7-6.png" alt="" width="60%" height="60%" class="align-center" /></p>
+
+<p>일반 Momentum은 미분값이 가리키는 방향과 속도가 가리키는 방향을 합친 방향으로 이동한다.</p>
+
+<p><br />2. Nesterov Momentum</p>
+
+<p><img src="/assets/image/lecture7-7.png" alt="" width="60%" height="60%" class="align-center" /></p>
+
+<p>Nesterov Momentum은 속도가 가리키는 방향으로 이동한뒤 그 곳에서의 미분값이 가리키는 방향으로 이동한다. 이렇게 되면 속도가 가리키는 방향이 약간의 오류가 생겨도 미분값으로 수정을 할 수 있게 된다.</p>
+
+<p>그 밖의 최적화 알고리즘에 대해 알아보자.</p>
+
+<h3 id="adagrad">AdaGrad</h3>
+
+<p>AdaGrad는 이동할때마다 지나온 점들의 미분값들의 누적 곱을 구하고 이 값의 제곱근 값이 learning rate를 나눈다. 이렇게 되면 작은 미분값을 가지고 있는 차원으로는 작은 보폭을, 큰 미분값을 가지고 있는 차원으로는 큰 보폭을 가지게 된다.</p>
+
+<p><img src="/assets/image/lecture7-8.png" alt="" /></p>
+
+<p>그러나 점이 이동할수록 보폭이 좁아진다는 단점떄문에 잘 사용되지 않는 알고리즘이다.</p>
+
+<h3 id="rmsprop">RMSprop</h3>
+
+<p>RMSprop는 AdaGrad의 문제점을 보완해준다. 이동할때마다 지나온 점들의 미분값들의 누적 곱을 decay_rate라는 변수로 값의 크기를 조절해준다. 이렇게 함으로써 모든 차원에 대해 진행방향을 최적화하여 AdaGrad보다 높은 성능을 보인다.</p>
+
+<p><img src="/assets/image/lecture7-9.png" alt="" /></p>
+
+<h3 id="adam">Adam</h3>
+
+<p>adam은 Mometum, AdaGrad/RMSProp 의 특징을 모두 합쳐논 형태이다. 하지만 첫번째 보폭이 매우 클 가능성이 있으므로 bias correction의 역할을 하는 수식이 추가된다.</p>
+
+<p><img src="/assets/image/lecture7-10.png" alt="" /></p>
+
+<p>adam은 최적화 알고리즘 중 가장 좋은 성능을 보인다. 또한 이 강의에서는 <strong><em>beta1=0.9, beta2=0.999, learning_rate=1e-3 또는 5e-4</em></strong> 으로 설정할 것을 추천하고 있다!</p>
+
+<hr />
+
+<p>다음은 위 알고리즘들을 한번에 비교하여 나타내는 애니메이션이다.</p>
+
+<p><img src="https://cs231n.github.io/assets/nn3/opt2.gif" alt="" width="70%" height="70%" class="align-center" /></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
 
   
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
     
+      <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">computer vision</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-25T00:00:00+09:00">September 25, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Lecture+7%3A+Training+Neural+Networks+2%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture7-training-neural-networks-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture7-training-neural-networks-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture7-training-neural-networks-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/" class="pagination--pager" title="Chapter 4: 모델 구축 part2
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/" rel="permalink">Chapter 3: 특징 생성 part2
+        <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/" rel="permalink">Chapter 4: 모델 구축 part2
 </a>
       
     </h2>
@@ -437,17 +591,17 @@
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/" rel="permalink">Chapter 3: 특징 생성 part1
+        <a href="/computer%20vision/python/Lecture6-training-neural-networks-1/" rel="permalink">Lecture 6: Training Neural Networks 1
 </a>
       
     </h2>
@@ -465,30 +619,30 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          11 minute read
+          5 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">챕터 3는 내용이 이전 챕터보다 많으므로 2개의 파트로 나누어서 작성하였다. 첫번째 파트에서는 모델의 성능을 높이기 위해서 새로운 특징을 만드는 방법에 대해 다루고 있다.
+    <p class="archive__item-excerpt" itemprop="description">Activation Functions
 
 </p>
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/" rel="permalink">Lecture 3: Loss Function and Optimization
+        <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/" rel="permalink">Chapter 4: 모델 구축 part1
 </a>
       
     </h2>
@@ -506,30 +660,30 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 minute read
+          5 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">What is Loss Function?
+    <p class="archive__item-excerpt" itemprop="description">챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다.
 
 </p>
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/markdown/Markdown-grammar/" rel="permalink">마크다운(Markdown) 문법
+        <a href="/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/" rel="permalink">Lecture 5: Convolutional Neural Networks
 </a>
       
     </h2>
@@ -547,69 +701,26 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">티스토리에서 깃허브 블로그로 바꾸면서 마크다운에 대해 처음 접하게 되었다. 원할한 블로그 정리를 위해 마크다운 문법에 대해 배울 필요성이 있다고 생각하여 이렇게 정리를 진행 중이다.
+    <p class="archive__item-excerpt" itemprop="description">History of Neural Networks
 
 </p>
   </article>
 </div>
 
+        
+      </div>
+    </div>
+  
   
 </div>
 
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-      
-        <li><a href="/">Previous</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-        <li><a href="/page2/" class="disabled current">2</a></li>
-      
-    
-
-    
-    
-
-    
-      <li><a href="/page3/">3</a></li>
-    
-
-    
-    
-      <li><a href="/page3/">Next</a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
-</div>
     </div>
 
     
@@ -667,6 +778,30 @@
 
 
 
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
 
 
 

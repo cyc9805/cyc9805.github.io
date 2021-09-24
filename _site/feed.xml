@@ -1,4 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-24T21:06:26+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Chapter 4: 모델 구축 part2</title><link href="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/" rel="alternate" type="text/html" title="Chapter 4: 모델 구축 part2" /><published>2021-09-24T00:00:00+09:00</published><updated>2021-09-24T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/">&lt;p&gt;챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-25T04:42:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 7: Training Neural Networks 2</title><link href="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/" rel="alternate" type="text/html" title="Lecture 7: Training Neural Networks 2" /><published>2021-09-25T00:00:00+09:00</published><updated>2021-09-25T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/">&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
+
+&lt;p&gt;전에 최적화 과정에서 SGD(stochastic gradient descent)에 대해 배운적이 있다. SGD는 다른 알고리즘에 비해 가장 합리적이면서 효과가 좋은 알고리즘이나 많은 문제점을 가지고 있다. 다음과 같은 경우가 있다고 가정하자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 경우에서 빨간 점은 실선을 향하는 방향으로는 빠르게 이동하나 최적의 점(웃고 있는 점)을 향해서는 느리게 이동한다. 이럴때는 각 방향으로 이동하는 속도가 다르기 때문에 다음과 같이 지그재그로 움직여 최적의 점까지 도달하는데 매우 오래 걸린다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;또한 손실함수가 다음과 같은 모습을 가지고 있다고 생각해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-3.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;빨간 점이 위치한 곳은 손실함수의 미분 값이 0이 되는 곳이므로 점이 더이상 이동하지 않고 그대로 위치하게 된다.&lt;/p&gt;
+
+&lt;p&gt;위와 같은 SGD의 문제를 해결하기 위해 고안된 것이 SGD+Momentum 이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sgdmomentum&quot;&gt;SGD+Momentum&lt;/h3&gt;
+
+&lt;p&gt;SGD와 SGD+Momentum을 비교한 함수를 한번 보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SGD는 미분값만 고려하는 반면 SGD+Momentum은 미분값뿐만 아니라 점의 속도 또한 고려한다. 이렇게 진행 방향의 속도를 고려하게 되면 SGD가 가지고 있던 문제점을 완벽하게 보완할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Momentum에는 두가지 방법이 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Momentum update&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-6.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;일반 Momentum은 미분값이 가리키는 방향과 속도가 가리키는 방향을 합친 방향으로 이동한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;2. Nesterov Momentum&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-7.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesterov Momentum은 속도가 가리키는 방향으로 이동한뒤 그 곳에서의 미분값이 가리키는 방향으로 이동한다. 이렇게 되면 속도가 가리키는 방향이 약간의 오류가 생겨도 미분값으로 수정을 할 수 있게 된다.&lt;/p&gt;
+
+&lt;p&gt;그 밖의 최적화 알고리즘에 대해 알아보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;adagrad&quot;&gt;AdaGrad&lt;/h3&gt;
+
+&lt;p&gt;AdaGrad는 이동할때마다 지나온 점들의 미분값들의 누적 곱을 구하고 이 값의 제곱근 값이 learning rate를 나눈다. 이렇게 되면 작은 미분값을 가지고 있는 차원으로는 작은 보폭을, 큰 미분값을 가지고 있는 차원으로는 큰 보폭을 가지게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그러나 점이 이동할수록 보폭이 좁아진다는 단점떄문에 잘 사용되지 않는 알고리즘이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;rmsprop&quot;&gt;RMSprop&lt;/h3&gt;
+
+&lt;p&gt;RMSprop는 AdaGrad의 문제점을 보완해준다. 이동할때마다 지나온 점들의 미분값들의 누적 곱을 decay_rate라는 변수로 값의 크기를 조절해준다. 이렇게 함으로써 모든 차원에 대해 진행방향을 최적화하여 AdaGrad보다 높은 성능을 보인다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;adam&quot;&gt;Adam&lt;/h3&gt;
+
+&lt;p&gt;adam은 Mometum, AdaGrad/RMSProp 의 특징을 모두 합쳐논 형태이다. 하지만 첫번째 보폭이 매우 클 가능성이 있으므로 bias correction의 역할을 하는 수식이 추가된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;adam은 최적화 알고리즘 중 가장 좋은 성능을 보인다. 또한 이 강의에서는 &lt;strong&gt;&lt;em&gt;beta1=0.9, beta2=0.999, learning_rate=1e-3 또는 5e-4&lt;/em&gt;&lt;/strong&gt; 으로 설정할 것을 추천하고 있다!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;다음은 위 알고리즘들을 한번에 비교하여 나타내는 애니메이션이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cs231n.github.io/assets/nn3/opt2.gif&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Optimization</summary></entry><entry><title type="html">Chapter 4: 모델 구축 part2</title><link href="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/" rel="alternate" type="text/html" title="Chapter 4: 모델 구축 part2" /><published>2021-09-24T00:00:00+09:00</published><updated>2021-09-24T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/">&lt;p&gt;챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다.&lt;/p&gt;
 
 &lt;h2 id=&quot;310-시계열-데이터-처리&quot;&gt;3.10 시계열 데이터 처리&lt;/h2&gt;
 
@@ -912,268 +984,7 @@ $f(x)=max(\alpha x,x)$&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/lecture4-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;여기서 ReLU 함수가 가장 자주 사용된다. 활성화 함수에 대한 자세한 내용은 추후 강의에 자세히 다룰 예정이다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">What is Backpropagation?</summary></entry><entry><title type="html">Chapter 3: 특징 생성 part2</title><link href="http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/" rel="alternate" type="text/html" title="Chapter 3: 특징 생성 part2" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/">&lt;p&gt;챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;310-시계열-데이터-처리&quot;&gt;3.10 시계열 데이터 처리&lt;/h2&gt;
-
-&lt;h3 id=&quot;3101-시계열-데이터란&quot;&gt;3.10.1 시계열 데이터란?&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;시계열 데이터&lt;/em&gt;&lt;/strong&gt; 에는 특유의 성질이나 주의점이 있다. 그래서 시간적 정보를 적절히 다루지 않을 경우 본래대로라면 예측에 사용이불가능한 정보를 이용해 특징을 만들 때도 있다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;시계열 데이터: 시간의 추이와 함께 순차적으로 관측한 데이터&lt;/li&gt;
-  &lt;li&gt;시계열 데이터를 다루는 방식은 다음과 같은 관점에서 접근할 수 있다.
-    &lt;ul&gt;
-      &lt;li&gt;시간 정보를 가지는 변수가 있는지 여부 → 시간 정보를 적절히 활용해 특징 생성 가능&lt;/li&gt;
-      &lt;li&gt;학습 데이터와 테스트 데이터가 시계열로 나누어져 있는지, 시간에 따라 분할하고 검증해야 할지의 여부 → 시간에 따라 분할한 검증을 실시함과 동시에 특징에 관해서도 미래 정보를 부적절히 사용하지 않게 주의해야 함&lt;/li&gt;
-      &lt;li&gt;사용자나 매장 등 계열별로 시계열의 목적변수가 있는지, lag 특징을 취할 수 있는 형식이 있는지의 여부 → 과거의 목적변수가 미래 예측에 중요한 정보가 되므로 lag특징을 만듬&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3102-데이터-정보-누출을-대비한-제약사항&quot;&gt;3.10.2 데이터 정보 누출을 대비한 제약사항&lt;/h3&gt;
-
-&lt;p&gt;시계열 데이터를 다루는 과정에서는 목적변수의 데이터 정보 누출이 발생할 가능성이 있다. 데이터 정보 누출은 다음과 같은 경우에 발생한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;목적변수가 과거의 목적변수의 정보를 포함할 경우&lt;/li&gt;
-  &lt;li&gt;목적변수 이외의 데이터가 과거의 목적변수 정보를 포함할 경우&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;만약 검증 데이터에 훈련 데이터보다 과거 시점에 대한 정보가 포함되어 있으면 데이터 정보 누출이 발생할 수 있으므로 이 점을 유의하면서 데이터를 다뤄야 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3103-와이드-포맷과-롱-포맷&quot;&gt;3.10.3 와이드 포맷과 롱 포맷&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;와이드 포맷(wide format): 키가 되는 변수 A, B를 각각 행과 열로 하고, 관심 대상 변수 C를 값으로 하는 형식의 데이터셋이다. 키가되는 변수는 날짜와 사용자이고 관심 대상 변수는 이용 시간이다.&lt;/li&gt;
-  &lt;li&gt;롱 포맷(long format): 키가 되는 변수 A, B를 모두 열로 하고, 대상 변수 뿐만 아니라 다른 변수도 열에 포함할 수 있는 형식의 데이터셋이다. 키가 되는변수인 날짜와 사용자별로 목적변수나 사용자 속성 등의 변수가 유지 가능하다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;롱 포맷에서 와이드 포맷으로 바꾸려면 DataFrame 의 pivot 메서드를 사용하고, 와이드 포맷에서 롱 포맷으로 변경하기 위해서는 DataFrame 의 stack 메서드를 사용한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3104-lag-특징&quot;&gt;3.10.4 lag 특징&lt;/h3&gt;
-
-&lt;p&gt;lag 특징이란 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;데이터에서 과거 시점에서의 값을 그대로 활용해 만든 특징이다.&lt;/li&gt;
-  &lt;li&gt;1일 전 값, 2일 전 값과 같이 전날 값을 이용해 lag 특징을 만들 수 있지만 데이터에 주기적인 움직임이 보이면 해당 주기에 따라 lag 특징을 구할 수 있다.&lt;/li&gt;
-  &lt;li&gt;shift() 함수를 이용하여 lag 특징을 만들 수 있다. shift(1) 은 하루 전 값, shift(7) 은 일주일 전 값이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;단순히 날짜를 이동하는 것 뿐만 아니라 이동시켜 일정 기간의 평균값을 얻는 처리인 이동평균(moving average) 도 자주 이루어진다. 이동평균을 구할 때는 팬더스의 rolling 함수와 mean 등의 요약 함수가 조합되어 사용된다. 평균 이외에도 최댓값, 최솟값, 중앙값 등 다른 통계량을 이용할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;또한 lead 특징은 lag 특징과는 반대로 미래 시점의 값을 이용해 만든 특징이다. 이 때, 미래의 목적변수는 알 수 없으므로 목적변수의 lead 특징을 구하지 못한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3105-시점-관련-특징-생성&quot;&gt;3.10.5 시점 관련 특징 생성&lt;/h3&gt;
-
-&lt;p&gt;데이터를 예측하는 시점보다 과거 정보만을 사용한다는 제약을 지키면서 학습하고 예측하면 시점과 연계된 특징을 만들고 해당 시점을 키로 삼아 학습 데이터와 결합할 수 있다. 방법의 과정은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;특징을 생성하는 원본 데이터의 집계 등을 통해 시점별 연계 변수를 구한다.&lt;/li&gt;
-  &lt;li&gt;필요에 따라 누적합이나 이동평균을 구하거나 다른 변수와의 차 또는 비율을 구하는 식의 처리를 한다.&lt;/li&gt;
-  &lt;li&gt;시점을 키로 삼아 학습 데이터와 결합한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3106-예측용-데이터의-기간&quot;&gt;3.10.6 예측용 데이터의 기간&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;특징 생성에 필요한 과거 기간: 시점 관련 특징을 생성하기 위해 다음과 같은 요소를 고려해야 한다.&lt;/p&gt;
-
-    &lt;ol&gt;
-      &lt;li&gt;테스트 데이터에는 목적변수의 값이 포함되지 않으므로 목적변수에 관해서는 분할 시점부터 과거의 값만 참조해야 한다.&lt;/li&gt;
-      &lt;li&gt;테스트 데이터의 기간이 1개월일 때 분할 시점 직후의 데이터에서는 하루 전의 목적변수를 참조할 수 있는 반면 한 달 후의 데이터에서는 한 달 전의 목적변수만 참조할 수 있다.&lt;/li&gt;
-      &lt;li&gt;이러한 문제를 해결하기 위해 테스트 데이터의 기간이 분할 시점으로부터 며칠 앞에 있는지에 따라 개별적으로 모델을 만들어야 한다.&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;미래 정보 다루기: 테스트 데이터에서 예측 시점부터 미래의 정보를 이용할 수 있으므로 모델 성능이 올라간다면 lead 특징을 만들어 예측에 유용하게 활용해야 한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;311-차원축소와-비지도-학습의-특징&quot;&gt;3.11 차원축소와 비지도 학습의 특징&lt;/h2&gt;
-
-&lt;h3 id=&quot;3111-주성분분석pca&quot;&gt;3.11.1 주성분분석(PCA)&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;주성분분석&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;차원축소의 가장 대표적인 기법이다.&lt;/li&gt;
-  &lt;li&gt;다차원 데이터를 분산이 큰 방향에서부터 순서대로 축을 다시 잡는 방법으로, 변수간 종속성이 클수록 더 소수의 주성분으로 원래 데이터를 표현할 수 있다.&lt;/li&gt;
-  &lt;li&gt;입력 변수가 정규분포를 따를 때 사용하기 적합한 변환이다.&lt;/li&gt;
-  &lt;li&gt;주성분분석은 사이킷런 decomposition 모듈의 PCA 또는 TruncatedSVD 클래스에서 시행할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;데이터에 주성분분석을 적용하면 다음과 같은 분포로 변경된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/chapter3.2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;3112-음수-미포함-행렬-분해nmf&quot;&gt;3.11.2 음수 미포함 행렬 분해(NMF)&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;음수 미포함 행렬 분해(NMF)&lt;/em&gt;&lt;/strong&gt; 은 음수를 포함하지 않은 행렬 데이터를, 음수를 포함하지 않은 행렬들의 곱의 형태로 만드는 방법이다. 이 때, 음수가 아닌 데이터에만 사용할 수 있지만 PCA와는 달리 벡터의 합 형태로 나타낼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/chapter3.2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;3113-잠재-디리클레-할당lda&quot;&gt;3.11.3 잠재 디리클레 할당(LDA)&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;잠재 디리클레 할당&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;자연어 처리에서 문서를 분류하는 토픽 모델에서 쓰이는 기법, 확률적 생성 모델의 일종이다.&lt;/li&gt;
-  &lt;li&gt;각 문서를 행으로, 각 단어를 열로 하여 해당 문서에 해당 단어가 몇 번이나 나타나는지 보여주는 단어-문서 카운트 행렬을 작성한다. 이 때, 분류할 토픽의 수를 지정해야 한다.&lt;/li&gt;
-  &lt;li&gt;LDA 는 베이즈 추론을 이용하여 행렬에서 각 문서를 확률적으로 토픽으로 분류한다.&lt;/li&gt;
-  &lt;li&gt;LDA를 적용하면 단어-문서 카운트 행렬, 문서가 각 토픽에 소속될 확률을 나타내는 행렬, 각 토픽의 단어 분포를 나타내는 행렬이 나타난다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3114-선형판별분석lda&quot;&gt;3.11.4 선형판별분석(LDA)&lt;/h3&gt;
-
-&lt;p&gt;잠재 디리클레 할당과 철자가 같으므로 혼동하지 않도록 조심한다. 선형판별분석(LDA)의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;지도 학습의 분류 문제에서 차원축소를 실시하는 방법&lt;/li&gt;
-  &lt;li&gt;학습 데이터가 n행의 행 데이터와 f개의 특징으로 이루어진 n X f 행렬이라 할 때 f X K의 변환 행렬을 곱함으로써 n X K 행렬로 변환한다.&lt;/li&gt;
-  &lt;li&gt;차원축소 후의 차원 수 k는 클래스 수보다 줄어들고, 이진 분류일 때는 변환 후에 1차원 값이 된다.&lt;/li&gt;
-  &lt;li&gt;학습 데이터를 잘 분류할 수 있는 저차원의 특징 공간을 찾고, 원래 특징을 그 공간에 투영함으로써 차원을 줄인다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3115-t-sne-umap&quot;&gt;3.11.5 t-SNE, UMAP&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;t-SNE&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;차원축소의 한 방법으로, 데이터를 2차원 평면상에 압축하여 시각화하기 위해 사용된다.&lt;/li&gt;
-  &lt;li&gt;비선형 관계를 파악할 수 있으므로 원래의 특징에 t-SNE로 표현된 압축 결과를 더하면 모델 성능이 올라갈 수 있다.&lt;/li&gt;
-  &lt;li&gt;사이킷런의 manifold 모듈에도 TSNE가 있지만 아직은 활용이 어려우므로 python-bhtsne를 사용하는 게 좋다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;UMAP&lt;/strong&gt;* 의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;t-SNE와 마찬가지로 원래의 특징 공간상에서 가까운 점이 압축 후에도 가까워지도록 표현한다.&lt;/li&gt;
-  &lt;li&gt;실행시간이 매우 빠르다는 것이 장점이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3116-오토인코더&quot;&gt;3.11.6 오토인코더&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;오토인코더(autoencoder)&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;신경망을 이용한 차원 압축 방법&lt;/li&gt;
-  &lt;li&gt;입력 차원보다 작은 중간층을 이용하여 입력과 같은 값으로 출력하는 신경망을 학습함으로써, 원래의 데이터를 재현할 수 있는 더 저차원의 표현을 학습한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3117-군집화&quot;&gt;3.11.7 군집화&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;군집화(clustering)&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;데이터를 여러 그룹으로 나누는 비지도 학습&lt;/li&gt;
-  &lt;li&gt;데이터가 어느 그룹에 분류 되었는지에 대한 값을 특징으로 할 수 있고, 클러스터 중심으로부터의 거리를 특징으로 할 수도 있다.&lt;/li&gt;
-  &lt;li&gt;군집을 수행하는 알고리즘은 K-Means, DBSCAN, 병합군집이 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;312-기타-기법&quot;&gt;3.12 기타 기법&lt;/h2&gt;
-
-&lt;p&gt;경진 대회에서는 다양한 문제와 데이터가 주어지는데 데이터의 종류에 따라 다양한 기법을 적용하여 특징을 생성할 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3121-배경-매커니즘의-이해&quot;&gt;3.12.1 배경 매커니즘의 이해&lt;/h3&gt;
-
-&lt;p&gt;분석 대상 데이터에 관한 배경 지식을 이용해 여러 특징을 생성할 수 있다. 다음과 같은 요소들에 집중하면 새로운 특징을 생성할 수 있다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;사용자 행동에 주목
-    &lt;ul&gt;
-      &lt;li&gt;사용자 성격, 행동 특징, 행동 사이클을 표현하는 특징 만들기&lt;/li&gt;
-      &lt;li&gt;이용 목적의 클러스터로 나눠 생각하기&lt;/li&gt;
-      &lt;li&gt;특정 상품에 대한 선호도가 있을지 생각하기&lt;/li&gt;
-      &lt;li&gt;같은 물건을 이미 구매한 경우 등 행동 저해 요소는 없을지 생각하기&lt;/li&gt;
-      &lt;li&gt;사용자가 웹사이트에서 어떤 식으로 화면을 이동하여 상품을 구매했는지 살펴보기&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;서비스 제공 측의 동향 주목
-    &lt;ul&gt;
-      &lt;li&gt;어떤 상품의 판매 개수가 0이라 해도, 수요 자체가 없었다기보다는 무언가의 사정으로 재고가 없었던 경우일 가능성&lt;/li&gt;
-      &lt;li&gt;휴가나 유지보수 작업이 그 전후 기간의 서비스 이용에 미치는 영향&lt;/li&gt;
-      &lt;li&gt;앱/웹 서비스로 검색하면 맨 위에 표시될지 여부와 상관관계가 있을 법한 특징 생성&lt;/li&gt;
-      &lt;li&gt;앱/웹 서비스에서의 검색이나 리스트 박스의 선택사항을 고려&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;업계에서 주로 사용하는 분석 방법
-    &lt;ul&gt;
-      &lt;li&gt;RFM 분석이라는 고객 분석 기법을 이용하여 사용자 분류와 특징을 생성&lt;/li&gt;
-      &lt;li&gt;개인의 신용 리스크를 심사할 때 어떤 항목이 대상이 될 수 있는지 관련 단어를 조사&lt;/li&gt;
-      &lt;li&gt;질병 진단 기준과 관련해 어떤 식의 점수 책정 방법이나 조건 분기 규칙으로 진단되는지, 어떤 특징과의 조합이 고려되는지 조사&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;여러 변수를 조합하여 지수 작성
-    &lt;ul&gt;
-      &lt;li&gt;신장이나 체중으로부터 BMI를 구하거나 기온 및 습도에서 불쾌지수를 구하는 등 여러 개의 변수를 조합한 지수를 작성하는 것도 유효할 수 있다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;자연 현상의 메커니즘에 주목
-    &lt;ul&gt;
-      &lt;li&gt;강우량 예측처럼 그 대상이 자연 현상인 문제에서는 해당 분야의 도메인 지식으로 유효한 특징을 생성할 때가 많다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;경진 대회의 대상 서비스 이용
-    &lt;ul&gt;
-      &lt;li&gt;경진 대회의 대상이 되는 서비스에 실제로 등록하거나 이용해보면 힌트를 얻을 수 있다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;312-행-데이터의-관계성에-주목&quot;&gt;3.12 행 데이터의 관계성에 주목&lt;/h3&gt;
-
-&lt;p&gt;각 행 데이터가 독립적이고 상호 관계를 특정하기 어려운 데이터가 있는 반면, 행 데이터끼리 일부 강한 관계성을 지니는 데이터도 있다. 만약 행 데이터 간에 일련의 관계성이 있다면 그에 주목하여 새로운 특징을 만들 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3123-상댓값에-주목&quot;&gt;3.12.3 상댓값에 주목&lt;/h3&gt;
-
-&lt;p&gt;어떤 사용자의 값과 그 사용자가 속한 그룹의 평균값의 차이 또는 비율을 구하는 것처럼, 다른 값과 비교했을 때의 차이나 비율과 같은 상대값에 주목하는 것도 효과적이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3124-위치-정보에-주목&quot;&gt;3.12.4 위치 정보에 주목&lt;/h3&gt;
-
-&lt;p&gt;위도나 경도 등의 위치 정보가 데이터에 포함될 경우 위치 간 거리를 특징으로 고려할 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3125-자연어-처리-기법&quot;&gt;3.12.5 자연어 처리 기법&lt;/h3&gt;
-
-&lt;p&gt;자연어 처리는 어간추출, 불용어, 표제어 추출등 특유의 전처리 방법이 존재하나 이 책에서는 다루지 않고 있다. 다음은 자연어 처리를 하기 위해 사용되는 기법이다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Bag-of-word(BoW)
-    &lt;ul&gt;
-      &lt;li&gt;문장 등의 텍스트를 단어로 분할하고, 각 단어의 출현 수를 순서에 상관없이 단순하게 세는 방식이다.&lt;/li&gt;
-      &lt;li&gt;사이킷런 feature_extraction.text 모듈의 CountVectorizer에서 처리할 수 있다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;N-gram
-    &lt;ul&gt;
-      &lt;li&gt;Bow에서 분할하는 단위를, 단어가 아닌 연속되는 단어 뭉치 단위로 끊는 방법이다.&lt;/li&gt;
-      &lt;li&gt;예를 들어 ‘This is a sentence’라는 문장에서 [this, is, a, sentence]라는 4개의 단어를 추출할 수 있지만 2-gram에서는 [This-is, is-a, a-sentence]라는 3개의 단어 뭉치를 추출한다.&lt;/li&gt;
-      &lt;li&gt;단어 분할에 비해 텍스트에 포함된 정보를 유지하기는 좋지만, 출현 가능한 종류의 수가 크게 늘어날 뿐만 아니라 희소 데이터가 된다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Tf-idf: BoW에서 작성한 단어-문서 카운트 행렬을 변환하는 기법이다.&lt;/li&gt;
-  &lt;li&gt;단어 임베딩: 단어를 수치 벡터로 변환하는 방법을 단어 임베딩이라고 한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;여기서 Tf-idf, N-gram 과 같이 자연어 처리에서 많이 사용되는 기법은 실제 자연어와 관계가 없는 데이터에도 적용할 수 있다. (3.12.6 장)&lt;/p&gt;
-
-&lt;h3 id=&quot;3127-토픽-모델을-활용한-변주형-변수-변환&quot;&gt;3.12.7 토픽 모델을 활용한 변주형 변수 변환&lt;/h3&gt;
-
-&lt;p&gt;토픽 모델(topic model) 이라는 문서 분류 기법을 응용하여, 다른 범주형 변수와의 동시 출현 정보로부터 범주형 변수를 수치 벡터로 변환하는 방법이 있다. 두 범주형 변수 중 하나를 문서, 다른 하나를 단어로 간주해 각 문서에 각 단어가 몇 번 등장하는지 동시출현 정보를 이용해 단어-문서 카운트 행렬을 만들 수 있다. 여기에 잠재 디리클레 할당(LDA) 를 적용해 첫 번째 변수를 문서가 속한 토픽에 대한 확률을 나타내는 수치 벡터로 변환할 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3128-이미지-특징을-다루는-방법&quot;&gt;3.12.8 이미지 특징을 다루는 방법&lt;/h3&gt;
-
-&lt;p&gt;이미지 데이터를 특징으로 만들 때는 이미지넷(ImageNet) 데이터로 학습한 신경망으로 이미지를 예측하고, 출력층에 가까운 층의 출력값을 특징으로 하는 방법을 사용한다. 또한 이미지의 메타 정보를 활용해 특징으로 삼을 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3129-결정-트리의-특징-변환&quot;&gt;3.12.9 결정 트리의 특징 변환&lt;/h3&gt;
-
-&lt;p&gt;결정 트리를 작성한 뒤, 각 행 데이터가 분기에 따라 어느 잎 노드로 떨어지는지를 범주형 변수의 특징으로 만들어 다른 모델에 투입하는 독특한 기술이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;31210-익명화-데이터의-원래-값-추측&quot;&gt;3.12.10 익명화 데이터의 원래 값 추측&lt;/h3&gt;
-
-&lt;p&gt;경진 대회에서는 주최자의 의향에 따라 각 변수의 의미가 숨겨져 있거나 또는 값에 표준화와 같은 처리를 가한 상태의 데이터를 제공할 때가 있다. 그러나 데이터를 주의 깊게 관찰하면 변환 전 원래의 값으로 되돌릴 수 있으므로 상황에 따라 변환하는 과정이 필요하다.&lt;/p&gt;
-
-&lt;h3 id=&quot;31211-데이터-오류-수정&quot;&gt;3.12.11 데이터 오류 수정&lt;/h3&gt;
-
-&lt;p&gt;일부 데이터가 사용자나 데이터 작성자의 입력 오류로 인해 잘못되었다고 추측될 경우, 수정을 거치면서 품질이 더 좋은 데이터로 학습시킬 수 있다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다.</summary></entry><entry><title type="html">Chapter 3: 특징 생성 part1</title><link href="http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/" rel="alternate" type="text/html" title="Chapter 3: 특징 생성 part1" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/">&lt;p&gt;챕터 3는 내용이 이전 챕터보다 많으므로 2개의 파트로 나누어서 작성하였다. 첫번째 파트에서는 모델의 성능을 높이기 위해서 새로운 특징을 만드는 방법에 대해 다루고 있다.&lt;/p&gt;
+&lt;p&gt;여기서 ReLU 함수가 가장 자주 사용된다. 활성화 함수에 대한 자세한 내용은 추후 강의에 자세히 다룰 예정이다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">What is Backpropagation?</summary></entry><entry><title type="html">Chapter 3: 특징 생성 part1</title><link href="http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/" rel="alternate" type="text/html" title="Chapter 3: 특징 생성 part1" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/">&lt;p&gt;챕터 3는 내용이 이전 챕터보다 많으므로 2개의 파트로 나누어서 작성하였다. 첫번째 파트에서는 모델의 성능을 높이기 위해서 새로운 특징을 만드는 방법에 대해 다루고 있다.&lt;/p&gt;
 
 &lt;h2 id=&quot;32-모델과-특징&quot;&gt;3.2 모델과 특징&lt;/h2&gt;
 
@@ -1726,7 +1537,268 @@ $f(x)=max(\alpha x,x)$&lt;/p&gt;
       &lt;li&gt;아이템 중심의 특징 생성&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">챕터 3는 내용이 이전 챕터보다 많으므로 2개의 파트로 나누어서 작성하였다. 첫번째 파트에서는 모델의 성능을 높이기 위해서 새로운 특징을 만드는 방법에 대해 다루고 있다.</summary></entry><entry><title type="html">Lecture 3: Loss Function and Optimization</title><link href="http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/" rel="alternate" type="text/html" title="Lecture 3: Loss Function and Optimization" /><published>2021-09-12T00:00:00+09:00</published><updated>2021-09-12T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/">&lt;h2 id=&quot;what-is-loss-function&quot;&gt;What is Loss Function?&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">챕터 3는 내용이 이전 챕터보다 많으므로 2개의 파트로 나누어서 작성하였다. 첫번째 파트에서는 모델의 성능을 높이기 위해서 새로운 특징을 만드는 방법에 대해 다루고 있다.</summary></entry><entry><title type="html">Chapter 3: 특징 생성 part2</title><link href="http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/" rel="alternate" type="text/html" title="Chapter 3: 특징 생성 part2" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part2/">&lt;p&gt;챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;310-시계열-데이터-처리&quot;&gt;3.10 시계열 데이터 처리&lt;/h2&gt;
+
+&lt;h3 id=&quot;3101-시계열-데이터란&quot;&gt;3.10.1 시계열 데이터란?&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;시계열 데이터&lt;/em&gt;&lt;/strong&gt; 에는 특유의 성질이나 주의점이 있다. 그래서 시간적 정보를 적절히 다루지 않을 경우 본래대로라면 예측에 사용이불가능한 정보를 이용해 특징을 만들 때도 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;시계열 데이터: 시간의 추이와 함께 순차적으로 관측한 데이터&lt;/li&gt;
+  &lt;li&gt;시계열 데이터를 다루는 방식은 다음과 같은 관점에서 접근할 수 있다.
+    &lt;ul&gt;
+      &lt;li&gt;시간 정보를 가지는 변수가 있는지 여부 → 시간 정보를 적절히 활용해 특징 생성 가능&lt;/li&gt;
+      &lt;li&gt;학습 데이터와 테스트 데이터가 시계열로 나누어져 있는지, 시간에 따라 분할하고 검증해야 할지의 여부 → 시간에 따라 분할한 검증을 실시함과 동시에 특징에 관해서도 미래 정보를 부적절히 사용하지 않게 주의해야 함&lt;/li&gt;
+      &lt;li&gt;사용자나 매장 등 계열별로 시계열의 목적변수가 있는지, lag 특징을 취할 수 있는 형식이 있는지의 여부 → 과거의 목적변수가 미래 예측에 중요한 정보가 되므로 lag특징을 만듬&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3102-데이터-정보-누출을-대비한-제약사항&quot;&gt;3.10.2 데이터 정보 누출을 대비한 제약사항&lt;/h3&gt;
+
+&lt;p&gt;시계열 데이터를 다루는 과정에서는 목적변수의 데이터 정보 누출이 발생할 가능성이 있다. 데이터 정보 누출은 다음과 같은 경우에 발생한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;목적변수가 과거의 목적변수의 정보를 포함할 경우&lt;/li&gt;
+  &lt;li&gt;목적변수 이외의 데이터가 과거의 목적변수 정보를 포함할 경우&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;만약 검증 데이터에 훈련 데이터보다 과거 시점에 대한 정보가 포함되어 있으면 데이터 정보 누출이 발생할 수 있으므로 이 점을 유의하면서 데이터를 다뤄야 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3103-와이드-포맷과-롱-포맷&quot;&gt;3.10.3 와이드 포맷과 롱 포맷&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;와이드 포맷(wide format): 키가 되는 변수 A, B를 각각 행과 열로 하고, 관심 대상 변수 C를 값으로 하는 형식의 데이터셋이다. 키가되는 변수는 날짜와 사용자이고 관심 대상 변수는 이용 시간이다.&lt;/li&gt;
+  &lt;li&gt;롱 포맷(long format): 키가 되는 변수 A, B를 모두 열로 하고, 대상 변수 뿐만 아니라 다른 변수도 열에 포함할 수 있는 형식의 데이터셋이다. 키가 되는변수인 날짜와 사용자별로 목적변수나 사용자 속성 등의 변수가 유지 가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;롱 포맷에서 와이드 포맷으로 바꾸려면 DataFrame 의 pivot 메서드를 사용하고, 와이드 포맷에서 롱 포맷으로 변경하기 위해서는 DataFrame 의 stack 메서드를 사용한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3104-lag-특징&quot;&gt;3.10.4 lag 특징&lt;/h3&gt;
+
+&lt;p&gt;lag 특징이란 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터에서 과거 시점에서의 값을 그대로 활용해 만든 특징이다.&lt;/li&gt;
+  &lt;li&gt;1일 전 값, 2일 전 값과 같이 전날 값을 이용해 lag 특징을 만들 수 있지만 데이터에 주기적인 움직임이 보이면 해당 주기에 따라 lag 특징을 구할 수 있다.&lt;/li&gt;
+  &lt;li&gt;shift() 함수를 이용하여 lag 특징을 만들 수 있다. shift(1) 은 하루 전 값, shift(7) 은 일주일 전 값이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;단순히 날짜를 이동하는 것 뿐만 아니라 이동시켜 일정 기간의 평균값을 얻는 처리인 이동평균(moving average) 도 자주 이루어진다. 이동평균을 구할 때는 팬더스의 rolling 함수와 mean 등의 요약 함수가 조합되어 사용된다. 평균 이외에도 최댓값, 최솟값, 중앙값 등 다른 통계량을 이용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;또한 lead 특징은 lag 특징과는 반대로 미래 시점의 값을 이용해 만든 특징이다. 이 때, 미래의 목적변수는 알 수 없으므로 목적변수의 lead 특징을 구하지 못한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3105-시점-관련-특징-생성&quot;&gt;3.10.5 시점 관련 특징 생성&lt;/h3&gt;
+
+&lt;p&gt;데이터를 예측하는 시점보다 과거 정보만을 사용한다는 제약을 지키면서 학습하고 예측하면 시점과 연계된 특징을 만들고 해당 시점을 키로 삼아 학습 데이터와 결합할 수 있다. 방법의 과정은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;특징을 생성하는 원본 데이터의 집계 등을 통해 시점별 연계 변수를 구한다.&lt;/li&gt;
+  &lt;li&gt;필요에 따라 누적합이나 이동평균을 구하거나 다른 변수와의 차 또는 비율을 구하는 식의 처리를 한다.&lt;/li&gt;
+  &lt;li&gt;시점을 키로 삼아 학습 데이터와 결합한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3106-예측용-데이터의-기간&quot;&gt;3.10.6 예측용 데이터의 기간&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;특징 생성에 필요한 과거 기간: 시점 관련 특징을 생성하기 위해 다음과 같은 요소를 고려해야 한다.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;테스트 데이터에는 목적변수의 값이 포함되지 않으므로 목적변수에 관해서는 분할 시점부터 과거의 값만 참조해야 한다.&lt;/li&gt;
+      &lt;li&gt;테스트 데이터의 기간이 1개월일 때 분할 시점 직후의 데이터에서는 하루 전의 목적변수를 참조할 수 있는 반면 한 달 후의 데이터에서는 한 달 전의 목적변수만 참조할 수 있다.&lt;/li&gt;
+      &lt;li&gt;이러한 문제를 해결하기 위해 테스트 데이터의 기간이 분할 시점으로부터 며칠 앞에 있는지에 따라 개별적으로 모델을 만들어야 한다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;미래 정보 다루기: 테스트 데이터에서 예측 시점부터 미래의 정보를 이용할 수 있으므로 모델 성능이 올라간다면 lead 특징을 만들어 예측에 유용하게 활용해야 한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;311-차원축소와-비지도-학습의-특징&quot;&gt;3.11 차원축소와 비지도 학습의 특징&lt;/h2&gt;
+
+&lt;h3 id=&quot;3111-주성분분석pca&quot;&gt;3.11.1 주성분분석(PCA)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;주성분분석&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;차원축소의 가장 대표적인 기법이다.&lt;/li&gt;
+  &lt;li&gt;다차원 데이터를 분산이 큰 방향에서부터 순서대로 축을 다시 잡는 방법으로, 변수간 종속성이 클수록 더 소수의 주성분으로 원래 데이터를 표현할 수 있다.&lt;/li&gt;
+  &lt;li&gt;입력 변수가 정규분포를 따를 때 사용하기 적합한 변환이다.&lt;/li&gt;
+  &lt;li&gt;주성분분석은 사이킷런 decomposition 모듈의 PCA 또는 TruncatedSVD 클래스에서 시행할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;데이터에 주성분분석을 적용하면 다음과 같은 분포로 변경된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/chapter3.2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3112-음수-미포함-행렬-분해nmf&quot;&gt;3.11.2 음수 미포함 행렬 분해(NMF)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;음수 미포함 행렬 분해(NMF)&lt;/em&gt;&lt;/strong&gt; 은 음수를 포함하지 않은 행렬 데이터를, 음수를 포함하지 않은 행렬들의 곱의 형태로 만드는 방법이다. 이 때, 음수가 아닌 데이터에만 사용할 수 있지만 PCA와는 달리 벡터의 합 형태로 나타낼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/chapter3.2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3113-잠재-디리클레-할당lda&quot;&gt;3.11.3 잠재 디리클레 할당(LDA)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;잠재 디리클레 할당&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;자연어 처리에서 문서를 분류하는 토픽 모델에서 쓰이는 기법, 확률적 생성 모델의 일종이다.&lt;/li&gt;
+  &lt;li&gt;각 문서를 행으로, 각 단어를 열로 하여 해당 문서에 해당 단어가 몇 번이나 나타나는지 보여주는 단어-문서 카운트 행렬을 작성한다. 이 때, 분류할 토픽의 수를 지정해야 한다.&lt;/li&gt;
+  &lt;li&gt;LDA 는 베이즈 추론을 이용하여 행렬에서 각 문서를 확률적으로 토픽으로 분류한다.&lt;/li&gt;
+  &lt;li&gt;LDA를 적용하면 단어-문서 카운트 행렬, 문서가 각 토픽에 소속될 확률을 나타내는 행렬, 각 토픽의 단어 분포를 나타내는 행렬이 나타난다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3114-선형판별분석lda&quot;&gt;3.11.4 선형판별분석(LDA)&lt;/h3&gt;
+
+&lt;p&gt;잠재 디리클레 할당과 철자가 같으므로 혼동하지 않도록 조심한다. 선형판별분석(LDA)의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;지도 학습의 분류 문제에서 차원축소를 실시하는 방법&lt;/li&gt;
+  &lt;li&gt;학습 데이터가 n행의 행 데이터와 f개의 특징으로 이루어진 n X f 행렬이라 할 때 f X K의 변환 행렬을 곱함으로써 n X K 행렬로 변환한다.&lt;/li&gt;
+  &lt;li&gt;차원축소 후의 차원 수 k는 클래스 수보다 줄어들고, 이진 분류일 때는 변환 후에 1차원 값이 된다.&lt;/li&gt;
+  &lt;li&gt;학습 데이터를 잘 분류할 수 있는 저차원의 특징 공간을 찾고, 원래 특징을 그 공간에 투영함으로써 차원을 줄인다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3115-t-sne-umap&quot;&gt;3.11.5 t-SNE, UMAP&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;t-SNE&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;차원축소의 한 방법으로, 데이터를 2차원 평면상에 압축하여 시각화하기 위해 사용된다.&lt;/li&gt;
+  &lt;li&gt;비선형 관계를 파악할 수 있으므로 원래의 특징에 t-SNE로 표현된 압축 결과를 더하면 모델 성능이 올라갈 수 있다.&lt;/li&gt;
+  &lt;li&gt;사이킷런의 manifold 모듈에도 TSNE가 있지만 아직은 활용이 어려우므로 python-bhtsne를 사용하는 게 좋다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;UMAP&lt;/strong&gt;* 의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;t-SNE와 마찬가지로 원래의 특징 공간상에서 가까운 점이 압축 후에도 가까워지도록 표현한다.&lt;/li&gt;
+  &lt;li&gt;실행시간이 매우 빠르다는 것이 장점이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3116-오토인코더&quot;&gt;3.11.6 오토인코더&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;오토인코더(autoencoder)&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;신경망을 이용한 차원 압축 방법&lt;/li&gt;
+  &lt;li&gt;입력 차원보다 작은 중간층을 이용하여 입력과 같은 값으로 출력하는 신경망을 학습함으로써, 원래의 데이터를 재현할 수 있는 더 저차원의 표현을 학습한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3117-군집화&quot;&gt;3.11.7 군집화&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;군집화(clustering)&lt;/em&gt;&lt;/strong&gt; 의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터를 여러 그룹으로 나누는 비지도 학습&lt;/li&gt;
+  &lt;li&gt;데이터가 어느 그룹에 분류 되었는지에 대한 값을 특징으로 할 수 있고, 클러스터 중심으로부터의 거리를 특징으로 할 수도 있다.&lt;/li&gt;
+  &lt;li&gt;군집을 수행하는 알고리즘은 K-Means, DBSCAN, 병합군집이 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;312-기타-기법&quot;&gt;3.12 기타 기법&lt;/h2&gt;
+
+&lt;p&gt;경진 대회에서는 다양한 문제와 데이터가 주어지는데 데이터의 종류에 따라 다양한 기법을 적용하여 특징을 생성할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3121-배경-매커니즘의-이해&quot;&gt;3.12.1 배경 매커니즘의 이해&lt;/h3&gt;
+
+&lt;p&gt;분석 대상 데이터에 관한 배경 지식을 이용해 여러 특징을 생성할 수 있다. 다음과 같은 요소들에 집중하면 새로운 특징을 생성할 수 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;사용자 행동에 주목
+    &lt;ul&gt;
+      &lt;li&gt;사용자 성격, 행동 특징, 행동 사이클을 표현하는 특징 만들기&lt;/li&gt;
+      &lt;li&gt;이용 목적의 클러스터로 나눠 생각하기&lt;/li&gt;
+      &lt;li&gt;특정 상품에 대한 선호도가 있을지 생각하기&lt;/li&gt;
+      &lt;li&gt;같은 물건을 이미 구매한 경우 등 행동 저해 요소는 없을지 생각하기&lt;/li&gt;
+      &lt;li&gt;사용자가 웹사이트에서 어떤 식으로 화면을 이동하여 상품을 구매했는지 살펴보기&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;서비스 제공 측의 동향 주목
+    &lt;ul&gt;
+      &lt;li&gt;어떤 상품의 판매 개수가 0이라 해도, 수요 자체가 없었다기보다는 무언가의 사정으로 재고가 없었던 경우일 가능성&lt;/li&gt;
+      &lt;li&gt;휴가나 유지보수 작업이 그 전후 기간의 서비스 이용에 미치는 영향&lt;/li&gt;
+      &lt;li&gt;앱/웹 서비스로 검색하면 맨 위에 표시될지 여부와 상관관계가 있을 법한 특징 생성&lt;/li&gt;
+      &lt;li&gt;앱/웹 서비스에서의 검색이나 리스트 박스의 선택사항을 고려&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;업계에서 주로 사용하는 분석 방법
+    &lt;ul&gt;
+      &lt;li&gt;RFM 분석이라는 고객 분석 기법을 이용하여 사용자 분류와 특징을 생성&lt;/li&gt;
+      &lt;li&gt;개인의 신용 리스크를 심사할 때 어떤 항목이 대상이 될 수 있는지 관련 단어를 조사&lt;/li&gt;
+      &lt;li&gt;질병 진단 기준과 관련해 어떤 식의 점수 책정 방법이나 조건 분기 규칙으로 진단되는지, 어떤 특징과의 조합이 고려되는지 조사&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;여러 변수를 조합하여 지수 작성
+    &lt;ul&gt;
+      &lt;li&gt;신장이나 체중으로부터 BMI를 구하거나 기온 및 습도에서 불쾌지수를 구하는 등 여러 개의 변수를 조합한 지수를 작성하는 것도 유효할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;자연 현상의 메커니즘에 주목
+    &lt;ul&gt;
+      &lt;li&gt;강우량 예측처럼 그 대상이 자연 현상인 문제에서는 해당 분야의 도메인 지식으로 유효한 특징을 생성할 때가 많다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;경진 대회의 대상 서비스 이용
+    &lt;ul&gt;
+      &lt;li&gt;경진 대회의 대상이 되는 서비스에 실제로 등록하거나 이용해보면 힌트를 얻을 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;312-행-데이터의-관계성에-주목&quot;&gt;3.12 행 데이터의 관계성에 주목&lt;/h3&gt;
+
+&lt;p&gt;각 행 데이터가 독립적이고 상호 관계를 특정하기 어려운 데이터가 있는 반면, 행 데이터끼리 일부 강한 관계성을 지니는 데이터도 있다. 만약 행 데이터 간에 일련의 관계성이 있다면 그에 주목하여 새로운 특징을 만들 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3123-상댓값에-주목&quot;&gt;3.12.3 상댓값에 주목&lt;/h3&gt;
+
+&lt;p&gt;어떤 사용자의 값과 그 사용자가 속한 그룹의 평균값의 차이 또는 비율을 구하는 것처럼, 다른 값과 비교했을 때의 차이나 비율과 같은 상대값에 주목하는 것도 효과적이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3124-위치-정보에-주목&quot;&gt;3.12.4 위치 정보에 주목&lt;/h3&gt;
+
+&lt;p&gt;위도나 경도 등의 위치 정보가 데이터에 포함될 경우 위치 간 거리를 특징으로 고려할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3125-자연어-처리-기법&quot;&gt;3.12.5 자연어 처리 기법&lt;/h3&gt;
+
+&lt;p&gt;자연어 처리는 어간추출, 불용어, 표제어 추출등 특유의 전처리 방법이 존재하나 이 책에서는 다루지 않고 있다. 다음은 자연어 처리를 하기 위해 사용되는 기법이다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Bag-of-word(BoW)
+    &lt;ul&gt;
+      &lt;li&gt;문장 등의 텍스트를 단어로 분할하고, 각 단어의 출현 수를 순서에 상관없이 단순하게 세는 방식이다.&lt;/li&gt;
+      &lt;li&gt;사이킷런 feature_extraction.text 모듈의 CountVectorizer에서 처리할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;N-gram
+    &lt;ul&gt;
+      &lt;li&gt;Bow에서 분할하는 단위를, 단어가 아닌 연속되는 단어 뭉치 단위로 끊는 방법이다.&lt;/li&gt;
+      &lt;li&gt;예를 들어 ‘This is a sentence’라는 문장에서 [this, is, a, sentence]라는 4개의 단어를 추출할 수 있지만 2-gram에서는 [This-is, is-a, a-sentence]라는 3개의 단어 뭉치를 추출한다.&lt;/li&gt;
+      &lt;li&gt;단어 분할에 비해 텍스트에 포함된 정보를 유지하기는 좋지만, 출현 가능한 종류의 수가 크게 늘어날 뿐만 아니라 희소 데이터가 된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Tf-idf: BoW에서 작성한 단어-문서 카운트 행렬을 변환하는 기법이다.&lt;/li&gt;
+  &lt;li&gt;단어 임베딩: 단어를 수치 벡터로 변환하는 방법을 단어 임베딩이라고 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;여기서 Tf-idf, N-gram 과 같이 자연어 처리에서 많이 사용되는 기법은 실제 자연어와 관계가 없는 데이터에도 적용할 수 있다. (3.12.6 장)&lt;/p&gt;
+
+&lt;h3 id=&quot;3127-토픽-모델을-활용한-변주형-변수-변환&quot;&gt;3.12.7 토픽 모델을 활용한 변주형 변수 변환&lt;/h3&gt;
+
+&lt;p&gt;토픽 모델(topic model) 이라는 문서 분류 기법을 응용하여, 다른 범주형 변수와의 동시 출현 정보로부터 범주형 변수를 수치 벡터로 변환하는 방법이 있다. 두 범주형 변수 중 하나를 문서, 다른 하나를 단어로 간주해 각 문서에 각 단어가 몇 번 등장하는지 동시출현 정보를 이용해 단어-문서 카운트 행렬을 만들 수 있다. 여기에 잠재 디리클레 할당(LDA) 를 적용해 첫 번째 변수를 문서가 속한 토픽에 대한 확률을 나타내는 수치 벡터로 변환할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3128-이미지-특징을-다루는-방법&quot;&gt;3.12.8 이미지 특징을 다루는 방법&lt;/h3&gt;
+
+&lt;p&gt;이미지 데이터를 특징으로 만들 때는 이미지넷(ImageNet) 데이터로 학습한 신경망으로 이미지를 예측하고, 출력층에 가까운 층의 출력값을 특징으로 하는 방법을 사용한다. 또한 이미지의 메타 정보를 활용해 특징으로 삼을 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3129-결정-트리의-특징-변환&quot;&gt;3.12.9 결정 트리의 특징 변환&lt;/h3&gt;
+
+&lt;p&gt;결정 트리를 작성한 뒤, 각 행 데이터가 분기에 따라 어느 잎 노드로 떨어지는지를 범주형 변수의 특징으로 만들어 다른 모델에 투입하는 독특한 기술이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;31210-익명화-데이터의-원래-값-추측&quot;&gt;3.12.10 익명화 데이터의 원래 값 추측&lt;/h3&gt;
+
+&lt;p&gt;경진 대회에서는 주최자의 의향에 따라 각 변수의 의미가 숨겨져 있거나 또는 값에 표준화와 같은 처리를 가한 상태의 데이터를 제공할 때가 있다. 그러나 데이터를 주의 깊게 관찰하면 변환 전 원래의 값으로 되돌릴 수 있으므로 상황에 따라 변환하는 과정이 필요하다.&lt;/p&gt;
+
+&lt;h3 id=&quot;31211-데이터-오류-수정&quot;&gt;3.12.11 데이터 오류 수정&lt;/h3&gt;
+
+&lt;p&gt;일부 데이터가 사용자나 데이터 작성자의 입력 오류로 인해 잘못되었다고 추측될 경우, 수정을 거치면서 품질이 더 좋은 데이터로 학습시킬 수 있다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다.</summary></entry><entry><title type="html">Lecture 3: Loss Function and Optimization</title><link href="http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/" rel="alternate" type="text/html" title="Lecture 3: Loss Function and Optimization" /><published>2021-09-12T00:00:00+09:00</published><updated>2021-09-12T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/">&lt;h2 id=&quot;what-is-loss-function&quot;&gt;What is Loss Function?&lt;/h2&gt;
 
 &lt;p&gt;손실함수(loss function) 은 분류기 (classifier)가 얼마나 잘 작동하는지 알려주는 중요한 지표이다. 
 손실함수의 공식은 다음과 같다.&lt;/p&gt;
@@ -2119,122 +2191,4 @@ $L_3=max(0,2.2-(-3.1)+1)+max(0,2.5-(-3.1)+1) = 6.3+6.6 = 12.9$&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;일단 이 정도 문법이면 블로그를 작성하는데 문제는 없을 것 같다. 만약 더 필요한 문법이 생기면 더 추가해서 적도록 하겠다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="markdown" /><summary type="html">티스토리에서 깃허브 블로그로 바꾸면서 마크다운에 대해 처음 접하게 되었다. 원할한 블로그 정리를 위해 마크다운 문법에 대해 배울 필요성이 있다고 생각하여 이렇게 정리를 진행 중이다.</summary></entry><entry><title type="html">Lecture 2: Image Classification pipeline</title><link href="http://localhost:4000/computer%20vision/python/Lecture2-Image-Classification-pipeline/" rel="alternate" type="text/html" title="Lecture 2: Image Classification pipeline" /><published>2021-09-11T00:00:00+09:00</published><updated>2021-09-11T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture2-Image-Classification-pipeline</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture2-Image-Classification-pipeline/">&lt;p&gt;원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;challenges-of-computer-vision&quot;&gt;Challenges of Computer vision&lt;/h2&gt;
-
-&lt;p&gt;다음과 같은 고양이 사진을 컴퓨터가 알맞는 레이블로 분류해야 한다고 해보자.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이미지를 분류하는데는 다음과 같은 난관이 존재한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Viewpoint variation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;고양이를 보는 카메라의 시점이 달라지면 고양이를 못알아볼 가능성이 생긴다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Deformation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;고양이가 위 사진처럼 드러 눕거나 훈련한 사진과는 다른 포즈를 취하면 고양이로 분류를 하지 못할 가능성이 생긴다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;illumination&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;고양이를 비추는 빛의 양이 변하면 못알아볼 가능성이 생긴다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Occlusion&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 사진처럼 고양이가 물체에 가려져 일부만 노출된 경우 못알아볼 가능성이 생긴다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;그 밖에 고양이의 뒷배경이 바뀌는 &lt;strong&gt;&lt;em&gt;background clutter&lt;/em&gt;&lt;/strong&gt; 또는 고양이가 여러 마리가 추가되는 경우인 &lt;strong&gt;&lt;em&gt;intraclass variation&lt;/em&gt;&lt;/strong&gt;  와 같은 경우에도 분류에 어려움이 있을 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;classifiers&quot;&gt;Classifiers&lt;/h2&gt;
-
-&lt;p&gt;기계가 이미지를 분류하는 방법은 다음과 같은 과정으로 나타낼 수 있다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;방대한 양의 이미지와 레이블 데이터를 수집한다.&lt;/li&gt;
-  &lt;li&gt;머신러닝을 이용해 분류기를 훈련 시킨다.&lt;/li&gt;
-  &lt;li&gt;새로운 이미지에 분류기를 적용시켜 제대로 작동하는지 테스트 해본다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이제부터 분류기를 훈련시키는데 사용되는 대표적인 알고리즘 두 개에 대해서 설명하도록 하겠다.&lt;/p&gt;
-
-&lt;h3 id=&quot;nearest-neighbor&quot;&gt;Nearest Neighbor&lt;/h3&gt;
-
-&lt;p&gt;최근접 이웃 (Nearest Neighbor) 은 단순하게 &lt;strong&gt;&lt;em&gt;테스트 이미지&lt;/em&gt;&lt;/strong&gt; 와 &lt;strong&gt;&lt;em&gt;훈련 이미지&lt;/em&gt;&lt;/strong&gt; 의 대응되는 각 픽셀 값의 차이가 최소가 되게 만든다. 이 방법에는 다음과 같은 2가지 방법이 사용된다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;L1 distance: 차이의 절댓값의 합이 최소가 되게 만든다.
-    &lt;ul&gt;
-      &lt;li&gt;좌표계에 따라 영향을 받는다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;L2 distance: 차이의 제곱의 합이 최소가 되게 만든다.
-    &lt;ul&gt;
-      &lt;li&gt;좌표계에 영향을 받지 않고 단순한 점들의 거리에 의해서만 영향을 받는다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;최근접 이웃을 그림으로 다음과 같이 표현할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 사진에서 각각의 점들이 속해있는 영역을 점의 카테고리와 같은 색으로 칠하였다. 그러나 &lt;span style=&quot;color:green&quot;&gt;녹색&lt;/span&gt;으로 칠해진 영역 한가운데에 &lt;span style=&quot;color:yellow&quot;&gt;노란색&lt;/span&gt; 점이 있는 것을 확인 할 수 있을 것이다. 이처럼 점 한 개에 의해 분류를 정상적으로 하지 못하는 경우가 발생하기도 하는데, 이를 &lt;strong&gt;&lt;em&gt;과적합&lt;/em&gt;&lt;/strong&gt; 한다고 한다. 따라서 일반 최근접 이웃 방법은 과적합 문제 때문에 잘 사용되지 않고 K-최근접 이웃이 많이 사용된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;왼쪽 사진은 K=3 으로 설정했을 때, 오른쪽 사진은 K=5 으로 설정했을 때의 모습이다. 기존의 최근접 이웃과는 달리 각 점에서 가장 가까운 K개의 점을 찾아 나타나는 빈도가 더 높은 점의 클래스로 분류한다. 이전보다 훨씬 더 융통성 있게 영역이 설정된 것을 확인할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;그러나 정작 이미지 분류에서는 K-최근접 이웃이 &lt;strong&gt;&lt;em&gt;잘 사용되지 않는다!&lt;/em&gt;&lt;/strong&gt; 아래 사진을 한번 보자.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 사진에서 오른쪽 3개 사진은 제일 왼쪽에 있는 사진과의 픽셀의 거리가 모두 동일하다. 그러므로 이러한 거리는 사진에 대한 아무런 정보도 가져다 주지 않는다. 
-또한 분류기는 훈련 시간에 오래 걸리나 테스트 시간은 짧게 걸리는 가벼운 모델이 되는 것이 제일 이상적이다. 그러나 K-최근접 이웃은 그 반대이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;setting-hyperparameters&quot;&gt;Setting Hyperparameters&lt;/h3&gt;
-
-&lt;p&gt;분류기에서 훈련을 위한 인수(hyperparameters)를 설정하는 것은 매우 중요하다. 인수를 지정하는 방법은 다음과 같이 3가지 방법이 있는데, 훈련 데이터에 대한 분류기의 과적합을 피하기 위해서 3번째 방법인 &lt;strong&gt;&lt;em&gt;훈련 데이터, 검증 데이터, 테스트 데이터&lt;/em&gt;&lt;/strong&gt; 로 나누는 것이 좋다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그리고 만약 데이터의 수가 많지 않다면 다음과 같이 데이터를 일정 수만큼의 fold로 나누고 훈련하는 fold와 검증하는 fold를 돌아가면서 설정하는 방법인 &lt;strong&gt;&lt;em&gt;K-교차검증&lt;/em&gt;&lt;/strong&gt; 도 추천한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;linear-classifier&quot;&gt;Linear Classifier&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;선형 분류기(Linear Classifier)&lt;/em&gt;&lt;/strong&gt; 은 우리가 곧 중점적으로 배우게 될 Convolution Neural Network 의 근간이 되는 중요한 분류기이다. 선형 분류기는 여러 개의 사진 데이터에서 공통된 특징을 찾아내 이러한 특징에 가중치를 부여하는 방법을 사용한다. 이를 그림으로 표현하면 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;여기서 W는 가중치 행렬, x는 사진 데이터 행렬, b는 bias vector (별로 중요하지는 않다) 이다. 32x32x3의 크기를 가진 사진 데이터가 3072x1의 형태인 1차원의 데이터로 변경된 후 가중치 행렬을 곱하고 bias vector을 더하면 10개의 클래스에 대한 각각의 점수가 나타나게 된다. 그리고 10개의 클래스에 대한 점수 중 가장 높은 점수를 가진 클래스로 분류한다. 위의 사진이 이해하기 어렵다면 4개의 픽셀로 표현된 사진으로 같은 과정을 표현한 아래 사진을 한번 보자.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위에서 고양이 클래스의 점수는 -96.8, 개 클래스의 점수는 437.9, 배 클래스 점수는 61.95로 개 클래스의 점수가 가장 높아 해당 사진을 개로 분류했다는 것을 알 수 있다.&lt;/p&gt;
-
-&lt;p&gt;다음은 선형 분류기로는 올바르게 분류하기 힘든 경우들이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture2-13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그래프를 통해서만 알 수 있듯이 단 하나의 직선만으로 2개의 클래스를 올바르게 분류하기 힘들다는 것을 알 수 있다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다.</summary></entry></feed>
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;일단 이 정도 문법이면 블로그를 작성하는데 문제는 없을 것 같다. 만약 더 필요한 문법이 생기면 더 추가해서 적도록 하겠다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="markdown" /><summary type="html">티스토리에서 깃허브 블로그로 바꾸면서 마크다운에 대해 처음 접하게 되었다. 원할한 블로그 정리를 위해 마크다운 문법에 대해 배울 필요성이 있다고 생각하여 이렇게 정리를 진행 중이다.</summary></entry></feed>
