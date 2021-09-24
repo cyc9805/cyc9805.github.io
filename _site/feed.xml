@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-25T04:42:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 7: Training Neural Networks 2</title><link href="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/" rel="alternate" type="text/html" title="Lecture 7: Training Neural Networks 2" /><published>2021-09-25T00:00:00+09:00</published><updated>2021-09-25T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/">&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-25T04:47:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 7: Training Neural Networks 2</title><link href="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/" rel="alternate" type="text/html" title="Lecture 7: Training Neural Networks 2" /><published>2021-09-25T00:00:00+09:00</published><updated>2021-09-25T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/">&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
 
 &lt;p&gt;전에 최적화 과정에서 SGD(stochastic gradient descent)에 대해 배운적이 있다. SGD는 다른 알고리즘에 비해 가장 합리적이면서 효과가 좋은 알고리즘이나 많은 문제점을 가지고 있다. 다음과 같은 경우가 있다고 가정하자.&lt;/p&gt;
 
@@ -64,7 +64,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/lecture7-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;adam은 최적화 알고리즘 중 가장 좋은 성능을 보인다. 또한 이 강의에서는 &lt;strong&gt;&lt;em&gt;beta1=0.9, beta2=0.999, learning_rate=1e-3 또는 5e-4&lt;/em&gt;&lt;/strong&gt; 으로 설정할 것을 추천하고 있다!&lt;/p&gt;
+&lt;p&gt;adam은 최적화 알고리즘 중 가장 좋은 성능을 보인다. 또한 이 강의에서는 adam의 파라미터를 &lt;strong&gt;&lt;em&gt;beta1=0.9, beta2=0.999, learning_rate=1e-3 또는 5e-4&lt;/em&gt;&lt;/strong&gt; 으로 설정할 것을 추천하고 있다!&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -2001,7 +2001,7 @@ $L_3=max(0,2.2-(-3.1)+1)+max(0,2.5-(-3.1)+1) = 6.3+6.6 = 12.9$&lt;/p&gt;
 
 &lt;h2 id=&quot;마크다운-문법을-그대로-보여줄-때&quot;&gt;마크다운 문법을 그대로 보여줄 때&lt;/h2&gt;
 
-&lt;p&gt;마크다운 문법 앞에 ‘&apos; 를 붙여준다.&lt;/p&gt;
+&lt;p&gt;마크다운 문법 앞에 \ 를 붙여준다.&lt;/p&gt;
 
 &lt;h2 id=&quot;헤더&quot;&gt;헤더&lt;/h2&gt;
 
@@ -2038,7 +2038,7 @@ $L_3=max(0,2.2-(-3.1)+1)+max(0,2.5-(-3.1)+1) = 6.3+6.6 = 12.9$&lt;/p&gt;
 
 &lt;h3 id=&quot;코드-블록&quot;&gt;코드 블록&lt;/h3&gt;
 
-&lt;p&gt;``` 이 문자가 코드 블록의 시작을 알리는 문자이나 맥북 키보드에서 보이지가 않는다. 혹시라도 이 문자를 맥북에서 치는 방법을 아는 분 있으면 연락 부탁드립니다!! (9/21 수정: 전원버튼 아래 위치한 원화키를 누르면 된다! )&lt;/p&gt;
+&lt;p&gt;``` 이 문자가 코드 블록의 시작을 알리는 문자이나 맥북 키보드에서 보이지가 않는다. 혹시라도 이 문자를 맥북에서 치는 방법을 아는 분 있으면 연락 부탁드립니다!! (9/21 수정: esc버튼 아래 위치한 원화키를 누르면 된다! )&lt;/p&gt;
 
 &lt;p&gt;코드블록은 다음과 같은 방법으로 적는다.&lt;/p&gt;
 
