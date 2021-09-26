@@ -414,7 +414,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
         <h2 id="activation-functions">Activation Functions</h2>
 
-<p>활성화 함수는 가중치와 입력 데이터를 곱한 값에 정규화를 한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 <strong><em>Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU</em></strong> 가 있다.</p>
+<p>활성화 함수는 가중치와 입력 데이터를 곱한 값에 정직화 변수를 더한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 <strong><em>Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU</em></strong> 가 있다.</p>
 
 <h3 id="sigmoid">Sigmoid</h3>
 
@@ -449,7 +449,7 @@ $f(x)=max(0,x)$</p>
 <p>ReLU의 장점은 다음과 같다.</p>
 
 <ol>
-  <li>입력 데이터가 양수일때 gradient가 1로 수렴하지 않는다.</li>
+  <li>입력 데이터가 양수일때 gradient가 0로 수렴하지 않는다.</li>
   <li>계산과정이 단순하고 빠르다.</li>
   <li>실제 뉴런과 작동하는 방법이 비슷하다.</li>
 </ol>
@@ -598,17 +598,11 @@ $f(x)=max(\alpha x,x)$</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># zero-centering 방법을 이용
 </span><span class="n">X</span> <span class="o">-=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
-
-<ol>
-  <li>훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.</li>
-</ol>
+<p><br />2. 훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 레이어의 수는 50개, 레이어당 노드 수는 10개로 설정한다.
 </span></code></pre></div></div>
-
-<ol>
-  <li>모델을 훈련시킨다. 이때, 정직화(regularization)값은 0, learning rate는 적당히 작게 설정한다. 또한 이미지 데이터의 일부에 과적합 할 수 있도록 20개의 데이터만 훈련시킨다.</li>
-</ol>
+<p><br />3. 모델을 훈련시킨다. 이때, 정직화(regularization)값은 0, learning rate는 적당히 작게 설정한다. 또한 이미지 데이터의 일부에 과적합 할 수 있도록 20개의 데이터만 훈련시킨다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">init_two_layer_model</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#input size, hidden layer size, number of classes
 </span><span class="n">trainer</span> <span class="o">=</span> <span class="n">ClassifierTrainer</span><span class="p">()</span>
@@ -628,9 +622,7 @@ $f(x)=max(\alpha x,x)$</p>
 
 <p>훈련을 진행할수록 손실값(cost)은 감소하고 정확도(train)은 증가하여 훈련이 정상적으로 이루어지고 있다는 사실을 확인할 수 있다.</p>
 
-<ol>
-  <li>정직화 값을 변경하고 learning rate 값을 더 작게 설정하여 모델을 다시 훈련시켜본다.</li>
-</ol>
+<p><br />4. 정직화 값을 변경하고 learning rate 값을 더 작게 설정하여 모델을 다시 훈련시켜본다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">init_two_layer_model</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#input size, hidden layer size, number of classes
 </span><span class="n">trainer</span> <span class="o">=</span> <span class="n">ClassifierTrainer</span><span class="p">()</span>
@@ -646,9 +638,7 @@ $f(x)=max(\alpha x,x)$</p>
 
 <p>훈련이 진행할수록 손실값과 정확도 값이 거의 그대로 인것을 확인할 수 있다. 이러한 현상은 learning rate을 너무 낮게 하였기 때문이다.</p>
 
-<ol>
-  <li>그렇다면 learning rate를 크게 설정하여 모델을 다시 훈련시켜보자.</li>
-</ol>
+<p><br />5. 그렇다면 learning rate를 크게 설정하여 모델을 다시 훈련시켜보자.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">init_two_layer_model</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#input size, hidden layer size, number of classes
 </span><span class="n">trainer</span> <span class="o">=</span> <span class="n">ClassifierTrainer</span><span class="p">()</span>

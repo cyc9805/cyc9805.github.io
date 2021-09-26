@@ -60,7 +60,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Lecture 6: Training Neural Networks 1",
-        "excerpt":"Activation Functions 활성화 함수는 가중치와 입력 데이터를 곱한 값에 정규화를 한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU 가 있다. Sigmoid 시그모이드 함수의 모습은 다음과 같다. $\\sigma(x)=1/(1+e^{-x})$ 이 함수는 입력 데이터를 0과 1사이로 변환한다. 그러나 이 함수에는 치명적인 단점...","categories": ["computer vision","python"],
+        "excerpt":"Activation Functions 활성화 함수는 가중치와 입력 데이터를 곱한 값에 정직화 변수를 더한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU 가 있다. Sigmoid 시그모이드 함수의 모습은 다음과 같다. $\\sigma(x)=1/(1+e^{-x})$ 이 함수는 입력 데이터를 0과 1사이로 변환한다. 그러나 이 함수에는 치명적인...","categories": ["computer vision","python"],
         "tags": [],
         "url": "/computer%20vision/python/Lecture6-training-neural-networks-1/",
         "teaser": null

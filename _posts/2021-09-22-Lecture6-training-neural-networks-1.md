@@ -13,7 +13,7 @@ categories:
 
 ## Activation Functions
 
-활성화 함수는 가중치와 입력 데이터를 곱한 값에 정규화를 한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 ***Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU*** 가 있다. 
+활성화 함수는 가중치와 입력 데이터를 곱한 값에 정직화 변수를 더한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 ***Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU*** 가 있다. 
 
 
 ### Sigmoid
@@ -48,7 +48,7 @@ $f(x)=max(0,x)$
 
 ReLU의 장점은 다음과 같다.
 
-  1. 입력 데이터가 양수일때 gradient가 1로 수렴하지 않는다.
+  1. 입력 데이터가 양수일때 gradient가 0로 수렴하지 않는다.
   2. 계산과정이 단순하고 빠르다.
   3. 실제 뉴런과 작동하는 방법이 비슷하다.
 
@@ -183,14 +183,12 @@ $y^{(k)}=\gamma^{(k)} \hat{x}^{(k)}+\beta^{(k)}$
 # zero-centering 방법을 이용
 X -= np.mean(X, axis=0)
 ~~~
-
-2. 훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.
+<br>2. 훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.
 
 ~~~python
 # 레이어의 수는 50개, 레이어당 노드 수는 10개로 설정한다.
 ~~~
-
-3. 모델을 훈련시킨다. 이때, 정직화(regularization)값은 0, learning rate는 적당히 작게 설정한다. 또한 이미지 데이터의 일부에 과적합 할 수 있도록 20개의 데이터만 훈련시킨다.
+<br>3. 모델을 훈련시킨다. 이때, 정직화(regularization)값은 0, learning rate는 적당히 작게 설정한다. 또한 이미지 데이터의 일부에 과적합 할 수 있도록 20개의 데이터만 훈련시킨다.
 
 ~~~python
 model = init_two_layer_model(32*32*3,50,10) #input size, hidden layer size, number of classes
@@ -211,7 +209,7 @@ best_model, stats = trainer.train(X_tiny,y_tiny,X_tiny,y_tiny,
 
 훈련을 진행할수록 손실값(cost)은 감소하고 정확도(train)은 증가하여 훈련이 정상적으로 이루어지고 있다는 사실을 확인할 수 있다.
 
-4. 정직화 값을 변경하고 learning rate 값을 더 작게 설정하여 모델을 다시 훈련시켜본다.
+<br>4. 정직화 값을 변경하고 learning rate 값을 더 작게 설정하여 모델을 다시 훈련시켜본다.
 
 ~~~python
 model = init_two_layer_model(32*32*3,50,10) #input size, hidden layer size, number of classes
@@ -228,7 +226,7 @@ best_model, stats = trainer.train(X_train,y_train,X_val,y_val,
 
 훈련이 진행할수록 손실값과 정확도 값이 거의 그대로 인것을 확인할 수 있다. 이러한 현상은 learning rate을 너무 낮게 하였기 때문이다.
 
-5. 그렇다면 learning rate를 크게 설정하여 모델을 다시 훈련시켜보자.
+<br>5. 그렇다면 learning rate를 크게 설정하여 모델을 다시 훈련시켜보자.
 
 ~~~python
 model = init_two_layer_model(32*32*3,50,10) #input size, hidden layer size, number of classes

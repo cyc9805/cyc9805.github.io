@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-26T01:08:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 7: Training Neural Networks 2</title><link href="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/" rel="alternate" type="text/html" title="Lecture 7: Training Neural Networks 2" /><published>2021-09-25T00:00:00+09:00</published><updated>2021-09-25T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/">&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-26T20:57:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 7: Training Neural Networks 2</title><link href="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/" rel="alternate" type="text/html" title="Lecture 7: Training Neural Networks 2" /><published>2021-09-25T00:00:00+09:00</published><updated>2021-09-25T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/">&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
 
 &lt;p&gt;전에 최적화 과정에서 SGD(stochastic gradient descent)에 대해 배운적이 있다. SGD는 다른 알고리즘에 비해 가장 합리적이면서 효과가 좋은 알고리즘이나 많은 문제점을 가지고 있다. 다음과 같은 경우가 있다고 가정하자.&lt;/p&gt;
 
@@ -238,7 +238,7 @@
   &lt;li&gt;④에서 구축한 모델로 테스트 데이터 예측 후 최종 예측값으로 삼음&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">본 챕터의 두 번째 파트는 신경망, 선형 모델, 랜덤 포레스트와 기타 모델등에 대해 다루고 있다.</summary></entry><entry><title type="html">Lecture 6: Training Neural Networks 1</title><link href="http://localhost:4000/computer%20vision/python/Lecture6-training-neural-networks-1/" rel="alternate" type="text/html" title="Lecture 6: Training Neural Networks 1" /><published>2021-09-22T00:00:00+09:00</published><updated>2021-09-22T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture6-training-neural-networks-1</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture6-training-neural-networks-1/">&lt;h2 id=&quot;activation-functions&quot;&gt;Activation Functions&lt;/h2&gt;
 
-&lt;p&gt;활성화 함수는 가중치와 입력 데이터를 곱한 값에 정규화를 한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 &lt;strong&gt;&lt;em&gt;Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU&lt;/em&gt;&lt;/strong&gt; 가 있다.&lt;/p&gt;
+&lt;p&gt;활성화 함수는 가중치와 입력 데이터를 곱한 값에 정직화 변수를 더한 값을 다음 레이어로 어떠한 값으로 전달할지 지정하는 함수이다. 대표적인 활성화 함수로 &lt;strong&gt;&lt;em&gt;Sigmoid, tanh, ReLU, Leaky ReLU, Maxout, ELU&lt;/em&gt;&lt;/strong&gt; 가 있다.&lt;/p&gt;
 
 &lt;h3 id=&quot;sigmoid&quot;&gt;Sigmoid&lt;/h3&gt;
 
@@ -273,7 +273,7 @@ $f(x)=max(0,x)$&lt;/p&gt;
 &lt;p&gt;ReLU의 장점은 다음과 같다.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;입력 데이터가 양수일때 gradient가 1로 수렴하지 않는다.&lt;/li&gt;
+  &lt;li&gt;입력 데이터가 양수일때 gradient가 0로 수렴하지 않는다.&lt;/li&gt;
   &lt;li&gt;계산과정이 단순하고 빠르다.&lt;/li&gt;
   &lt;li&gt;실제 뉴런과 작동하는 방법이 비슷하다.&lt;/li&gt;
 &lt;/ol&gt;
@@ -422,17 +422,11 @@ $f(x)=max(\alpha x,x)$&lt;/p&gt;
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# zero-centering 방법을 이용
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;br /&gt;2. 훈련 모델의 구조를 설계한다. 이때, 층의 개수, 노드의 개수등을 정한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 레이어의 수는 50개, 레이어당 노드 수는 10개로 설정한다.
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;모델을 훈련시킨다. 이때, 정직화(regularization)값은 0, learning rate는 적당히 작게 설정한다. 또한 이미지 데이터의 일부에 과적합 할 수 있도록 20개의 데이터만 훈련시킨다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;br /&gt;3. 모델을 훈련시킨다. 이때, 정직화(regularization)값은 0, learning rate는 적당히 작게 설정한다. 또한 이미지 데이터의 일부에 과적합 할 수 있도록 20개의 데이터만 훈련시킨다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init_two_layer_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#input size, hidden layer size, number of classes
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trainer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ClassifierTrainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
@@ -452,9 +446,7 @@ $f(x)=max(\alpha x,x)$&lt;/p&gt;
 
 &lt;p&gt;훈련을 진행할수록 손실값(cost)은 감소하고 정확도(train)은 증가하여 훈련이 정상적으로 이루어지고 있다는 사실을 확인할 수 있다.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;정직화 값을 변경하고 learning rate 값을 더 작게 설정하여 모델을 다시 훈련시켜본다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;br /&gt;4. 정직화 값을 변경하고 learning rate 값을 더 작게 설정하여 모델을 다시 훈련시켜본다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init_two_layer_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#input size, hidden layer size, number of classes
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trainer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ClassifierTrainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
@@ -470,9 +462,7 @@ $f(x)=max(\alpha x,x)$&lt;/p&gt;
 
 &lt;p&gt;훈련이 진행할수록 손실값과 정확도 값이 거의 그대로 인것을 확인할 수 있다. 이러한 현상은 learning rate을 너무 낮게 하였기 때문이다.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;그렇다면 learning rate를 크게 설정하여 모델을 다시 훈련시켜보자.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;br /&gt;5. 그렇다면 learning rate를 크게 설정하여 모델을 다시 훈련시켜보자.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init_two_layer_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#input size, hidden layer size, number of classes
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trainer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ClassifierTrainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
