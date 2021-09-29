@@ -81,6 +81,7 @@ adam은 최적화 알고리즘 중 가장 좋은 성능을 보인다. 또한 이
 
 ---
 
+
 다음은 위 알고리즘들을 한번에 비교하여 나타내는 애니메이션이다.
 
 ![](https://cs231n.github.io/assets/nn3/opt2.gif){: width="70%" height="70%"}{: .align-center}
