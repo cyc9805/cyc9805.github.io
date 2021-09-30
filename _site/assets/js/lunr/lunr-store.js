@@ -82,4 +82,10 @@ var store = [{
         "tags": [],
         "url": "/computer%20vision/python/Lecture9-CNN-Architectures/",
         "teaser": null
+      },{
+        "title": "Lecture 8: Deep Learning Software",
+        "excerpt":"CPU vs GPU 이 부분은 사실 별로 중요한 내용이 아닌것 같아서 간단하게 설명하고 넘어가도록 하겠다. CPU는 적은 코어 수를 가지고 있으나 각각의 코어의 속도가 빠르고 성능이 훨씬 더 좋다. 따라서 연속적인 작업을 할 떄 유리하다. 많은 코어 수를 가지고 있으나 각각의 코어의 속도는 느리고 성능이 좋지 않다. 병행 작업을 할...","categories": ["computer vision","python"],
+        "tags": [],
+        "url": "/computer%20vision/python/Lecture8-Deep-Learning_Software/",
+        "teaser": null
       }]

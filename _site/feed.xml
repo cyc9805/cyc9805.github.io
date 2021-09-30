@@ -1,4 +1,225 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-30T09:23:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 9: CNN Architectures</title><link href="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/" rel="alternate" type="text/html" title="Lecture 9: CNN Architectures" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/">&lt;h2 id=&quot;cnn-architectures&quot;&gt;CNN Architectures&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-01T02:09:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 8: Deep Learning Software</title><link href="http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/" rel="alternate" type="text/html" title="Lecture 8: Deep Learning Software" /><published>2021-10-01T00:00:00+09:00</published><updated>2021-10-01T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/">&lt;h2 id=&quot;cpu-vs-gpu&quot;&gt;CPU vs GPU&lt;/h2&gt;
+
+&lt;p&gt;이 부분은 사실 별로 중요한 내용이 아닌것 같아서 간단하게 설명하고 넘어가도록 하겠다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CPU는 적은 코어 수를 가지고 있으나 각각의 코어의 속도가 빠르고 성능이 훨씬 더 좋다. 따라서 연속적인 작업을 할 떄 유리하다.&lt;/li&gt;
+  &lt;li&gt;많은 코어 수를 가지고 있으나 각각의 코어의 속도는 느리고 성능이 좋지 않다. 병행 작업을 할 때 유리하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다음은 CPU와 GPU를 딥러닝 작업에 사용할 때 걸리는 시간을 비교한 그래프이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture8-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 그래프에서 알 수 있다시피 CPU보다 GPU가 훨씬 더 좋은 성능을 보이고 있음을 알 수 있다. 이처럼 딥러닝 작업에는 GPU를 이용해 연산을 진행하는 것이 좋다.&lt;/p&gt;
+
+&lt;h3 id=&quot;nvidia-vs-amd&quot;&gt;NVIDIA vs AMD&lt;/h3&gt;
+
+&lt;p&gt;GPU를 만드는 대표적인 회사가 두 군대 있는데, 바로 NVIDIA 와 AMD 이다. NVIDIA가 AMD보다 딥러닝을 위한 GPU를 만드는데 더 투자를 많이 해왔기 때문에 AMD보다 NVIDIA를 사용하는 것이 추천된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;deep-learning-software&quot;&gt;Deep Learning Software&lt;/h2&gt;
+
+&lt;p class=&quot;notice--primary&quot;&gt;&lt;strong&gt;&lt;u&gt;참고 사항&lt;/u&gt;&lt;/strong&gt; 이 단원을 다루면서 레이어의 파라미터의 총 개수를 구하는 경우가 많을 것이다. 레이어의 파라미터 총 개수는 다음과 같이 구한다.&lt;/p&gt;
+
+&lt;p&gt;$(total \, parmeter) = (filter \, size)^2\times (number \, of\, channels)\times(number\,  of\, filters)$&lt;/p&gt;
+
+&lt;p class=&quot;notice--primary&quot;&gt;위 공식은 가중치 값을 가진 레이어에만 적용이 되고 Maxpooling 과 같이 가중치 값이 존재하지 않는 레이어는 파라미터의 총 개수는 무조건 0이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;lenet-5&quot;&gt;LeNet-5&lt;/h3&gt;
+
+&lt;p&gt;LeNet은 CNN의 첫번째 구조이다. 첫번째 구조인 만큼 쌓인 층 수도 적고, 필터의 크기도 최적의 결과를 위해 정해지지 않은 상태이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;alexnet&quot;&gt;AlexNet&lt;/h3&gt;
+
+&lt;p&gt;AlexNet은 2012년 ImageNet classification 대회에서 우승한 대규모 구조이다. 이 구조로 인해 다소 덜 중요하게 생각되었던 CNN 연구가 다시 불붙게 되었다. 다음은 AlexNet 구조의 모습이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;입력 이미지의 크기는 227x227x3 이다.&lt;/li&gt;
+  &lt;li&gt;첫번째 레이어에는 96개의 11x11 필터가 적용되었다.&lt;/li&gt;
+  &lt;li&gt;첫번째 레이어의 파라미터의 개수는 $(11&lt;em&gt;11&lt;/em&gt;3)*96 = 35000$(개) 이다.&lt;/li&gt;
+  &lt;li&gt;두번째 레이어는 Maxpooling 레이어로, 파라미터의 개수는 0이다.&lt;/li&gt;
+  &lt;li&gt;세번째 레이어는 정규화 레이어로, 파라미터의 개수는 마찬가지로 0이다.&lt;/li&gt;
+  &lt;li&gt;다음은 필터, Maxpooling, 정규화 레이어를 반복적으로 적용시켜 나타낸 AlexNet의 전체 구조이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-3.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2012년에는 모델의 훈련을 위한 GPU의 성능이 좋지 못할 때이므로 모델의 크기를 2개로 나눈 후 각자 훈련시켰다.&lt;/li&gt;
+  &lt;li&gt;AlexNet에서 일부 레이어의 필터의 개수를 변경한 &lt;strong&gt;&lt;em&gt;ZFNet&lt;/em&gt;&lt;/strong&gt; 이 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vggnet&quot;&gt;VGGNet&lt;/h3&gt;
+
+&lt;p&gt;VGGNet은 기본적인 CNN구조에서 필터의 크기를 작게하고 층을 더 깊게 쌓아 성능을 비약적으로 향상시킨 구조이다. 2014년 ImageNet classification 대회에서 우승한 구조이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-4.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;u&gt;필터의 크기를 작게 설정한 이유는 무엇일까?&lt;/u&gt;&lt;/strong&gt; 3개의 $3\times3$ 필터 사이즈를 가진 레이어는 한개의 $7\times7$ 필터 사이즈를 가진 레이어와 같다. 따라서, 모델의 비선형성을 추가하면서 깊게 쌓을 수 있게된다.&lt;/li&gt;
+  &lt;li&gt;이미지당 메모리의 96MB 를 차지하는 매우 무거운 모델이다.&lt;/li&gt;
+  &lt;li&gt;VGG16과 VGG19는 각각 16개, 19개의 레이어를 가지고 있다. VGG19의 층 수가 더 많지만 성능은 VGG16과 큰 차이가 없다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;googlenet&quot;&gt;GoogLeNet&lt;/h3&gt;
+
+&lt;p&gt;GoogLeNet은 기본적인 CNN구조에서 층을 더 깊게 쌓고 계산의 효율성을 증가시킨 모델이다. 성능은 VGGNet과 비슷하며, VGGNet과 마찬가지로 2014년 ImageNet classification 대회에서 우승한 구조이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-5.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;위 그림을 통해 알 수 있듯이 GoogLeNet에는 &lt;strong&gt;&lt;em&gt;Inception module&lt;/em&gt;&lt;/strong&gt; 이라는 독특한 특징이 존재한다. Inception module 은 여러개의 다른 사이즈의 필터와 pooling 을 병행하여 기존 레이어에 적용하여 계산하고 계산한 값을 연결하여 출력하는 구조이다. 그러나 이렇게 계산을 병행할시 계산량이 엄청나게 늘어난다는 단점이 존재하기 때문에 기존 레이어의 차원을 줄여주는 &lt;strong&gt;&lt;em&gt;bottleneck&lt;/em&gt;&lt;/strong&gt; 레이어를 적용해야 한다. 이 레이어를 적용할시 계산량은 절반 이상으로 줄어든다. 아래 사진에서 왼쪽은 일반 Inception module, 오른쪽은 bottleneck 레이어를 적용한 Inception module이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;총 22개의 가중치 값을 가진 레이어가 존재한다.&lt;/li&gt;
+  &lt;li&gt;마지막 레이어가 Fully Connected 레이어가 아니다.&lt;/li&gt;
+  &lt;li&gt;AlexNet보다 12배나 적은 파라미터를 가지고 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;resnet&quot;&gt;ResNet&lt;/h3&gt;
+
+&lt;p&gt;ResNet은 2015년 ImageNet classification 대회에서 우승한 구조이다. 바로 전년도에 우승한 VGG, GoogleNet과 비교해 엄청난 성능의 향상을 불러온 모델이다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-7.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 그림을 보면 residual block 이라는 개념이 나온다. 한번 자세히 알아보자.&lt;/p&gt;
+
+&lt;h4 id=&quot;residual-block&quot;&gt;Residual block&lt;/h4&gt;
+
+&lt;p&gt;모델의 층을 단순히 깊게만 쌓는다고 해서 모델의 성능이 좋아지는 것은 아니다. 아래의 그래프를 한번 참고해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이처럼 훈련과 테스트 데이터 모두 56개의 층을 가진 모델이 20개의 층을 가진 레이어보다 좋지 않은 성능을 보이고 있음을 알 수 있다. 이러한 문제를 해결하기 위해 고안된 것이 Residual block 인데, 원리는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽 구조는 일반적인 plain 레이어이고, 오른쪽 구조는 residual block 이다. 두 레이어의 차이점은 한 가지인데, &lt;u&gt;계산하는 동안의 입력 값에 대한 정보가 주어지지 않는가(plain 레이어)&lt;/u&gt; 아니면 &lt;u&gt;계산하는 동안의 입력 값에 대한 정보가 주어지는가(residual block)&lt;/u&gt; 이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;위의 그래프를 다시 한번 보자. $x$는 입력값, $H(x)$는 계산과정을 통해 얻은 최종 값이고 $F(x)$는 모든 레이어의 계산과정을 총칭한 함수이다. 
+plain 레이어는 입력 값에 대한 정보가 주어지지 않으므로 $H(x)=F(x)$ 가 되지만 residual block은 입력 값에 대한 정보가 주어지므로 $H(x)=F(x)+x$ 가 된다. 즉, residual block은 &lt;strong&gt;&lt;em&gt;기존에 학습한 정보를 보존하고, 거기에 추가적인 계산만을 실시하므로&lt;/em&gt;&lt;/strong&gt; plain 레이어보다 연산량이 훨씬 더 줄어들게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;위 과정을 이해하기 힘들다면 다음과 같은 비유를 한번 생각해보자.
+&lt;br /&gt;&lt;cite&gt;참조: https://itrepo.tistory.com/36&lt;/cite&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;오픈북이 불가능한 시험&lt;/li&gt;
+  &lt;li&gt;오픈북이 가능한 시험&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;1의 경우에는 시험의 범위가 많아질수록(=층이 깊어지고 학습해야 할 양이 많아지면) 공부하기가 어려워질 것이다. 반면 2의 경우에는 이미 배웠던 내용($x$)가 주어지기 때문에 추가적으로 학습한 내용만을 공부할 것이다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;ResNet에 대한 설명을 마저 하도록 하겠다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2개의 3x3 convolutional 레이어로 이루어진 residual block을 매우 깊게 쌓은 모델이다.&lt;/li&gt;
+  &lt;li&gt;마지막에 1000개의 클래스로 분류하는 Fully Connected 레이어 외의 Fully Connected 레이어가 존재하지 않는다.&lt;/li&gt;
+  &lt;li&gt;레이어의 총 개수는 34, 50, 101, 152 개이다.&lt;/li&gt;
+  &lt;li&gt;연산량을 더 줄이기 위해 GoogLeNet에 사용된 bottleneck 레이어를 사용하기도 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;comparing-the-models&quot;&gt;Comparing the models&lt;/h2&gt;
+
+&lt;p&gt;다음은 지금까지 배운 구조를 그래프를 통해 비교한 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;오른쪽 그래프에서 원의 크기는 모델의 메모리 사용량을 나타낸다.&lt;/li&gt;
+  &lt;li&gt;VGG16,19의 효율성이 가장 낮다 (원의 크기가 가장 크다).&lt;/li&gt;
+  &lt;li&gt;GoogLeNet의 효율성이 가장 높다 (원의 크기가 가장 작다).&lt;/li&gt;
+  &lt;li&gt;AlexNet의 정확도가 가장 떨어진다.&lt;/li&gt;
+  &lt;li&gt;ResNet은 적당한 효율성+가장 높은 정확도로 성능이 제일 좋은 모델이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다음은 구조를 훈련 시간과 훈련에 필요한 전력의 양을 비교한 그래프이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;extra-architectures&quot;&gt;Extra architectures&lt;/h2&gt;
+
+&lt;p&gt;ImageNet classification 대회에서 우승한 구조외에 다양한 논문 등에서 연구한 구조에 대해 간단하게 설명하도록 하겠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;network-in-network-nin&quot;&gt;Network in Network (NiN)&lt;/h3&gt;
+
+&lt;p&gt;기본적인 convolutional layer 안에 micronetwork를 추가해 더 자세한 특징을 학습할 수 있게 만든 모델이다. bottleneck 레이어의 선구자격이 되는 모델이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;improving-resnet&quot;&gt;Improving ResNet&lt;/h3&gt;
+
+&lt;p&gt;ResNet이 가장 최근에 우승한 구조인만큼 ResNet의 성능을 발전하기 위한 많은 연구가 시도 되었다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Identity Mappings in Deep Residual Networks&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;residual block에서 계산할때 더 직접적으로 기존 정보에 대해 알려준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-14.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;2. Wide Residual Networks&lt;/p&gt;
+
+&lt;p&gt;ResNet에서 레이어의 수보다 residual block가 더 중요하다고 생각해 F개의 필터가 아닌 F x k 개의 필터를 사용해 residual block을 더 넓게 만든 모델이다. 
+이렇게 해서 만든 50개의 레이어를 가진 모델이 기존의 152개의 레이어를 가진 모델보다 더 좋은 성능을 보인다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-15.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;3. Aggregated Residual Transformations for Deep Neural Networks (ResNeXt)&lt;/p&gt;
+
+&lt;p&gt;Inception module과 비슷하게 residual block에 여러개의 필터를 병행하여 적용하여 residual block을 더 넓게 만든 모델이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-16.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;4. Deep Networks with Stochastic Depth&lt;/p&gt;
+
+&lt;p&gt;계산할수록 gradient 값이 줄어드는 것을 막기 위해 훈련시 랜덤하게 레이어를 드롭하여 레이어 수를 줄인 모델이다. 단, 테스트 할때는 레이어를 드롭하지 않은 모델을 이용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-17.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;beyond-resnet&quot;&gt;Beyond ResNet&lt;/h3&gt;
+
+&lt;p&gt;다음 설명하는 모델들은 ResNet의 중요한 요소인 residual block을 사용하지 않았다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;FractalNet: Ultra-Deep Neural Networks without Residuals&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;얉은 층과 깊은 층이 병행하여 존재해 훈련시에 랜덤하게 레이어를 드롭하여 레이어 수를 줄인다. 단, 테스트 할때는 레이어를 드롭하지 않은 모델을 이용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-18.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;2. Densely Connected Convolutional Networks (DenseNet)&lt;/p&gt;
+
+&lt;p&gt;레이어 사이에 Dense block이라는 별도의 block이 존재하는데, 이 block 안에 있는 레이어들은 다음 레이어들과 연결되어 있다. 이렇게 함으로써 계산할수록 gradient 값이 줄어드는 현상을 방지할 수 있고, 더 자세한 특징을 학습할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-19.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;3. SqueezeNet&lt;/p&gt;
+
+&lt;p&gt;squeezeNet은 AlexNet과 비슷한 수준의 정확도를 가지고 있으나 50배나 적은 수의 파라미터를 요구하고 0.5MB의 용량을 가지고 있다. 1x1의 크기인 필터를 가진 squeeze 레이어와 더 큰 필터 크기를 가진 expand 레이어로 구성되어 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-20.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;VGG, GoogLeNet, ResNet 모두 널리 쓰이는 모델이다.&lt;/li&gt;
+  &lt;li&gt;이중 ResNet이 가장 좋은 성능을 보인다.&lt;/li&gt;
+  &lt;li&gt;더 깊게 모델을 쌓으면서 성능을 높이는 방향으로 연구가 진행되고 있다.&lt;/li&gt;
+  &lt;li&gt;레이어를 어떻게 디자인하고 gradient flow를 어떻게 향상시킬지에 대해 연구가 진행되고 있다.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">CPU vs GPU</summary></entry><entry><title type="html">Lecture 9: CNN Architectures</title><link href="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/" rel="alternate" type="text/html" title="Lecture 9: CNN Architectures" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/">&lt;h2 id=&quot;cnn-architectures&quot;&gt;CNN Architectures&lt;/h2&gt;
 
 &lt;p&gt;CNN에는 다양한 구조가 존재한다. 유명한 구조에는 &lt;strong&gt;&lt;em&gt;AlexNet, VGG, GoogLeNet, ResNet&lt;/em&gt;&lt;/strong&gt; 가 있다. 이 구조들을 ImageNet classification 대회에서 우승한 연도 순서대로 설명하겠다.&lt;/p&gt;
 
@@ -1980,173 +2201,4 @@ $f(x)=max(\alpha x,x)$&lt;/p&gt;
 
 &lt;h3 id=&quot;31211-데이터-오류-수정&quot;&gt;3.12.11 데이터 오류 수정&lt;/h3&gt;
 
-&lt;p&gt;일부 데이터가 사용자나 데이터 작성자의 입력 오류로 인해 잘못되었다고 추측될 경우, 수정을 거치면서 품질이 더 좋은 데이터로 학습시킬 수 있다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다.</summary></entry><entry><title type="html">Lecture 3: Loss Function and Optimization</title><link href="http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/" rel="alternate" type="text/html" title="Lecture 3: Loss Function and Optimization" /><published>2021-09-12T00:00:00+09:00</published><updated>2021-09-12T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/">&lt;h2 id=&quot;what-is-loss-function&quot;&gt;What is Loss Function?&lt;/h2&gt;
-
-&lt;p&gt;손실함수(loss function) 은 분류기 (classifier)가 얼마나 잘 작동하는지 알려주는 중요한 지표이다. 
-손실함수의 공식은 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;$L=\frac{1}{N}\sum_i L_i(f(x_i,w),y_i)$&lt;/p&gt;
-
-&lt;p&gt;여기서 $x_i$는 이미지, $y_i$는 레이블이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;multiclass-svmsupport-vector-machine-loss&quot;&gt;Multiclass SVM(Support Vector Machine) loss&lt;/h2&gt;
-
-&lt;p&gt;Multiclass SVM loss 는 &lt;strong&gt;&lt;em&gt;예측한 레이블의 점수&lt;/em&gt;&lt;/strong&gt; 와 &lt;strong&gt;&lt;em&gt;카테고리별 점수&lt;/em&gt;&lt;/strong&gt; 의 차를 계산하여 만약 0보다 작으면 0이, 0보다 크면 그 차이값이 채택이 된다. 그리고 채택이 된 값을 모두 더한다. 식으로 표현하면 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;$L_i=\sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$&lt;/p&gt;
-
-&lt;p&gt;여기서 $s_j$는 &lt;strong&gt;&lt;em&gt;예측한 레이블의 점수&lt;/em&gt;&lt;/strong&gt;, $s_{y_i}$는 &lt;strong&gt;&lt;em&gt;클래스별 점수&lt;/em&gt;&lt;/strong&gt; 이다. 뒤에 붙는 숫자 1은 단지 임의로 설정한 값으로, $s_j-s_{y_i}$ 값이 0이 될 때 0과 비교했을 때 더 큰 값이 나오도록 하는 역할을 한다.&lt;/p&gt;
-
-&lt;p&gt;예시로 다음과 같은 3개의 다른 카테고리의 사진과 클래스별 점수가 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture3-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;여기서 고양이 사진의 손실, 즉 $L_1$ 의 값은 $max(0,5.1-3.2+1)+max(0,-1.7-3.2+1) = 2.9+0 = 2.9$ 이다.
-차 사진의 손실과 개구리 사진의 손실도 같은 방법으로 다음과 같이 구할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;$L_2=max(0,1.3-4.9+1)+max(0,2-4.9+1) = 0$
-$L_3=max(0,2.2-(-3.1)+1)+max(0,2.5-(-3.1)+1) = 6.3+6.6 = 12.9$&lt;/p&gt;
-
-&lt;p&gt;$L_1, L_2, L_3$ 의 평균은 $\frac{2.9+0+12.9}{3} = 5.27$ 이고 이 점수가 이 분류기의 &lt;strong&gt;&lt;em&gt;손실값&lt;/em&gt;&lt;/strong&gt; 이다.
-&lt;br /&gt;Multiclass SVM loss의 몇 가지 특징을 살펴보면 다음과 같다.&lt;/p&gt;
-
-&lt;h3 id=&quot;features-of-multiclass-svm-loss&quot;&gt;Features of Multiclass SVM loss&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;예측한 레이블의 점수는 그대로이고 실제 레이블의 점수가 증가하면 손실 값의 크기가 감소한다. 아래 그래프는 이를 나타내었다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture3-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;손실값은 최소 0 (완벽하게 분류함), 최대 무한대 (하나도 분류를 못함)의 값을 가질 수 있다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;손실값을 0으로 만드는 가중치 $W$ 이 있다고 할 때 $2W$ 또한 손실값을 0으로 만든다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Multiclass SVM loss 를 파이썬 코드로 구현하면 다음과 같다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;L_i_vectorized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;margins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maximum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;margins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;loss_i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;margins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loss_i&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;앞서 설명한 함수를 그대로 표현한 것이므로 코드에 대한 별도의 설명은 생략하도록 하겠다.&lt;/p&gt;
-
-&lt;h3 id=&quot;regularization&quot;&gt;Regularization&lt;/h3&gt;
-&lt;p&gt;Regularization, 즉 정규화는 모델이 훈련 데이터에 &lt;strong&gt;&lt;em&gt;과적합하는 것을 방지&lt;/em&gt;&lt;/strong&gt; 하고 &lt;strong&gt;&lt;em&gt;단순하게&lt;/em&gt;&lt;/strong&gt; 만들기 위해 사용된다. 정규화 함수는 손실함수 뒤에 붙게된다.&lt;/p&gt;
-
-&lt;p&gt;$L=\frac{1}{N}\sum_i L_i(f(x_i,w),y_i)+\Lambda R(w)$&lt;/p&gt;
-
-&lt;p&gt;정규화에는 대표적으로 &lt;strong&gt;&lt;em&gt;L2 정규화&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;L1 정규화&lt;/em&gt;&lt;/strong&gt; 가 있다. 각각의 공식은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;L2 정규화: $R(W)=\sum_k\sum _l{W^2}$&lt;/li&gt;
-  &lt;li&gt;L1 정규화: $R(W)=\sum_k\sum _l\vert W \vert$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;L1 정규화는 중요하지 않은 특징을 0으로 만들어주고, L2 정규화는 중요하지 않은 특징을 0에 가깝게 만들어주나 실제로 0이 되지는 않는다.&lt;/p&gt;
-
-&lt;p&gt;다음과 같이 2개의 가중치 행렬이 있다고 가정하자.&lt;/p&gt;
-
-&lt;p&gt;$W1=[1,0,0,0]$                  &lt;br /&gt;$W2=[0.25,0.25,0.25,0.25]$&lt;/p&gt;
-
-&lt;p&gt;$[1,1,1,1]$ 의 값을 가진 데이터 X 와 $W1, W2$ 을 각각 곱하면 손실값이 동일하게 1로 나오지만 $W1$ 처럼 가중치가 한 특징에만 집중되어 있는 경우 &lt;strong&gt;&lt;em&gt;L1 정규화&lt;/em&gt;&lt;/strong&gt; 를, $W2$ 처럼 가중치가 모든 특징에 골고루 분배되어 있으면 &lt;strong&gt;&lt;em&gt;L2 정규화&lt;/em&gt;&lt;/strong&gt; 를 사용하는 것이 좋다.&lt;/p&gt;
-
-&lt;h2 id=&quot;softmax-classifier-multinomial-logistic-regression&quot;&gt;Softmax Classifier (Multinomial Logistic Regression)&lt;/h2&gt;
-
-&lt;p&gt;Softmax Classifier 의 손실 값은 각 클래스에 &lt;strong&gt;&lt;em&gt;정규화 된 로그 확률&lt;/em&gt;&lt;/strong&gt; 을 적용한 값이다. Softmax Classifier 의 손실함수는 다음과 같이 표현한다.&lt;/p&gt;
-
-&lt;p&gt;$L_i=-log(\frac{e^{s_{y_i}}}{\sum _je^{s_j}})$&lt;/p&gt;
-
-&lt;p&gt;식이 이해하기 어려우므로 아까와 같은 사진을 예시로 들어 설명하도록 하겠다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture3-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;아까와 다른점은 클래스별 점수가 &lt;strong&gt;&lt;em&gt;정규화 되지 않은 로그 확률&lt;/em&gt;&lt;/strong&gt; 을 나타낸다는 것이다. 
-먼저 고양이 사진부터 살펴보자. 고양이의 손실함수 $L_1$ 은 다음과 같은 순서로 구한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;클래스별 점수에 자연함수$e$ 를 취한다.&lt;/li&gt;
-  &lt;li&gt;자연함수를 취한 값을 정규화 시킨다.&lt;/li&gt;
-  &lt;li&gt;정규화 시킨 값에 로그를 취한다.&lt;/li&gt;
-  &lt;li&gt;로그를 취한 값 앞에 마이너스 부호를 붙이면 이것이 &lt;strong&gt;&lt;em&gt;정규화 된 로그 확률&lt;/em&gt;&lt;/strong&gt; 이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;아래 사진이 위 과정을 한번에 보여준다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture3-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 과정을 차 사진, 개구리 사진에 마찬가지로 적용하고 각 손실 값의 평균에 정규화 함수를 더한 값이 곧 이 분류기의 손실 값이 된다.&lt;/p&gt;
-
-&lt;p&gt;$L=\frac{1}{N}\sum_{i=1} L_i+R(w)$&lt;/p&gt;
-
-&lt;p&gt;Softmax Classifier 의 몇가지 특징을 살펴보면 다음과 같다.&lt;/p&gt;
-
-&lt;h3 id=&quot;features-of-softmax-classifier&quot;&gt;Features of Softmax Classifier&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;손실 값의 최소 값은 0, 최대 값은 무한대가 된다. 단, 손실 값이 실제로 0이 되지는 않는다.&lt;/li&gt;
-  &lt;li&gt;모든 클래스별 점수는 초기에는 0에 가까우므로 초기 손실 값은 $log(C)$ 의 형태를 나타낸다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;difference-and-similarity-between-multiclass-svm-and-softmax-classifier&quot;&gt;Difference and Similarity between Multiclass SVM and Softmax Classifier&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Multiclass SVM은 분류기가 이미지를 알맞게 분류하는 것에 성공했으면 더 좋은 가중치의 값을 찾는 계산을 중단한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;반면 Softmax Classifier은 분류기가 이미지를 알맞게 분류하는 것에 성공했어도 더 좋은 가중치의 값을 찾기 위해 계산을 반복해 나간다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;그러나 두 분류기 모두 성능은 비슷하다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
-
-&lt;p&gt;등산을 하고 있는 사람이 있다고 하자. 그 사람은 산에서 가장 고도가 낮은 지점을 찾아 내려가는 시도를 하고 있다. 산을 &lt;strong&gt;&lt;em&gt;그래프&lt;/em&gt;&lt;/strong&gt;, 사람을 &lt;strong&gt;&lt;em&gt;손실값&lt;/em&gt;&lt;/strong&gt; 으로 치환하면 이것이 바로 &lt;strong&gt;&lt;em&gt;최적화&lt;/em&gt;&lt;/strong&gt; (optimization) 과정이다. 즉, 가장 작은 손실값을 찾는 과정이 최적화 과정이다.&lt;/p&gt;
-
-&lt;p&gt;최적화 과정에는 다음과 같은 알고리즘이 있다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Random search: 말 그대로 랜덤하게 포인트를 찍어 그것이 최소값이길 바라는 알고리즘이다. 아주 나쁘고 무식한 알고리즘이여서 잘 쓰이지 않는다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Gradient descent: 손실함수의 한 점에서의 미분값을 구하며 기울기를 찾는 알고리즘이다. 기울기를 알면 함수가 증가/감소 하는지 알 수 있으므로 계속 반복하며 기울기를 따라가다 보면 결국 최소 손실값을 찾을 수 있게 된다. Gradient descent 에는 두 가지 방법이 있다.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Numerical gradient: 미분함수 공식 $\lim_{h\rightarrow0 }\frac{f(w+h)-f(w)}{h}$ 에 직접 숫자를 대입해가며 구하는 방법이다. 계산 과정이 느리고 정확하지 않지만 최적화 과정을 쉽게 이해할 수 있다는 장점이 있다.&lt;/li&gt;
-      &lt;li&gt;Analytic gradient: 도함수, 즉 $f’(x)$를 이용하여 구하는 방법이다. 계산 과정이 빠르고 정확하지만 최적화 과정을 쉽게 이해할 수 없다는 단점이 있다.&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;Gradient descent 를 파이썬 코드로 다음과 같이 나타낼 수 있다.&lt;/p&gt;
-
-    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-     &lt;span class=&quot;n&quot;&gt;weights_grad&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evaluate_gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss_fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-     &lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weights_grad&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;#step size는 포인트를 어느정도 움직일지를 나타낸다.
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Stochastic Gradient Descent(SGD): 사진의 모든 픽셀에 대해 가중치 값을 구하는 것은 너무나도 복잡하고 오래 걸리는 작업이다. 따라서 일부 픽셀들만 선택해서 그 픽셀들끼리의 가중치 값을 구한다. 여기서 선택한 픽셀들을 &lt;strong&gt;&lt;em&gt;Minibatch&lt;/em&gt;&lt;/strong&gt; 라고 한다. Minibatch에 Gradient descent를 적용한 것이 Stochastic Gradient Descent 이다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이전에 내가 수강하였던 Mathmatics for Machine Learning에 Gradient descent의 원리를 이해하기 쉽게 interactive page로 나타나 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.coursera.org/learn/multivariate-calculus-machine-learning/ungradedLab/3pnkS/the-sandpit/lab?path=%2Fnotebooks%2FThe%2520Sandpit.ipynb&quot;&gt;Sandpit game&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;image-features&quot;&gt;Image Features&lt;/h2&gt;
-
-&lt;p&gt;인공 신경망이 개발되기 전에는 이미지의 특정한 특징만 선택해서 이미지를 분류하는데 그 특징만이 사용되는 경우가 많았다. 사용된 대표적인 특징은 &lt;strong&gt;&lt;em&gt;Color Spectrum&lt;/em&gt;&lt;/strong&gt;(RGB), &lt;strong&gt;&lt;em&gt;Histogram of Oriented Gradient&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;Bag of Words&lt;/em&gt;&lt;/strong&gt; 가 있다&lt;/p&gt;
-
-&lt;p&gt;또한 왼쪽 그림에 표현된 직교 좌표계에 나타난 데이터 포인트들의 경우 빨강 포인트와 파랑 포인트를 구분하는 선형 구분선을 긋기란 쉽지 않다. 이때, 오른쪽 그림과 같이 데이터 포인트들을 극좌표로 나타내면 쉽게 선형 구분선을 그어 빨강 포인트와 파랑 포인트를 구분할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture3-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">What is Loss Function?</summary></entry></feed>
+&lt;p&gt;일부 데이터가 사용자나 데이터 작성자의 입력 오류로 인해 잘못되었다고 추측될 경우, 수정을 거치면서 품질이 더 좋은 데이터로 학습시킬 수 있다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">챕터 2의 두번째 파트는 시간과 관련된 데이터를 처리하는 방법, 비지도 학습 알고리즘을 이용하여 특징을 생성하는 방법에 대해 다루고 있다.</summary></entry></feed>
