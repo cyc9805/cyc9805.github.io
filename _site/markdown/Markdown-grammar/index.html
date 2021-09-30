@@ -271,7 +271,7 @@
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
       <li>
-            📂전체 글 수 13개
+            📂전체 글 수 14개
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
@@ -284,7 +284,7 @@
                     
                 
                     
-                        <li><a href="/categories/python" class="">Python (12)</a></li>
+                        <li><a href="/categories/python" class="">Python (13)</a></li>
                     
                 
                     
@@ -312,7 +312,7 @@
                     
                 
                     
-                        <li><a href="/categories/computer vision" class="">Computer Vision (7)</a></li>
+                        <li><a href="/categories/computer vision" class="">Computer Vision (8)</a></li>
                     
                 
                     
@@ -382,7 +382,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#줄바꿈">줄바꿈</a></li><li><a href="#문단-나누기">문단 나누기</a></li><li><a href="#중첩된-구조">중첩된 구조</a></li><li><a href="#마크다운-문법을-그대로-보여줄-때">마크다운 문법을 그대로 보여줄 때</a></li><li><a href="#헤더">헤더</a></li><li><a href="#h2">h2</a><ul><li><a href="#h3">h3</a><ul><li><a href="#h4">h4</a><ul><li><a href="#h5">h5</a><ul><li><a href="#h6">h6</a></li></ul></li></ul></li></ul></li></ul></li><li><a href="#텍스트">텍스트</a><ul><li><a href="#강조">강조</a></li><li><a href="#기울임">기울임</a></li><li><a href="#취소선">취소선</a></li><li><a href="#밑줄">밑줄</a></li><li><a href="#글씨색">글씨색</a></li><li><a href="#코드-블록">코드 블록</a></li></ul></li><li><a href="#링크">링크</a><ul><li><a href="#설명이-없는-링크">설명이 없는 링크</a></li><li><a href="#설명이-있는-링크">설명이 있는 링크</a></li><li><a href="#그림-링크-삽입">그림 링크 삽입</a></li><li><a href="#그림-자체에-링크-걸기">그림 자체에 링크 걸기</a></li></ul></li><li><a href="#인용문">인용문</a></li><li><a href="#리스트">리스트</a><ul><li><a href="#순서가-없는-리스트">순서가 없는 리스트</a></li><li><a href="#순서가-있는-리스트">순서가 있는 리스트</a></li><li><a href="#체크-리스트">체크 리스트</a></li></ul></li><li><a href="#구분선">구분선</a></li><li><a href="#테이블">테이블</a></li></ul>
+              <ul class="toc__menu"><li><a href="#줄바꿈">줄바꿈</a></li><li><a href="#문단-나누기">문단 나누기</a></li><li><a href="#중첩된-구조">중첩된 구조</a></li><li><a href="#마크다운-문법을-그대로-보여줄-때">마크다운 문법을 그대로 보여줄 때</a></li><li><a href="#헤더">헤더</a></li><li><a href="#h2">h2</a><ul><li><a href="#h3">h3</a><ul><li><a href="#h4">h4</a><ul><li><a href="#h5">h5</a><ul><li><a href="#h6">h6</a></li></ul></li></ul></li></ul></li></ul></li><li><a href="#텍스트">텍스트</a><ul><li><a href="#강조">강조</a></li><li><a href="#기울임">기울임</a></li><li><a href="#취소선">취소선</a></li><li><a href="#밑줄">밑줄</a></li><li><a href="#글씨색">글씨색</a></li><li><a href="#코드-블록">코드 블록</a></li></ul></li><li><a href="#링크">링크</a><ul><li><a href="#설명이-없는-링크">설명이 없는 링크</a></li><li><a href="#설명이-있는-링크">설명이 있는 링크</a></li><li><a href="#그림-링크-삽입">그림 링크 삽입</a></li><li><a href="#그림-자체에-링크-걸기">그림 자체에 링크 걸기</a></li></ul></li><li><a href="#인용문">인용문</a></li><li><a href="#리스트">리스트</a><ul><li><a href="#순서가-없는-리스트">순서가 없는 리스트</a></li><li><a href="#순서가-있는-리스트">순서가 있는 리스트</a></li><li><a href="#체크-리스트">체크 리스트</a></li></ul></li><li><a href="#구분선">구분선</a></li><li><a href="#테이블">테이블</a></li><li><a href="#notice">Notice</a></li></ul>
 
             </nav>
           </aside>
@@ -611,7 +611,19 @@
 
 <hr />
 
-<p><br /><br />일단 이 정도 문법이면 블로그를 작성하는데 문제는 없을 것 같다. 만약 더 필요한 문법이 생기면 더 추가해서 적도록 하겠다.</p>
+<h2 id="notice">Notice</h2>
+
+<p>notice 기능은 주의 사항, 공지 같은 것을 강조하기에 좋다.
+<br /> 하는 방법은 문단의 바로 다음줄에 {: .notice}만 붙여 주기만 하면 된다. 이때, notice 뒤에 minimal mistakes에서 지정한 notice의 종류 이름을 붙여줄 수도 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">**&lt;</span><span class="n">u</span><span class="o">&gt;</span><span class="n">참고</span> <span class="n">사항</span><span class="o">&lt;/</span><span class="n">u</span><span class="o">&gt;**</span> <span class="n">이</span> <span class="n">블로그는</span> <span class="n">매우</span> <span class="n">유익합니다</span><span class="err">!</span>
+<span class="p">{:</span> <span class="p">.</span><span class="n">notice</span><span class="o">--</span><span class="n">primary</span><span class="p">}</span> 
+</code></pre></div></div>
+
+<p class="notice--primary"><strong><u>참고 사항</u></strong> 이 블로그는 매우 유익합니다!</p>
+
+<hr />
+<p><br />일단 이 정도 문법이면 블로그를 작성하는데 문제는 없을 것 같다. 만약 더 필요한 문법이 생기면 더 추가해서 적도록 하겠다.</p>
 
         
       </section>
@@ -676,6 +688,47 @@
     <div class="page__related">
       <h4 class="page__related-title">You May Also Enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20vision/python/Lecture9-CNN-Architectures/" rel="permalink">Lecture 9: CNN Architectures
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CNN Architectures
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -794,47 +847,6 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">Activation Functions
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/" rel="permalink">Chapter 4: 모델 구축 part1
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          6 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다.
 
 </p>
   </article>
