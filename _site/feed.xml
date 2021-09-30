@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-30T09:11:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 9: CNN Architectures</title><link href="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/" rel="alternate" type="text/html" title="Lecture 9: CNN Architectures" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/">&lt;h2 id=&quot;cnn-architectures&quot;&gt;CNN Architectures&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-30T09:23:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 9: CNN Architectures</title><link href="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/" rel="alternate" type="text/html" title="Lecture 9: CNN Architectures" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/">&lt;h2 id=&quot;cnn-architectures&quot;&gt;CNN Architectures&lt;/h2&gt;
 
 &lt;p&gt;CNN에는 다양한 구조가 존재한다. 유명한 구조에는 &lt;strong&gt;&lt;em&gt;AlexNet, VGG, GoogLeNet, ResNet&lt;/em&gt;&lt;/strong&gt; 가 있다. 이 구조들을 ImageNet classification 대회에서 우승한 연도 순서대로 설명하겠다.&lt;/p&gt;
 
 &lt;p class=&quot;notice--primary&quot;&gt;&lt;strong&gt;&lt;u&gt;참고 사항&lt;/u&gt;&lt;/strong&gt; 이 단원을 다루면서 레이어의 파라미터의 총 개수를 구하는 경우가 많을 것이다. 레이어의 파라미터 총 개수는 다음과 같이 구한다.&lt;/p&gt;
 
-&lt;p&gt;$ (total parmeter) = (filter size)^2&lt;em&gt;(number of channels)&lt;/em&gt;(number of filters) $&lt;/p&gt;
+&lt;p&gt;$(total \, parmeter) = (filter \, size)^2\times (number \, of\, channels)\times(number\,  of\, filters)$&lt;/p&gt;
 
 &lt;p class=&quot;notice--primary&quot;&gt;위 공식은 가중치 값을 가진 레이어에만 적용이 되고 Maxpooling 과 같이 가중치 값이 존재하지 않는 레이어는 파라미터의 총 개수는 무조건 0이다.&lt;/p&gt;
 
@@ -43,7 +43,7 @@
 &lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-4.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;u&gt;필터의 크기를 작게 설정한 이유는 무엇일까?&lt;/u&gt;&lt;/strong&gt; 3개의 $3x3$ 필터 사이즈를 가진 레이어는 한개의 $7x7$ 필터 사이즈를 가진 레이어와 같다. 따라서, 모델의 비선형성을 추가하면서 깊게 쌓을 수 있게된다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;u&gt;필터의 크기를 작게 설정한 이유는 무엇일까?&lt;/u&gt;&lt;/strong&gt; 3개의 $3\times3$ 필터 사이즈를 가진 레이어는 한개의 $7\times7$ 필터 사이즈를 가진 레이어와 같다. 따라서, 모델의 비선형성을 추가하면서 깊게 쌓을 수 있게된다.&lt;/li&gt;
   &lt;li&gt;이미지당 메모리의 96MB 를 차지하는 매우 무거운 모델이다.&lt;/li&gt;
   &lt;li&gt;VGG16과 VGG19는 각각 16개, 19개의 레이어를 가지고 있다. VGG19의 층 수가 더 많지만 성능은 VGG16과 큰 차이가 없다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -55,7 +55,7 @@
 &lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-5.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;위 그림을 통해 알 수 있듯이 GoogLeNet에는 Inception module 이라는 독특한 특징이 존재한다. Inception module 은 여러개의 다른 사이즈의 필터와 pooling 을 병행하여 기존 레이어에 적용하여 계산하고 계산한 값을 연결하여 출력하는 구조이다. 그러나 이렇게 계산을 병행할시 계산량이 엄청나게 늘어난다는 단점이 존재하기 때문에 기존 레이어의 차원을 줄여주는 &lt;strong&gt;&lt;em&gt;bottleneck&lt;/em&gt;&lt;/strong&gt; 레이어를 적용해야 한다. 이 레이어를 적용할시 계산량은 절반 이상으로 줄어든다. 아래 사진에서 왼쪽은 일반 Inception module, 오른쪽은 bottleneck 레이어를 적용한 Inception module이다.&lt;/li&gt;
+  &lt;li&gt;위 그림을 통해 알 수 있듯이 GoogLeNet에는 &lt;strong&gt;&lt;em&gt;Inception module&lt;/em&gt;&lt;/strong&gt; 이라는 독특한 특징이 존재한다. Inception module 은 여러개의 다른 사이즈의 필터와 pooling 을 병행하여 기존 레이어에 적용하여 계산하고 계산한 값을 연결하여 출력하는 구조이다. 그러나 이렇게 계산을 병행할시 계산량이 엄청나게 늘어난다는 단점이 존재하기 때문에 기존 레이어의 차원을 줄여주는 &lt;strong&gt;&lt;em&gt;bottleneck&lt;/em&gt;&lt;/strong&gt; 레이어를 적용해야 한다. 이 레이어를 적용할시 계산량은 절반 이상으로 줄어든다. 아래 사진에서 왼쪽은 일반 Inception module, 오른쪽은 bottleneck 레이어를 적용한 Inception module이다.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -86,17 +86,18 @@
 
 &lt;p&gt;왼쪽 구조는 일반적인 plain 레이어이고, 오른쪽 구조는 residual block 이다. 두 레이어의 차이점은 한 가지인데, &lt;u&gt;계산하는 동안의 입력 값에 대한 정보가 주어지지 않는가(plain 레이어)&lt;/u&gt; 아니면 &lt;u&gt;계산하는 동안의 입력 값에 대한 정보가 주어지는가(residual block)&lt;/u&gt; 이다.&lt;/p&gt;
 
-&lt;p&gt;위의 그래프를 다시 한번 보자. $x$는 입력값, $H(x)$는 계산과정을 통해 얻은 최종 값이고 $F(x)$는 모든 레이어의 계산과정을 총칭한 함수이다. plain 레이어는 입력 값에 대한 정보가 주어지지 않으므로 $H(x)=F(x)$ 가 되지만 residual block은 입력 값에 대한 정보가 주어지므로 $H(x)=F(x)+x$ 가 된다. 즉, residual block은 &lt;strong&gt;&lt;em&gt;기존에 학습한 정보를 보존하고, 거기에 추가적인 계산만을 실시하므로&lt;/em&gt;&lt;/strong&gt; plain 레이어보다 연산량이 훨씬 더 줄어들게 된다.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;위의 그래프를 다시 한번 보자. $x$는 입력값, $H(x)$는 계산과정을 통해 얻은 최종 값이고 $F(x)$는 모든 레이어의 계산과정을 총칭한 함수이다. 
+plain 레이어는 입력 값에 대한 정보가 주어지지 않으므로 $H(x)=F(x)$ 가 되지만 residual block은 입력 값에 대한 정보가 주어지므로 $H(x)=F(x)+x$ 가 된다. 즉, residual block은 &lt;strong&gt;&lt;em&gt;기존에 학습한 정보를 보존하고, 거기에 추가적인 계산만을 실시하므로&lt;/em&gt;&lt;/strong&gt; plain 레이어보다 연산량이 훨씬 더 줄어들게 된다.&lt;/p&gt;
 
-&lt;p&gt;위 과정을 이해하기 힘들다면 다음과 같은 비유를 한번 생각해보자.
-&lt;cite&gt;https://itrepo.tistory.com/36&lt;/cite&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;위 과정을 이해하기 힘들다면 다음과 같은 비유를 한번 생각해보자.
+&lt;br /&gt;&lt;cite&gt;참조: https://itrepo.tistory.com/36&lt;/cite&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;오픈북이 불가능한 시험&lt;/li&gt;
   &lt;li&gt;오픈북이 가능한 시험&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;1의 경우에는 시험의 범위가 많아질수록(=층이 깊어지고 학습해야 할 양이 많아지면) 공부하기가 어려워질 것이다. 반면 2의 경우에는 이미 배웠던 내용(x)가 주어지기 때문에 추가적으로 학습한 내용만을 공부할 것이다.&lt;/p&gt;
+&lt;p&gt;1의 경우에는 시험의 범위가 많아질수록(=층이 깊어지고 학습해야 할 양이 많아지면) 공부하기가 어려워질 것이다. 반면 2의 경우에는 이미 배웠던 내용($x$)가 주어지기 때문에 추가적으로 학습한 내용만을 공부할 것이다.&lt;/p&gt;
 
 &lt;hr /&gt;
 

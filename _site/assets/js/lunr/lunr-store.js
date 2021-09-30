@@ -78,7 +78,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Lecture 9: CNN Architectures",
-        "excerpt":"CNN Architectures CNN에는 다양한 구조가 존재한다. 유명한 구조에는 AlexNet, VGG, GoogLeNet, ResNet 가 있다. 이 구조들을 ImageNet classification 대회에서 우승한 연도 순서대로 설명하겠다. 참고 사항 이 단원을 다루면서 레이어의 파라미터의 총 개수를 구하는 경우가 많을 것이다. 레이어의 파라미터 총 개수는 다음과 같이 구한다. $ (total parmeter) = (filter size)^2(number of...","categories": ["computer vision","python"],
+        "excerpt":"CNN Architectures CNN에는 다양한 구조가 존재한다. 유명한 구조에는 AlexNet, VGG, GoogLeNet, ResNet 가 있다. 이 구조들을 ImageNet classification 대회에서 우승한 연도 순서대로 설명하겠다. 참고 사항 이 단원을 다루면서 레이어의 파라미터의 총 개수를 구하는 경우가 많을 것이다. 레이어의 파라미터 총 개수는 다음과 같이 구한다. $(total \\, parmeter) = (filter \\, size)^2\\times...","categories": ["computer vision","python"],
         "tags": [],
         "url": "/computer%20vision/python/Lecture9-CNN-Architectures/",
         "teaser": null
