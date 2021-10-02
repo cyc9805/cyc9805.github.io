@@ -50,6 +50,7 @@ $(total \, parmeter) = (filter \, size)^2\times (number \, of\, channels)\times(
 
 LeNet은 CNN의 첫번째 구조이다. 첫번째 구조인 만큼 쌓인 층 수도 적고, 필터의 크기도 최적의 결과를 위해 정해지지 않은 상태이다.  
 
+
 ![](/assets/image/lecture9-1.png)
 
 
