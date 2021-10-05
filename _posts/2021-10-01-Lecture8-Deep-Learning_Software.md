@@ -35,4 +35,4 @@ GPU를 만드는 대표적인 회사가 두 군대 있는데, 바로 NVIDIA 와 
 
 ## Deep Learning Software
 
-
+기업들은 상업적인 목적으로 딥러닝 소프트웨어을 만들었다.
