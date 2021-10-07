@@ -9,25 +9,49 @@
   <head>
     <meta charset="utf-8">
     <!-- MATH EQUATION -->
-      <!-- begin _includes/seo.html --><title>yongchan's website - Page 3</title>
-<meta name="description" content="Welcome to my website! I’m currently rebuilding my website">
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>Lecture 10: Recurrent Neural Network - yongchan’s website</title>
+<meta name="description" content="Process Sequence of Recurrent Neural Network">
 
 
   <meta name="author" content="yongchanchun">
   
+  <meta property="article:author" content="yongchanchun">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="yongchan’s website">
-<meta property="og:url" content="http://localhost:4000/page3/">
+<meta property="og:title" content="Lecture 10: Recurrent Neural Network">
+<meta property="og:url" content="http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network/">
 
 
-  <meta property="og:description" content="Welcome to my website! I’m currently rebuilding my website">
-
-
-
+  <meta property="og:description" content="Process Sequence of Recurrent Neural Network">
 
 
 
@@ -35,15 +59,16 @@
 
 
 
+  <meta property="article:published_time" content="2021-10-07T00:00:00+09:00">
 
 
-<link rel="canonical" href="http://localhost:4000/page3/">
 
 
-  <link rel="prev" href="http://localhost:4000/page2/">
 
 
-  <link rel="next" href="http://localhost:4000/page4/">
+<link rel="canonical" href="http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network/">
+
+
 
 
 <script type="application/ld+json">
@@ -92,7 +117,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -342,34 +367,18 @@
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title"></h1>
-    
-    
-
-
-<h3 class="archive__subtitle">Recent Posts</h3>
-
-
-
-
-<div class="entries-list">
-  
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Lecture 10: Recurrent Neural Network">
+    <meta itemprop="description" content="Process Sequence of Recurrent Neural Network">
+    <meta itemprop="datePublished" content="2021-10-07T00:00:00+09:00">
     
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="/data%20analysis/python/Chapter-3-%ED%8A%B9%EC%A7%95%EC%83%9D%EC%84%B1-part1/" rel="permalink">Chapter 3: 특징 생성 part1
-</a>
-      
-    </h2>
-    
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 10: Recurrent Neural Network
+</h1>
+          
 
   <p class="page__meta">
     
@@ -383,153 +392,179 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          11 minute read
+          1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">챕터 3는 내용이 이전 챕터보다 많으므로 2개의 파트로 나누어서 작성하였다. 첫번째 파트에서는 모델의 성능을 높이기 위해서 새로운 특징을 만드는 방법에 대해 다루고 있다.
+        </header>
+      
 
-</p>
-  </article>
-</div>
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#process-sequence-of-recurrent-neural-network">Process Sequence of Recurrent Neural Network</a></li><li><a href="#architecture-of-recurrent-neural-network">Architecture of Recurrent Neural Network</a><ul><li><a href="#computational-graph-of-recurrent-neural-network">Computational Graph of Recurrent Neural Network</a></li><li><a href="#character-level-language-model">Character-level Language Model</a></li></ul></li><li><a href="#deep-learning-software">Deep Learning Software</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="process-sequence-of-recurrent-neural-network">Process Sequence of Recurrent Neural Network</h2>
+
+<p>일반 Neural Network 의 모습은 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture10-1.png" alt="" width="50%" height="50%" class="align-center" /></p>
+
+<p>일반 Neural Network 는 입력 데이터가 은닉층을 지나면 결과 값을 출력하는 형태로 되어있다. 그러나 이는 입력 데이터가 한가지 타입으로만 이루어져 있으면 제대로 된 처리를 할 수 없다는 단점이 있다. Recurrent Neural Network (줄여서 RNN) 은 다양한 타입으로 이루어진 데이터를 처리하고 출력할 수 있다.</p>
+
+<p><img src="/assets/image/lecture10-2.png" alt="" /></p>
+
+<p>다음은 각각의 경우에 대한 예시이다.</p>
+
+<ol>
+  <li>one to many: 이미지 -&gt; 이미지를 묘사하는 문장 만들기</li>
+  <li>many to one: 자연어 문장 -&gt; 주제 파악하기</li>
+  <li>many to many: 영어로 된 문장 -&gt; 프랑스어로 된 문장</li>
+  <li>many to many: 프레임 레벨 단위로 이미지 분류</li>
+</ol>
+
+<h2 id="architecture-of-recurrent-neural-network">Architecture of Recurrent Neural Network</h2>
+
+<p>RNN은 다음과 같은 순서로 작동한다.</p>
+
+<p><img src="/assets/image/lecture10-3.png" alt="" /></p>
+
+<ol>
+  <li>Recurrent coil로 이루어진 RNN 레이어에 입력 데이터가 적용된다.</li>
+  <li>RNN의 은닉층의 파라미터가 새로운 입력 데이터를 입력 받을때마다 업데이트한다.</li>
+  <li>RNN 은닉층이 결과 값을 출력한다.</li>
+</ol>
+
+<p>위 과정을 수식으로 표현하면 다음과 같다.</p>
+
+<p>$h_t = f_w(h_(t-1),x_t)$</p>
+
+<p>여기서 $h_t$는 새로운 은닉상태, $f_w$는 가중치 행렬로 이루어진 함수, $h_t-1$는 예전 은닉상태, $x_t$는 입력 데이터이다.</p>
+
+<p>$x_t$는 시간 단위로 바뀌는 데이터로, $f_w$는 시간이 지나도 유지되는 함수이다.</p>
+
+<p>아래 수식은 $h_t$의 변화 과정, $f_w$를 $tanh$ 로 설정하였을 때 모습이다.</p>
+
+<p><img src="/assets/image/lecture10-4.png" alt="" /></p>
+
+<h3 id="computational-graph-of-recurrent-neural-network">Computational Graph of Recurrent Neural Network</h3>
+
+<p>RNN이 작동하는 과정을 computational graph 로 다시 표현해보았다.</p>
+
+<p><img src="/assets/image/lecture10-5.png" alt="" /></p>
+
+<p>$h_0$은 주로 0으로만 이루어진 행렬이다. $h$가 시간이 갈수록 바뀌는 과정을 표현하고 있는데, 이때 사용되는 가중치 행렬은 그대로 유지된다. 
+RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computaional graph로 나타내 보았다.</p>
+
+<ol>
+  <li>one-to-many</li>
+</ol>
+
+<p><img src="/assets/image/lecture10-6.png" alt="" />
+<br />2. many-to-one</p>
+
+<p><img src="/assets/image/lecture10-7.png" alt="" />
+<br />3. many-to-many</p>
+
+<p><img src="/assets/image/lecture10-8.png" alt="" /></p>
+
+<p>위 그림에서 RNN모델의 각 은닉상태에 대한 계산값과 손실값을 계산하였는데, 손실값을 이용하여 gradient flow를 할 수 있게된다.</p>
+
+<h3 id="character-level-language-model">Character-level Language Model</h3>
+
+<p>RNN이 사용되는 대표적인 사례라고 하면 Character-level Language Model 이 있다. 이 모델은 다음에 나올 문자가 타겟 변수가 되어 다음에 나올 문자를 예측하는 식으로 작동한다.</p>
+
+<p><img src="/assets/image/lecture10-9.png" alt="" /></p>
+
+<p>GPU를 만드는 대표적인 회사가 두 군대 있는데, 바로 NVIDIA 와 AMD 이다. NVIDIA가 AMD보다 딥러닝을 위한 GPU를 만드는데 더 투자를 많이 해왔기 때문에 AMD보다 NVIDIA를 사용하는 것이 추천된다.</p>
+
+<h2 id="deep-learning-software">Deep Learning Software</h2>
+
+<p>기업들은 상업적인 목적으로 딥러닝 소프트웨어을 만들었다. 여기서 딥러닝 프레임워크라는 개념이 나온다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
 
   
-    
 
 
+  
 
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
     
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/" rel="permalink">Lecture 3: Loss Function and Optimization
-</a>
-      
-    </h2>
+      <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">computer vision</a><span class="sep">, </span>
     
-
-  <p class="page__meta">
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
     
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          4 minute read
-        
-      </span>
-    
+    </span>
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">What is Loss Function?
+        
 
-</p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-07T00:00:00+09:00">October 7, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Lecture+10%3A+Recurrent+Neural+Network%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture10-Recurrent-Neural-Network%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture10-Recurrent-Neural-Network%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture10-Recurrent-Neural-Network%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/computer%20vision/python/Lecture8-Deep-Learning_Software/" class="pagination--pager" title="Lecture 8: Deep Learning Software
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
 
   
-    
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/markdown/Markdown-grammar/" rel="permalink">마크다운(Markdown) 문법
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">티스토리에서 깃허브 블로그로 바꾸면서 마크다운에 대해 처음 접하게 되었다. 원할한 블로그 정리를 위해 마크다운 문법에 대해 배울 필요성이 있다고 생각하여 이렇게 정리를 진행 중이다.
-
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20vision/python/Lecture2-Image-Classification-pipeline/" rel="permalink">Lecture 2: Image Classification pipeline
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다.
-
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/" rel="permalink">Lecture 1: Introduction to CNN for Visual Recognition
+        <a href="/computer%20vision/python/Lecture8-Deep-Learning_Software/" rel="permalink">Lecture 8: Deep Learning Software
 </a>
       
     </h2>
@@ -554,69 +589,142 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">What is computer vision?
+    <p class="archive__item-excerpt" itemprop="description">CPU vs GPU
 
 </p>
   </article>
 </div>
 
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20vision/python/Lecture9-CNN-Architectures/" rel="permalink">Lecture 9: CNN Architectures
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CNN Architectures
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20vision/python/Lecture7-training-neural-networks-2/" rel="permalink">Lecture 7: Training Neural Networks 2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Optimization
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/" rel="permalink">Chapter 4: 모델 구축 part2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">본 챕터의 두 번째 파트는 신경망, 선형 모델, 랜덤 포레스트와 기타 모델등에 대해 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
   
 </div>
 
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-      
-        <li><a href="/page2/">Previous</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-        
-        
-        
-        <li><a href="/page2/">2</a></li>
-      
-    
-      
-        <li><a href="/page3/" class="disabled current">3</a></li>
-      
-    
-
-    
-    
-
-    
-      <li><a href="/page4/">4</a></li>
-    
-
-    
-    
-      <li><a href="/page4/">Next</a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
-</div>
     </div>
 
     
@@ -674,6 +782,30 @@
 
 
 
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
 
 
 
