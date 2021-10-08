@@ -15,7 +15,7 @@ categories:
 
 일반 Neural Network 의 모습은 다음과 같다.
 
-![](/assets/image/lecture10-1.png){: width="50%" height="50%"}{: .align-center}
+![](/assets/image/lecture10-1.png){: width="30%" height="30%"}{: .align-center}
 
 일반 Neural Network 는 입력 데이터가 은닉층을 지나면 결과 값을 출력하는 형태로 되어있다. 그러나 이는 입력 데이터가 한가지 타입으로만 이루어져 있으면 제대로 된 처리를 할 수 없다는 단점이 있다. Recurrent Neural Network (줄여서 RNN) 은 다양한 타입으로 이루어진 데이터를 처리하고 출력할 수 있다.
 
@@ -33,7 +33,7 @@ categories:
 
 RNN은 다음과 같은 순서로 작동한다.
 
-![](/assets/image/lecture10-3.png)
+![](/assets/image/lecture10-3.png){: width="30%" height="30%"}{: .align-center}
 
 1. Recurrent coil로 이루어진 RNN 레이어에 입력 데이터가 적용된다.
 2. RNN의 은닉층의 파라미터가 새로운 입력 데이터를 입력 받을때마다 업데이트한다.
@@ -41,9 +41,9 @@ RNN은 다음과 같은 순서로 작동한다.
 
 위 과정을 수식으로 표현하면 다음과 같다.
 
-$h_t = f_w(h_(t-1),x_t)$
+$h_t = f_w(h_{t-1},x_t)$
 
-여기서 $h_t$는 새로운 은닉상태, $f_w$는 가중치 행렬로 이루어진 함수, $h_t-1$는 예전 은닉상태, $x_t$는 입력 데이터이다.
+여기서 $h_t$는 새로운 은닉상태, $f_w$는 가중치 행렬로 이루어진 함수, $h_{t-1}$는 예전 은닉상태, $x_t$는 입력 데이터이다.
 
 $x_t$는 시간 단위로 바뀌는 데이터로, $f_w$는 시간이 지나도 유지되는 함수이다.
 
@@ -64,9 +64,11 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
 1. one-to-many
 
 ![](/assets/image/lecture10-6.png)
+
 <br>2. many-to-one
 
 ![](/assets/image/lecture10-7.png)
+
 <br>3. many-to-many
 
 ![](/assets/image/lecture10-8.png)
@@ -152,4 +154,46 @@ image captioning을 사진의 모든 부분이 아닌 일부분만 선정하여 
 
 
 
-### 
+### RNN gradient flow
+
+일반 RNN모델에서 gradient flow는 다음과 같이 이루어진다. 
+
+![](/assets/image/lecture10-20.png)
+
+$h_t$, $tanh$, $W$, $h_(t-1)$순으로 역전파가 이루어진다. 즉, 역전파를 할때마다 $W$의 전치행렬을 곱하게 된다. 따라서 RNN의 구조가 더 깊어질수록 이러한 계산은 매우 복잡하게 변하고 $W$의 전치행렬의 값에 따라 gradient값이 달라진다.
+
+1. 전치행렬의 가장 큰 값이 1보다 크다 -> gradient가 발산한다.
+2. 전치행렬의 가장 큰 값이 1보다 작다 -> gradient가 0으로 수렴한다.
+
+이렇게 역전파를 할때 생기는 문제를 해결하기 위해 고안된 방법이 Long Short Term Memory(LSTM)이다. 
+
+
+
+### Long Short Term Memory(LSTM)
+
+LSTM의 기본적인 공식은 다음과 같다.
+
+![](/assets/image/lecture10-21.png)
+
+여기서 $\sigma$는 시그모이드 함수를 의미하고 $f, i, g, o$는 다음을 의미한다.
+
+1. $f$: forget gate - 셀을 지울지 말지를 결정한다.
+2. $i$: input gate - 셀에 입력을 할지 말지를 결정한다.
+3. $g$: gate gate(?) - 셀에 얼마만큼 입력할지 결정한다. 
+4. $o$: output gate - 셀을 얼마만큼 보여줄지 결정한다.
+
+LSTM은 아래와 같은 과정으로 작동한다.
+
+![](/assets/image/lecture10-22.png)
+
+$f, i, g, o$의 값에 따라 다음$c_t$의 값이 결정된다. 이때 $h_t$값은 별도의 입력이나 출력되는 것 없이 $c_t$값에만 영향을 받으므로 gradient flow를 할때 다음과 같이 $c_t$ 값만 고려하면 된다. 
+
+![](/assets/image/lecture10-23.png){: width="100%" height="150"%"}{: .align-center}
+
+
+
+## Summary
+
+- 일반 RNN 구조는 간단하나 gradient flow의 어려움 때문에 잘 사용되지 않는다.
+- gradient flow 문제를 해결한 LSTM을 사용하는 것을 추천한다.
+- 더 간단하지만 좋은 성능을 보이는 RNN 구조를 만드는 방향으로 현재 연구가 진행되고 있다.

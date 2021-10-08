@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-08T02:19:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 10: Recurrent Neural Network</title><link href="http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network/" rel="alternate" type="text/html" title="Lecture 10: Recurrent Neural Network" /><published>2021-10-07T00:00:00+09:00</published><updated>2021-10-07T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network/">&lt;h2 id=&quot;process-sequence-of-recurrent-neural-network&quot;&gt;Process Sequence of Recurrent Neural Network&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-09T01:08:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 10: Recurrent Neural Network</title><link href="http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network/" rel="alternate" type="text/html" title="Lecture 10: Recurrent Neural Network" /><published>2021-10-07T00:00:00+09:00</published><updated>2021-10-07T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network/">&lt;h2 id=&quot;process-sequence-of-recurrent-neural-network&quot;&gt;Process Sequence of Recurrent Neural Network&lt;/h2&gt;
 
 &lt;p&gt;일반 Neural Network 의 모습은 다음과 같다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-1.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-1.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;일반 Neural Network 는 입력 데이터가 은닉층을 지나면 결과 값을 출력하는 형태로 되어있다. 그러나 이는 입력 데이터가 한가지 타입으로만 이루어져 있으면 제대로 된 처리를 할 수 없다는 단점이 있다. Recurrent Neural Network (줄여서 RNN) 은 다양한 타입으로 이루어진 데이터를 처리하고 출력할 수 있다.&lt;/p&gt;
 
@@ -21,7 +21,7 @@
 
 &lt;p&gt;RNN은 다음과 같은 순서로 작동한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-3.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Recurrent coil로 이루어진 RNN 레이어에 입력 데이터가 적용된다.&lt;/li&gt;
@@ -31,9 +31,9 @@
 
 &lt;p&gt;위 과정을 수식으로 표현하면 다음과 같다.&lt;/p&gt;
 
-&lt;p&gt;$h_t = f_w(h_(t-1),x_t)$&lt;/p&gt;
+&lt;p&gt;$h_t = f_w(h_{t-1},x_t)$&lt;/p&gt;
 
-&lt;p&gt;여기서 $h_t$는 새로운 은닉상태, $f_w$는 가중치 행렬로 이루어진 함수, $h_t-1$는 예전 은닉상태, $x_t$는 입력 데이터이다.&lt;/p&gt;
+&lt;p&gt;여기서 $h_t$는 새로운 은닉상태, $f_w$는 가중치 행렬로 이루어진 함수, $h_{t-1}$는 예전 은닉상태, $x_t$는 입력 데이터이다.&lt;/p&gt;
 
 &lt;p&gt;$x_t$는 시간 단위로 바뀌는 데이터로, $f_w$는 시간이 지나도 유지되는 함수이다.&lt;/p&gt;
 
@@ -54,11 +54,13 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
   &lt;li&gt;one-to-many&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-6.png&quot; alt=&quot;&quot; /&gt;
-&lt;br /&gt;2. many-to-one&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-7.png&quot; alt=&quot;&quot; /&gt;
-&lt;br /&gt;3. many-to-many&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;2. many-to-one&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;3. many-to-many&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -131,7 +133,51 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-19.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;###&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Process Sequence of Recurrent Neural Network</summary></entry><entry><title type="html">Lecture 8: Deep Learning Software</title><link href="http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/" rel="alternate" type="text/html" title="Lecture 8: Deep Learning Software" /><published>2021-10-01T00:00:00+09:00</published><updated>2021-10-01T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/">&lt;h2 id=&quot;cpu-vs-gpu&quot;&gt;CPU vs GPU&lt;/h2&gt;
+&lt;h3 id=&quot;rnn-gradient-flow&quot;&gt;RNN gradient flow&lt;/h3&gt;
+
+&lt;p&gt;일반 RNN모델에서 gradient flow는 다음과 같이 이루어진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-20.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;$h_t$, $tanh$, $W$, $h_(t-1)$순으로 역전파가 이루어진다. 즉, 역전파를 할때마다 $W$의 전치행렬을 곱하게 된다. 따라서 RNN의 구조가 더 깊어질수록 이러한 계산은 매우 복잡하게 변하고 $W$의 전치행렬의 값에 따라 gradient값이 달라진다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;전치행렬의 가장 큰 값이 1보다 크다 -&amp;gt; gradient가 발산한다.&lt;/li&gt;
+  &lt;li&gt;전치행렬의 가장 큰 값이 1보다 작다 -&amp;gt; gradient가 0으로 수렴한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이렇게 역전파를 할때 생기는 문제를 해결하기 위해 고안된 방법이 Long Short Term Memory(LSTM)이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;long-short-term-memorylstm&quot;&gt;Long Short Term Memory(LSTM)&lt;/h3&gt;
+
+&lt;p&gt;LSTM의 기본적인 공식은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-21.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 $\sigma$는 시그모이드 함수를 의미하고 $f, i, g, o$는 다음을 의미한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$f$: forget gate - 셀을 지울지 말지를 결정한다.&lt;/li&gt;
+  &lt;li&gt;$i$: input gate - 셀에 입력을 할지 말지를 결정한다.&lt;/li&gt;
+  &lt;li&gt;$g$: gate gate(?) - 셀에 얼마만큼 입력할지 결정한다.&lt;/li&gt;
+  &lt;li&gt;$o$: output gate - 셀을 얼마만큼 보여줄지 결정한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;LSTM은 아래와 같은 과정으로 작동한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-22.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;$f, i, g, o$의 값에 따라 다음$c_t$의 값이 결정된다. 이때 $h_t$값은 별도의 입력이나 출력되는 것 없이 $c_t$값에만 영향을 받으므로 gradient flow를 할때 다음과 같이 $c_t$ 값만 고려하면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture10-23.png&quot; alt=&quot;&quot; width=&quot;100%&quot; height=&quot;150&amp;quot;%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;일반 RNN 구조는 간단하나 gradient flow의 어려움 때문에 잘 사용되지 않는다.&lt;/li&gt;
+  &lt;li&gt;gradient flow 문제를 해결한 LSTM을 사용하는 것을 추천한다.&lt;/li&gt;
+  &lt;li&gt;더 간단하지만 좋은 성능을 보이는 RNN 구조를 만드는 방향으로 현재 연구가 진행되고 있다.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Process Sequence of Recurrent Neural Network</summary></entry><entry><title type="html">Lecture 8: Deep Learning Software</title><link href="http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/" rel="alternate" type="text/html" title="Lecture 8: Deep Learning Software" /><published>2021-10-01T00:00:00+09:00</published><updated>2021-10-01T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/">&lt;h2 id=&quot;cpu-vs-gpu&quot;&gt;CPU vs GPU&lt;/h2&gt;
 
 &lt;p&gt;이 부분은 사실 별로 중요한 내용이 아닌것 같아서 간단하게 설명하고 넘어가도록 하겠다.&lt;/p&gt;
 
