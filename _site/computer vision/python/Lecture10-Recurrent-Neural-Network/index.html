@@ -392,7 +392,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          2 minute read
         
       </span>
     
@@ -407,7 +407,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#process-sequence-of-recurrent-neural-network">Process Sequence of Recurrent Neural Network</a></li><li><a href="#architecture-of-recurrent-neural-network">Architecture of Recurrent Neural Network</a><ul><li><a href="#computational-graph-of-recurrent-neural-network">Computational Graph of Recurrent Neural Network</a></li><li><a href="#character-level-language-model">Character-level Language Model</a></li></ul></li><li><a href="#deep-learning-software">Deep Learning Software</a></li></ul>
+              <ul class="toc__menu"><li><a href="#process-sequence-of-recurrent-neural-network">Process Sequence of Recurrent Neural Network</a></li><li><a href="#architecture-of-recurrent-neural-network">Architecture of Recurrent Neural Network</a><ul><li><a href="#computational-graph-of-recurrent-neural-network">Computational Graph of Recurrent Neural Network</a></li><li><a href="#character-level-language-model">Character-level Language Model</a></li><li><a href="#truncated-backpropagation-through-time">Truncated Backpropagation through time</a></li><li><a href="#implementation-of-rnn">Implementation of RNN</a></li><li><a href="#image-captioning">Image Captioning</a></li><li><a href="#image-captioning-with-attention">Image Captioning with Attention</a></li><li><a href="#multilayer-rnns">Multilayer RNNs</a></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -484,11 +484,68 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
 
 <p><img src="/assets/image/lecture10-9.png" alt="" /></p>
 
-<p>GPU를 만드는 대표적인 회사가 두 군대 있는데, 바로 NVIDIA 와 AMD 이다. NVIDIA가 AMD보다 딥러닝을 위한 GPU를 만드는데 더 투자를 많이 해왔기 때문에 AMD보다 NVIDIA를 사용하는 것이 추천된다.</p>
+<p>다음에 나올 문자를 분류하여 예측하는 형태로 작동하므로 출력값에 softmax classifier 가 적용한다.</p>
 
-<h2 id="deep-learning-software">Deep Learning Software</h2>
+<h3 id="truncated-backpropagation-through-time">Truncated Backpropagation through time</h3>
 
-<p>기업들은 상업적인 목적으로 딥러닝 소프트웨어을 만들었다. 여기서 딥러닝 프레임워크라는 개념이 나온다.</p>
+<p>RNN은 시간이 지남에 따라 학습을 하므로 RNN의 역전파는 즉 시간을 거슬러가는 것으로 생각할 수 있다. 그러나 RNN은 각각의 손실 값에 대한 gradient를 모두 구하므로 역전파 과정이 상당히 복잡하고 오래 걸릴 수 있다. 이 문제를 해결하기 위해 고안된 방법이 바로 <strong><em>Truncated Backpropagation through time</em></strong> 이다.</p>
+
+<p><img src="/assets/image/lecture10-10.png" alt="" /></p>
+
+<p>Truncated Backpropagation through time 은 계산과정을 간단하게 하기 위해 위 사진처럼 모든 과정을 분할한다.</p>
+
+<h3 id="implementation-of-rnn">Implementation of RNN</h3>
+
+<p>아래 사진과 같이 여러개의 셰익스피어 작품들을 RNN 모델에 훈련시켰더니 셰익스피어 문체와 상당히 비슷한 문장을 만들어내는 것을 볼 수 있다.</p>
+
+<p><img src="/assets/image/lecture10-11.png" alt="" /></p>
+
+<p>또한 algebraic geometry textbook을 학습시켰더니 다음과 같이 그럴싸한 textbook 페이지를 만들어 낸 것을 볼 수 있다.</p>
+
+<p><img src="/assets/image/lecture10-12.png" alt="" /></p>
+
+<p>c언어로 된 코드를 학습시켰더니 다음과 같이 c언어로 된 코드를 만들어낸 것도 확인할 수 있다.</p>
+
+<p><img src="/assets/image/lecture10-13.png" alt="" /></p>
+
+<p>그러나 위의 모든 경우에서 내용을 자세히 보면 상당히 말이 안되고 이해가 전혀 되지 않는 문장이라는 것을 볼 수 있다. 결국 인간이 완전히 이해할 수 있을 정도의 문장을 만들어 내는것이 RNN 모델의 최종목표이다.</p>
+
+<h3 id="image-captioning">Image Captioning</h3>
+
+<p>컴퓨터 비전에서 RNN은 CNN과 함께 image captioning에 활용된다. 
+다음과 같은 사진이 있다.</p>
+
+<p><img src="/assets/image/lecture10-14.png" alt="" width="50%" height="50%" class="align-center" /></p>
+
+<p>이 사진은 다음과 같은 과정을 통해 image captioning 이 이루어진다.</p>
+
+<ol>
+  <li>이미지가 CNN 모델에 입력이 되어 1차원 데이터로 출력을 한다.</li>
+</ol>
+
+<p><img src="/assets/image/lecture10-15.png" alt="" width="70%" height="70%" class="align-center" />
+<br />2. 출력된 데이터가 RNN 모델에 입력이 되어 사진에 대한 묘사를 하는 문장을 출력한다. 이때, 문장을 만들기 위해서는 시작신호와 종료신호가 필요하다.</p>
+
+<p><img src="/assets/image/lecture10-16.png" alt="" width="70%" height="70%" class="align-center" /></p>
+
+<h3 id="image-captioning-with-attention">Image Captioning with Attention</h3>
+
+<p>image captioning을 사진의 모든 부분이 아닌 일부분만 선정하여 그 부분만 학습할 수 있게 할 수 있다. 이렇게 하면 CNN의 출력값은 1차원이 아닌 L(지역에 대한 정보값) x D(특징값)인 2차원 데이터가 된다.</p>
+
+<p><img src="/assets/image/lecture10-17.png" alt="" width="70%" height="70%" class="align-center" /></p>
+
+<p>각 은닉층에 대한 결과로 지역에 대한 정보값과 사진의 일부분을 묘사한 단어가 나온다.
+이러한 과정을 모든 지역에 대해 반복하여 다음과 같이 사진 전체를 묘사한 문장을 생성할 수 있다.</p>
+
+<p><img src="/assets/image/lecture10-18.png" alt="" /></p>
+
+<h3 id="multilayer-rnns">Multilayer RNNs</h3>
+
+<p>기존 RNN모델에 은닉 레이어를 더 쌓아서 모델을 더 깊게 만들 수 있다. 단, 레이어를 5개 이상으로 쌓는 것은 좋지 않다.</p>
+
+<p><img src="/assets/image/lecture10-19.png" alt="" /></p>
+
+<p>###</p>
 
         
       </section>
