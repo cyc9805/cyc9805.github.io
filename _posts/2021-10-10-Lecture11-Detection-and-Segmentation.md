@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Lecture 10: Recurrent Neural Network"
+title:  "Lecture 11: Detection and Segementation"
 comments: true
 use_math: true
 toc: true
@@ -10,9 +10,12 @@ categories:
   - python
 ---
 
+현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다.
+먼저 분할 부터 알아보자.
 
-## Process Sequence of Recurrent Neural Network
+## Image Segmentation
 
+이미지 분할은 이미지에 나타난 여러 물체를 픽셀 단위로 특정 카테고리로 분류하여 나타내는 작업이다.
 일반 Neural Network 의 모습은 다음과 같다.
 
 ![](/assets/image/lecture10-1.png){: width="30%" height="30%"}{: .align-center}

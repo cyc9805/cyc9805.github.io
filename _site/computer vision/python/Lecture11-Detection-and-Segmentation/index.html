@@ -34,8 +34,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-      <!-- begin _includes/seo.html --><title>Lecture 10: Recurrent Neural Network - yongchan’s website</title>
-<meta name="description" content="Process Sequence of Recurrent Neural Network">
+      <!-- begin _includes/seo.html --><title>Lecture 11: Detection and Segementation - yongchan’s website</title>
+<meta name="description" content="현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다. 먼저 분할 부터 알아보자.">
 
 
   <meta name="author" content="yongchanchun">
@@ -47,11 +47,11 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="Lecture 10: Recurrent Neural Network">
+<meta property="og:title" content="Lecture 11: Detection and Segementation">
 <meta property="og:url" content="http://localhost:4000/computer%20vision/python/Lecture11-Detection-and-Segmentation/">
 
 
-  <meta property="og:description" content="Process Sequence of Recurrent Neural Network">
+  <meta property="og:description" content="현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다. 먼저 분할 부터 알아보자.">
 
 
 
@@ -139,7 +139,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
         <a class="site-title" href="/">
           Welcome to my website!!
-          <span class="site-subtitle">Welcome :)</span>
+          <span class="site-subtitle">👋👋👋</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/posts/">Posts</a>
@@ -368,15 +368,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Lecture 10: Recurrent Neural Network">
-    <meta itemprop="description" content="Process Sequence of Recurrent Neural Network">
+    <meta itemprop="headline" content="Lecture 11: Detection and Segementation">
+    <meta itemprop="description" content="현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다.먼저 분할 부터 알아보자.">
     <meta itemprop="datePublished" content="2021-10-10T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 10: Recurrent Neural Network
+          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 11: Detection and Segementation
 </h1>
           
 
@@ -407,14 +407,18 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#process-sequence-of-recurrent-neural-network">Process Sequence of Recurrent Neural Network</a></li><li><a href="#architecture-of-recurrent-neural-network">Architecture of Recurrent Neural Network</a><ul><li><a href="#computational-graph-of-recurrent-neural-network">Computational Graph of Recurrent Neural Network</a></li><li><a href="#character-level-language-model">Character-level Language Model</a></li><li><a href="#truncated-backpropagation-through-time">Truncated Backpropagation through time</a></li><li><a href="#implementation-of-rnn">Implementation of RNN</a></li><li><a href="#image-captioning">Image Captioning</a></li><li><a href="#image-captioning-with-attention">Image Captioning with Attention</a></li><li><a href="#multilayer-rnns">Multilayer RNNs</a></li><li><a href="#rnn-gradient-flow">RNN gradient flow</a></li><li><a href="#long-short-term-memorylstm">Long Short Term Memory(LSTM)</a></li></ul></li><li><a href="#summary">Summary</a></li></ul>
+              <ul class="toc__menu"><li><a href="#image-segmentation">Image Segmentation</a></li><li><a href="#architecture-of-recurrent-neural-network">Architecture of Recurrent Neural Network</a><ul><li><a href="#computational-graph-of-recurrent-neural-network">Computational Graph of Recurrent Neural Network</a></li><li><a href="#character-level-language-model">Character-level Language Model</a></li><li><a href="#truncated-backpropagation-through-time">Truncated Backpropagation through time</a></li><li><a href="#implementation-of-rnn">Implementation of RNN</a></li><li><a href="#image-captioning">Image Captioning</a></li><li><a href="#image-captioning-with-attention">Image Captioning with Attention</a></li><li><a href="#multilayer-rnns">Multilayer RNNs</a></li><li><a href="#rnn-gradient-flow">RNN gradient flow</a></li><li><a href="#long-short-term-memorylstm">Long Short Term Memory(LSTM)</a></li></ul></li><li><a href="#summary">Summary</a></li></ul>
 
             </nav>
           </aside>
         
-        <h2 id="process-sequence-of-recurrent-neural-network">Process Sequence of Recurrent Neural Network</h2>
+        <p>현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다.
+먼저 분할 부터 알아보자.</p>
 
-<p>일반 Neural Network 의 모습은 다음과 같다.</p>
+<h2 id="image-segmentation">Image Segmentation</h2>
+
+<p>이미지 분할은 이미지에 나타난 여러 물체를 픽셀 단위로 특정 카테고리로 분류하여 나타내는 작업이다.
+일반 Neural Network 의 모습은 다음과 같다.</p>
 
 <p><img src="/assets/image/lecture10-1.png" alt="" width="30%" height="30%" class="align-center" /></p>
 
@@ -628,7 +632,7 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Lecture+10%3A+Recurrent+Neural+Network%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture11-Detection-and-Segmentation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Lecture+11%3A+Detection+and+Segementation%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture11-Detection-and-Segmentation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture11-Detection-and-Segmentation%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 

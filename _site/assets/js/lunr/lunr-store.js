@@ -95,8 +95,8 @@ var store = [{
         "url": "/computer%20vision/python/Lecture10-Recurrent-Neural-Network/",
         "teaser": null
       },{
-        "title": "Lecture 10: Recurrent Neural Network",
-        "excerpt":"Process Sequence of Recurrent Neural Network 일반 Neural Network 의 모습은 다음과 같다. 일반 Neural Network 는 입력 데이터가 은닉층을 지나면 결과 값을 출력하는 형태로 되어있다. 그러나 이는 입력 데이터가 한가지 타입으로만 이루어져 있으면 제대로 된 처리를 할 수 없다는 단점이 있다. Recurrent Neural Network (줄여서 RNN) 은 다양한 타입으로...","categories": ["computer vision","python"],
+        "title": "Lecture 11: Detection and Segementation",
+        "excerpt":"현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다. 먼저 분할 부터 알아보자. Image Segmentation 이미지 분할은 이미지에 나타난 여러 물체를 픽셀 단위로 특정 카테고리로 분류하여 나타내는 작업이다. 일반 Neural Network 의 모습은 다음과 같다....","categories": ["computer vision","python"],
         "tags": [],
         "url": "/computer%20vision/python/Lecture11-Detection-and-Segmentation/",
         "teaser": null
