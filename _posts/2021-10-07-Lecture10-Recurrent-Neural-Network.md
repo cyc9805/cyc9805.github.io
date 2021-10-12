@@ -11,6 +11,7 @@ categories:
 ---
 
 
+
 ## Process Sequence of Recurrent Neural Network
 
 일반 Neural Network 의 모습은 다음과 같다.
