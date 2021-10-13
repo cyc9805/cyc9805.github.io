@@ -13,6 +13,7 @@ categories:
 현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다.
 먼저 분할 부터 알아보자.
 
+
 ## Image Segmentation
 
 이미지 분할은 이미지에 나타난 여러 물체를 픽셀 단위로 특정 카테고리로 분류하여 나타내는 작업이다.
