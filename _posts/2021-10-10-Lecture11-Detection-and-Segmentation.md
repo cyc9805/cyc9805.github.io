@@ -33,7 +33,8 @@ categories:
 4. many to many: 프레임 레벨 단위로 이미지 분류
 
 
-##  Architecture of Recurrent Neural Network
+
+##  Image detection
 
 RNN은 다음과 같은 순서로 작동한다.
 
