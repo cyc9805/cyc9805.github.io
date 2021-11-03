@@ -96,7 +96,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Lecture 11: Detection and Segementation",
-        "excerpt":"현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다. 먼저 분할 부터 알아보자. Image Segmentation 이미지 분할은 이미지에 나타난 여러 물체를 픽셀 단위로 특정 카테고리로 분류하여 나타내는 작업이다. 일반 Neural Network 의 모습은 다음과 같다....","categories": ["computer vision","python"],
+        "excerpt":"현재까진 이미지에 나타난 물체를 특정 카테고리로 분류하는 이미지 분류(image classification) 에 대해 집중적으로 배워보았다. 그러나 컴퓨터 비전은 분할 (segmentation), 탐지 (detection)도 수행할 수 있다. 각각의 역할에 대해 간단하게 알아보자 Semantic Segmentation(영상 분할) 영상 분할은 영상에 나타난 여러 물체를 픽셀 단위로 특정 카테고리로 분류하여 나타내는 작업이다. 다음 사진은 풀밭에 서있는 고양이...","categories": ["computer vision","python"],
         "tags": [],
         "url": "/computer%20vision/python/Lecture11-Detection-and-Segmentation/",
         "teaser": null
