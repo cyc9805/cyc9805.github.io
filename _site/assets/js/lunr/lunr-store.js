@@ -100,4 +100,10 @@ var store = [{
         "tags": [],
         "url": "/computer%20vision/python/Lecture11-Detection-and-Segmentation/",
         "teaser": null
+      },{
+        "title": "Lecture 12: Visualizing and Understanding CNN",
+        "excerpt":"지금까지 CNN의 작동 원리와 CNN을 통해 컴퓨터가 이미지를 읽고 처리하는 과정을 알아보았다. 그렇다면 CNN의 각 층에서 이미지가 어떠한 형식으로 나타나게 될까? CNN의 작동 과정을 좀 더 직관적으로 알기 위해 시각화 하는 방법에 대해 이 단원은 다루고 있다. What’s going on inside convolutional layer? 각 레이어에서 필터가 이미지를 훑고 지나가 지나간...","categories": ["computer vision","python"],
+        "tags": [],
+        "url": "/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN/",
+        "teaser": null
       }]

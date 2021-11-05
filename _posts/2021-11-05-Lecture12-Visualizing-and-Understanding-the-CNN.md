@@ -1,0 +1,75 @@
+---
+layout: single
+title:  "Lecture 12: Visualizing and Understanding CNN"
+comments: true
+use_math: true
+toc: true
+toc_sticky: true
+categories:
+  - computer vision
+  - python
+---
+
+
+지금까지 CNN의 작동 원리와 CNN을 통해 컴퓨터가 이미지를 읽고 처리하는 과정을 알아보았다. 그렇다면 CNN의 각 층에서 이미지가 어떠한 형식으로 나타나게 될까? CNN의 작동 과정을 좀 더 직관적으로 알기 위해 시각화 하는 방법에 대해 이 단원은 다루고 있다.
+
+
+## What's going on inside convolutional layer?
+
+각 레이어에서 필터가 이미지를 훑고 지나가 지나간 이미지에 대한 정보를 저장하게 된다. 이렇게 저장한 이미지를 시각화하면 각 필터가 이미지에서 어떠한 정보를 찾으려고 하는지에 대해 알 수 있다. 다음은 각 CNN 모델에서 레이어별로 필터가 어떠한 정보를 찾아내었는지에 대해 나타난 사진이다.
+
+
+### First Layer: Visualize Filters
+
+먼저 첫번째 레이어가 어떠한 정보를 찾아내었는지 확인해보자.
+
+![](/assets/image/lecture12-1.png) 
+
+여기서 AlexNet의 64x3x11x11은 11x11 크기의 64개의 필터가 R,G,B 각각의 값 별로 이미지 픽셀에 가중치 값을 곱한 결과이다. 위의 사진에서 알 수 있듯이 첫번째 레이어는 대체적으로 이미지의 low-level 특징들, 즉 이미지에 나타난 점, 선, 패턴 등에 대해서 찾으려고 한다.  
+
+
+### Last Layer
+
+마지막 레이어는 fully connected layer 이므로 4096 차원을 가지고 있는 벡터 데이터이다. 이 레이어는 주로 이미지의 문맥적인(semantic) 특징들을 찾는다. 최근접 이웃(Nearest Neighbor) 방법을 이용해 테스트 이미지와 특징이 비슷한 이미지를 찾으면 사진이 알맞게 분류되는 것을 확인할 수 있다.
+
+![](/assets/image/lecture12-2.png){: width="50%" height="50%"}{: .align-center}
+
+
+### Last Layer: Dimensionality reduction
+
+4096 차원이나 되는 마지막 레이어를 한번에 시각화하기란 거의 불가능한 작업이다. 따라서 이를 한번에 시각화하기 위해 차원을 축소해야 할 필요성이 있다. 이를 하기위한 간단한 알고리즘으로 PCA(Principle Component Analysis)가 있지만 여기서는 좀더 복잡한 t-SNE 알고리즘을 사용하였다.
+
+다음은 imageNET의 이미지들에 t-SNE를 적용하여 시각화하는 과정이다.
+
+1. 이미지들을 CNN을 통해 훈련시켜 마지막 레이어에 저장된 4096 차원의 벡터를 추출한다.
+2. t-SNE를 통해 2차원으로 데이터를 축소한 후 2차원 좌표에 위치시켜 나타낸다.  
+3. 비슷한 특징을 가진 이미지끼리 군집을 형성하게 된다.
+
+![](/assets/image/lecture12-3.png){: width="60%" height="60%"}{: .align-center}
+
+## Maximally Activating Patches
+
+특정 레이어가 어떠한 정보를 찾는지 알기 위해서 Maximally Activating Patches 방법을 이용한다. 이 방법은 특정 레이어의 특정 채널을 선택한 후 여러 이미지를 통과시켜 학습하는 값들은 저장한다. 그리고 최대로 활성화하는데 사용되는 값을 선택해 이를 시각화한다. 이 방법을 통해 시각화한 결과를 보면 특정 레이어의 특정 채널은 이미지에서 비슷한 정보를 찾는다는 것을 알 수 있다.
+
+  ![](/assets/image/lecture12-4.png){: width="60%" height="60%"}{: .align-center}
+
+
+## Saliency Maps
+
+이미지의 특정 부분을 가린 후에 CNN을 통해 훈련시키고 이를 분류한 결과가 가리지 않은 이미지를 훈련시킨 결과와 큰 차이를 보인다면 가린 부분이 분류하는데 굉장히 중요한 역할을 차지한다는 것을 알 수 있다. 이러한 과정을 이미지의 모든 부분에 적용시켜 이미지의 분류를 위해 중요한 부분을 찾은 결과를 Saliency Maps 라고 한다. 
+
+![](/assets/image/lecture12-5.png){: width="60%" height="60%"}{: .align-center}
+
+왼쪽 이미지에서 CNN은 이미지 분류의 중요한 역할을 차지하는 부분, 즉 강아지의 모습을 제대로 찾아내었다. 오른쪽 이미지 또한 과일을 제대로 찾아내었다.
+
+
+## Intermediate features via guided backprop
+
+guided backprop 이란 일반 역전파 과정에서 양수 미분 값을 통해서만 역전파하는 것이다. 이렇게 하면 일반 역전파를 하는 것보다 더 깨끗한 이미지를 얻을 수 있다는 장점이 있다.
+
+그리고 이 guided backprop을 특정 레이어의 특정 뉴런에 적용하면 그 뉴런에 대한 이미지 픽셀의 미분 값을 얻을 수 있다. 그에 대한 결과로 다음과 같이 각 이미지당 뉴런이 찾는 특징들에 대해 알 수 있다.
+
+ ![](/assets/image/lecture12-6.png)
+---
+
+시험기간이여서 중요한 부분만 간단하게 정리하였다(...)
