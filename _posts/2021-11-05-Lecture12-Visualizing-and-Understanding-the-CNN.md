@@ -72,7 +72,7 @@ guided backprop 이란 일반 역전파 과정에서 양수 미분 값을 통해
  ![](/assets/image/lecture12-6.png)
  
  
- ## Gradient Ascent
+## Gradient Ascent
  
  gradient descent가 손실 값을 최소화하기 위해 각 뉴런에 연결된 가중치 값을 변경하였다면 gradient ascent는 각 클래스별 점수를 최대로 하기 위해 가중치 값은 그대로 유지하고 이미지의 픽셀 값만 변화 시킨다. gradient ascent를 공식으로 나타내면 다음과 같다.
  
@@ -97,11 +97,12 @@ guided backprop 이란 일반 역전파 과정에서 양수 미분 값을 통해
  약간은 가시성이 떨어지는 배경 속에 레이블에 해당하는 모습이 희미하게 나타나는 것을 확인할 수 있다. 
  
  
- ## Utilzing Gradent Ascent 
+ 
+## Utilzing Gradent Ascent 
 
  지금까지 배운 내용을 활용하여 재밌으면서 기발한 활동들을 해볼 수 있다.
  
- ### DeepDream
+### DeepDream
  
  Gradient Ascent가 각 클래스별 점수를 최대로 만들기 위해 이미지 픽셀에 변화를 주었다면, DeepDream은 레이어의 활성화 함수를 통해 계산한 값을 최대로 만들기 위해 이미지 픽셀에 변화를 준다. 즉, DeepDream은 다음과 같은 과정을 통해 작동한다.
  
@@ -111,33 +112,33 @@ guided backprop 이란 일반 역전파 과정에서 양수 미분 값을 통해
  
  다음과 같은 하늘 이미지에 DeepDream을 적용한다고 하자.
  
- ![](/assets/image/lecture12-9.png){: width="60%" height="60%"}{: .align-center}
+ ![](/assets/image/lecture12-9.png){: width="80%" height="80%"}{: .align-center}
 
  다음은 CNN에서 높은 레이어를 선택한 후 DeepDream을 적용한 모습이다.
  
- ![](/assets/image/lecture12-10.png){: width="60%" height="60%"}{: .align-center}
+ ![](/assets/image/lecture12-10.png){: width="80%" height="80%"}{: .align-center}
  
  다음은 CNN에서 낮은 레이어를 선택한 후 DeepDream을 적용한 모습이다.
  
- ![](/assets/image/lecture12-11.png){: width="60%" height="60%"}{: .align-center}
+ ![](/assets/image/lecture12-11.png){: width="80%" height="80%"}{: .align-center}
 
  위 두 사진에서 알 수 있듯이 높은 레이어를 선택하면 높은 레벨의 이미지들(개, 고양이, 물고기 등)이 하늘에 나타나지만 낮은 레이어를 선택하면 낮은 레벨의 이미지들(모서리, 알 수 없는 이상한 패턴들 등)이 하늘에 나타나는 것을 알 수 있다.
  
  
- ### Feature Inversion
+### Feature Inversion
 
  Feature Inversion은 학습한 CNN모델의 특정 레이어를 통해 이미지를 만드는 방법이다. Gradient Ascent와 같은 개념을 공유하나 차이점이라면 Gradient Ascent가 각 클래스별 점수를 최대로 만들기 위해 픽셀 값을 조정하였다면 Feature Inversion은 원래 이미지와 다시 만든 이미지의 차이를 줄이기 위해 픽셀 값을 조정한다. 다음은 각 레이어별로 Feature Inversion을 적용한 모습이다.
  
- ![](/assets/image/lecture12-12.png){: width="80%" height="80%"}{: .align-center}
+ ![](/assets/image/lecture12-12.png){: width="100%" height="100%"}{: .align-center}
  
  높은 레이어를 선택할수록 높은 레벨의 특징들이 선택된다. 즉, 낮은 레이어일수록 낮은 레벨의 특징들(색, 물체의 테두리, 전체적인 윤곽등)을 학습하고 높은 레이어일수록 높은 레벨의 특징들(주로 semantic 하다.)을 학습한다.
  
  
- ### Texture Synthesis
+### Texture Synthesis
 
  Texture synthesis란 다음과 같이 작은 입력 이미지를 이어 붙여서 큰 이미지를 만드는 과정이다.
  
- ![](/assets/image/lecture12-13.png){: width="60%" height="60%"}{: .align-center}
+ ![](/assets/image/lecture12-13.png){: width="80%" height="80%"}{: .align-center}
  
  Texture synthesis를 하기 위한 간단한 알고리즘으로 최근접 이웃(Nearest Neighbor)이 있지만 이 강의에서는 Neural Texture Synthesis 알고리즘을 이용하였다. 이 알고리즘의 원리는 다음과 같다.
  
@@ -152,7 +153,7 @@ guided backprop 이란 일반 역전파 과정에서 양수 미분 값을 통해
  
  다음은 Texture synthesis를 이용하여 이미지를 재구성한 결과이다.
  
-  ![](/assets/image/lecture12-15.png){: width="60%" height="60%"}{: .align-center} 
+  ![](/assets/image/lecture12-15.png){: width="80%" height="80%"}{: .align-center} 
 
 
 ### Natural Style Transfer
