@@ -1,4 +1,312 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-06T02:30:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 12: Visualizing and Understanding CNN</title><link href="http://localhost:4000/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN/" rel="alternate" type="text/html" title="Lecture 12: Visualizing and Understanding CNN" /><published>2021-11-05T00:00:00+09:00</published><updated>2021-11-05T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN/">&lt;p&gt;지금까지 CNN의 작동 원리와 CNN을 통해 컴퓨터가 이미지를 읽고 처리하는 과정을 알아보았다. 그렇다면 CNN의 각 층에서 이미지가 어떠한 형식으로 나타나게 될까? CNN의 작동 과정을 좀 더 직관적으로 알기 위해 시각화 하는 방법에 대해 이 단원은 다루고 있다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-13T22:17:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Lecture 14: Reinforcement Learning</title><link href="http://localhost:4000/computer%20vision/python/Lecture14-Reinforcement-Learning/" rel="alternate" type="text/html" title="Lecture 14: Reinforcement Learning" /><published>2021-11-13T00:00:00+09:00</published><updated>2021-11-13T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture14-Reinforcement-Learning</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture14-Reinforcement-Learning/">&lt;p&gt;이번 단원에서는 강화 학습(reinforcement learning)에 대해서 다루고 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-reinforcement-learning&quot;&gt;What is reinforcement learning?&lt;/h2&gt;
+
+&lt;p&gt;강화학습(reinforcement learning)은 어떤 환경 안에서 정의된 에이전트가 현재의 상태를 인식하여, 선택 가능한 행동들 중 보상을 최대화하는 행동 혹은 행동 순서를 선택하는 방법이다. 강화학습이 일어나는 과정은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;에이전트가 $s_t$ 상태에 놓인다.&lt;/li&gt;
+  &lt;li&gt;에이전트가 $a_t$ 행동을 취한다.&lt;/li&gt;
+  &lt;li&gt;에이전트가 취한 행동에 따른 보상을 받는다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위 과정과 같이 행동과 그에 따른 보상을 받는 것을 반복하며 강화학습이 일어나게 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;formulation-of-reinforcement-learning&quot;&gt;Formulation of reinforcement learning&lt;/h3&gt;
+
+&lt;p&gt;강화학습은 Markov property을 활용하여 나타낼 수 있다. Markov property란 이 세계의 모든 상태들을 수식으로 나타낸 것이다. 이 수식의 형태는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Markov property를 이용하여 에이전트가 취할 행동을 확률적으로 나타낸 것이 Markov Decision Process이다. 이 과정은 다음과 같은 순서로 일어난다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 policy (한글로 직역시 정책이나 표현이 어색하여 영단어 그대로 사용할 것이다) $\pi$란 S에서 어떠한 A를 선택할지 결정하는 함수이다. &lt;strong&gt;따라서 최대 보상을 받기 위한 $\pi^{*}$를 찾는 것이 강화학습의 목적이다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;value-function-and-q-value-function&quot;&gt;Value function and Q-value function&lt;/h2&gt;
+
+&lt;h3 id=&quot;value-function&quot;&gt;Value function&lt;/h3&gt;
+
+&lt;p&gt;Value function이란 s상태에 놓인 에이전트가 policy를 따랐을때 받는 누적 보상을 나타내는 함수이다. 상태가 얼마나 좋은지 평가하기 위해 사용되는 함수이다. 이 함수의 형태는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;q-value-function&quot;&gt;Q-value function&lt;/h3&gt;
+
+&lt;p&gt;Q-value function이란 s상태에 놓인 에이전트가 a행동을 취한 후 policy를 따랐을때 받는 누적 보상을 나타내는 함수이다. s와 a로 함수가 나타나기 때문에 상태-행동 짝이 얼마나 좋은지 평가하기 위한 지표로 사용된다. 이 함수의 형태는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;bellman-equation&quot;&gt;Bellman equation&lt;/h3&gt;
+
+&lt;p&gt;Bellman equation은 Q-value function에서 가장 높은 누적 보상 값을 만족하는 상태-행동 짝으로 나타낸 함수이다. 즉, $Q^{*}$은 다음과 같은 수식을 만족한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 $Q_{i}(s,a)$ 의 다음 값인 $Q_{i+1}(s,a)$를 알고 있는 경우 이 값을 Bellman equation에 대입하여 무한대로 보내면 $Q_{i}$는 $Q^{*}$로 수렴하여 값을 얻을 수 있게 된다. 그러나 이렇게 계산을 하게되면 모든 상태-행동 짝에 대해 Q값을 구해야하므로 계산량이 엄청나게 많아지게 된다. 따라서 이를 해결하기 위한 방법으로 고안된 것이 Q-learning 이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;q-learning&quot;&gt;Q-learning&lt;/h3&gt;
+
+&lt;p&gt;Q-learning은 Bellman equation을 인공신경망으로 치환하여 치환한 인공신경망으로 대신 계산하는 방법이다.
+여기서 순전파와 역전파를 할때 손실함수, gradient update 의 모습을 다음과 같은 수식으로 나타낼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 함수에서 $y_i$는 타겟 값, 즉 $Q_{i}$를 나타낸다. 따라서 최적의 $Q_{i}$를 찾기 위한 s,a와 가중치 값을 정하는 것이 이 인공신경망의 목적이라고 할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;playing-atari-game&quot;&gt;Playing Atari game&lt;/h3&gt;
+
+&lt;p&gt;아타리 게임에 강화학습을 적용해보았다. 여기서,&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;목표는 &lt;strong&gt;가장 높은 점수를 내는 것&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;상태는 &lt;strong&gt;게임 화면의 픽셀&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;행동은 &lt;strong&gt;앞,뒤,좌,우와 같은 게임 컨트롤&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;보상은 &lt;strong&gt;점수의 증가/감소&lt;/strong&gt; 이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;행동이 4번 있다고 했을 때 다음과 같이 입력 값과 출력 값이 나타나게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;즉, 4번의 행동에 대한 4개의 상태-행동 짝이 나타나게 된다. 여기서 순전파 과정이 한번만 일어나 Q-value를 구할 수 있기 때문에 계산이 매우 간단해진다.&lt;/p&gt;
+
+&lt;h3 id=&quot;policy-gradients&quot;&gt;Policy Gradients&lt;/h3&gt;
+
+&lt;p&gt;Q-learning은 사실 모든 행동에 대한 상태-행동 짝을 구해야하므로 필요없는 계산이 매우 많아질 수 있다. 만약 로봇이 물체를 집는 모습을 가정하자. 이때 이러한 행동을 하기까지 모든 중간과정의 상태-행동 값을 구해야 한다. 하지만 특정 상태에서 특정 행동을 바로 행할 수 있는 policy를 배우면 이러한 중간 과정은 생략되고 로봇은 바로 물체를 집을 수 있게 된다. 이러한 최적의 policy를 구하기 위한 방법이 바로 policy Gradient 이다. Policy Gradient의 원리는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;인수로 나타낼 수 있는(parametrized) 여러개의 policy가 속한 집합이 있다고 하자. 그 집합의 모습은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-9.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그리고 각 policy의 값은 다음과 같이 나타낼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-10.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 우리가 찾고 싶은 것은 최적의 policy 값, 즉 가장 큰 policy 값이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-11.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;최적의 policy 값을 찾기 위해서는 policy 인수에 gradient ascent를 적용하면 된다. gradient ascent를 하는 과정은 상당히 복잡해져 이 과정은 생략하도록 하겠다. 이 과정을 REINFORCE 알고리즘이라고 하는데, 간단하게 이 알고리즘에 대한 결과만 설명하도록 하겠다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-12.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 $r(\tau)$는 각 policy에 대한 보상값이다. 위 식은 다음과 같이 해석할 수 있다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;만약 $r(\tau)$가 높으면 행동을 증가시킨다.&lt;/li&gt;
+  &lt;li&gt;만약 $r(\tau)$가 낮으면 행동을 감소시킨다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;따라서 $r(\tau)$가 따르는 경로가 좋은 경우(중간 행동들에 대한 보상들이 높은 경우) 그 경로에 해당하는 모든 행동이 좋다고 해석할 수 있다. 그러나 사실 그것은 최적의 policy가 나타나기 위한 모든 행동들이 평균되어 나타난 값이므로 어떠한 행동이 가장 좋은 행동인지에 대해서는 알지 못하게 된다. 따라서 이를 알기 위해서 variance reduction, 즉 표본의 분산을 줄이는 작업을 해야한다. 이 과정에 대해서는 다소 복잡하고 도움이 되는 내용이 아니라 판단되어 생략하도록 하겠다.&lt;/p&gt;
+
+&lt;h2 id=&quot;reinforce-in-action-recurrent-attention-model-ram&quot;&gt;REINFORCE in action: Recurrent Attention Model (RAM)&lt;/h2&gt;
+
+&lt;p&gt;RAM이란 이미지를 분류할때 이미지의 모든 픽셀이 아닌 특정 픽셀만 보고 바로 분류를 할 수 있게 만드는 모델이다. 이 모델의 분류 과정은 다음과 같이 이루어진다. 먼저 강화학습의 목적, 상태, 행동, 보상을 정의하자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;목표는 &lt;strong&gt;이미지 분류&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;상태는 &lt;strong&gt;이미지의 일정 부분&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;행동은 &lt;strong&gt;어떠한 이미지의 일정 부분의 중심(x,y 좌표)을 볼 것인가&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;보상은 &lt;strong&gt;제대로 분류를 하면 1, 분류를 하지 못하면 0을 부여한다&lt;/strong&gt; 이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;다음은 모델을 통해 이미지에서 분류를 위한 중요한 부분을 찾아나가는 과정이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture14-12.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 차례로 좌표값을 바꾸며 보상에 따른 상태를 바꾸게 되는 과정을 반복하다보면 이미지를 알맞게 분류할 수 있게 된다.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;이 강의는 알파고의 원리에 대해서도 가볍게 다루고 있다. 알파고도 강화학습의 결과라는 것 정도만 기억하고 있으면 될 것이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Policy gradient: Q-learning의 계산의 복잡성 문제를 보완하기 위해 만들어진 방법이다. 가장 보편적으로 사용되는 방법이나 표본의 분산문제 때문에 variance reduction을 실행해야 한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Q-learning: 모든 행동-상태 짝에 대한 Q값을 구해야 하기 때문에 policy gradient 보다 다소 복잡한 계산을 요구한다. Policy gradient보단 보편적이진 않지만 한번 작동에 성공하면 더 좋은 성능을 낸다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">이번 단원에서는 강화 학습(reinforcement learning)에 대해서 다루고 있다.</summary></entry><entry><title type="html">Lecture 13: Generative Models</title><link href="http://localhost:4000/computer%20vision/python/Lecture13-Generative-Models/" rel="alternate" type="text/html" title="Lecture 13: Generative Models" /><published>2021-11-08T00:00:00+09:00</published><updated>2021-11-08T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture13-Generative-Models</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture13-Generative-Models/">&lt;p&gt;이번 단원에서는 학습된 이미지로 새로운 이미지를 만들어내는(generate) 알고리즘에 대해 다루고 있다. 이와 같이 새로운 이미지를 만드는 알고리즘을 적용한 모델을 Generative Model 이라고 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-going-on-inside-convolutional-layer&quot;&gt;What’s going on inside convolutional layer?&lt;/h2&gt;
+
+&lt;p&gt;각 레이어에서 필터가 이미지를 훑고 지나가 지나간 이미지에 대한 정보를 저장하게 된다. 이렇게 저장한 이미지를 시각화하면 각 필터가 이미지에서 어떠한 정보를 찾으려고 하는지에 대해 알 수 있다. 다음은 각 CNN 모델에서 레이어별로 필터가 어떠한 정보를 찾아내었는지에 대해 나타난 사진이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;first-layer-visualize-filters&quot;&gt;First Layer: Visualize Filters&lt;/h3&gt;
+
+&lt;p&gt;먼저 첫번째 레이어가 어떠한 정보를 찾아내었는지 확인해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 AlexNet의 64x3x11x11은 11x11 크기의 64개의 필터가 R,G,B 각각의 값 별로 이미지 픽셀에 가중치 값을 곱한 결과이다. 위의 사진에서 알 수 있듯이 첫번째 레이어는 대체적으로 이미지의 low-level 특징들, 즉 이미지에 나타난 점, 선, 패턴 등에 대해서 찾으려고 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;last-layer&quot;&gt;Last Layer&lt;/h3&gt;
+
+&lt;p&gt;마지막 레이어는 fully connected layer 이므로 4096 차원을 가지고 있는 벡터 데이터이다. 이 레이어는 주로 이미지의 문맥적인(semantic) 특징들을 찾는다. 최근접 이웃(Nearest Neighbor) 방법을 이용해 테스트 이미지와 특징이 비슷한 이미지를 찾으면 사진이 알맞게 분류되는 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-2.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;last-layer-dimensionality-reduction&quot;&gt;Last Layer: Dimensionality reduction&lt;/h3&gt;
+
+&lt;p&gt;4096 차원이나 되는 마지막 레이어를 한번에 시각화하기란 거의 불가능한 작업이다. 따라서 이를 한번에 시각화하기 위해 차원을 축소해야 할 필요성이 있다. 이를 하기위한 간단한 알고리즘으로 PCA(Principle Component Analysis)가 있지만 여기서는 좀더 복잡한 t-SNE 알고리즘을 사용하였다.&lt;/p&gt;
+
+&lt;p&gt;다음은 imageNET의 이미지들에 t-SNE를 적용하여 시각화하는 과정이다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;이미지들을 CNN을 통해 훈련시켜 마지막 레이어에 저장된 4096 차원의 벡터를 추출한다.&lt;/li&gt;
+  &lt;li&gt;t-SNE를 통해 2차원으로 데이터를 축소한 후 2차원 좌표에 위치시켜 나타낸다.&lt;/li&gt;
+  &lt;li&gt;비슷한 특징을 가진 이미지끼리 군집을 형성하게 된다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-3.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;maximally-activating-patches&quot;&gt;Maximally Activating Patches&lt;/h2&gt;
+
+&lt;p&gt;특정 레이어가 어떠한 정보를 찾는지 알기 위해서 Maximally Activating Patches 방법을 이용한다. 이 방법은 특정 레이어의 특정 채널을 선택한 후 여러 이미지를 통과시켜 학습하는 값들은 저장한다. 그리고 최대로 활성화하는데 사용되는 값을 선택해 이를 시각화한다. 이 방법을 통해 시각화한 결과를 보면 특정 레이어의 특정 채널은 이미지에서 비슷한 정보를 찾는다는 것을 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-4.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;saliency-maps&quot;&gt;Saliency Maps&lt;/h2&gt;
+
+&lt;p&gt;이미지의 특정 부분을 가린 후에 CNN을 통해 훈련시키고 이를 분류한 결과가 가리지 않은 이미지를 훈련시킨 결과와 큰 차이를 보인다면 가린 부분이 분류하는데 굉장히 중요한 역할을 차지한다는 것을 알 수 있다. 이러한 과정을 이미지의 모든 부분에 적용시켜 이미지의 분류를 위해 중요한 부분을 찾은 결과를 Saliency Maps 라고 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-5.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽 이미지에서 CNN은 이미지 분류의 중요한 역할을 차지하는 부분, 즉 강아지의 모습을 제대로 찾아내었다. 오른쪽 이미지 또한 과일을 제대로 찾아내었다.&lt;/p&gt;
+
+&lt;h2 id=&quot;intermediate-features-via-guided-backprop&quot;&gt;Intermediate features via guided backprop&lt;/h2&gt;
+
+&lt;p&gt;guided backprop 이란 일반 역전파 과정에서 양수 미분 값을 통해서만 역전파하는 것이다. 이렇게 하면 일반 역전파를 하는 것보다 더 깨끗한 이미지를 얻을 수 있다는 장점이 있다.&lt;/p&gt;
+
+&lt;p&gt;그리고 이 guided backprop을 특정 레이어의 특정 뉴런에 적용하면 그 뉴런에 대한 이미지 픽셀의 미분 값을 얻을 수 있다. 그에 대한 결과로 다음과 같이 각 이미지당 뉴런이 찾는 특징들에 대해 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;gradient-ascent&quot;&gt;Gradient Ascent&lt;/h2&gt;
+
+&lt;p&gt;gradient descent가 손실 값을 최소화하기 위해 각 뉴런에 연결된 가중치 값을 변경하였다면 gradient ascent는 각 클래스별 점수를 최대로 하기 위해 가중치 값은 그대로 유지하고 이미지의 픽셀 값만 변화 시킨다. gradient ascent를 공식으로 나타내면 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;$I^{*}=argmax_If(I)+R(I)$&lt;/p&gt;
+
+&lt;p&gt;여기서 $f(I)$ 는 뉴런에 저장된 값, $R(I)$는 Natural image regularizer이다. Natural image regularizer은 이미지 픽셀 값을 변화할 때 최대한 자연스러운 이미지가 만들어지도록 정규화해주는 변수이다. CNN을 통해 gradient ascent가 이루어지는 과정은 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;이미지의 모든 픽셀 값에 0을 부여한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음 과정을 반복한다:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;CNN으로 클래스별 점수를 계산한다.&lt;/li&gt;
+  &lt;li&gt;역전파를 하며 이미지의 각 픽셀에 대한 뉴런의 미분 값을 계산한다.&lt;/li&gt;
+  &lt;li&gt;픽셀 값에 작은 변화를 준다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;다음은 gradient ascent를 통해 이미지를 변경한 모습이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;약간은 가시성이 떨어지는 배경 속에 레이블에 해당하는 모습이 희미하게 나타나는 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;utilzing-gradent-ascent&quot;&gt;Utilzing Gradent Ascent&lt;/h2&gt;
+
+&lt;p&gt;지금까지 배운 내용을 활용하여 재밌으면서 기발한 활동들을 해볼 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;deepdream&quot;&gt;DeepDream&lt;/h3&gt;
+
+&lt;p&gt;Gradient Ascent가 각 클래스별 점수를 최대로 만들기 위해 이미지 픽셀에 변화를 주었다면, DeepDream은 레이어의 활성화 함수를 통해 계산한 값을 최대로 만들기 위해 이미지 픽셀에 변화를 준다. 즉, DeepDream은 다음과 같은 과정을 통해 작동한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;이미지와 CNN의 한 레이어를 선택한다.&lt;/li&gt;
+  &lt;li&gt;선택한 레이어의 활성화 함수를 통해 계산한 값에 대한 미분 값을 구한다.&lt;/li&gt;
+  &lt;li&gt;계산한 미분 값을 통해 역전파를 하여 이미지의 픽셀 값을 변화시킨다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;다음과 같은 하늘 이미지에 DeepDream을 적용한다고 하자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-9.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음은 CNN에서 높은 레이어를 선택한 후 DeepDream을 적용한 모습이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-10.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음은 CNN에서 낮은 레이어를 선택한 후 DeepDream을 적용한 모습이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-11.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 두 사진에서 알 수 있듯이 높은 레이어를 선택하면 높은 레벨의 이미지들(개, 고양이, 물고기 등)이 하늘에 나타나지만 낮은 레이어를 선택하면 낮은 레벨의 이미지들(모서리, 알 수 없는 이상한 패턴들 등)이 하늘에 나타나는 것을 알 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;feature-inversion&quot;&gt;Feature Inversion&lt;/h3&gt;
+
+&lt;p&gt;Feature Inversion은 학습한 CNN모델의 특정 레이어를 통해 이미지를 만드는 방법이다. Gradient Ascent와 같은 개념을 공유하나 차이점이라면 Gradient Ascent가 각 클래스별 점수를 최대로 만들기 위해 픽셀 값을 조정하였다면 Feature Inversion은 원래 이미지와 다시 만든 이미지의 차이를 줄이기 위해 픽셀 값을 조정한다. 다음은 각 레이어별로 Feature Inversion을 적용한 모습이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-12.png&quot; alt=&quot;&quot; width=&quot;100%&quot; height=&quot;100%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;높은 레이어를 선택할수록 높은 레벨의 특징들이 선택된다. 즉, 낮은 레이어일수록 낮은 레벨의 특징들(색, 물체의 테두리, 전체적인 윤곽등)을 학습하고 높은 레이어일수록 높은 레벨의 특징들(주로 semantic 하다.)을 학습한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;texture-synthesis&quot;&gt;Texture Synthesis&lt;/h3&gt;
+
+&lt;p&gt;Texture synthesis란 다음과 같이 작은 입력 이미지를 이어 붙여서 큰 이미지를 만드는 과정이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-13.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Texture synthesis를 하기 위한 간단한 알고리즘으로 최근접 이웃(Nearest Neighbor)이 있지만 이 강의에서는 Neural Texture Synthesis 알고리즘을 이용하였다. 이 알고리즘의 원리는 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;CNN의 각 레이어에는 CxHxW 크기를 가진 특징 행렬이 있는데, 이 행렬은 C차원의 특징 벡터가 HxW 만큼 있는 것으로 이해할 수 있다.&lt;/li&gt;
+  &lt;li&gt;HxW 상의 C 특징 벡터 2개를 선택한 후 이 둘의 외적 값을 구한다.&lt;/li&gt;
+  &lt;li&gt;과정2를 HxW상의 모든 특징 벡터에 적용한 후 계산된 값의 평균 값을 구한다.&lt;/li&gt;
+  &lt;li&gt;평균 값의 결과로 CxC gram matrix가 나타나는데, 이 행렬은 이미지의 텍스쳐에 대한 정보가 담겨 있다.&lt;/li&gt;
+  &lt;li&gt;2~4의 과정을 모든 레이어에 대해 실행한다.&lt;/li&gt;
+  &lt;li&gt;이렇게 gram matrix가 포함된 CNN을 새로운 이미지(노이즈가 있는 것이 좋다)에 적용하여 gradient ascent를 통해 CNN에 저장된 텍스쳐대로 이미지를 재구성할 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-14.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음은 Texture synthesis를 이용하여 이미지를 재구성한 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-15.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;natural-style-transfer&quot;&gt;Natural Style Transfer&lt;/h3&gt;
+
+&lt;p&gt;Natural Style Transfer란 앞서 배운 feature inversion과 texture synthesis을 동시에 적용하여 이미지의 스타일을 바꾸는 과정이다. 여기서 스타일을 바꾸고 싶은 이미지를 &lt;strong&gt;content image&lt;/strong&gt;, 변경하고 싶은 스타일이 적용된 이미지를 &lt;strong&gt;style image&lt;/strong&gt; 라고 한다. Natural Style Transfer 이 일어나는 원리는 상당히 간단하다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;style image에 texture synthesis를 적용하여 CNN에 텍스쳐에 대한 정보를 추가한다.&lt;/li&gt;
+  &lt;li&gt;content image을 텍스쳐에 대한 정보가 추가된 CNN에 적용하여 feature inversion을 통해 노이즈가 있는 이미지(output image)를 새로운 스타일이 적용된 content image로 재구성한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-16.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음과 같이 Natural Style Transfer을 통해 같은 이미지를 다양한 스타일로 변화시킬 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-17.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 content image와 style image의 가중치 값을 변화시키며 다른 느낌의 이미지를 재구성해 나갈 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-18.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;fast-style-transfer&quot;&gt;Fast Style Transfer&lt;/h3&gt;
+
+&lt;p&gt;Natural Style Transfer 의 단점은 순전파와 역전파가 지나치게 많이 일어나 처리과정이 매우 느리다는 것이다. 이때 content와 style 이미지를 먼저 학습시켜 CNN모델을 만든 후 다른 content 이미지를 적용하면 한 번의 순전파 과정만 일어나기 때문에 매우 빠른 속도로 스타일을 변경할 수 있다. 다음은 이러한 과정을 적용해 실시간으로 이미지를 재구성해 나가는 모습이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/lecture12-19.gif&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;CNN이 작동하는 원리를 알기 위한 방법은 매우 다양하다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;활성화 값을 통한 방법&lt;/strong&gt;: 최근접 이웃, 차원 축소, Maximally Activating Patches,&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;미분을 통한 방법&lt;/strong&gt;: saliency maps, feature inversion&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;이를 활용한 방법&lt;/strong&gt;: DeepDream, Style Transfer&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">이번 단원에서는 학습된 이미지로 새로운 이미지를 만들어내는(generate) 알고리즘에 대해 다루고 있다. 이와 같이 새로운 이미지를 만드는 알고리즘을 적용한 모델을 Generative Model 이라고 한다.</summary></entry><entry><title type="html">Lecture 12: Visualizing and Understanding CNN</title><link href="http://localhost:4000/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN/" rel="alternate" type="text/html" title="Lecture 12: Visualizing and Understanding CNN" /><published>2021-11-05T00:00:00+09:00</published><updated>2021-11-05T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN/">&lt;p&gt;지금까지 CNN의 작동 원리와 CNN을 통해 컴퓨터가 이미지를 읽고 처리하는 과정을 알아보았다. 그렇다면 CNN의 각 층에서 이미지가 어떠한 형식으로 나타나게 될까? CNN의 작동 과정을 좀 더 직관적으로 알기 위해 시각화 하는 방법에 대해 이 단원은 다루고 있다.&lt;/p&gt;
 
 &lt;h2 id=&quot;whats-going-on-inside-convolutional-layer&quot;&gt;What’s going on inside convolutional layer?&lt;/h2&gt;
 
@@ -1140,339 +1448,4 @@ $f(x)=max(\alpha x,x)$&lt;/p&gt;
   &lt;li&gt;초기 가중치 값 설정은 Xavier initalization 방법을 이용한다&lt;/li&gt;
   &lt;li&gt;배치 정규화를 사용하는 것을 추천한다.&lt;/li&gt;
   &lt;li&gt;최적의 parameter를 찾기 위한 방법으로 교차 검증을 이용하나, 가능하면 랜덤 서치도 시도해본다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Activation Functions</summary></entry><entry><title type="html">Chapter 4: 모델 구축 part1</title><link href="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/" rel="alternate" type="text/html" title="Chapter 4: 모델 구축 part1" /><published>2021-09-21T00:00:00+09:00</published><updated>2021-09-21T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/">&lt;p&gt;챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다.&lt;/p&gt;
-
-&lt;h2 id=&quot;41-모델의-기본-이해&quot;&gt;4.1 모델의 기본 이해&lt;/h2&gt;
-
-&lt;h3 id=&quot;411-모델이란&quot;&gt;4.1.1 모델이란?&lt;/h3&gt;
-
-&lt;p&gt;모델이란 특징을 입력 데이터로 사용해 예측값을 만들어 내는 것이다. 경진대회의 대부분은 지도학습에 해당 되므로 이 장에서는 지도 학습 모델에 대해서만 설명하고 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;412-모델-구축의-흐름&quot;&gt;4.1.2 모델 구축의 흐름&lt;/h3&gt;
-
-&lt;p&gt;모델 학습과 예측은 다음과 같은 순서로 실시한다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;모델 종류를 선택하고 하이퍼파라미터를 지정&lt;/li&gt;
-  &lt;li&gt;학습 데이터와 목적변수를 제공하여 학습을 진행&lt;/li&gt;
-  &lt;li&gt;테스트 데이터를 제공하여 예측&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이 때, 모델을 만들어 갈 때 모델의 좋고 나쁨을 평가해야 한다. 만약 모델의 기반이 된 학습 데이터를 그대로 평가에 이용하면 정답률이 100% 가 되므로 학습 데이터 중 일부 데이터를 평가용 데이터로 분류 해야한다. 이러한 방법을 검증(validation) 이라고 한다. 다음은 검증의 대표적인 방법인 &lt;strong&gt;&lt;em&gt;k 교차 검증(k-cross validation)&lt;/em&gt;&lt;/strong&gt; 방법을 통해 검증을 실시하는 코드이다.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# -----------------------------------
-# 교차 검증(crossvalidation)
-# -----------------------------------
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.metrics&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.model_selection&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KFold&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 학습 데이터를 4개로 나누고 그 중 1개를 검증 데이터로 지정
-# 분할한 검증 데이터를 바꾸어가며 학습 및 평가를 4회 실시
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;kf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KFold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_splits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shuffle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;71&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tr_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_idx&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tr_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tr_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tr_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;특징의 추가 및 변경, 모델 종류의 선택, 하이퍼파라미터의 선택은 서로 긴밀하게 연결되어 있다. 다음은 이 세가지 과정을 진행하는 과정에서의 중요한 팁이다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;특징이 제일 중요하므로 경진 대회의 주어진 시간의 대부분을 특징 생성에 할애한다.&lt;/li&gt;
-  &lt;li&gt;하이퍼파리터를 변경했을 때 얼마나 영향을 주는지 살펴보다가 대회 후반부터 본격 조정한다.&lt;/li&gt;
-  &lt;li&gt;모델은 처음에는 GBDT 로 진행하다가 문제의 성질에 따라 신경망을 검토하거나, 앙상블을 고려할 때는 다른 모델로도 구축을 해본다.&lt;/li&gt;
-  &lt;li&gt;검증 구조를 변경해가며 학습을 시키기도 한다.&lt;/li&gt;
-  &lt;li&gt;Public Leaderboard 에만 집착하면 과적합 할 수 있으므로 과적합에 유의하도록 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;413-모델-관련-용어와-팁&quot;&gt;4.1.3 모델 관련 용어와 팁&lt;/h3&gt;
-
-&lt;p&gt;모델을 만들거나 그 사용 방법을 이해하는데 도움이 될 만한 용어와 팁들이다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;과적합
-    &lt;ul&gt;
-      &lt;li&gt;학습 데이터의 노이즈까지 학습하여 학습 데이터 이외의 데이터에서 점수가 좋지 않은 현상을 과대적합(overfitting)이라고 한다.&lt;/li&gt;
-      &lt;li&gt;반대로 학습 데이터의 성질을 충분히 학습하지 않아 학습 데이터에서도 점수가 좋지 않으면 과소적합(underfitting) 이라고 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;정규화
-    &lt;ul&gt;
-      &lt;li&gt;학습 모델에 제약을 부여해 복잡성을 제어하는 것을 정규화(regularization) 라고 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;학습 데이터와 검증 데이터의 점수 모니터링
-    &lt;ul&gt;
-      &lt;li&gt;학습이 순차적으로 진행되는 모델에서는 학습 데이터와 목적변수 외에도 모니터링할 평가지표 및 검증 데이터와 그 목적변수를 전달함으로써 학습 데이터와 검증 데이터 각각의 점수 추이를 볼 수 있다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;조기종료
-    &lt;ul&gt;
-      &lt;li&gt;조기 종료(early stopping)란 학습 시 검증 데이터의 점수를 모니터링하다가 일정 시간 동안 점수가 오르지 않으면 중간에 학습을 중단하는 기능이다.&lt;/li&gt;
-      &lt;li&gt;조기 종료는 학습 데이터의 점수가 과적합 되어 일반화 성능이 떨어지는 것을 방지하는 목적으로 사용한다.&lt;/li&gt;
-      &lt;li&gt;학습이 진행하면서 학습 데이터의 점수는 계속 좋아지는 반면 검증 데이터의 점수는 일정한 선에서 멈추게 된다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;배깅
-    &lt;ul&gt;
-      &lt;li&gt;배깅(bagging) 이란 여러 모델을 조합해 모델을 구축하는 방법 중 하나이다. 같은 종류의 모델을 여러 개 병렬로 구축하고, 이 예측값들의 평균 또는 최빈값을 이용해 예측한다.&lt;/li&gt;
-      &lt;li&gt;좁은 의미로는 부트스트랩 샘플, 넓은 의미로는 랜덤 포레스트 등의 모델이 있다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;부스팅
-    &lt;ul&gt;
-      &lt;li&gt;부스팅(boosting) 이란 여러 모델을 조합해 모델을 구축하는 방법 중 하나이다. 같은 종류의 모델을 직렬 조합하고 학습을 통해 예측값을 보정해 순서대로 하나씩 모델을 학습시킨다.&lt;/li&gt;
-      &lt;li&gt;GBDT 가 부스팅을 사용하는 대표적인 모델 중 하나이다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;42-경진-대회에서-사용하는-모델&quot;&gt;4.2 경진 대회에서 사용하는 모델&lt;/h2&gt;
-
-&lt;p&gt;정형 데이터를 다루는 경진대회에서 사용하는 모델은 다음과 같다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;GBDT&lt;/li&gt;
-  &lt;li&gt;신경망&lt;/li&gt;
-  &lt;li&gt;선형 모델&lt;/li&gt;
-  &lt;li&gt;기타 모델 (k-최근접 이웃 알고리즘)&lt;/li&gt;
-  &lt;li&gt;랜덤 포레스트&lt;/li&gt;
-  &lt;li&gt;익스트림 랜덤 트리&lt;/li&gt;
-  &lt;li&gt;RGF, FFM&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;모델의 대체적인 선택 순서는 다음 그림에 나타나 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/chapter4-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음은 조금 더 세세한 조건에 맞게 모델을 선택하는 순서를 나타낸 그림이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/chapter4-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;43-gbdt&quot;&gt;4.3 GBDT&lt;/h2&gt;
-
-&lt;h3 id=&quot;431-gbdt의-개요&quot;&gt;4.3.1 GBDT의 개요&lt;/h3&gt;
-
-&lt;p&gt;GBDT는 Gradient Boosting Decision Tree (그래디언트 부스팅 결정 트리)의 약자로, &lt;strong&gt;&lt;em&gt;모델의 사용 편의성과 성능이 높아 경진대회에서 자주 사용된다&lt;/em&gt;&lt;/strong&gt;. GBDT는 다수의 결정 트리로 이루어져 있는데, 각 결정트리의 분기 및 잎의 가중치가 정해지는 과정으로 모델이 만들어진다. 이 때, 목적변수와 예측값의 오차를 줄여나가며 목적함수를 개선시킨다. 이 과정은 하이퍼파라미터에서 정한 결정트리의 개수만큼 반복한다. 랜덤 포레스트는 결정 트리를 병렬로 작성해나가는 반면 GBDT는 직렬로 작성해가며 직전까지 작성한 결정 트리의 예측값을 새로운 결정 트리의 예측값에 반영해가며 조금씩 수정해 나간다.&lt;/p&gt;
-
-&lt;h3 id=&quot;432-gbdt의-특징&quot;&gt;4.3.2 GBDT의 특징&lt;/h3&gt;
-
-&lt;p&gt;GBDT의 특징은 다음과 같다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;특징은 수치로 표현해야 한다.&lt;/li&gt;
-  &lt;li&gt;결측값을 다룰 수 있다.&lt;/li&gt;
-  &lt;li&gt;변수 간 상호작용이 반영된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;다른 모델에 비해 갖는 장점은 다음과 같다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;모델 성능이 높다.&lt;/li&gt;
-  &lt;li&gt;매개변수 튜닝을 하지 않아도 모델 성능이 잘 나온다.&lt;/li&gt;
-  &lt;li&gt;불필요한 특징을 추가해도 모델 성능이 떨어지지 않는다.&lt;/li&gt;
-  &lt;li&gt;특징값의 범위를 스케일링 할 필요가 없다.&lt;/li&gt;
-  &lt;li&gt;범주형 변수를 원-핫 인코딩 할 필요가 없다.&lt;/li&gt;
-  &lt;li&gt;희소행렬에 대응한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;433-gbdt의-주요-라이브러리&quot;&gt;4.3.3 GBDT의 주요 라이브러리&lt;/h3&gt;
-
-&lt;p&gt;GBDT에서 사용되는 라이브러리는 다음과 같다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;xgboost: 제일 오래 사용된 GBDT 라이브러리로, 오래된 만큼 관련 정보와 자료가 많이 있다.&lt;/li&gt;
-  &lt;li&gt;lightgbm: xgboost 와 상당히 가까운 예측 알고리즘을 갖고 있으며, 성능이 높고 연산 속도가 빨라 인기가 높다.&lt;/li&gt;
-  &lt;li&gt;catboost: 범주형 특징이 있는 데이터를 다루는데 효과적이다.&lt;/li&gt;
-  &lt;li&gt;GradientBoostingRegressor/ GradientBoostingClassifier: xgboost 보다 모델 성능, 연산 속도 모두 떨어지므로 자주 사용되지 않는 모델이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;434-gbdt의-구현&quot;&gt;4.3.4 GBDT의 구현&lt;/h3&gt;
-
-&lt;p&gt;다음은 xgboost를 이용하여 모델링을 하는 코드이다.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# -----------------------------------
-# xgboost의 구현
-# -----------------------------------
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;xgboost&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.metrics&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 특징과 목적변수를 xgboost의 데이터 구조로 변환
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtrain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;dvalid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;dtest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 하이퍼파라미터 설정
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;objective&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;binary:logistic&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;silent&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;random_state&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;71&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;num_round&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 학습의 실행
-# 검증 데이터도 모델에 제공하여 학습 진행과 함께 점수가 어떻게 달라지는지 모니터링
-# watchlist로 학습 데이터 및 검증 데이터를 준비
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watchlist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtrain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;train&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dvalid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;eval&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dtrain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;evals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watchlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 검증 데이터의 점수를 확인
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dvalid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;logloss: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 예측 - 두 값(0 or 1)의 예측이 아닌 양성(1)일 확률을 출력
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;435-xgboost-사용-팁&quot;&gt;4.3.5 xgboost 사용 팁&lt;/h3&gt;
-
-&lt;p&gt;다음은 xgboost를 사용할때 사용할 수 있는 유용한 팁이다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;xgboost 의 booster 매개변수에서 어떠한 모델을 사용할지 선택할 수 있다. GBDT를 사용하기 위해서는 &lt;strong&gt;&lt;em&gt;gbtree&lt;/em&gt;&lt;/strong&gt;, 선형모델을 사용하기 위해서는 &lt;strong&gt;&lt;em&gt;gblinear&lt;/em&gt;&lt;/strong&gt;, DART라는 알고리즘을 사용하기 위해서는 &lt;strong&gt;&lt;em&gt;dart&lt;/em&gt;&lt;/strong&gt; 로 설정한다.&lt;/li&gt;
-  &lt;li&gt;xgboost는 목적함수를 최소화하는 방법으로 학습을 진행한다. 매개변수는 objective이며, 회귀에는 &lt;strong&gt;&lt;em&gt;reg:squarederror&lt;/em&gt;&lt;/strong&gt;, 이진 분류에는 &lt;strong&gt;&lt;em&gt;binary:logistic&lt;/em&gt;&lt;/strong&gt;, 다중 클래스 분류에는 &lt;strong&gt;&lt;em&gt;multi:softprob&lt;/em&gt;&lt;/strong&gt; 으로 설정해준다.&lt;/li&gt;
-  &lt;li&gt;학습률, 결정 트리의 깊이, 정규화 강도 등을 하이퍼파라미터로 지정할 수 있다.&lt;/li&gt;
-  &lt;li&gt;train 메서드의 &lt;strong&gt;&lt;em&gt;evals 매개변수&lt;/em&gt;&lt;/strong&gt; 에 학습 데이터와 검증 데이터를 넘겨주어 결정 트리를 추가할 때마다 이들 데이터에 대한 점수를 출력하게 할 수 있다.&lt;/li&gt;
-  &lt;li&gt;train 메서드의 early_stopping_rounds 매개변수를 지정함으로써 조기 종료를 할 수 있다.&lt;/li&gt;
-  &lt;li&gt;모델 훈련시의 Learning API의 train 메서드와 Scikit-Learn API의 scikit-learn 클래스 중에 선택할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;436-lightgbm&quot;&gt;4.3.6 lightgbm&lt;/h3&gt;
-
-&lt;p&gt;lightgbm은 xgboost와 비교하여 모델성능은 비슷하나 연산 속도는 확실히 더 빠르다는 장점을 가지고 있는 라이브러리이다. lightgbm의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;히스토그램 기반의 결정 트리 분기에 따른 고속화가 가능하다.&lt;/li&gt;
-  &lt;li&gt;깊이 단위가 아닌 잎 단위에서의 분기 추가에 따른 모델 성능 향상이 이루어진다. 깊이 단위에서의 분기 추가와 잎 단위에서의 분기 추가의 차이는 다음 그림과 같다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/chapter4-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;범주형 변수의 분할 최적화로 모델 성능의 향상이 이루어진다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;다음은 lightgbm을 이용하여 모델링을 하는 코드이다.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# -----------------------------------
-# lightgbm의 구현
-# -----------------------------------
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lightgbm&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.metrics&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 특징과 목적변수를 lightgbm의 데이터 구조로 변환
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lgb_train&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tr_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tr_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;lgb_eval&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 하이퍼파라미터 설정
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;objective&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;binary&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;seed&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;71&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;verbose&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;metrics&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;binary_logloss&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;num_round&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 학습 실행
-# 범주형 변수를 파라미터로 지정
-# 검증 데이터도 추가 지정하여 학습 진행과 함께 점수가 어떻게 달라지는지 모니터링
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categorical_features&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;product&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;medical_info_b2&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;medical_info_b3&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_boost_round&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                  &lt;span class=&quot;n&quot;&gt;categorical_feature&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categorical_features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                  &lt;span class=&quot;n&quot;&gt;valid_names&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;train&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;valid&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;valid_sets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lgb_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lgb_eval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 검증 데이터에서의 점수 확인
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;va_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va_pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;logloss: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# 예측
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;437-catboost&quot;&gt;4.3.7 catboost&lt;/h3&gt;
-
-&lt;p&gt;catboost의 특징은 다음과 같다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;범주형 변수로서 지정한 특징을 자동으로 타깃 인코딩하여 수치로 변환한다.&lt;/li&gt;
-  &lt;li&gt;각 깊이별 분기 조건식에 모두 망각 결정 트리(oblivious decision tree)가 사용된다.&lt;/li&gt;
-  &lt;li&gt;데이터 수가 적을 때는 정렬 부스팅이라는 알고리즘이 사용된다.&lt;/li&gt;
-  &lt;li&gt;속도가 느려 xgboost나 lightgbm에 비해 많이 쓰이지는 않으나 상호작용이 중요한 경우 모델 성능이 잘 나오는 경우가 있어 사용할 가치가 있다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다.</summary></entry><entry><title type="html">Lecture 5: Convolutional Neural Networks</title><link href="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/" rel="alternate" type="text/html" title="Lecture 5: Convolutional Neural Networks" /><published>2021-09-19T00:00:00+09:00</published><updated>2021-09-19T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/">&lt;h2 id=&quot;history-of-neural-networks&quot;&gt;History of Neural Networks&lt;/h2&gt;
-
-&lt;p&gt;인공 신경망의 본격적인 연구가 이루어진 것은 비교적 최근이다. 컴퓨터가 개발되기 전에 사람들은 다음과 같은 이론은 내놓았다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;1957년에 Frank Rosenblatt는 알파벳을 인식하는 기계를 고안했다.&lt;/li&gt;
-  &lt;li&gt;1986년에 역전파를 통해 최적의 가중치를 찾는 연구가 활발히 이루어졌다.&lt;/li&gt;
-  &lt;li&gt;1998년에 LeCun, Bottou, Bengio, Haffner가 경사 하강법(gradient descent)를 처음으로 글자 인식에 적용해 보았다.&lt;/li&gt;
-  &lt;li&gt;2012년에 Alex Krizhevsky가 AlexNet을 개발하였다. 이는 현대 CNN 모델의 근간이 된 중요한 모델이다.
- 5, 2021년 현재, CNN은 컴퓨터 비전 분야의 모든 곳에서 사용되고 있다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;convolutional-neural-networks&quot;&gt;Convolutional Neural Networks&lt;/h2&gt;
-
-&lt;p&gt;Convolutional Neural Networks (이하 CNN) 은 다음과 같은 방법으로 작동한다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;다음과 같은 &lt;strong&gt;&lt;em&gt;이미지 데이터&lt;/em&gt;&lt;/strong&gt; 와 &lt;strong&gt;&lt;em&gt;필터&lt;/em&gt;&lt;/strong&gt; 가 존재한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture5-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;아래 사진과 같이 필터가 입력 이미지 데이터를 특정한 순서대로 하나씩 훑어나간다. 그리고 필터에 입력된 숫자와 해당되는 입력 이미지 픽셀의 숫자와 내적한 값을 출력한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture5-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;이러한 과정을 한번 끝내게 되면 깊이가 1인 출력 이미지 데이터가 생성이 된다. 필터가 입력 이미지 데이터를 훑는 과정은 여러개의 필터에 의해서 연속적으로 이루어진다. 만약 필터의 개수가 6개라고 가정하면 최종적으로 출력되는 이미지 데이터의 깊이는 6이 된다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture5-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;CNN의 마지막 층은 항상 fully connected layer, 즉 최종 출력 데이터를 1차원으로 만드는 레이어가 적용이 된다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;여러개의 층(필터)를 많이 쌓을수록 모델은 이미지 데이터의 복잡한 디테일을 학습할 수 있게된다. 아래 사진에서는 층을 1개, 3개, 5개를 쌓았을때 모델이 학습하는 정도를 비교하고 있다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture5-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;parameters-of-cnn&quot;&gt;Parameters of CNN&lt;/h3&gt;
-
-&lt;p&gt;다음은 CNN 모델을 만들기 위해서 지정해야 하는 파라미터이다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Stride: 필터가 이미지 데이터를 훑고 지나갈때 몇 칸만큼 이동하는지 지정하는 인수이다.&lt;/li&gt;
-  &lt;li&gt;Pad: 입력 이미지 데이터의 모서리에 얼마만큼의 픽셀을 추가할지를 지정하는 인수이다. 이때, 추가된 픽셀은 출력 이미지 데이터의 값에 영향을 주지 않도록 하기위해 값이 0으로 설정된다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture5-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음 식은 &lt;strong&gt;&lt;em&gt;입력 이미지 데이터의 크기&lt;/em&gt;&lt;/strong&gt; 를 N, &lt;strong&gt;&lt;em&gt;필터의 크기&lt;/em&gt;&lt;/strong&gt; 를 F, &lt;strong&gt;&lt;em&gt;stride&lt;/em&gt;&lt;/strong&gt; 를 S, &lt;strong&gt;&lt;em&gt;pad&lt;/em&gt;&lt;/strong&gt; 를 P 라고 할 때 출력되는 이미지 데이터의 크기 M을 알기 위해 사용되는 공식이다.&lt;/p&gt;
-
-&lt;p&gt;$ M = {(N+2P-F)/S}+1 $&lt;/p&gt;
-
-&lt;h3 id=&quot;other-layers&quot;&gt;Other layers&lt;/h3&gt;
-
-&lt;p&gt;convolutional layer은 앞서 설명했다시피 필터에 입력된 숫자와 해당되는 입력 이미지 픽셀의 숫자와 내적한 값을 출력하는 방법으로 계산을 진행한다. convolutional layer외에도 다음과 같은 두가지의 layer 이 존재한다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Pooling layer: 이미지 데이터에서 이루어지는 계산을 단순화 시키기 위해서 이미지의 크기를 줄이는 레이어이다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture5-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Maxpooling layer: 이미지 데이터와 필터의 일치하는 픽셀의 내적 값을 구하는 대신 필터 안에 나타나는 이미지 데이터의 가장 큰 픽셀 값을 저장하는 레이어이다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture5-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음은 차 사진에 앞서 설명한 레이어들을 모두 적용했을때의 모습이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture5-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;trends-of-cnn&quot;&gt;Trends of CNN&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;필터의 크기를 줄이고 최대한 층을 많이 쌓는다.&lt;/li&gt;
-  &lt;li&gt;Maxpooling layer과 fully connected layer을 빼고 오직 convolutional layer만 적용한다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">History of Neural Networks</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Activation Functions</summary></entry></feed>

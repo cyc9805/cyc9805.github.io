@@ -106,4 +106,16 @@ var store = [{
         "tags": [],
         "url": "/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN/",
         "teaser": null
+      },{
+        "title": "Lecture 13: Generative Models",
+        "excerpt":"이번 단원에서는 학습된 이미지로 새로운 이미지를 만들어내는(generate) 알고리즘에 대해 다루고 있다. 이와 같이 새로운 이미지를 만드는 알고리즘을 적용한 모델을 Generative Model 이라고 한다. What’s going on inside convolutional layer? 각 레이어에서 필터가 이미지를 훑고 지나가 지나간 이미지에 대한 정보를 저장하게 된다. 이렇게 저장한 이미지를 시각화하면 각 필터가 이미지에서 어떠한 정보를...","categories": ["computer vision","python"],
+        "tags": [],
+        "url": "/computer%20vision/python/Lecture13-Generative-Models/",
+        "teaser": null
+      },{
+        "title": "Lecture 14: Reinforcement Learning",
+        "excerpt":"이번 단원에서는 강화 학습(reinforcement learning)에 대해서 다루고 있다. What is reinforcement learning? 강화학습(reinforcement learning)은 어떤 환경 안에서 정의된 에이전트가 현재의 상태를 인식하여, 선택 가능한 행동들 중 보상을 최대화하는 행동 혹은 행동 순서를 선택하는 방법이다. 강화학습이 일어나는 과정은 다음과 같다. 에이전트가 $s_t$ 상태에 놓인다. 에이전트가 $a_t$ 행동을 취한다. 에이전트가 취한 행동에...","categories": ["computer vision","python"],
+        "tags": [],
+        "url": "/computer%20vision/python/Lecture14-Reinforcement-Learning/",
+        "teaser": null
       }]
