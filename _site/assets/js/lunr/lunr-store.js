@@ -118,4 +118,10 @@ var store = [{
         "tags": [],
         "url": "/computer%20vision/python/Lecture14-Reinforcement-Learning/",
         "teaser": null
+      },{
+        "title": "Assignment 1",
+        "excerpt":"Assignment 1은 파이썬 코드를 직접 작성하여 이미지 분류 모델을 직접 만드는 내용이다. 사용하는 모델로는 KNN, SVM, two-layer-net(deep learning network with one hidden layer) 이 있다. 이 모델들에 대해서는 예전에 배운 기억이 있으나 복습할 겸 다시 정리해볼 필요가 있다고 생각한다. K-Nearest Neighbor KNN은 K-Nearest Neighbor의 약자이다. 이를 한글로 직역하면 K-최근접 이웃이고,...","categories": ["computer vision","python"],
+        "tags": [],
+        "url": "/computer%20vision/python/Assignment1/",
+        "teaser": null
       }]
