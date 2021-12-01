@@ -1,4 +1,153 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T19:55:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Assignment 1</title><link href="http://localhost:4000/computer%20vision/python/Assignment1/" rel="alternate" type="text/html" title="Assignment 1" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Assignment1</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Assignment1/">&lt;p&gt;Assignment 1은 파이썬 코드를 직접 작성하여 이미지 분류 모델을 직접 만드는 내용이다. 사용하는 모델로는 KNN, SVM, two-layer-net(deep learning network with one hidden layer) 이 있다. 이 모델들에 대해서는 예전에 배운 기억이 있으나 복습할 겸 다시 정리해볼 필요가 있다고 생각한다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T22:45:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">서울시 빅데이터캠퍼스 공모전</title><link href="http://localhost:4000/data%20analysis/python/seoul-bigdata-contest/" rel="alternate" type="text/html" title="서울시 빅데이터캠퍼스 공모전" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/seoul-bigdata-contest</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/seoul-bigdata-contest/">&lt;p&gt;2021년 9월 13일부터 10월 21일까지 진행한 서울시 빅데이터캠퍼스 공모전에 참가하였다. 공모전이 끝난지는 무려 한달(…)이 지났지만 후기 작성을 미루다가 지금에서야 후기를 작성하려 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;주제-정하기&quot;&gt;주제 정하기&lt;/h2&gt;
+
+&lt;p&gt;서울시 빅데이터캠퍼스 공모전은 주제가 정해진 것이 없어 자유롭게 주제를 선정하고 선정한 주제를 바탕으로 데이터 분석을 해야한다. 주제를 선정하는 것이 상당히 힘들었는데, 3주동안 매주 한번씩 줌 회의를 하여 자료조사를 하며 어떠한 주제가 제일 적합할까 고민을 많이 하였다. 
+후보 주제로 다음과 같이 5개가 나왔다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;강남구의 청소년 쉼터의 최적의 이전 장소&lt;/li&gt;
+  &lt;li&gt;숙박시설의 장애인 객실 설치 우선순위 정하기&lt;/li&gt;
+  &lt;li&gt;디지털 격차 해소를위한 교육 장소 선정하기&lt;/li&gt;
+  &lt;li&gt;복지 사각지대 파악하기&lt;/li&gt;
+  &lt;li&gt;소비패턴을 파악하여 코로나19로 경제적인 피해를 입은 이들에게 적절한 구호물품 선정하기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;내 현재 전공이 공간정보공학과이고 공간 데이터를 다루는 데는 자신이 있었기 때문에 최적의 위치를 선정하는 1~4번의 주제가 적합해 보였다. 그러나 작년에 입상을 한 팀의 주제들이 거의 다 최적의 입지를 선정하는 것과 관련이 있었고 이러한 주제는 다소 식상하다고 느껴져 입지 선정과는 무관한 5번 주제를 하기로 결정하였다.
+5번 주제에서 특정 카테고리별로 구호물품을 선정할 필요가 있다고 생각하여 지역을 기준으로 삼기로 했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;데이터-시각화&quot;&gt;데이터 시각화&lt;/h2&gt;
+
+&lt;h3 id=&quot;서울시-소득수준-시각화&quot;&gt;서울시 소득수준 시각화&lt;/h3&gt;
+
+&lt;p&gt;특정지역의 전반적인 소비패턴은 그 지역의 소득수준과 연관되어 있으므로 구별 소득수준을 지도에 시각화하였다. 사용한 데이터로는 &lt;strong&gt;서울시 행정구 경계 데이터&lt;/strong&gt;, &lt;strong&gt;법정동별 소득수준 데이터&lt;/strong&gt; 가 있다. 이때 경계 데이터는 행정구, 소득수준은 법정동이 기준이 되고 있으므로 QGIS 쿼리 기능의 공간 연산을 통해 행정구별 소득수준을 구했다. 다음은 공간 연산을 통한 시각화 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/구별소득수준.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;분석 결과 다음과 같은 인사이트를 도출할 수 있었다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;강북구, 도봉구, 금천구가 다른 구들에 비해 낮은 소득수준을 보인다.&lt;/li&gt;
+  &lt;li&gt;송파구, 강남구가 다른 구들에 비해 높은 소득수준을 보여주고 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;서울시-구별-코로나-전과-코로나-시기의-소비-비교&quot;&gt;서울시 구별 코로나 전과 코로나 시기의 소비 비교&lt;/h3&gt;
+
+&lt;p&gt;코로나 전과 후의 소비패턴의 변화를 파악해야 했기 때문에 &lt;strong&gt;카드소비 패턴 데이터&lt;/strong&gt;를 구와 업종별로 sort하여 가장 큰 변화폭을 업종을 찾았다. 이를 PowerBI를 통해 그래프로 시각화하고 QGIS를 통해 시각화한 서울시 자치구 경계 데이터를 합쳐서 구별 소비패턴의 변화를 시각화 하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/코로나전과후.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 그래프에서 알 수 있듯이 코로나 전에는 마트, 음식, 온라인쇼핑, 교육이 상위권을 차지했으나 코로나 시기에는 온라인쇼핑이 급성장하여 가장 높은 자리를 차지하고 있는 것을 알 수 있다. 위 지도에 나타난 자치구를 제외한 다른 자치구들도 이와 비슷한 변화를 보이고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/코로나전과후2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;분야별-예측금액-모델링&quot;&gt;분야별 예측금액 모델링&lt;/h2&gt;
+
+&lt;h3 id=&quot;분석-계획&quot;&gt;분석 계획&lt;/h3&gt;
+
+&lt;p&gt;자치구의 경제적, 인구적 특징이 드러나는 데이터를 독립 변수를 설정하고 미래의 각 자치구의 업종별 매출이나 소비 금액을 종속 변수로 설정하였다. 여기서 머신러닝 기법을 이용하여 자치구의 업종별 매출을 예측하는 모델을 만들어 보았다.&lt;/p&gt;
+
+&lt;h3 id=&quot;사용-데이터&quot;&gt;사용 데이터&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;서울시민의 업종별 카드소비 패턴 데이터
+    &lt;ul&gt;
+      &lt;li&gt;블록별로 요식업, 스포츠/문화/레저, 교육 등 73개 업종의 연월별 카드소비금액계와 카드소비건수계를 제공하고 있다. 여기서 블록을 자치구로 mapping하고 자치구별, 연월별, 업종별 데이터로 변환하여 카드소비금액계를 종속변수로 설정하였다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;행정동 단위 거주인구 데이터
+    &lt;ul&gt;
+      &lt;li&gt;행정동별로 거주인구 데이터를 제공하고 있다. 행정동 코드를 &lt;strong&gt;행정동-자치구 변환 데이터&lt;/strong&gt;와 조인하여 자치구로 변환하고 자치구별, 연월별 인구 합계 데이터를 생성하여 독립변수로 사용한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;서울시 상권발달 개별지수
+    &lt;ul&gt;
+      &lt;li&gt;행정동별로 가맹점, 매출, 인구, 금융 관련 지표를 제공하고 있다. 행정동 코드를 자치구로 변환하고 자치구별, 연월별 데이터를 생성하여 독립변수로 사용한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;데이터-전처리&quot;&gt;데이터 전처리&lt;/h3&gt;
+
+&lt;p&gt;6개월간의 데이터를 이용해 다음 달의 카드소비금액계를 예측해야 했기 때문에 시계열 데이터 분석을 고려한 데이터 변환을 하였다. 아래 그림에 나타난 것과 같이 6개월 동안 나타난 독립변수들을 한번에 묶어서 한 열로 통합하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/시계열데이터분석.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;모델링-방법&quot;&gt;모델링 방법&lt;/h3&gt;
+
+&lt;p&gt;여기서 보편적인 상황에서 가장 좋은 성능을 보여주는 RandomForest를 예측모델로 사용하였다. 2018년 7월부터 2020년 4월까지의 데이터를 훈련 데이터로 설정하여 6개월 단위로 훈련을 진행하였고 2020년 5월부터 9월까지의 데이터를 테스트 데이터로 설정하여 성능을 확인하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;분석-결과&quot;&gt;분석 결과&lt;/h3&gt;
+
+&lt;p&gt;각 자치구의 2020년 5월부터 9월까지의 데이터를 예측한 것을 시각화하였다. 다음은 좋은 결과가 나타난 업종을  실제값과 예측값을 비교하여 그래프로 시각화한 결과이다. 여기서 x축은 5월부터 날짜를 DOY(date of year)로 변환하여 나타낸 값이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/분석결과.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;반대로 앞의 4개 업종에 비해 좋지 않은 성능을 보여주는 업종도 있었다. 데이터 부족이 원인이거나 지역구의 경제적 지표와 관련 없는 업종이기에 좋지 않은 성능을 기록했을 가능성이 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/분석결과2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;온라인-쇼핑몰-분야별-예측금액-모델링&quot;&gt;온라인 쇼핑몰 분야별 예측금액 모델링&lt;/h2&gt;
+
+&lt;h3 id=&quot;배경&quot;&gt;배경&lt;/h3&gt;
+
+&lt;p&gt;앞서 데이터 시각화를 통해 코로나19로 인해 온라인 쇼핑의 매출이 급격하게 상승했다는 인사이트를 도출할 수 있었다. 따라서 온라인 쇼핑 분야만 따로 매출을 예측해야 할 필요성을 느껴 온라인 쇼핑몰의 매출금액을 분야별로 모델링 해보았다.&lt;/p&gt;
+
+&lt;h3 id=&quot;모델링-방법-1&quot;&gt;모델링 방법&lt;/h3&gt;
+
+&lt;p&gt;여기서 사용한 모델로는 Prophet이 있다. Prophet은 이 공모전을 진행하면서 처음으로 접한 모델이였는데, 이 모델의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;페이스북에서 만든 시계열 예측 라이브러리이다.&lt;/li&gt;
+  &lt;li&gt;Prophet은 시계열 데이터 예측에 최적화된 모델로, 트렌드, 계절성, 공휴일을 자동으로 반영하여 이를 고려하여 손쉽게 모델을 만들 수 있다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;다음과 같은 공식을 가지고 있다.&lt;/p&gt;
+
+    &lt;p&gt;y(t)=g(t)+s(t)+h(t)+ϵi&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;g(t) : 주기적이지 않은 변화인 트렌드를 나타낸다.(부분적으로 선형 또는 logistic 곡선으로 이루어져 있다.)&lt;/li&gt;
+      &lt;li&gt;s(t) : Seasonality, weekly, yearly 등 주기적으로 나타나는 패턴들을 포함한다.&lt;/li&gt;
+      &lt;li&gt;h(t)  : 휴일과 같이 불규칙한 이벤트를 나타내는 변수이다. 만약 특정 기간에 값이 비정상적으로 증가 또는, 감소했다면, holiday로 정의하여 모델에 반영한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;사용한 데이터로는 2017년1월부터 2021년6월까지의 정보가 나타난 통계청의 온라인 쇼핑몰 데이터이다. 2017년1월부터 2021년 4월까지를 훈련 데이터로, 4월부터 6월까지의 데이터를 테스트 데이터로 설정하여 훈련을 진행하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;분석결과&quot;&gt;분석결과&lt;/h3&gt;
+
+&lt;p&gt;다음은 각 업종별로 예측한 결과와 테스트 데이터의 비교, 5달 후의 매출금액을 예측한 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/프로펫분석결과.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;
+&lt;img src=&quot;/assets/image/프로펫분석결과2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음은 2021년 7월부터 11월까지의 매출금액을 예측한 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/프로펫분석결과3.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
+
+&lt;p&gt;지금까지의 분석활동을 통해 다음과 같은 결과를 도출할 수 있었다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터 시각화
+    &lt;ul&gt;
+      &lt;li&gt;데이터 시각화로 각 자치구별로 코로나 전과 후의 거래되는 품목들의 동향을 파악할 수 있었다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;지역구별 상권발달 개별지수와 거주 인구수를 바탕으로 카드소비금액 예측
+    &lt;ul&gt;
+      &lt;li&gt;2020년 5월~9월의 업종별 카드소비금액을 안정적으로 예측할 수 있었다.&lt;/li&gt;
+      &lt;li&gt;정보가 최신화 된다면 코로나19 이후 지역별로 어떤 업종의 소비를 지원할지, 어떤 업종이 활성화될지를 예측하고 코로나19 이후를 대비하는 정부정책에 반영할 수 있을 것이다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;온라인 쇼핑몰 상품거래액 분석
+    &lt;ul&gt;
+      &lt;li&gt;2021년 11월에 가전통신기기, 음식료품, 의복의 거래액이 상위에 있음을 알 수 있었다.&lt;/li&gt;
+      &lt;li&gt;이를 통해 온라인 문화상품권을 지원해줄 항목을 알 수 있었다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">2021년 9월 13일부터 10월 21일까지 진행한 서울시 빅데이터캠퍼스 공모전에 참가하였다. 공모전이 끝난지는 무려 한달(…)이 지났지만 후기 작성을 미루다가 지금에서야 후기를 작성하려 한다.</summary></entry><entry><title type="html">Assignment 1</title><link href="http://localhost:4000/computer%20vision/python/Assignment1/" rel="alternate" type="text/html" title="Assignment 1" /><published>2021-11-16T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Assignment1</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Assignment1/">&lt;p&gt;Assignment 1은 파이썬 코드를 직접 작성하여 이미지 분류 모델을 직접 만드는 내용이다. 사용하는 모델로는 KNN, SVM, two-layer-net(deep learning network with one hidden layer) 이 있다. 이 모델들에 대해서는 예전에 배운 기억이 있으나 복습할 겸 다시 정리해볼 필요가 있다고 생각한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;k-nearest-neighbor&quot;&gt;K-Nearest Neighbor&lt;/h2&gt;
 
@@ -1019,170 +1168,4 @@ plain 레이어는 입력 값에 대한 정보가 주어지지 않으므로 $H(x
 
 &lt;p&gt;다음은 위 알고리즘들을 한번에 비교하여 나타내는 애니메이션이다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://cs231n.github.io/assets/nn3/opt2.gif&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Optimization</summary></entry><entry><title type="html">Chapter 4: 모델 구축 part2</title><link href="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/" rel="alternate" type="text/html" title="Chapter 4: 모델 구축 part2" /><published>2021-09-24T00:00:00+09:00</published><updated>2021-09-24T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/">&lt;p&gt;본 챕터의 두 번째 파트는 신경망, 선형 모델, 랜덤 포레스트와 기타 모델등에 대해 다루고 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;44-신경망&quot;&gt;4.4 신경망&lt;/h2&gt;
-
-&lt;h3 id=&quot;441-신겅망의-개요&quot;&gt;4.4.1 신겅망의 개요&lt;/h3&gt;
-
-&lt;p&gt;신경망의 형태는 다음과 같이 다층 퍼셉트론(MLP) 와 같은 모양을 가진다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture4.2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다층 퍼셉트론 모델의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;입력층에는 특징이 입력으로 주어진다.&lt;/li&gt;
-  &lt;li&gt;은닉 계층에서는 앞 층의 값을 가중치로 부가한 합을 구하여 결합한 뒤에 활성화 함수를 적용한다. &lt;strong&gt;&lt;em&gt;(활성화 함수로는 relu가 자주 쓰인다).&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;출력 계층에서는 앞 층의 값을 가중치로 부가한 합을 구하여 활성화 함수를 적용한다( 회귀 문제일 때는 &lt;strong&gt;&lt;em&gt;항등함수&lt;/em&gt;&lt;/strong&gt;, 이진 분류일 때는 &lt;strong&gt;&lt;em&gt;시그모이드 함수&lt;/em&gt;&lt;/strong&gt;, 다중 클래스 분류일 때는 &lt;strong&gt;&lt;em&gt;소프트맥스 함수&lt;/em&gt;&lt;/strong&gt; 를 사용한다).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;활성화 함수의 형태와 원리는 상당히 복잡하므로 신경망 모델을 전체적으로 다루는 현재 챕터에서는 집중적으로 다뤄보진 않을 것이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;442-신경망의-특징&quot;&gt;4.4.2 신경망의 특징&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;변숫값을 수치로 표헌&lt;/li&gt;
-  &lt;li&gt;결측값을 다룰 수 없음&lt;/li&gt;
-  &lt;li&gt;비선형성과 변수 간의 상호작용을 반영&lt;/li&gt;
-  &lt;li&gt;변숫값을 표준화 등으로 스케일링&lt;/li&gt;
-  &lt;li&gt;하이퍼파라미터에 따른 모델 성능의 편차가 심함&lt;/li&gt;
-  &lt;li&gt;다중 클래스 분류에 강점&lt;/li&gt;
-  &lt;li&gt;GPU로 고속화&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;443-신경망의-주요-라이브러리&quot;&gt;4.4.3 신경망의 주요 라이브러리&lt;/h3&gt;
-
-&lt;p&gt;신경망의 주요 라이브러리에는 &lt;strong&gt;&lt;em&gt;케라스(keras), 텐서플로(tensorflow), 파이토치(pytorch), 체이너(chainer)&lt;/em&gt;&lt;/strong&gt; 등이 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;444-신경망의-구현&quot;&gt;4.4.4 신경망의 구현&lt;/h3&gt;
-
-&lt;p&gt;다음 코드는 신경망 모델을 구현하는 코드이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture4.2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;445-케라스-사용-팁&quot;&gt;4.4.5 케라스 사용 팁&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;목적함수: compile 함수의 loss 매개변수에서 목적함수를 설정하고 목적함수가 최소화되도록 학습을 진행한다.
-    &lt;ul&gt;
-      &lt;li&gt;회귀: mean_squared_error 으로 설정한다.&lt;/li&gt;
-      &lt;li&gt;이진 분류: binary_crossentropy 으로 설정한다.&lt;/li&gt;
-      &lt;li&gt;다중 클래스 분류: categorical_crossentropy 으로 설정한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;하이퍼파라미터: 옵티마이저 종류, 합습률, 은닉 계층 수와 유닛 수, 드롭아웃 강도 등을 튜닝할 수 있다.&lt;/li&gt;
-  &lt;li&gt;드롭아웃: 유닛 중의 일부를 몇 %로 드롭할지 지정할 수 있다.&lt;/li&gt;
-  &lt;li&gt;학습 데이터와 검증 데이터의 점수를 출력해 학습 정도를 모니터링 할 수 있다.&lt;/li&gt;
-  &lt;li&gt;콜백을 쓰면 학습할 때 미니배치의 처리별 또는 에폭 별로 지정한 처리를 빠르게 진행할 수 있다. 다음은 콜백을 이용해서 조기 종료를 실시하는 코드이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture4.2-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;임베딩 게층: 양의정수를 밀집벡터로 변환하는 계층으로, 모델의 첫번째 층으로만 설정할 수 있다. 범주형 변수를 입력으로 할 때 사용할 수 있다.&lt;/li&gt;
-  &lt;li&gt;배치 정규화: &lt;strong&gt;&lt;em&gt;배치 정규화 계층(BN 계층)&lt;/em&gt;&lt;/strong&gt; 은 각 계층의 출력 편차를 미니배치 단위로 표준화하는 방법으로, 효과가 높아 널리 쓰인다.&lt;/li&gt;
-  &lt;li&gt;신경망의 구조에는 다층 퍼셉트론(MLP) 이 주로 사용되었으나, 이후 순환 신경망(RNN)과 같은 구조를 이용하는 신경망이 좋은 성능을 보이므로 많이 쓰인다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;45-선형-모델&quot;&gt;4.5 선형 모델&lt;/h2&gt;
-
-&lt;h3 id=&quot;451-선형-모델의-개요&quot;&gt;4.5.1 선형 모델의 개요&lt;/h3&gt;
-
-&lt;p&gt;모델 자체만으로는 모델 성능이 그리높지 않고 특장점은 없지만 앙상블에서 하나의 모델이나 스태킹의 최종 계층에 적용하는식의 용도로 주로 쓰인다. 선형모델은 크게 분류와 회귀로 나뉜다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;회귀: L1 정규화를 실시하면 라소회귀, L2 정규화를 실시하면 리지회귀라고 한다.
-    &lt;ul&gt;
-      &lt;li&gt;L1 정규화는 특징의 계수가 완전히 0이 되는 반면, L2 정규화는 최대한 0과 가깝게 된다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;분류: 로지스틱 회귀 모델이 사용된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;452-선형-모델의-특징&quot;&gt;4.5.2 선형 모델의 특징&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;특징값은 수치로 표현&lt;/li&gt;
-  &lt;li&gt;결측값을 다룰수 없음&lt;/li&gt;
-  &lt;li&gt;낮은 모델 성능&lt;/li&gt;
-  &lt;li&gt;특징 생성시  세심한 처리 필요&lt;/li&gt;
-  &lt;li&gt;학습의 원활함을 위한 특징의 표준화 필요&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;453-선형-모델의-주요-라이브러리&quot;&gt;4.5.3 선형 모델의 주요 라이브러리&lt;/h3&gt;
-
-&lt;p&gt;사이킷런의 linear_model 모듈이 주로 사용되는데, 회귀 문제에서는 Ridge 클래스나 Lasso 클래스가 사용된다. 분류 문제에서는 LogisticRegression 클래스가 사용된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;454-선형-모델의-구현&quot;&gt;4.5.4 선형 모델의 구현&lt;/h3&gt;
-
-&lt;p&gt;다음은 분류 문제에서의 LogisticRegression 클래스를 이용해 선형 모델을 만드는 코드이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture4.2-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;455-선형-모델의-사용-팁&quot;&gt;4.5.5 선형 모델의 사용 팁&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;목적함수: 모델에 따라 최소화할 목적함수가 정해져 있다.
-    &lt;ul&gt;
-      &lt;li&gt;회귀: 평균제곱오차(mean_squared_error)를 최소화하도록 학습한다.&lt;/li&gt;
-      &lt;li&gt;분류: 이진 분류일 때는 로스 손실(log_loss) 을, 다중 분류일 때는 이진 분류를 반복하는 OvR(one_vs_rest) 방법으로 학습한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;하이퍼파라미터: 매개변수 C는 정규화의 강도를 나타낸다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;46-기타모델&quot;&gt;4.6 기타모델&lt;/h2&gt;
-
-&lt;h3 id=&quot;461-k-최근접-이웃-알고리즘knn&quot;&gt;4.6.1 k-최근접 이웃 알고리즘(KNN)&lt;/h3&gt;
-
-&lt;p&gt;KNN은 행 데이터 간 거리를 그들 특징값의 차이로 정의하고, 그 거리가 가장 가까운 행 데이터 k개의 목적변수로부터 회귀 및 분류 실시한다. 사이킷런 neighbors 모듈의 KNeighborClassifier 클래스와 KNeighborRegressor 클래스가 사용된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;462-랜덤-포레스트rf&quot;&gt;4.6.2 랜덤 포레스트(RF)&lt;/h3&gt;
-
-&lt;p&gt;다수의 결정 트리의 조합으로 예측하는 모델로, GBDT와 달리 병렬로 결정 트리를 작성한다. 각 결정 트리의 학습에서 행 데이터나 특징을 샘플링해 전달함으로써 다양한 결정 트리를 작성하고, 이들을 앙상블하여 일반화 성능이 높은 예측을 실시한다. 랜덤 포레스트의 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;사이킷런 ensemble 모듈의 분류일 때는 RandomForestClassifier 클래스, 회귀일 때는 RandomForestRegressor 클래스를 사용 한다.&lt;/li&gt;
-  &lt;li&gt;회귀 문제일 때는 제곱오차, 분류 문제일 때는 지니 불순도가 가장 감소하도록 분기를 시행한다.&lt;/li&gt;
-  &lt;li&gt;결정 트리마다 원래 개수와 같은 수만큼 행 데이터를 복원 추출하는 부트스트랩 샘플링을 실시한다.&lt;/li&gt;
-  &lt;li&gt;결정 트리를 병렬로 작성하므로, GBDT와 달리 결정 트리의 개수가 지나치게 증가해 모델 성능이 낮아지는 일은 없으나 어느 정도 증가한 후에는 성능이 더 이상 올라가지 않는다.&lt;/li&gt;
-  &lt;li&gt;부트스트랩 샘플링에서 추출되지 않은 행을 OOB(out-of-bag)라고 하는데, OOB 데이터가 검증 데이터를 대신하는 역할을 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;463-익스트림-랜덤-트리ert&quot;&gt;4.6.3 익스트림 랜덤 트리(ERT)&lt;/h3&gt;
-
-&lt;p&gt;랜덤 포레스트와 거의 같은 방법으로 모델을 구축한다. 그러나 분기 작성 시 각 특징으로 데이터를 가장 잘 분할할 수 있는 임곗값을 이용하는 대신에 랜덤 설정한 임곗값을 이용한다. 랜덤 포레스트보다는 과적합하기 조금 어려운 특징을 보이고, 사이킷런 ensemble 모듈의 &lt;strong&gt;&lt;em&gt;ExtraTreesClassifier 클래스와 ExtraTreesRegressor 클래스&lt;/em&gt;&lt;/strong&gt; 를 사용한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;464-rgf-와-ffm&quot;&gt;4.6.4 RGF 와 FFM&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;RGF(regularized greedy forest): GBDT 처럼 목적함수에 정규화항을 명시적으로 포함하지만, 작성한 결정 트리 전체에 대해 잎의 가중치를 수정하는 방법으로 결정 트리를 작성하고 성장 시킨다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;FFM(field-aware factorization machines): 추천 문제와 잘 어울린다. libffm 와 xlearn 라이브러리가 주로 사용된다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;47-모델의-기타-팁과-테크닉&quot;&gt;4.7 모델의 기타 팁과 테크닉&lt;/h2&gt;
-
-&lt;h3 id=&quot;471-결측값이-있는-경우&quot;&gt;4.7.1 결측값이 있는 경우&lt;/h3&gt;
-
-&lt;p&gt;결측값이 있어도 GBDT에서는 문제없이 다룰 수 있으나 결측값을 다룰 수 없는 모델은 어떻게든 결측값을 채워야 함&lt;/p&gt;
-
-&lt;h3 id=&quot;472-특징의-수가-많은-경우&quot;&gt;4.7.2 특징의 수가 많은 경우&lt;/h3&gt;
-
-&lt;p&gt;필요 없는 특징이 학습에 포함되면 모델의 성능이 올라가지 않는다. GBDT에서는 학습만 잘 진행되면 그 나름의 결과가 나올 수 있으므로 조금씩 특징의 수를 늘려가며 어느 정도까지 학습이 가능한가 먼저 확인해보면 좋다. 만약 모델 성능에 기여하지 않는다고 판단되는 특징이 있을 땐 과감하게 삭제할 필요도 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;473-유사-레이블링&quot;&gt;4.7.3 유사 레이블링&lt;/h3&gt;
-
-&lt;p&gt;테스트 데이터를 학습 데이터에 더하고 다시 학습하는 것을 &lt;strong&gt;&lt;em&gt;유사 레이블링&lt;/em&gt;&lt;/strong&gt; 이라고 한다. 주로 이미지 계열 경진 대회에서 비교적 자주 활용되지만 정형 데이터에서 효과를 볼 때도 있다. 테스트 데이터 수가 학습 데이터 수보다 많으 경우 목적변수가 없더라도 테스트 데이터의 정보를 사용하고 싶을 때 유효하다. 유사 레이블링의 실행 순서는 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;학습 데이터로 학습하고 모델 구축&lt;/li&gt;
-  &lt;li&gt;①에서 구축한 모델로 테스트 데이터 예측&lt;/li&gt;
-  &lt;li&gt;학습 데이터에 ②의 예측값을 목적변수로 삼은 테스트 데이터를 더함&lt;/li&gt;
-  &lt;li&gt;테스트 데이터가 추가된 학습 데이터로 다시 학습하고 모델 생성&lt;/li&gt;
-  &lt;li&gt;④에서 구축한 모델로 테스트 데이터 예측 후 최종 예측값으로 삼음&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><summary type="html">본 챕터의 두 번째 파트는 신경망, 선형 모델, 랜덤 포레스트와 기타 모델등에 대해 다루고 있다.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;https://cs231n.github.io/assets/nn3/opt2.gif&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Optimization</summary></entry></feed>
