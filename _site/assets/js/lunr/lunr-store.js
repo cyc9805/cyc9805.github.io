@@ -89,6 +89,12 @@ var store = [{
         "url": "/computer%20vision/python/Lecture8-Deep-Learning_Software/",
         "teaser": null
       },{
+        "title": "데이콘 경진대회 참여후기 part1",
+        "excerpt":"2021년 9월 13일부터 10월 21일까지 진행한 서울시 빅데이터캠퍼스 공모전에 참가하였다. 공모전이 끝난지는 무려 한달(…)이 지났지만 후기 작성을 미루다가 지금에서야 후기를 작성하려 한다. 주제 정하기 서울시 빅데이터캠퍼스 공모전은 주제가 정해진 것이 없어 자유롭게 주제를 선정하고 선정한 주제를 바탕으로 데이터 분석을 해야한다. 주제를 선정하는 것이 상당히 힘들었는데, 3주동안 매주 한번씩 줌 회의를...","categories": ["data analysis","python"],
+        "tags": [],
+        "url": "/data%20analysis/python/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/",
+        "teaser": null
+      },{
         "title": "Lecture 10: Recurrent Neural Network",
         "excerpt":"Process Sequence of Recurrent Neural Network 일반 Neural Network 의 모습은 다음과 같다. 일반 Neural Network 는 입력 데이터가 은닉층을 지나면 결과 값을 출력하는 형태로 되어있다. 그러나 이는 입력 데이터가 한가지 타입으로만 이루어져 있으면 제대로 된 처리를 할 수 없다는 단점이 있다. Recurrent Neural Network (줄여서 RNN) 은 다양한 타입으로...","categories": ["computer vision","python"],
         "tags": [],
