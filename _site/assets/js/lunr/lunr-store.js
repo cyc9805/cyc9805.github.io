@@ -90,9 +90,9 @@ var store = [{
         "teaser": null
       },{
         "title": "데이콘 경진대회 참여후기 part1",
-        "excerpt":"지금까지의 배운 내용을 실전에 한번 적용해보고 싶다는 생각에 동아리 스터디원들과 함께 데이콘 경진대회에 참여 하였다. 대회의 내용은 구내식당 식수 인원을 예측하는 것으로, 대회 기간은 6월 3일부터 7월 23일까지였으며 대회 종료한지는 2달(…)이 넘게 지난 지금 경진대회 참여 후기를 작성하려고 한다. 데이터의 특징 경진대회에서 train, test, sample_submission 이렇게 3개의 데이터가 주어졌다. 이...","categories": ["data analysis","python"],
+        "excerpt":"지금까지의 배운 내용을 실전에 한번 적용해보고 싶다는 생각에 동아리 스터디원들과 함께 데이콘 경진대회에 참여 하였다. 대회의 내용은 구내식당 식수 인원을 예측하는 것으로, 대회 기간은 6월 3일부터 7월 23일까지였으며 대회 종료한지는 2달(…)이 넘게 지난 지금 경진대회 참여 후기를 작성하려고 한다. 데이터의 특징 경진대회에서 train, test, sample_submission 이렇게 3개의 데이터가 주어졌다. 이...","categories": ["data analysis","python","project"],
         "tags": [],
-        "url": "/data%20analysis/python/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/",
+        "url": "/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/",
         "teaser": null
       },{
         "title": "Lecture 10: Recurrent Neural Network",
