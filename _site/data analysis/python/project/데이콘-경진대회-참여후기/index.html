@@ -339,6 +339,21 @@
                     
                 
             </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/project" class="">Project (2)</a></li>
+                    
+                
+            </ul>
       </li>
   </ul>
 </nav>
@@ -375,7 +390,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 minute read
+          4 minute read
         
       </span>
     
@@ -407,41 +422,32 @@
 
 <p>히트맵으로부터 중식계와 석식계에서 본사외근무명령승인건수와 비례하는경향을 보인것을 확인할 수 있었다.</p>
 
-<ol>
-  <li>요일별 평균 중식계 식수 인원을 확인하였다.</li>
-</ol>
+<p><br />2. 요일별 평균 중식계 식수 인원을 확인하였다.</p>
 
 <p><img src="/assets/image/dacon_comment2.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
 <p>월&gt;화=수&gt;목&gt;금 순으로 많은 것을 확인할 수 있었다.</p>
 
-<ol>
-  <li>마찬가지로 요일별 석식계 식수 인원을 확인하였다.</li>
-</ol>
+<p><br />3. 마찬가지로 요일별 석식계 식수 인원을 확인하였다.</p>
 
 <p><img src="/assets/image/dacon_comment3.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
 <p>월&gt;화&gt;목&gt;금&gt;수 순으로 많은 것을 확인할 수 있었다. 수요일이 왜 가장 적은지에 대한 이유를 찾은 결과 매달 마지막째 주에 있는 문화의 날 때문에 석식계가 0이 나타나는 것 때문이라는 것을 확인했다.</p>
 
-<ol>
-  <li>
-    <p>주, 요일별 평균 중식계, 석식계를 확인한 결과 상당히 일치 하는 것을 보아서 관련 특성을 하나 생성하기로 하였다.</p>
+<p><br />4. 주, 요일별 평균 중식계, 석식계를 확인한 결과 상당히 일치 하는 것을 보아서 관련 특성을 하나 생성하기로 하였다.</p>
 
-    <ul>
-      <li>
-        <p>중식계
+<ul>
+  <li>
+    <p>중식계
 <img src="/assets/image/dacon_comment4.png" alt="" width="80%" height="80%" class="align-center" /></p>
-      </li>
-      <li>
-        <p>석식계
-<img src="/assets/image/dacon_comment5.png" alt="" width="80%" height="80%" class="align-center" /></p>
-      </li>
-    </ul>
   </li>
   <li>
-    <p>그 밖에 여러 분석을 시도해봤으나 마땅히 건질만한 것이 없었다.</p>
+    <p>석식계
+<img src="/assets/image/dacon_comment5.png" alt="" width="80%" height="80%" class="align-center" /></p>
   </li>
-</ol>
+</ul>
+
+<p><br />5. 그 밖에 여러 분석을 시도해봤으나 마땅히 건질만한 것이 없었다.</p>
 
 <h2 id="데이터-전처리">데이터 전처리</h2>
 
@@ -461,27 +467,19 @@
 
 <p><img src="/assets/image/dacon_comment8.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
-<ol>
-  <li>일자를 to_datetime 함수를 사용하여 년, 월, 일, 주, 요일숫자 특징으로 분리하였다.</li>
-</ol>
+<p><br />2. 일자를 to_datetime 함수를 사용하여 년, 월, 일, 주, 요일숫자 특징으로 분리하였다.</p>
 
 <p><img src="/assets/image/dacon_comment9.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
-<ol>
-  <li>문화의날 열을 추가하였다. 석식계가 0이 되는 행의 문화의날 열의 값은 1, 석식계가 0이 아니면 문화의날 열의 값은 0이 들어가게 된다.</li>
-</ol>
+<p><br />3. 문화의날 열을 추가하였다. 석식계가 0이 되는 행의 문화의날 열의 값은 1, 석식계가 0이 아니면 문화의날 열의 값은 0이 들어가게 된다.</p>
 
 <p><img src="/assets/image/dacon_comment10.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
-<ol>
-  <li>휴일이 다음날에 있으면 식수인원이 줄어들것이라는 추측을 하여 ‘휴일전날’ 열을 넣어 휴일이 다음날에 있으면 1, 없으면 0이 들어가는 코드를 작성하였다. 공공데이터 포털의 OpenAPI를 이용하였고, 해당 코드는 모두 내가 작성한것이 아니며, 코드의 출처는 사진 아래에 첨부하였다.</li>
-</ol>
+<p><br />4. 휴일이 다음날에 있으면 식수인원이 줄어들것이라는 추측을 하여 ‘휴일전날’ 열을 넣어 휴일이 다음날에 있으면 1, 없으면 0이 들어가는 코드를 작성하였다. 공공데이터 포털의 OpenAPI를 이용하였고, 해당 코드는 모두 내가 작성한것이 아니며, 코드의 출처는 사진 아래에 첨부하였다.</p>
 
 <p><img src="/assets/image/dacon_comment11.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
-<ol>
-  <li>마지막으로 필요없다고 판단되는 특징은 삭제하였다.</li>
-</ol>
+<p><br />5. 마지막으로 필요없다고 판단되는 특징은 삭제하였다.</p>
 
 <p><img src="/assets/image/dacon_comment12.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
@@ -511,17 +509,13 @@
 
 <p>같은 방법을 석식계 데이터에도 그대로 적용하였다.</p>
 
-<ol>
-  <li>선형회귀 모델로 라소회귀 모델을 사용하였다. 다음은 중식계 데이터를 이용해 라소회귀 모델을 생성하고 검증 데이터에 대한 점수를 출력하는 코드이다.</li>
-</ol>
+<p><br />2. 선형회귀 모델로 라소회귀 모델을 사용하였다. 다음은 중식계 데이터를 이용해 라소회귀 모델을 생성하고 검증 데이터에 대한 점수를 출력하는 코드이다.</p>
 
 <p><img src="/assets/image/dacon_comment17.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
 <p>검증 데이터에 대한 점수가 0.8정도로 앞선 lightgbm 과 상당히 유사한 결과가 나온것을 확인하였다. 석식 데이터에도 같은 방법을 적용한 결과 0.63 정도의 점수가 나왔다.</p>
 
-<ol>
-  <li>신경망은 사실 많이 시도해보지는 않았다. 신경망을 이용한 모델을 만들기 위해서는 keras 나 tensorflow 같은 다소 복잡한 라이브러리를 사용해야 하고 매개변수와 층을 설정하는 부분이 상당히 까다롭기 때문에 한번 시도해본다는 것에 의의를 두기로 하였다.</li>
-</ol>
+<p><br />3. 신경망은 사실 많이 시도해보지는 않았다. 신경망을 이용한 모델을 만들기 위해서는 keras 나 tensorflow 같은 다소 복잡한 라이브러리를 사용해야 하고 매개변수와 층을 설정하는 부분이 상당히 까다롭기 때문에 한번 시도해본다는 것에 의의를 두기로 하였다.</p>
 
 <p>먼저 k-fold 분할을 이용해 데이터를 훈련, 검증 데이터로 나누었다.</p>
 
@@ -541,7 +535,7 @@
 
 <p>검증 데이터를 통해 예측값과 실제값의 MAE 를 이용한 비교 결과 843 이라는 매우 높고 부정확한(…) 결과가 나온 것을 확인하였다. 또한 이 모델을 그대로 테스트 데이터에 적용하였는데 상식적으로 받아들일 수 없는 값이 나와 신경망에 대해서는 더 생각해볼 필요가 있다고 느꼈다.</p>
 
-<p><img src="/assets/image/dacon_commen22.png" alt="" width="80%" height="80%" class="align-center" /></p>
+<p><img src="/assets/image/dacon_comment22.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
 <h2 id="public-score-및-결과-분석">public score 및 결과 분석</h2>
 
@@ -549,25 +543,19 @@
   <li>lightgbm 을 이용했을 때 public score 은 91.75 정도가 나왔다.</li>
 </ol>
 
-<p><img src="/assets/image/dacon_comment23.png" alt="" width="80%" height="80%" class="align-center" /></p>
+<p><img src="/assets/image/dacon_comment23.png" alt="" /></p>
 
-<ol>
-  <li>xgboost 를 이용했을 때 public score 은 84.50 정도가 나왔다.</li>
-</ol>
+<p><br />2. xgboost 를 이용했을 때 public score 은 84.50 정도가 나왔다.</p>
 
-<p><img src="/assets/image/dacon_comment24.png" alt="" width="80%" height="80%" class="align-center" /></p>
+<p><img src="/assets/image/dacon_comment24.png" alt="" /></p>
 
-<ol>
-  <li>선형회귀를 이용했을 때 public score 은 84.50 정도가 나왔다.</li>
-</ol>
+<p><br />3. 선형회귀를 이용했을 때 public score 은 84.50 정도가 나왔다.</p>
 
-<p><img src="/assets/image/dacon_comment25.png" alt="" width="80%" height="80%" class="align-center" /></p>
+<p><img src="/assets/image/dacon_comment25.png" alt="" /></p>
 
-<ol>
-  <li>신경망을 이용했을 때는 예상했듯이 처참한 점수인 405.90(…😮‍💨😮‍💨)가 나왔다.</li>
-</ol>
+<p><br />4. 신경망을 이용했을 때는 예상했듯이 처참한 점수인 405.90(…😮‍💨😮‍💨)가 나왔다.</p>
 
-<p><img src="/assets/image/dacon_comment26.png" alt="" width="80%" height="80%" class="align-center" /></p>
+<p><img src="/assets/image/dacon_comment26.png" alt="" /></p>
 
 <p>위 결과를 통해 xgboost 가 제일 성능이 높을 것을 확인할 수 있었다. 아마 최적의 매개변수 튜닝에 따른 결과가 아닌지 싶다. 이것이 내가 얻었던 가장 좋은 결과였고, 다른 멤버는 조식, 점심, 저녁 메뉴를 삭제하고 일부 특징을 약간씩 수정한 결과 가장 좋은 점수인 81.33 을 얻었다. 사실 여기서 모델의 성능을 향상 시키기 위해 무엇을 더 해야할지 확신이 서지 않았고, 데이터 전처리 부분을 계속 반복하며 public score 을 향상시키기 위해 노력했으나 81.33 아래로 도저히 내려가지가 않아 해당 모델을 그대로 제출하였다.</p>
 
@@ -651,7 +639,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data%20analysis/python/seoul-bigdata-contest/" rel="permalink">서울시 빅데이터캠퍼스 공모전
+        <a href="/data%20analysis/python/project/seoul-bigdata-contest/" rel="permalink">서울시 빅데이터캠퍼스 공모전
 </a>
       
     </h2>
