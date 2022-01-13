@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/algorithm/python/chapter6-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%A7%E1%86%AF-%E1%84%8C%E1%85%A9%E1%84%8C%E1%85%A1%E1%86%A8/</loc>
+        
+        <lastmod>2022-01-14T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/</loc>
         
         <lastmod>2021-12-01T00:00:00+09:00</lastmod>

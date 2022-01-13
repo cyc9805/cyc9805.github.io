@@ -1,4 +1,170 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-04T00:04:10+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">서울시 빅데이터캠퍼스 공모전</title><link href="http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/" rel="alternate" type="text/html" title="서울시 빅데이터캠퍼스 공모전" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/">&lt;p&gt;2021년 9월 13일부터 10월 21일까지 진행한 서울시 빅데이터캠퍼스 공모전에 참가하였다. 공모전이 끝난지는 무려 한달(…)이 지났지만 후기 작성을 미루다가 지금에서야 후기를 작성하려 한다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-14T08:01:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">문자열 조작</title><link href="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/" rel="alternate" type="text/html" title="문자열 조작" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/">&lt;h2 id=&quot;question-1-유효한-팰린드롬&quot;&gt;Question 1: 유효한 팰린드롬&lt;/h2&gt;
+
+&lt;h3 id=&quot;풀이-1-리스트로-변환&quot;&gt;풀이 1: 리스트로 변환&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isalnum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# 팰린드롬 여부 판별
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;기억해야-할-함수&quot;&gt;기억해야 할 함수&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;isalnum(): 영문자, 숫자이면 True를 리턴하는 함수&lt;/li&gt;
+  &lt;li&gt;pop(): 삭제할 인덱스를 입력하면 삭제될 값을 리턴하고 삭제가 진행된다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;중요-내용&quot;&gt;중요 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;리스트의 요소들을 다 검사해야 하기 때문에 코드 실행 시간은 O(n) 이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;풀이-2-데크-자료형을-이용한-최적화&quot;&gt;풀이 2: 데크 자료형을 이용한 최적화&lt;/h3&gt;
+
+&lt;p&gt;```python
+내 현재 전공이 공간정보공학과이고 공간 데이터를 다루는 데는 자신이 있었기 때문에 최적의 위치를 선정하는 1~4번의 주제가 적합해 보였다. 그러나 작년에 입상을 한 팀의 주제들이 거의 다 최적의 입지를 선정하는 것과 관련이 있었고 이러한 주제는 다소 식상하다고 느껴져 입지 선정과는 무관한 5번 주제를 하기로 결정하였다.
+5번 주제에서 특정 카테고리별로 구호물품을 선정할 필요가 있다고 생각하여 지역을 기준으로 삼기로 했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;데이터-시각화&quot;&gt;데이터 시각화&lt;/h2&gt;
+
+&lt;h3 id=&quot;서울시-소득수준-시각화&quot;&gt;서울시 소득수준 시각화&lt;/h3&gt;
+
+&lt;p&gt;특정지역의 전반적인 소비패턴은 그 지역의 소득수준과 연관되어 있으므로 구별 소득수준을 지도에 시각화하였다. 사용한 데이터로는 &lt;strong&gt;서울시 행정구 경계 데이터&lt;/strong&gt;, &lt;strong&gt;법정동별 소득수준 데이터&lt;/strong&gt; 가 있다. 이때 경계 데이터는 행정구, 소득수준은 법정동이 기준이 되고 있으므로 QGIS 쿼리 기능의 공간 연산을 통해 행정구별 소득수준을 구했다. 다음은 공간 연산을 통한 시각화 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/구별소득수준.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;분석 결과 다음과 같은 인사이트를 도출할 수 있었다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;강북구, 도봉구, 금천구가 다른 구들에 비해 낮은 소득수준을 보인다.&lt;/li&gt;
+  &lt;li&gt;송파구, 강남구가 다른 구들에 비해 높은 소득수준을 보여주고 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;서울시-구별-코로나-전과-코로나-시기의-소비-비교&quot;&gt;서울시 구별 코로나 전과 코로나 시기의 소비 비교&lt;/h3&gt;
+
+&lt;p&gt;코로나 전과 후의 소비패턴의 변화를 파악해야 했기 때문에 &lt;strong&gt;카드소비 패턴 데이터&lt;/strong&gt;를 구와 업종별로 sort하여 가장 큰 변화폭을 업종을 찾았다. 이를 PowerBI를 통해 그래프로 시각화하고 QGIS를 통해 시각화한 서울시 자치구 경계 데이터를 합쳐서 구별 소비패턴의 변화를 시각화 하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/코로나전과후.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 그래프에서 알 수 있듯이 코로나 전에는 마트, 음식, 온라인쇼핑, 교육이 상위권을 차지했으나 코로나 시기에는 온라인쇼핑이 급성장하여 가장 높은 자리를 차지하고 있는 것을 알 수 있다. 위 지도에 나타난 자치구를 제외한 다른 자치구들도 이와 비슷한 변화를 보이고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/코로나전과후2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;분야별-예측금액-모델링&quot;&gt;분야별 예측금액 모델링&lt;/h2&gt;
+
+&lt;h3 id=&quot;분석-계획&quot;&gt;분석 계획&lt;/h3&gt;
+
+&lt;p&gt;자치구의 경제적, 인구적 특징이 드러나는 데이터를 독립 변수를 설정하고 미래의 각 자치구의 업종별 매출이나 소비 금액을 종속 변수로 설정하였다. 여기서 머신러닝 기법을 이용하여 자치구의 업종별 매출을 예측하는 모델을 만들어 보았다.&lt;/p&gt;
+
+&lt;h3 id=&quot;사용-데이터&quot;&gt;사용 데이터&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;서울시민의 업종별 카드소비 패턴 데이터
+    &lt;ul&gt;
+      &lt;li&gt;블록별로 요식업, 스포츠/문화/레저, 교육 등 73개 업종의 연월별 카드소비금액계와 카드소비건수계를 제공하고 있다. 여기서 블록을 자치구로 mapping하고 자치구별, 연월별, 업종별 데이터로 변환하여 카드소비금액계를 종속변수로 설정하였다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;행정동 단위 거주인구 데이터
+    &lt;ul&gt;
+      &lt;li&gt;행정동별로 거주인구 데이터를 제공하고 있다. 행정동 코드를 &lt;strong&gt;행정동-자치구 변환 데이터&lt;/strong&gt;와 조인하여 자치구로 변환하고 자치구별, 연월별 인구 합계 데이터를 생성하여 독립변수로 사용한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;서울시 상권발달 개별지수
+    &lt;ul&gt;
+      &lt;li&gt;행정동별로 가맹점, 매출, 인구, 금융 관련 지표를 제공하고 있다. 행정동 코드를 자치구로 변환하고 자치구별, 연월별 데이터를 생성하여 독립변수로 사용한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;데이터-전처리&quot;&gt;데이터 전처리&lt;/h3&gt;
+
+&lt;p&gt;6개월간의 데이터를 이용해 다음 달의 카드소비금액계를 예측해야 했기 때문에 시계열 데이터 분석을 고려한 데이터 변환을 하였다. 아래 그림에 나타난 것과 같이 6개월 동안 나타난 독립변수들을 한번에 묶어서 한 열로 통합하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/시계열데이터분석.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;모델링-방법&quot;&gt;모델링 방법&lt;/h3&gt;
+
+&lt;p&gt;여기서 보편적인 상황에서 가장 좋은 성능을 보여주는 RandomForest를 예측모델로 사용하였다. 2018년 7월부터 2020년 4월까지의 데이터를 훈련 데이터로 설정하여 6개월 단위로 훈련을 진행하였고 2020년 5월부터 9월까지의 데이터를 테스트 데이터로 설정하여 성능을 확인하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;분석-결과&quot;&gt;분석 결과&lt;/h3&gt;
+
+&lt;p&gt;각 자치구의 2020년 5월부터 9월까지의 데이터를 예측한 것을 시각화하였다. 다음은 좋은 결과가 나타난 업종을  실제값과 예측값을 비교하여 그래프로 시각화한 결과이다. 여기서 x축은 5월부터 날짜를 DOY(date of year)로 변환하여 나타낸 값이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/분석결과.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;반대로 앞의 4개 업종에 비해 좋지 않은 성능을 보여주는 업종도 있었다. 데이터 부족이 원인이거나 지역구의 경제적 지표와 관련 없는 업종이기에 좋지 않은 성능을 기록했을 가능성이 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/분석결과2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;온라인-쇼핑몰-분야별-예측금액-모델링&quot;&gt;온라인 쇼핑몰 분야별 예측금액 모델링&lt;/h2&gt;
+
+&lt;h3 id=&quot;배경&quot;&gt;배경&lt;/h3&gt;
+
+&lt;p&gt;앞서 데이터 시각화를 통해 코로나19로 인해 온라인 쇼핑의 매출이 급격하게 상승했다는 인사이트를 도출할 수 있었다. 따라서 온라인 쇼핑 분야만 따로 매출을 예측해야 할 필요성을 느껴 온라인 쇼핑몰의 매출금액을 분야별로 모델링 해보았다.&lt;/p&gt;
+
+&lt;h3 id=&quot;모델링-방법-1&quot;&gt;모델링 방법&lt;/h3&gt;
+
+&lt;p&gt;여기서 사용한 모델로는 Prophet이 있다. Prophet은 이 공모전을 진행하면서 처음으로 접한 모델이였는데, 이 모델의 특징은 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;페이스북에서 만든 시계열 예측 라이브러리이다.&lt;/li&gt;
+  &lt;li&gt;Prophet은 시계열 데이터 예측에 최적화된 모델로, 트렌드, 계절성, 공휴일을 자동으로 반영하여 이를 고려하여 손쉽게 모델을 만들 수 있다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;다음과 같은 공식을 가지고 있다.&lt;/p&gt;
+
+    &lt;p&gt;$y(t)=g(t)+s(t)+h(t)+ϵi$&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;g(t) : 주기적이지 않은 변화인 트렌드를 나타낸다.(부분적으로 선형 또는 logistic 곡선으로 이루어져 있다.)&lt;/li&gt;
+      &lt;li&gt;s(t) : Seasonality, weekly, yearly 등 주기적으로 나타나는 패턴들을 포함한다.&lt;/li&gt;
+      &lt;li&gt;h(t)  : 휴일과 같이 불규칙한 이벤트를 나타내는 변수이다. 만약 특정 기간에 값이 비정상적으로 증가 또는, 감소했다면, holiday로 정의하여 모델에 반영한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;사용한 데이터로는 2017년1월부터 2021년6월까지의 정보가 나타난 통계청의 온라인 쇼핑몰 데이터이다. 2017년1월부터 2021년 4월까지를 훈련 데이터로, 4월부터 6월까지의 데이터를 테스트 데이터로 설정하여 훈련을 진행하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;분석결과&quot;&gt;분석결과&lt;/h3&gt;
+
+&lt;p&gt;다음은 각 업종별로 예측한 결과와 테스트 데이터의 비교, 5달 후의 매출금액을 예측한 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/프로펫분석결과.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;
+&lt;img src=&quot;/assets/image/프로펫분석결과2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음은 2021년 7월부터 11월까지의 매출금액을 예측한 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/프로펫분석결과3.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
+
+&lt;p&gt;지금까지의 분석활동을 통해 다음과 같은 결과를 도출할 수 있었다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터 시각화
+    &lt;ul&gt;
+      &lt;li&gt;데이터 시각화로 각 자치구별로 코로나 전과 후의 거래되는 품목들의 동향을 파악할 수 있었다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;지역구별 상권발달 개별지수와 거주 인구수를 바탕으로 카드소비금액 예측
+    &lt;ul&gt;
+      &lt;li&gt;2020년 5월~9월의 업종별 카드소비금액을 안정적으로 예측할 수 있었다.&lt;/li&gt;
+      &lt;li&gt;정보가 최신화 된다면 코로나19 이후 지역별로 어떤 업종의 소비를 지원할지, 어떤 업종이 활성화될지를 예측하고 코로나19 이후를 대비하는 정부정책에 반영할 수 있을 것이다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;온라인 쇼핑몰 상품거래액 분석
+    &lt;ul&gt;
+      &lt;li&gt;2021년 11월에 가전통신기기, 음식료품, 의복의 거래액이 상위에 있음을 알 수 있었다.&lt;/li&gt;
+      &lt;li&gt;이를 통해 온라인 문화상품권을 지원해줄 항목을 알 수 있었다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">Question 1: 유효한 팰린드롬</summary></entry><entry><title type="html">서울시 빅데이터캠퍼스 공모전</title><link href="http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/" rel="alternate" type="text/html" title="서울시 빅데이터캠퍼스 공모전" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/">&lt;p&gt;2021년 9월 13일부터 10월 21일까지 진행한 서울시 빅데이터캠퍼스 공모전에 참가하였다. 공모전이 끝난지는 무려 한달(…)이 지났지만 후기 작성을 미루다가 지금에서야 후기를 작성하려 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;주제-정하기&quot;&gt;주제 정하기&lt;/h2&gt;
 
@@ -1049,208 +1215,4 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
 
 &lt;h2 id=&quot;deep-learning-software&quot;&gt;Deep Learning Software&lt;/h2&gt;
 
-&lt;p&gt;기업들은 상업적인 목적으로 딥러닝 소프트웨어을 만들었다. 여기서 딥러닝 프레임워크라는 개념이 나온다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">CPU vs GPU</summary></entry><entry><title type="html">Lecture 9: CNN Architectures</title><link href="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/" rel="alternate" type="text/html" title="Lecture 9: CNN Architectures" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/">&lt;h2 id=&quot;cnn-architectures&quot;&gt;CNN Architectures&lt;/h2&gt;
-
-&lt;p&gt;CNN에는 다양한 구조가 존재한다. 유명한 구조에는 &lt;strong&gt;&lt;em&gt;AlexNet, VGG, GoogLeNet, ResNet&lt;/em&gt;&lt;/strong&gt; 가 있다. 이 구조들을 ImageNet classification 대회에서 우승한 연도 순서대로 설명하겠다.&lt;/p&gt;
-
-&lt;p class=&quot;notice--primary&quot;&gt;&lt;strong&gt;&lt;u&gt;참고 사항&lt;/u&gt;&lt;/strong&gt; 이 단원을 다루면서 레이어의 파라미터의 총 개수를 구하는 경우가 많을 것이다. 레이어의 파라미터 총 개수는 다음과 같이 구한다.&lt;/p&gt;
-
-&lt;p&gt;$(total \, parmeter) = (filter \, size)^2\times (number \, of\, channels)\times(number\,  of\, filters)$&lt;/p&gt;
-
-&lt;p class=&quot;notice--primary&quot;&gt;위 공식은 가중치 값을 가진 레이어에만 적용이 되고 Maxpooling 과 같이 가중치 값이 존재하지 않는 레이어는 파라미터의 총 개수는 무조건 0이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;lenet-5&quot;&gt;LeNet-5&lt;/h3&gt;
-
-&lt;p&gt;LeNet은 CNN의 첫번째 구조이다. 첫번째 구조인 만큼 쌓인 층 수도 적고, 필터의 크기도 최적의 결과를 위해 정해지지 않은 상태이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;alexnet&quot;&gt;AlexNet&lt;/h3&gt;
-
-&lt;p&gt;AlexNet은 2012년 ImageNet classification 대회에서 우승한 대규모 구조이다. 이 구조로 인해 다소 덜 중요하게 생각되었던 CNN 연구가 다시 불붙게 되었다. 다음은 AlexNet 구조의 모습이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;입력 이미지의 크기는 227x227x3 이다.&lt;/li&gt;
-  &lt;li&gt;첫번째 레이어에는 96개의 11x11 필터가 적용되었다.&lt;/li&gt;
-  &lt;li&gt;첫번째 레이어의 파라미터의 개수는 $(11\times 11 \times 3)*96 = 35000$(개) 이다.&lt;/li&gt;
-  &lt;li&gt;두번째 레이어는 Maxpooling 레이어로, 파라미터의 개수는 0이다.&lt;/li&gt;
-  &lt;li&gt;세번째 레이어는 정규화 레이어로, 파라미터의 개수는 마찬가지로 0이다.&lt;/li&gt;
-  &lt;li&gt;다음은 필터, Maxpooling, 정규화 레이어를 반복적으로 적용시켜 나타낸 AlexNet의 전체 구조이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-3.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;2012년에는 모델의 훈련을 위한 GPU의 성능이 좋지 못할 때이므로 모델의 크기를 2개로 나눈 후 각자 훈련시켰다.&lt;/li&gt;
-  &lt;li&gt;AlexNet에서 일부 레이어의 필터의 개수를 변경한 &lt;strong&gt;&lt;em&gt;ZFNet&lt;/em&gt;&lt;/strong&gt; 이 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;vggnet&quot;&gt;VGGNet&lt;/h3&gt;
-
-&lt;p&gt;VGGNet은 기본적인 CNN구조에서 필터의 크기를 작게하고 층을 더 깊게 쌓아 성능을 비약적으로 향상시킨 구조이다. 2014년 ImageNet classification 대회에서 우승한 구조이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-4.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;u&gt;필터의 크기를 작게 설정한 이유는 무엇일까?&lt;/u&gt;&lt;/strong&gt; 3개의 $3\times3$ 필터 사이즈를 가진 레이어는 한개의 $7\times7$ 필터 사이즈를 가진 레이어와 같다. 따라서, 모델의 비선형성을 추가하면서 깊게 쌓을 수 있게된다.&lt;/li&gt;
-  &lt;li&gt;이미지당 메모리의 96MB 를 차지하는 매우 무거운 모델이다.&lt;/li&gt;
-  &lt;li&gt;VGG16과 VGG19는 각각 16개, 19개의 레이어를 가지고 있다. VGG19의 층 수가 더 많지만 성능은 VGG16과 큰 차이가 없다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;googlenet&quot;&gt;GoogLeNet&lt;/h3&gt;
-
-&lt;p&gt;GoogLeNet은 기본적인 CNN구조에서 층을 더 깊게 쌓고 계산의 효율성을 증가시킨 모델이다. 성능은 VGGNet과 비슷하며, VGGNet과 마찬가지로 2014년 ImageNet classification 대회에서 우승한 구조이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-5.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;위 그림을 통해 알 수 있듯이 GoogLeNet에는 &lt;strong&gt;&lt;em&gt;Inception module&lt;/em&gt;&lt;/strong&gt; 이라는 독특한 특징이 존재한다. Inception module 은 여러개의 다른 사이즈의 필터와 pooling 을 병행하여 기존 레이어에 적용하여 계산하고 계산한 값을 연결하여 출력하는 구조이다. 그러나 이렇게 계산을 병행할시 계산량이 엄청나게 늘어난다는 단점이 존재하기 때문에 기존 레이어의 차원을 줄여주는 &lt;strong&gt;&lt;em&gt;bottleneck&lt;/em&gt;&lt;/strong&gt; 레이어를 적용해야 한다. 이 레이어를 적용할시 계산량은 절반 이상으로 줄어든다. 아래 사진에서 왼쪽은 일반 Inception module, 오른쪽은 bottleneck 레이어를 적용한 Inception module이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;총 22개의 가중치 값을 가진 레이어가 존재한다.&lt;/li&gt;
-  &lt;li&gt;마지막 레이어가 Fully Connected 레이어가 아니다.&lt;/li&gt;
-  &lt;li&gt;AlexNet보다 12배나 적은 파라미터를 가지고 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;resnet&quot;&gt;ResNet&lt;/h3&gt;
-
-&lt;p&gt;ResNet은 2015년 ImageNet classification 대회에서 우승한 구조이다. 바로 전년도에 우승한 VGG, GoogleNet과 비교해 엄청난 성능의 향상을 불러온 모델이다&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-7.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 그림을 보면 residual block 이라는 개념이 나온다. 한번 자세히 알아보자.&lt;/p&gt;
-
-&lt;h4 id=&quot;residual-block&quot;&gt;Residual block&lt;/h4&gt;
-
-&lt;p&gt;모델의 층을 단순히 깊게만 쌓는다고 해서 모델의 성능이 좋아지는 것은 아니다. 아래의 그래프를 한번 참고해보자.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이처럼 훈련과 테스트 데이터 모두 56개의 층을 가진 모델이 20개의 층을 가진 레이어보다 좋지 않은 성능을 보이고 있음을 알 수 있다. 이러한 문제를 해결하기 위해 고안된 것이 Residual block 인데, 원리는 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;왼쪽 구조는 일반적인 plain 레이어이고, 오른쪽 구조는 residual block 이다. 두 레이어의 차이점은 한 가지인데, &lt;u&gt;계산하는 동안의 입력 값에 대한 정보가 주어지지 않는가(plain 레이어)&lt;/u&gt; 아니면 &lt;u&gt;계산하는 동안의 입력 값에 대한 정보가 주어지는가(residual block)&lt;/u&gt; 이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;위의 그래프를 다시 한번 보자. $x$는 입력값, $H(x)$는 계산과정을 통해 얻은 최종 값이고 $F(x)$는 모든 레이어의 계산과정을 총칭한 함수이다. 
-plain 레이어는 입력 값에 대한 정보가 주어지지 않으므로 $H(x)=F(x)$ 가 되지만 residual block은 입력 값에 대한 정보가 주어지므로 $H(x)=F(x)+x$ 가 된다. 즉, residual block은 &lt;strong&gt;&lt;em&gt;기존에 학습한 정보를 보존하고, 거기에 추가적인 계산만을 실시하므로&lt;/em&gt;&lt;/strong&gt; plain 레이어보다 연산량이 훨씬 더 줄어들게 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;위 과정을 이해하기 힘들다면 다음과 같은 비유를 한번 생각해보자.
-&lt;br /&gt;&lt;cite&gt;참조: https://itrepo.tistory.com/36&lt;/cite&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;오픈북이 불가능한 시험&lt;/li&gt;
-  &lt;li&gt;오픈북이 가능한 시험&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;1의 경우에는 시험의 범위가 많아질수록(=층이 깊어지고 학습해야 할 양이 많아지면) 공부하기가 어려워질 것이다. 반면 2의 경우에는 이미 배웠던 내용($x$)가 주어지기 때문에 추가적으로 학습한 내용만을 공부할 것이다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;ResNet에 대한 설명을 마저 하도록 하겠다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;2개의 3x3 convolutional 레이어로 이루어진 residual block을 매우 깊게 쌓은 모델이다.&lt;/li&gt;
-  &lt;li&gt;마지막에 1000개의 클래스로 분류하는 Fully Connected 레이어 외의 Fully Connected 레이어가 존재하지 않는다.&lt;/li&gt;
-  &lt;li&gt;레이어의 총 개수는 34, 50, 101, 152 개이다.&lt;/li&gt;
-  &lt;li&gt;연산량을 더 줄이기 위해 GoogLeNet에 사용된 bottleneck 레이어를 사용하기도 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;comparing-the-models&quot;&gt;Comparing the models&lt;/h2&gt;
-
-&lt;p&gt;다음은 지금까지 배운 구조를 그래프를 통해 비교한 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;오른쪽 그래프에서 원의 크기는 모델의 메모리 사용량을 나타낸다.&lt;/li&gt;
-  &lt;li&gt;VGG16,19의 효율성이 가장 낮다 (원의 크기가 가장 크다).&lt;/li&gt;
-  &lt;li&gt;GoogLeNet의 효율성이 가장 높다 (원의 크기가 가장 작다).&lt;/li&gt;
-  &lt;li&gt;AlexNet의 정확도가 가장 떨어진다.&lt;/li&gt;
-  &lt;li&gt;ResNet은 적당한 효율성+가장 높은 정확도로 성능이 제일 좋은 모델이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;다음은 구조를 훈련 시간과 훈련에 필요한 전력의 양을 비교한 그래프이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;extra-architectures&quot;&gt;Extra architectures&lt;/h2&gt;
-
-&lt;p&gt;ImageNet classification 대회에서 우승한 구조외에 다양한 논문 등에서 연구한 구조에 대해 간단하게 설명하도록 하겠다.&lt;/p&gt;
-
-&lt;h3 id=&quot;network-in-network-nin&quot;&gt;Network in Network (NiN)&lt;/h3&gt;
-
-&lt;p&gt;기본적인 convolutional layer 안에 micronetwork를 추가해 더 자세한 특징을 학습할 수 있게 만든 모델이다. bottleneck 레이어의 선구자격이 되는 모델이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;improving-resnet&quot;&gt;Improving ResNet&lt;/h3&gt;
-
-&lt;p&gt;ResNet이 가장 최근에 우승한 구조인만큼 ResNet의 성능을 발전하기 위한 많은 연구가 시도 되었다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Identity Mappings in Deep Residual Networks&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;residual block에서 계산할때 더 직접적으로 기존 정보에 대해 알려준다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-14.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;2. Wide Residual Networks&lt;/p&gt;
-
-&lt;p&gt;ResNet에서 레이어의 수보다 residual block가 더 중요하다고 생각해 F개의 필터가 아닌 F x k 개의 필터를 사용해 residual block을 더 넓게 만든 모델이다. 
-이렇게 해서 만든 50개의 레이어를 가진 모델이 기존의 152개의 레이어를 가진 모델보다 더 좋은 성능을 보인다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-15.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;3. Aggregated Residual Transformations for Deep Neural Networks (ResNeXt)&lt;/p&gt;
-
-&lt;p&gt;Inception module과 비슷하게 residual block에 여러개의 필터를 병행하여 적용하여 residual block을 더 넓게 만든 모델이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-16.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;4. Deep Networks with Stochastic Depth&lt;/p&gt;
-
-&lt;p&gt;계산할수록 gradient 값이 줄어드는 것을 막기 위해 훈련시 랜덤하게 레이어를 드롭하여 레이어 수를 줄인 모델이다. 단, 테스트 할때는 레이어를 드롭하지 않은 모델을 이용한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-17.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;beyond-resnet&quot;&gt;Beyond ResNet&lt;/h3&gt;
-
-&lt;p&gt;다음 설명하는 모델들은 ResNet의 중요한 요소인 residual block을 사용하지 않았다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;FractalNet: Ultra-Deep Neural Networks without Residuals&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;얉은 층과 깊은 층이 병행하여 존재해 훈련시에 랜덤하게 레이어를 드롭하여 레이어 수를 줄인다. 단, 테스트 할때는 레이어를 드롭하지 않은 모델을 이용한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-18.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;2. Densely Connected Convolutional Networks (DenseNet)&lt;/p&gt;
-
-&lt;p&gt;레이어 사이에 Dense block이라는 별도의 block이 존재하는데, 이 block 안에 있는 레이어들은 다음 레이어들과 연결되어 있다. 이렇게 함으로써 계산할수록 gradient 값이 줄어드는 현상을 방지할 수 있고, 더 자세한 특징을 학습할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-19.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;3. SqueezeNet&lt;/p&gt;
-
-&lt;p&gt;squeezeNet은 AlexNet과 비슷한 수준의 정확도를 가지고 있으나 50배나 적은 수의 파라미터를 요구하고 0.5MB의 용량을 가지고 있다. 1x1의 크기인 필터를 가진 squeeze 레이어와 더 큰 필터 크기를 가진 expand 레이어로 구성되어 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture9-20.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;VGG, GoogLeNet, ResNet 모두 널리 쓰이는 모델이다.&lt;/li&gt;
-  &lt;li&gt;이중 ResNet이 가장 좋은 성능을 보인다.&lt;/li&gt;
-  &lt;li&gt;더 깊게 모델을 쌓으면서 성능을 높이는 방향으로 연구가 진행되고 있다.&lt;/li&gt;
-  &lt;li&gt;레이어를 어떻게 디자인하고 gradient flow를 어떻게 향상시킬지에 대해 연구가 진행되고 있다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">CNN Architectures</summary></entry></feed>
+&lt;p&gt;기업들은 상업적인 목적으로 딥러닝 소프트웨어을 만들었다. 여기서 딥러닝 프레임워크라는 개념이 나온다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">CPU vs GPU</summary></entry></feed>

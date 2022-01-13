@@ -136,4 +136,10 @@ var store = [{
         "tags": [],
         "url": "/data%20analysis/python/project/seoul-bigdata-contest/",
         "teaser": null
+      },{
+        "title": "문자열 조작",
+        "excerpt":"Question 1: 유효한 팰린드롬 풀이 1: 리스트로 변환 def isPalindrome(self, s:str) -&gt; bool: strs = [] for char in s: if char.isalnum(): strs.append(char.lower()) # 팰린드롬 여부 판별 while len(strs) &gt; 1: if strs.pop(0) != strs.pop(): return False return True 기억해야 할 함수 isalnum(): 영문자, 숫자이면 True를 리턴하는 함수 pop(): 삭제할...","categories": ["algorithm","python"],
+        "tags": [],
+        "url": "/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/",
+        "teaser": null
       }]
