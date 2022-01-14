@@ -101,7 +101,10 @@ comments:
   utterances:
     theme : "photon-dark"
     issue_term : "pathname"
-              
+         
+# search
+search              : true
+search_full_content : true
 # Defaults
 defaults:
   # _posts
@@ -126,7 +129,11 @@ defaults:
       author_profile: true
       sidebar_main: true
 
-    
+sass:
+  sass_dir: _sass
+  style: compressed
+  
+  
 plugins:
   - jekyll-include-cache
   - jekyll-sitemap

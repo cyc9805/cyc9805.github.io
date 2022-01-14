@@ -1,6 +1,10 @@
 ---
 layout: single
 title:  "서울시 빅데이터캠퍼스 공모전"
+comments: true
+use_math: true
+toc: true
+toc_sticky: true
 categories:
   - data analysis
   - python

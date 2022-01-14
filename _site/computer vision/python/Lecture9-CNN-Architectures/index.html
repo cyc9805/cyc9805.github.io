@@ -151,6 +151,11 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
               <a href="/about/">About</a>
             </li></ul>
         
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
@@ -761,7 +766,7 @@ plain 레이어는 입력 값에 대한 정보가 주어지지 않으므로 $H(x
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 minute read
+          1 minute read
         
       </span>
     
@@ -905,6 +910,17 @@ plain 레이어는 입력 값에 대한 정보가 주어지지 않으므로 $H(x
     </div>
 
     
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
 
     <div id="footer" class="page__footer">
       <footer>
@@ -957,6 +973,10 @@ plain 레이어는 입력 값에 대한 정보가 주어지지 않으므로 $H(x
 
 
 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
 
 
 
