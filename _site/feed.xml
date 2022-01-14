@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-14T20:18:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">문자열 조작</title><link href="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/" rel="alternate" type="text/html" title="문자열 조작" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/">&lt;h2 id=&quot;question-1-유효한-팰린드롬&quot;&gt;Question 1: 유효한 팰린드롬&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-14T20:40:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">문자열 조작</title><link href="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/" rel="alternate" type="text/html" title="문자열 조작" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/">&lt;h2 id=&quot;question-1-유효한-팰린드롬&quot;&gt;Question 1: 유효한 팰린드롬&lt;/h2&gt;
 
 &lt;p class=&quot;notice&quot;&gt;입력: ‘Taco cat’&lt;/p&gt;
 &lt;p class=&quot;notice&quot;&gt;출력: true&lt;/p&gt;
@@ -86,6 +86,9 @@
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;question-2-문자열-뒤집기&quot;&gt;Question 2: 문자열 뒤집기&lt;/h2&gt;
+
+&lt;p class=&quot;notice&quot;&gt;입력: [‘h’, ‘e’, ‘l’, ‘l’, ‘o’]&lt;/p&gt;
+&lt;p class=&quot;notice&quot;&gt;출력: [‘o’, ‘l’, ‘l’, ‘e’, ‘h’]&lt;/p&gt;
 
 &lt;h3 id=&quot;풀이-1-투-포인터를-이용한-스왑&quot;&gt;풀이 1: 투 포인터를 이용한 스왑&lt;/h3&gt;
 
@@ -993,7 +996,64 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
   &lt;li&gt;일반 RNN 구조는 간단하나 gradient flow의 어려움 때문에 잘 사용되지 않는다.&lt;/li&gt;
   &lt;li&gt;gradient flow 문제를 해결한 LSTM을 사용하는 것을 추천한다.&lt;/li&gt;
   &lt;li&gt;더 간단하지만 좋은 성능을 보이는 RNN 구조를 만드는 방향으로 현재 연구가 진행되고 있다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Process Sequence of Recurrent Neural Network</summary></entry><entry><title type="html">데이콘 경진대회 참여후기 part1</title><link href="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="데이콘 경진대회 참여후기 part1" /><published>2021-10-02T00:00:00+09:00</published><updated>2021-10-02T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/">&lt;p&gt;지금까지의 배운 내용을 실전에 한번 적용해보고 싶다는 생각에 동아리 스터디원들과 함께 데이콘 경진대회에 참여 하였다. 대회의 내용은 구내식당 식수 인원을 예측하는 것으로, 대회 기간은 6월 3일부터 7월 23일까지였으며 대회 종료한지는 2달(…)이 넘게 지난 지금 경진대회 참여 후기를 작성하려고 한다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Process Sequence of Recurrent Neural Network</summary></entry><entry><title type="html">데이콘 경진대회 참여후기 part2</title><link href="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B02/" rel="alternate" type="text/html" title="데이콘 경진대회 참여후기 part2" /><published>2021-10-03T00:00:00+09:00</published><updated>2021-10-03T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B02</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B02/">&lt;p&gt;경진대회에서 1등이 사용한 코드를 보려고 했는데 아쉽게 1등한 팀이 코드를 공유하지 않아 3등 팀의 코드를 참고하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3등-팀의-코드를-보고-눈에-띈-점&quot;&gt;3등 팀의 코드를 보고 눈에 띈 점&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;seaborn의 kdeplot 함수를 통해 목적변수의 분포를 그래프로 나타내었다. 해당 그래프를 통해 정규화를 해야할지 말아야 할지 여부를 판단할 수 있다. 이번 경진대회의 중식계와 석식계 특징은 이미 정규분포의 형태를 띄고 있으므로 Min-Max-scale 같은 정규화를 실시하지 않았다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;월별 점심과 저녁때 사람수를 boxplot을 이용해 그래프로 나타내었다. 이를 통해 연말에 식수 인원이 제일 적다는 것을 파악하였다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;음식 메뉴를 처리하는 과정에서 밥, 국, 반찬의 세 개의 특징을 만들어 각 특징에 해당하는 메뉴를 분리했다. 그리고 레이블인코딩을 통해 각 메뉴를 숫자로 변경하였다. 나도 LabelEncoder 라이브러리를 이용하여 레이블인코딩을 시도해 보았지만 3등 팀은 다른 방법을 통해 레이블인코딩을 하였다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;음식 메뉴를 분리하는 과정에서 3개의 반찬 중에서 1개만 특징에 포함시켰다. 3개의 반찬 중 메인 반찬이라고 보이는 반찬은 딱히 보이지 않는데 특징의 수를 조금이라도 줄이기 위해 1개만 포함시킨 것일까?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;점심에 구내식당을 이용한 사람이 저녁에도 그대로 이용할 확률이 높을 것이라는 가정을 하였다. 이를 확인하기 위해 석식계를 예측할 때 다음과 같은 두가지 방법으로 나누어서 예측을 하였다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;석식메뉴는 제외하고 점심메뉴로만 석식계를 예측하였다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;2. 석식메뉴로 석식계를 예측하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 두 가지 경우의 public score 중 1번이 더 높게 나와 점심에 구내식당을 이용한 사람이 저녁에도 그대로 이용할 확률이 높을 것이라는 가정이 맞다는 것을 확인할 수 있었다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모델은 xgboost 를 이용하였다. 다만 최적의 파라미터를 찾을 때 나는 베이즈 최적화 방법을 이용한 반면 3등 팀은 그리드 서치 방법을 이용하였다. 그리드 서치를 위해 GridSearchCV 라이브러리를 이용하였다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3등-팀의-코드를-보며-느낀-점&quot;&gt;3등 팀의 코드를 보며 느낀 점&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터의 특징은 최대하게 간단하게 생성하였다. 나는 특징 수는 별로 생각하지 않고 학습에 도움이 될 것 같은 특징은 마구잡이로 추가했는데 이러한 특징들이 학습에 악영향을 미친 것 같다. feature_importance 와 corr 함수를 더 적극적으로 사용하여 중요한 특징들과 특징들간의 상관성을 파악을 하는 것이 중요하다.&lt;/li&gt;
+  &lt;li&gt;데이터 분석을 다양한 방법으로 실행하였다. 데이터 분석의 중요성을 이 대회를 통해 느낀만큼 데이터 분석을 위한 라이브러리들을 많이 공부해야겠다.&lt;/li&gt;
+  &lt;li&gt;문제에 대해 지나치게 어렵게 접근하면 진짜 중요한 것들이 보이지 않을 수 있으므로 간단하게 접근하는 태도가 필요하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;처음으로 데이터 경진대회에 참여하여 private score 100등으로 마무리 하였지만 직접 배운 것들을 활용하고 코드를 작성하는 과정에서 많은 것들을 배워갈 수 있었다. 이 경진대회가 데이터 분석과 친해지기 위한 중요한 한 걸음이 되었으면 좋겠다😀😀&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><category term="project" /><summary type="html">경진대회에서 1등이 사용한 코드를 보려고 했는데 아쉽게 1등한 팀이 코드를 공유하지 않아 3등 팀의 코드를 참고하였다.</summary></entry><entry><title type="html">데이콘 경진대회 참여후기 part1</title><link href="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="데이콘 경진대회 참여후기 part1" /><published>2021-10-02T00:00:00+09:00</published><updated>2021-10-02T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/">&lt;p&gt;지금까지의 배운 내용을 실전에 한번 적용해보고 싶다는 생각에 동아리 스터디원들과 함께 데이콘 경진대회에 참여 하였다. 대회의 내용은 구내식당 식수 인원을 예측하는 것으로, 대회 기간은 6월 3일부터 7월 23일까지였으며 대회 종료한지는 2달(…)이 넘게 지난 지금 경진대회 참여 후기를 작성하려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;데이터의-특징&quot;&gt;데이터의 특징&lt;/h2&gt;
 
@@ -1150,25 +1210,4 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
 
 &lt;p&gt;위 결과를 통해 xgboost 가 제일 성능이 높을 것을 확인할 수 있었다. 아마 최적의 매개변수 튜닝에 따른 결과가 아닌지 싶다. 이것이 내가 얻었던 가장 좋은 결과였고, 다른 멤버는 조식, 점심, 저녁 메뉴를 삭제하고 일부 특징을 약간씩 수정한 결과 가장 좋은 점수인 81.33 을 얻었다. 사실 여기서 모델의 성능을 향상 시키기 위해 무엇을 더 해야할지 확신이 서지 않았고, 데이터 전처리 부분을 계속 반복하며 public score 을 향상시키기 위해 노력했으나 81.33 아래로 도저히 내려가지가 않아 해당 모델을 그대로 제출하였다.&lt;/p&gt;
 
-&lt;p&gt;1등 팀의 모델의 분석과 이번 대회를 하면서 느꼈던 점은 다음 장에서 서술하도록 하겠다&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><category term="project" /><summary type="html">지금까지의 배운 내용을 실전에 한번 적용해보고 싶다는 생각에 동아리 스터디원들과 함께 데이콘 경진대회에 참여 하였다. 대회의 내용은 구내식당 식수 인원을 예측하는 것으로, 대회 기간은 6월 3일부터 7월 23일까지였으며 대회 종료한지는 2달(…)이 넘게 지난 지금 경진대회 참여 후기를 작성하려고 한다.</summary></entry><entry><title type="html">Lecture 8: Deep Learning Software</title><link href="http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/" rel="alternate" type="text/html" title="Lecture 8: Deep Learning Software" /><published>2021-10-01T00:00:00+09:00</published><updated>2021-10-01T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software</id><content type="html" xml:base="http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/">&lt;h2 id=&quot;cpu-vs-gpu&quot;&gt;CPU vs GPU&lt;/h2&gt;
-
-&lt;p&gt;이 부분은 사실 별로 중요한 내용이 아닌것 같아서 간단하게 설명하고 넘어가도록 하겠다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CPU는 적은 코어 수를 가지고 있으나 각각의 코어의 속도가 빠르고 성능이 훨씬 더 좋다. 따라서 연속적인 작업을 할 떄 유리하다.&lt;/li&gt;
-  &lt;li&gt;많은 코어 수를 가지고 있으나 각각의 코어의 속도는 느리고 성능이 좋지 않다. 병행 작업을 할 때 유리하다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;다음은 CPU와 GPU를 딥러닝 작업에 사용할 때 걸리는 시간을 비교한 그래프이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/lecture8-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 그래프에서 알 수 있다시피 CPU보다 GPU가 훨씬 더 좋은 성능을 보이고 있음을 알 수 있다. 이처럼 딥러닝 작업에는 GPU를 이용해 연산을 진행하는 것이 좋다.&lt;/p&gt;
-
-&lt;h3 id=&quot;nvidia-vs-amd&quot;&gt;NVIDIA vs AMD&lt;/h3&gt;
-
-&lt;p&gt;GPU를 만드는 대표적인 회사가 두 군대 있는데, 바로 NVIDIA 와 AMD 이다. NVIDIA가 AMD보다 딥러닝을 위한 GPU를 만드는데 더 투자를 많이 해왔기 때문에 AMD보다 NVIDIA를 사용하는 것이 추천된다.&lt;/p&gt;
-
-&lt;h2 id=&quot;deep-learning-software&quot;&gt;Deep Learning Software&lt;/h2&gt;
-
-&lt;p&gt;기업들은 상업적인 목적으로 딥러닝 소프트웨어을 만들었다. 여기서 딥러닝 프레임워크라는 개념이 나온다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">CPU vs GPU</summary></entry></feed>
+&lt;p&gt;1등 팀의 모델의 분석과 이번 대회를 하면서 느꼈던 점은 다음 장에서 서술하도록 하겠다&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><category term="project" /><summary type="html">지금까지의 배운 내용을 실전에 한번 적용해보고 싶다는 생각에 동아리 스터디원들과 함께 데이콘 경진대회에 참여 하였다. 대회의 내용은 구내식당 식수 인원을 예측하는 것으로, 대회 기간은 6월 3일부터 7월 23일까지였으며 대회 종료한지는 2달(…)이 넘게 지난 지금 경진대회 참여 후기를 작성하려고 한다.</summary></entry></feed>
