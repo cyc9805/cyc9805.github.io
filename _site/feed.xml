@@ -1,4 +1,215 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-17T17:02:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">문자열 조작</title><link href="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/" rel="alternate" type="text/html" title="문자열 조작" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/">&lt;h2 id=&quot;question-1-유효한-팰린드롬&quot;&gt;Question 1: 유효한 팰린드롬&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-17T23:50:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">문자열 조작</title><link href="http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/" rel="alternate" type="text/html" title="문자열 조작" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/">&lt;h2 id=&quot;question-1-유효한-팰린드롬&quot;&gt;Question 1: 유효한 팰린드롬&lt;/h2&gt;
+
+&lt;p class=&quot;notice&quot;&gt;입력: ‘num = [2,7,11,15], target = 9’&lt;/p&gt;
+&lt;p class=&quot;notice&quot;&gt;출력: [0,1]&lt;/p&gt;
+
+&lt;h3 id=&quot;내-풀이&quot;&gt;내 풀이&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;twoSum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;결과&quot;&gt;결과&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;(/assets/image/algo-ch7-1.png)&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 화면과 같이 시간 초과 에러가 떴다.&lt;/p&gt;
+
+&lt;h3 id=&quot;에러-이유&quot;&gt;에러 이유&lt;/h3&gt;
+
+&lt;p&gt;1부터 n까지의 값을 가진 리스트가 있다고 하자. i와 j는 0에서부터 n까지의 값을 가져 $O(n^2)$ 만큼의 실행시간이 걸린다. 그러나 nums[1]+nums[2] 가 타겟 값이 아닐 때 nums[2]+nums[1]는 검사할 필요가 없다. 따라서 위 코드는 불필요한 계산과정까지 수반하므로 코드 실행 시간이 길어지게 되어 시간 초과 에러가 난다.&lt;/p&gt;
+
+&lt;h3 id=&quot;풀이-1-리스트로-변환&quot;&gt;풀이 1: 리스트로 변환&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isalnum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# 팰린드롬 여부 판별
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;기억해야-할-함수&quot;&gt;기억해야 할 함수&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;isalnum(): 영문자, 숫자이면 True를 리턴하는 함수&lt;/li&gt;
+  &lt;li&gt;pop(): 삭제할 인덱스를 입력하면 삭제될 값을 리턴하고 삭제가 진행된다.&lt;/li&gt;
+  &lt;li&gt;lower(): 문자열을 모두 소문자로 변경한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;중요-내용&quot;&gt;중요 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;pop()은 리스트의 요소들을 다 검사해야 하기 때문에 코드 실행 시간은 O(n) 이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;풀이-2-데크-자료형을-이용한-최적화&quot;&gt;풀이 2: 데크 자료형을 이용한 최적화&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# 자료형 데크로 선언
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Deque&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isalnum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;popleft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;기억해야-할-함수-1&quot;&gt;기억해야 할 함수&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;collections.deque(): 자료형을 데크로 선언한다.&lt;/li&gt;
+  &lt;li&gt;popleft(): 가장 왼쪽에 위치한 요소를 삭제하고 삭제한 값을 리턴한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;중요-내용-1&quot;&gt;중요 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;popleft()는 리스트의 제일 왼쪽에 위치한 요소만 검사하므로 코드 실행 시간은 O(1) 이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;풀이-3-슬라이싱-사용&quot;&gt;풀이 3: 슬라이싱 사용&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# 정규식으로 불필요한 문자 필터링
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;[^a-z0-9]&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;기억해야-할-함수-2&quot;&gt;기억해야 할 함수&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;re.sub(치환할 문자, 치환하는 값, 문자열): 정규식으로 불필요한 문자를 필터링한다. ^는 not을 의미하므로 [^a-z0-9]는 영문자, 숫자를 제외한 문자를 공백으로 치환하라는 의미이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;중요-내용-2&quot;&gt;중요 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;슬라이싱은 매우 빠르게 진행되므로 문자열을 조작할 때는 항상 슬라이싱을 우선으로 사용하자!&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;s[:]는 문자열의 사본을 입력한다.&lt;/li&gt;
+  &lt;li&gt;s[::-1]는 문자열을 뒤집는다.&lt;/li&gt;
+  &lt;li&gt;s[::2]는 문자열을 2칸씩 앞으로 이동하며 슬라이싱한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;question-2-문자열-뒤집기&quot;&gt;Question 2: 문자열 뒤집기&lt;/h2&gt;
+
+&lt;p class=&quot;notice&quot;&gt;입력: [‘h’, ‘e’, ‘l’, ‘l’, ‘o’]&lt;/p&gt;
+&lt;p class=&quot;notice&quot;&gt;출력: [‘o’, ‘l’, ‘l’, ‘e’, ‘h’]&lt;/p&gt;
+
+&lt;h3 id=&quot;풀이-1-투-포인터를-이용한-스왑&quot;&gt;풀이 1: 투 포인터를 이용한 스왑&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reverseString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;중요-내용-3&quot;&gt;중요 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;리턴 없이 문자열을 바꾸는 것이 핵심!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;풀이-2-파이썬다운-방식&quot;&gt;풀이 2: 파이썬다운 방식&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reverseString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;기억해야-할-함수-3&quot;&gt;기억해야 할 함수&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;reverse(): 리스트에만 사용 가능. 리스트의 요소를 뒤집는다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;기억해야-할-내용&quot;&gt;기억해야 할 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;문자열을 뒤집을 떄는 간단하게 슬라이싱을 이용한다 -&amp;gt; s[::-1]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;question-3-로그-파일-재정렬&quot;&gt;Question 3: 로그 파일 재정렬&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;로그의 가장 앞 부분은 식별자이다.&lt;/li&gt;
+  &lt;li&gt;문자로 구성된 로그가 숫자로 구성된 로그보다 앞에 온다.&lt;/li&gt;
+  &lt;li&gt;식별자는 순서에 영향을 끼치지 않지만, 문자가 동일한 경우 식별자 순으로 한다.&lt;/li&gt;
+  &lt;li&gt;숫자 로그는 입력 순서대로 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;풀이-1-람다와--연산자를-이용&quot;&gt;풀이 1: 람다와 + 연산자를 이용&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reorderLogFiles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;letters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;digits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;digits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;letters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;letters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;letters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;digits&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;기억해야-할-함수-4&quot;&gt;기억해야 할 함수&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;list.sort(key=function): function에 지정한 순서대로 리스트를 정렬한다.&lt;/li&gt;
+  &lt;li&gt;list.isdigit(): 숫자여부를 판별하는 함수이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;기억해야-할-내용-1&quot;&gt;기억해야 할 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;[1,2,3] + [4,5,6] 의 연산을 수행하면 두 리스트가 append된 [1,2,3,4,5,6] 이 나온다.&lt;/li&gt;
+  &lt;li&gt;람다 표현식은 다음과 같은 형태이다.
+    &lt;ul&gt;
+      &lt;li&gt;lambda x:x+2: x값을 받고 x+2를 리턴한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;question-4-가장-흔한-단어&quot;&gt;Question 4: 가장 흔한 단어&lt;/h2&gt;
+
+&lt;p class=&quot;notice&quot;&gt;입력: paragraph = ‘bob hit a BALL, and the ball flew after it was hit’
+banned = [‘hit’]&lt;/p&gt;
+&lt;p class=&quot;notice&quot;&gt;출력: ‘ball’&lt;/p&gt;
+
+&lt;h3 id=&quot;풀이-1-리스트-컴프리헨션-counter-객체-사용&quot;&gt;풀이 1: 리스트 컴프리헨션, counter 객체 사용&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mostCommonWord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paragraph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;banned&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;[^\w]&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos; &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paragraph&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;banned&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;most_common&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;기억해야-할-함수-5&quot;&gt;기억해야 할 함수&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;list.sort(key=function): function에 지정한 순서대로 리스트를 정렬한다.&lt;/li&gt;
+  &lt;li&gt;list.isdigit(): 숫자여부를 판별하는 함수이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;기억해야-할-내용-2&quot;&gt;기억해야 할 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;[1,2,3] + [4,5,6] 의 연산을 수행하면 두 리스트가 append된 [1,2,3,4,5,6] 이 나온다.&lt;/li&gt;
+  &lt;li&gt;람다 표현식은 다음과 같은 형태이다.
+    &lt;ul&gt;
+      &lt;li&gt;lambda x:x+2 는 x값을 받고 x+2를 리턴하는 람다식이다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">Question 1: 유효한 팰린드롬</summary></entry><entry><title type="html">문자열 조작</title><link href="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91-%EB%B3%B5%EC%82%AC%EB%B3%B8/" rel="alternate" type="text/html" title="문자열 조작" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91%20%EB%B3%B5%EC%82%AC%EB%B3%B8</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91-%EB%B3%B5%EC%82%AC%EB%B3%B8/">&lt;h2 id=&quot;question-1-유효한-팰린드롬&quot;&gt;Question 1: 유효한 팰린드롬&lt;/h2&gt;
 
 &lt;p class=&quot;notice&quot;&gt;입력: ‘Taco cat’&lt;/p&gt;
 &lt;p class=&quot;notice&quot;&gt;출력: true&lt;/p&gt;
@@ -1121,161 +1332,4 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
   &lt;li&gt;문제에 대해 지나치게 어렵게 접근하면 진짜 중요한 것들이 보이지 않을 수 있으므로 간단하게 접근하는 태도가 필요하다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;처음으로 데이터 경진대회에 참여하여 private score 100등으로 마무리 하였지만 직접 배운 것들을 활용하고 코드를 작성하는 과정에서 많은 것들을 배워갈 수 있었다. 이 경진대회가 데이터 분석과 친해지기 위한 중요한 한 걸음이 되었으면 좋겠다😀😀&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><category term="project" /><summary type="html">경진대회에서 1등이 사용한 코드를 보려고 했는데 아쉽게 1등한 팀이 코드를 공유하지 않아 3등 팀의 코드를 참고하였다.</summary></entry><entry><title type="html">데이콘 경진대회 참여후기 part1</title><link href="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="데이콘 경진대회 참여후기 part1" /><published>2021-10-02T00:00:00+09:00</published><updated>2021-10-02T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/">&lt;p&gt;지금까지의 배운 내용을 실전에 한번 적용해보고 싶다는 생각에 동아리 스터디원들과 함께 데이콘 경진대회에 참여 하였다. 대회의 내용은 구내식당 식수 인원을 예측하는 것으로, 대회 기간은 6월 3일부터 7월 23일까지였으며 대회 종료한지는 2달(…)이 넘게 지난 지금 경진대회 참여 후기를 작성하려고 한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;데이터의-특징&quot;&gt;데이터의 특징&lt;/h2&gt;
-
-&lt;p&gt;경진대회에서 train, test, sample_submission 이렇게 3개의 데이터가 주어졌다. 이 데이터에서의 목적변수는 중식계와 석식계이고 나머지 주어진 특징으로는 일자, 요일, 본사정원수, 본사휴가자수, 본사출장자수, 본사시간외근무명령서승인건수, 현본사소속재택근무자수, 조식메뉴, 중식메뉴, 석식메뉴이 있었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment0.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;데이터-분석&quot;&gt;데이터 분석&lt;/h2&gt;
-
-&lt;p&gt;사실 나는 데이터 분석을 별로 신경쓰지 않았다. 내가 스터디한 내용 중에 데이터 분석을 집중적으로 다루는 파트가 없기도 했거니와 데이터 분석으로부터 특징들을 유추하기 귀찮았기(…😮‍💨😮‍💨)  때문이다. 다음 내용은 우리 팀원들이 나 대신해서 데이터를 분석한 내용이다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;훈련 데이터의 특징들을 corr() 함수를 사용하여 특징들간의 연관성을 히트맵으로 나타내었다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment1.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;히트맵으로부터 중식계와 석식계에서 본사외근무명령승인건수와 비례하는경향을 보인것을 확인할 수 있었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;2. 요일별 평균 중식계 식수 인원을 확인하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment2.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;월&amp;gt;화=수&amp;gt;목&amp;gt;금 순으로 많은 것을 확인할 수 있었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;3. 마찬가지로 요일별 석식계 식수 인원을 확인하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment3.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;월&amp;gt;화&amp;gt;목&amp;gt;금&amp;gt;수 순으로 많은 것을 확인할 수 있었다. 수요일이 왜 가장 적은지에 대한 이유를 찾은 결과 매달 마지막째 주에 있는 문화의 날 때문에 석식계가 0이 나타나는 것 때문이라는 것을 확인했다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;4. 주, 요일별 평균 중식계, 석식계를 확인한 결과 상당히 일치 하는 것을 보아서 관련 특성을 하나 생성하기로 하였다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;중식계
-&lt;img src=&quot;/assets/image/dacon_comment4.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;석식계
-&lt;img src=&quot;/assets/image/dacon_comment5.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;5. 그 밖에 여러 분석을 시도해봤으나 마땅히 건질만한 것이 없었다.&lt;/p&gt;
-
-&lt;h2 id=&quot;데이터-전처리&quot;&gt;데이터 전처리&lt;/h2&gt;
-
-&lt;p&gt;데이터 전처리의 화두가 되는 부분은 단연 조식, 중식, 석식메뉴를 어떻게 처리할지였다. 해당 특징들은 데이터가 상당히 불친절하게 정리되어 있어 어떠한 기준으로 처리해야 될지 고민을 많이 했다. 다음은 원 핫 인코딩 방법으로 메뉴를 처리한 코드이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment6.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment7.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;해당 코드를 실행하면 석식메뉴에 있는 어묵국은 ‘석식메뉴_어묵국’ 이런식으로 특징이 만들어지고 석식메뉴에 어묵국이 있으면 1, 없으면 0이 입력되게 된다. 그러나 이렇게 특징을 만들게 되면 4000개 가량의 특징이 생성되어 후에 모델링 작업을 할 때 소요시간이 너무 길어진다는 단점이 있었다.&lt;/p&gt;
-
-&lt;p&gt;그 밖의 데이터 전처리한 내용은 다음과 같다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;데이터 분석한 내용을 바탕으로 다음과 같은 특징들을 생성하였다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment8.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;2. 일자를 to_datetime 함수를 사용하여 년, 월, 일, 주, 요일숫자 특징으로 분리하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment9.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;3. 문화의날 열을 추가하였다. 석식계가 0이 되는 행의 문화의날 열의 값은 1, 석식계가 0이 아니면 문화의날 열의 값은 0이 들어가게 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment10.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;4. 휴일이 다음날에 있으면 식수인원이 줄어들것이라는 추측을 하여 ‘휴일전날’ 열을 넣어 휴일이 다음날에 있으면 1, 없으면 0이 들어가는 코드를 작성하였다. 공공데이터 포털의 OpenAPI를 이용하였고, 해당 코드는 모두 내가 작성한것이 아니며, 코드의 출처는 사진 아래에 첨부하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment11.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;5. 마지막으로 필요없다고 판단되는 특징은 삭제하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment12.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;모델 생성&lt;/p&gt;
-
-&lt;p&gt;모델을 생성하기에 앞서 중식계, 석식계 각각에 맞는 모델을 만들기 위해 데이터를 석식계만 제외된 데이터, 중식계만 제외된 데이터로 분리하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment13.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;책에서 배운대로 GBDT, 선형회귀, 딥러닝 순으로 모델을 생성해 보았다. 다음은 각 모델을 생성하는 코드와 검증 데이터로 평가를 했을 때 나온 점수이다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;GBDT에는 크게 두가지 라이브러리가 사용되는데, xgboost 와 lightgbm 이다. lightgbm 이 튜닝할 매개변수도 적고 처리속도도 빠르다고 하여서 중식계 데이터에 먼저 적용해 보았다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment14.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;k-교차검증을 이용하여 5개의 폴드를 만들어 4개의 폴드로 모델을 만들고 나머지 1개의 폴드로 검증하는 방법으로 검증점수를 확인한 결과 0.8 정도가 나온것을 확인할 수 있었다. 마찬가지로 석식계 데이터에 같은 방법을 적용한 결과 0.65라는 다소 낮은 점수 결과가 나왔다.&lt;/p&gt;
-
-&lt;p&gt;다음으로 xgboost를 이용해 모델을 생성해 보았다. xgboost는 매개변수에 따라 성능이 천차만별로 달라지므로 최적의 매개변수를 찾는 과정을 먼저 수행하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment15.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음 코드는 위 코드 실행결과 나온 최적의 매개변수를 그대로 모델에 적용한 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment16.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;같은 방법을 석식계 데이터에도 그대로 적용하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;2. 선형회귀 모델로 라소회귀 모델을 사용하였다. 다음은 중식계 데이터를 이용해 라소회귀 모델을 생성하고 검증 데이터에 대한 점수를 출력하는 코드이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment17.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;검증 데이터에 대한 점수가 0.8정도로 앞선 lightgbm 과 상당히 유사한 결과가 나온것을 확인하였다. 석식 데이터에도 같은 방법을 적용한 결과 0.63 정도의 점수가 나왔다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;3. 신경망은 사실 많이 시도해보지는 않았다. 신경망을 이용한 모델을 만들기 위해서는 keras 나 tensorflow 같은 다소 복잡한 라이브러리를 사용해야 하고 매개변수와 층을 설정하는 부분이 상당히 까다롭기 때문에 한번 시도해본다는 것에 의의를 두기로 하였다.&lt;/p&gt;
-
-&lt;p&gt;먼저 k-fold 분할을 이용해 데이터를 훈련, 검증 데이터로 나누었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment18.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;신경망 모델을 만들기 위해서는 데이터 표준화가 필수적이므로 StandardScaler() 함수를 사용하여 데이터 표준화를 실시하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment19.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 신경망의 input layer, hidden layer, output layer 을 설정하주는 작업을 실시하였다. hidden layer의 수는 3개로 설정하고 필요없는 특징을 삭제하기 위해 dropout 함수를 사용하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment20.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음으로 모델을 컴파일 해주고 batch_size와 epochs 수를 설정하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment21.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;검증 데이터를 통해 예측값과 실제값의 MAE 를 이용한 비교 결과 843 이라는 매우 높고 부정확한(…) 결과가 나온 것을 확인하였다. 또한 이 모델을 그대로 테스트 데이터에 적용하였는데 상식적으로 받아들일 수 없는 값이 나와 신경망에 대해서는 더 생각해볼 필요가 있다고 느꼈다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment22.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;public-score-및-결과-분석&quot;&gt;public score 및 결과 분석&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;lightgbm 을 이용했을 때 public score 은 91.75 정도가 나왔다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment23.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;2. xgboost 를 이용했을 때 public score 은 84.50 정도가 나왔다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment24.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;3. 선형회귀를 이용했을 때 public score 은 84.50 정도가 나왔다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment25.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;4. 신경망을 이용했을 때는 예상했듯이 처참한 점수인 405.90(…😮‍💨😮‍💨)가 나왔다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_comment26.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 결과를 통해 xgboost 가 제일 성능이 높을 것을 확인할 수 있었다. 아마 최적의 매개변수 튜닝에 따른 결과가 아닌지 싶다. 이것이 내가 얻었던 가장 좋은 결과였고, 다른 멤버는 조식, 점심, 저녁 메뉴를 삭제하고 일부 특징을 약간씩 수정한 결과 가장 좋은 점수인 81.33 을 얻었다. 사실 여기서 모델의 성능을 향상 시키기 위해 무엇을 더 해야할지 확신이 서지 않았고, 데이터 전처리 부분을 계속 반복하며 public score 을 향상시키기 위해 노력했으나 81.33 아래로 도저히 내려가지가 않아 해당 모델을 그대로 제출하였다.&lt;/p&gt;
-
-&lt;p&gt;1등 팀의 모델의 분석과 이번 대회를 하면서 느꼈던 점은 다음 장에서 서술하도록 하겠다&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><category term="project" /><summary type="html">지금까지의 배운 내용을 실전에 한번 적용해보고 싶다는 생각에 동아리 스터디원들과 함께 데이콘 경진대회에 참여 하였다. 대회의 내용은 구내식당 식수 인원을 예측하는 것으로, 대회 기간은 6월 3일부터 7월 23일까지였으며 대회 종료한지는 2달(…)이 넘게 지난 지금 경진대회 참여 후기를 작성하려고 한다.</summary></entry></feed>
+&lt;p&gt;처음으로 데이터 경진대회에 참여하여 private score 100등으로 마무리 하였지만 직접 배운 것들을 활용하고 코드를 작성하는 과정에서 많은 것들을 배워갈 수 있었다. 이 경진대회가 데이터 분석과 친해지기 위한 중요한 한 걸음이 되었으면 좋겠다😀😀&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><category term="project" /><summary type="html">경진대회에서 1등이 사용한 코드를 보려고 했는데 아쉽게 1등한 팀이 코드를 공유하지 않아 3등 팀의 코드를 참고하였다.</summary></entry></feed>
