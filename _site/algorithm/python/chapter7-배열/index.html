@@ -34,7 +34,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-      <!-- begin _includes/seo.html --><title>문자열 조작 - yongchan’s website</title>
+      <!-- begin _includes/seo.html --><title>배열 - yongchan’s website</title>
 <meta name="description" content="Question 7: 유효한 팰린드롬">
 
 
@@ -47,7 +47,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="문자열 조작">
+<meta property="og:title" content="배열">
 <meta property="og:url" content="http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/">
 
 
@@ -423,7 +423,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="문자열 조작">
+    <meta itemprop="headline" content="배열">
     <meta itemprop="description" content="Question 7: 유효한 팰린드롬">
     <meta itemprop="datePublished" content="2022-01-14T00:00:00+09:00">
     
@@ -431,7 +431,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">문자열 조작
+          <h1 id="page-title" class="page__title" itemprop="headline">배열
 </h1>
           
 
@@ -447,7 +447,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          5 minute read
+          7 minute read
         
       </span>
     
@@ -462,7 +462,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#question-7-유효한-팰린드롬">Question 7: 유효한 팰린드롬</a><ul><li><a href="#내-풀이">내 풀이</a></li><li><a href="#결과">결과</a></li><li><a href="#에러-이유">에러 이유</a></li><li><a href="#풀이-1-브루트-포스로-계산">풀이 1: 브루트 포스로 계산</a><ul><li><a href="#중요-내용">중요 내용</a></li></ul></li><li><a href="#풀이-2-in을-이용한-탐색">풀이 2: in을 이용한 탐색</a><ul><li><a href="#기억해야-할-함수">기억해야 할 함수</a></li><li><a href="#중요-내용-1">중요 내용</a></li></ul></li><li><a href="#풀이-3-첫-번째-수를-뺀-결과-키-조회">풀이 3: 첫 번째 수를 뺀 결과 키 조회</a><ul><li><a href="#중요-내용-2">중요 내용</a></li></ul></li><li><a href="#풀이-4-조회-구조-개선">풀이 4: 조회 구조 개선</a><ul><li><a href="#중요-내용-3">중요 내용</a></li></ul></li><li><a href="#풀이-5-조회-구조-개선">풀이 5: 조회 구조 개선</a><ul><li><a href="#기억해야-할-함수-1">기억해야 할 함수</a></li><li><a href="#중요-내용-4">중요 내용</a></li></ul></li></ul></li><li><a href="#question-8-빗물-트래핑">Question 8: 빗물 트래핑</a><ul><li><a href="#내-풀이-투-포인터를-최대로-이용">내 풀이: 투 포인터를 최대로 이용</a></li><li><a href="#풀이-1--투-포인터를-최대로-이용">풀이 1:  투 포인터를 최대로 이용</a><ul><li><a href="#기억해야-할-함수-2">기억해야 할 함수</a></li><li><a href="#기억해야-할-내용">기억해야 할 내용</a></li></ul></li><li><a href="#풀이-2--스택-쌓기">풀이 2:  스택 쌓기</a><ul><li><a href="#기억해야-할-내용-1">기억해야 할 내용</a></li></ul></li></ul></li><li><a href="#question-9-세-수의-합">Question 9: 세 수의 합</a><ul><li><a href="#내-풀이-1">내 풀이</a></li><li><a href="#결과-1">결과</a></li><li><a href="#에러-이유-1">에러 이유</a></li><li><a href="#풀이-1--브루트-포스로-계산">풀이 1:  브루트 포스로 계산</a><ul><li><a href="#기억해야-할-함수-3">기억해야 할 함수</a></li><li><a href="#중요-내용-5">중요 내용</a></li></ul></li><li><a href="#풀이-2-투-포인트로-합-계산">풀이 2: 투 포인트로 합 계산</a><ul><li><a href="#중요-내용-6">중요 내용</a></li></ul></li></ul></li><li><a href="#question-4-가장-흔한-단어">Question 4: 가장 흔한 단어</a><ul><li><a href="#풀이-1-리스트-컴프리헨션-counter-객체-사용">풀이 1: 리스트 컴프리헨션, counter 객체 사용</a><ul><li><a href="#기억해야-할-함수-4">기억해야 할 함수</a></li><li><a href="#기억해야-할-내용-2">기억해야 할 내용</a></li></ul></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#question-7-유효한-팰린드롬">Question 7: 유효한 팰린드롬</a><ul><li><a href="#내-풀이">내 풀이</a></li><li><a href="#결과">결과</a></li><li><a href="#에러-이유">에러 이유</a></li><li><a href="#풀이-1-브루트-포스로-계산">풀이 1: 브루트 포스로 계산</a><ul><li><a href="#중요-내용">중요 내용</a></li></ul></li><li><a href="#풀이-2-in을-이용한-탐색">풀이 2: in을 이용한 탐색</a><ul><li><a href="#기억해야-할-함수">기억해야 할 함수</a></li><li><a href="#중요-내용-1">중요 내용</a></li></ul></li><li><a href="#풀이-3-첫-번째-수를-뺀-결과-키-조회">풀이 3: 첫 번째 수를 뺀 결과 키 조회</a><ul><li><a href="#중요-내용-2">중요 내용</a></li></ul></li><li><a href="#풀이-4-조회-구조-개선">풀이 4: 조회 구조 개선</a><ul><li><a href="#중요-내용-3">중요 내용</a></li></ul></li><li><a href="#풀이-5-조회-구조-개선">풀이 5: 조회 구조 개선</a><ul><li><a href="#기억해야-할-함수-1">기억해야 할 함수</a></li><li><a href="#중요-내용-4">중요 내용</a></li></ul></li></ul></li><li><a href="#question-8-빗물-트래핑">Question 8: 빗물 트래핑</a><ul><li><a href="#내-풀이-투-포인터를-최대로-이용">내 풀이: 투 포인터를 최대로 이용</a></li><li><a href="#풀이-1--투-포인터를-최대로-이용">풀이 1:  투 포인터를 최대로 이용</a><ul><li><a href="#기억해야-할-함수-2">기억해야 할 함수</a></li><li><a href="#기억해야-할-내용">기억해야 할 내용</a></li></ul></li><li><a href="#풀이-2--스택-쌓기">풀이 2:  스택 쌓기</a><ul><li><a href="#기억해야-할-내용-1">기억해야 할 내용</a></li></ul></li></ul></li><li><a href="#question-9-세-수의-합">Question 9: 세 수의 합</a><ul><li><a href="#내-풀이-1">내 풀이</a></li><li><a href="#결과-1">결과</a></li><li><a href="#에러-이유-1">에러 이유</a></li><li><a href="#풀이-1--브루트-포스로-계산">풀이 1:  브루트 포스로 계산</a><ul><li><a href="#기억해야-할-함수-3">기억해야 할 함수</a></li><li><a href="#중요-내용-5">중요 내용</a></li></ul></li><li><a href="#풀이-2-투-포인트로-합-계산">풀이 2: 투 포인트로 합 계산</a><ul><li><a href="#중요-내용-6">중요 내용</a></li></ul></li></ul></li><li><a href="#question-10-배열-파티션">Question 10: 배열 파티션</a><ul><li><a href="#내-풀이-2">내 풀이</a><ul><li><a href="#결과-2">결과</a></li></ul></li><li><a href="#풀이-1-오름차순-풀이">풀이 1: 오름차순 풀이</a><ul><li><a href="#중요-내용-7">중요 내용</a></li></ul></li><li><a href="#풀이-2-짝수-번째-값-계산">풀이 2: 짝수 번째 값 계산</a><ul><li><a href="#중요-내용-8">중요 내용</a></li></ul></li><li><a href="#풀이-3-파이썬다운-방식">풀이 3: 파이썬다운 방식</a><ul><li><a href="#중요-내용-9">중요 내용</a></li></ul></li></ul></li><li><a href="#question-11-자신을-제외한-배열의-곱">Question 11: 자신을 제외한 배열의 곱</a><ul><li><a href="#내-풀이-3">내 풀이</a><ul><li><a href="#결과-3">결과</a></li></ul></li><li><a href="#풀이-1-왼쪽-곱셈-결과에-오른쪽-값-곱셈">풀이 1: 왼쪽 곱셈 결과에 오른쪽 값 곱셈</a><ul><li><a href="#기억해야-할-함수-4">기억해야 할 함수</a></li><li><a href="#중요-내용-10">중요 내용</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -595,7 +595,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <p class="notice">입력: [0,1,0,2,1,0,1,3,2,1,2,1]</p>
 <p class="notice">출력: 6</p>
 
-<p><img src="/assets/image/algo-ch7-2.png" alt="" /></p>
+<p><img src="/assets/image/algo-ch7-2.png" alt="" width="50%" height="50%" class="align-center" /></p>
 
 <hr />
 
@@ -787,38 +787,163 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <h4 id="중요-내용-6">중요 내용</h4>
 <ol>
   <li>이 방법은 직접 손으로 쓰면서 문제를 푸니 직관적으로 이해할 수 있었다. <strong><em>앞으로 이해가 가지 않는 알고리즘 일수록 손으로 수학문제를 풀듯 쓰면서 이해하자!</em></strong></li>
+  <li>투 포인터 방법은 리스트가 정렬되어 있을때 사용하는 것이 좋다!</li>
 </ol>
 
-<h2 id="question-4-가장-흔한-단어">Question 4: 가장 흔한 단어</h2>
+<h2 id="question-10-배열-파티션">Question 10: 배열 파티션</h2>
 
-<p class="notice">입력: paragraph = ‘bob hit a BALL, and the ball flew after it was hit’
-banned = [‘hit’]</p>
-<p class="notice">출력: ‘ball’</p>
+<p>n개의 페어를 이용한 min(a,b)의 합으로 만들 수 있는 가장 큰 수를 출력하라.</p>
 
-<h3 id="풀이-1-리스트-컴프리헨션-counter-객체-사용">풀이 1: 리스트 컴프리헨션, counter 객체 사용</h3>
+<p class="notice">입력: [1,4,3,2]</p>
+<p class="notice">출력: 4</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mostCommonWord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paragraph</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">banned</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s">'[^\w]'</span><span class="p">,</span><span class="s">' '</span><span class="p">,</span><span class="n">paragraph</span>
-            <span class="p">.</span><span class="n">lower</span><span class="p">().</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">banned</span> <span class="p">]</span>
+<h3 id="내-풀이-2">내 풀이</h3>
 
-    <span class="n">counts</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">counts</span><span class="p">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">arr_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">arr_num</span><span class="o">-</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">arr_num</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></div>
+<h4 id="결과-2">결과</h4>
+
+<p class="notice">Runtime: 541 ms, faster than 5.26% of Python3 online submissions for Array Partition I.
+<br />Memory Usage: 16.8 MB, less than 71.06% of Python3 online submissions for Array Partition I.</p>
+
+<ul>
+  <li>위와 같은 화면이 뜨며 정상적으로 출력이 된다.</li>
+  <li>n이 홀수가 될 수도 있음을 가정하고 코드를 짰지만 이 문제에서는 n이 짝수만 될 수 있다.</li>
+  <li>시간 복잡도는 $O(n)$ 으로 문제가 요구하는 시간보다 길게 나온 것 같다.</li>
+</ul>
+
+<hr />
+
+<h3 id="풀이-1-오름차순-풀이">풀이 1: 오름차순 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pair</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">pair</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">+=</span> <span class="nb">min</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+                <span class="n">pair</span> <span class="o">=</span> <span class="p">[]</span>
+       
+        <span class="k">return</span> <span class="nb">sum</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-7">중요 내용</h4>
+<ol>
+  <li>내 풀이와 시간 복잡도는 동일하게 $O(n)$로 나온다.</li>
+  <li>홀수번째 값은 반복문에 포함될 필요가 없으므로 불필요한 계산이 포함되어 있다.</li>
+</ol>
+
+<hr />
+
+<h3 id="풀이-2-짝수-번째-값-계산">풀이 2: 짝수 번째 값 계산</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
+       
+        <span class="k">return</span> <span class="nb">sum</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-8">중요 내용</h4>
+<ol>
+  <li>정렬된 상태에서는 짝수 번째에 항상 작은 값이 위치해 있으므로 짝수 번 인덱스 값만 더하면 된다.</li>
+</ol>
+
+<h3 id="풀이-3-파이썬다운-방식">풀이 3: 파이썬다운 방식</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">nums</span><span class="p">)[::</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-9">중요 내용</h4>
+<ol>
+  <li>list[::2]는 짝수 번째 요소만 슬라이싱 하라는 뜻이다.</li>
+</ol>
+
+<h2 id="question-11-자신을-제외한-배열의-곱">Question 11: 자신을 제외한 배열의 곱</h2>
+
+<p>배열을 입력받아 output[i]가 자신을 제외한 나머지 모든 요소의 곱셈 결과 되도록 출력하라.</p>
+
+<p class="notice">입력: [1,2,3,4]</p>
+<p class="notice">출력: [24,12,8,6]</p>
+<p class="notice">주의: 나눗셈을 하지 않고 O(n)에 풀이하라</p>
+
+<h3 id="내-풀이-3">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">left</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">left</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                
+        <span class="n">nums</span><span class="p">.</span><span class="n">reverse</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">right</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">right</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">right</span><span class="p">.</span><span class="n">reverse</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">num</span><span class="o">*</span><span class="n">num2</span> <span class="k">for</span> <span class="n">num</span><span class="p">,</span><span class="n">num2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">)</span> <span class="p">)</span>
+</code></pre></div></div>
+<h4 id="결과-3">결과</h4>
+
+<p class="notice">Runtime: 550 ms, faster than 5.03% of Python3 online submissions for Product of Array Except Self.
+<br />Memory Usage: 21.8 MB, less than 30.85% of Python3 online submissions for Product of Array Except Self.</p>
+
+<ul>
+  <li>왼쪽 부분을 곱한 값과 오른쪽 부분을 곱한 값을 서로 곱하였다.</li>
+  <li>시간 복잡도가 $O(n)$ 이지만 다소 불필요한 계산이 많이 들어가 빠르게 실행되지 않았다.</li>
+</ul>
+
+<hr />
+
+<h3 id="풀이-1-왼쪽-곱셈-결과에-오른쪽-값-곱셈">풀이 1: 왼쪽 곱셈 결과에 오른쪽 값 곱셈</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="n">out</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                
+        <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">p</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            
+        <span class="k">return</span> <span class="n">out</span>
+</code></pre></div></div>
+
 <h4 id="기억해야-할-함수-4">기억해야 할 함수</h4>
 <ol>
-  <li>list.sort(key=function): function에 지정한 순서대로 리스트를 정렬한다.</li>
-  <li>list.isdigit(): 숫자여부를 판별하는 함수이다.</li>
+  <li>for i in range(3, -1, -1) 는 3부터 0까지 -1씩 줄여가며 반복한다.</li>
 </ol>
 
-<h4 id="기억해야-할-내용-2">기억해야 할 내용</h4>
+<h4 id="중요-내용-10">중요 내용</h4>
 <ol>
-  <li>[1,2,3] + [4,5,6] 의 연산을 수행하면 두 리스트가 append된 [1,2,3,4,5,6] 이 나온다.</li>
-  <li>람다 표현식은 다음과 같은 형태이다.
-    <ul>
-      <li>lambda x:x+2 는 x값을 받고 x+2를 리턴하는 람다식이다.</li>
-    </ul>
-  </li>
+  <li>원리는 내가 풀이한 방법과 비슷하지만 계산 과정을 훨씬 더 간단히 하였다.</li>
 </ol>
 
         
@@ -856,7 +981,7 @@ banned = [‘hit’]</p>
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EB%AC%B8%EC%9E%90%EC%97%B4+%EC%A1%B0%EC%9E%91%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter7-%25EB%25B0%25B0%25EC%2597%25B4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EB%B0%B0%EC%97%B4%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter7-%25EB%25B0%25B0%25EC%2597%25B4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter7-%25EB%25B0%25B0%25EC%2597%25B4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
