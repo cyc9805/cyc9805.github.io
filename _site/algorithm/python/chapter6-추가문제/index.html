@@ -1,0 +1,30 @@
+<h2 id="question-유효한-팰린드롬-2">Question: 유효한 팰린드롬 2</h2>
+
+<p>Given a string s, return true if the s can be palindrome after deleting at most one character from it.</p>
+
+<p class="notice">입력:  s = “abca”</p>
+<p class="notice">출력: true</p>
+
+<h3 id="내-풀이">내 풀이</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">validPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>          
+        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
+        <span class="c1"># left값과 right값이 다를때 비교한다.
+</span>            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]:</span>
+            
+            <span class="c1"># s[left] 와 s[right] 중 어느 것이 palindrome이 되는 걸 막는지 모르므로 각자를 뺀 경우를 가정하여 변수를 생성한다.
+</span>                <span class="n">one</span><span class="p">,</span><span class="n">two</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">right</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                
+            <span class="c1"># 두 변수 중 어느 하나라도 palindrome 이면 True를 리턴한다.
+</span>                <span class="k">return</span> <span class="n">one</span><span class="o">==</span><span class="n">one</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">two</span><span class="o">==</span><span class="n">two</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div></div>
+
+<h3 id="결과">결과</h3>
+
+<p>Runtime: 129 ms, faster than 71.74% of Python3 online submissions for Valid Palindrome II.
+Memory Usage: 14.4 MB, less than 92.13% of Python3 online submissions for Valid Palindrome II.</p>
+

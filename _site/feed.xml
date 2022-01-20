@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-20T00:44:10+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">배열</title><link href="http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/" rel="alternate" type="text/html" title="배열" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/">&lt;h2 id=&quot;question-7-유효한-팰린드롬&quot;&gt;Question 7: 유효한 팰린드롬&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-21T05:21:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">배열</title><link href="http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/" rel="alternate" type="text/html" title="배열" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/">&lt;h2 id=&quot;question-7-유효한-팰린드롬&quot;&gt;Question 7: 유효한 팰린드롬&lt;/h2&gt;
 
 &lt;p class=&quot;notice&quot;&gt;입력: ‘num = [2,7,11,15], target = 9’&lt;/p&gt;
 &lt;p class=&quot;notice&quot;&gt;출력: [0,1]&lt;/p&gt;
@@ -475,6 +475,72 @@
 &lt;h4 id=&quot;중요-내용-10&quot;&gt;중요 내용&lt;/h4&gt;
 &lt;ol&gt;
   &lt;li&gt;원리는 내가 풀이한 방법과 비슷하지만 계산 과정을 훨씬 더 간단히 하였다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;question-12-주식을-사고팔기-가장-좋은-시점&quot;&gt;Question 12: 주식을 사고팔기 가장 좋은 시점&lt;/h2&gt;
+
+&lt;p&gt;한 번의 거래로 낼 수 있는 최대 이익을 산출하라&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;입력: [7,1,5,3,6,4]&lt;/p&gt;
+&lt;p class=&quot;notice&quot;&gt;출력: 5&lt;/p&gt;
+&lt;p class=&quot;notice&quot;&gt;주의: 나눗셈을 하지 않고 O(n)에 풀이하라&lt;/p&gt;
+
+&lt;h3 id=&quot;내-풀이-4&quot;&gt;내 풀이&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maxProfit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;max_num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;max_num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_num&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;결과-4&quot;&gt;결과&lt;/h4&gt;
+
+&lt;p&gt;시간초과 에러가 떴다.&lt;/p&gt;
+
+&lt;h4 id=&quot;에러-이유-2&quot;&gt;에러 이유&lt;/h4&gt;
+
+&lt;p&gt;브루트 포스 방법을 이용하였는데 반복문을 두번 이용해 시간 복잡도가 $O(n^2)$ 가 나왔다. 브루트 포스 방법은 가장 생각해내기 쉬운 풀이 방법이나 계산 과정이 너무 오래 걸리기 때문에 최대한 지양해야 한다고 배웠었다. &lt;strong&gt;브루트 포스 대신 다른 방법을 이용해 문제를 풀려는 습관을 들이자!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;풀이-1-브루트-포스로-계산-1&quot;&gt;풀이 1: 브루트 포스로 계산&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maxProfit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;max_price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;max_price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_price&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 방법은 내 풀이 방법과 동일하므로 생략하도록 하겠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;풀이-2-저점과-현재-값과의-차이-계산&quot;&gt;풀이 2: 저점과 현재 값과의 차이 계산&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maxProfit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;profit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;min_price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxsize&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;min_price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min_price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;profit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profit&lt;/span&gt;
+            
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;기억해야-할-함수-5&quot;&gt;기억해야 할 함수&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;sys.maxsize는 시스템상에서 표현할 수 있는 가장 큰 값을 표현한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;중요-내용-11&quot;&gt;중요 내용&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;최솟값과 최댓값을 갱신해야 하는 문제는 min과 max값을 초기에 지정해야 한다. 이 때 &lt;strong&gt;최댓값이 되어야 할 변수는 시스템이 표현할 수 있는 가장 작은 값, 최솟값은 시스템이 표현할 수 있는 가장 큰 값을 지정한다.&lt;/strong&gt; 그래야 어떤 값이 들어오든 바로 갱신할 수 있다.&lt;/li&gt;
 &lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">Question 7: 유효한 팰린드롬</summary></entry><entry><title type="html">문자열 조작</title><link href="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91-%EB%B3%B5%EC%82%AC%EB%B3%B8/" rel="alternate" type="text/html" title="문자열 조작" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91%20%EB%B3%B5%EC%82%AC%EB%B3%B8</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91-%EB%B3%B5%EC%82%AC%EB%B3%B8/">&lt;h2 id=&quot;question-1-유효한-팰린드롬&quot;&gt;Question 1: 유효한 팰린드롬&lt;/h2&gt;
 
 &lt;p class=&quot;notice&quot;&gt;입력: ‘Taco cat’&lt;/p&gt;
@@ -668,7 +734,35 @@ banned = [‘hit’]&lt;/p&gt;
       &lt;li&gt;lambda x:x+2 는 x값을 받고 x+2를 리턴하는 람다식이다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">Question 1: 유효한 팰린드롬</summary></entry><entry><title type="html">서울시 빅데이터캠퍼스 공모전</title><link href="http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/" rel="alternate" type="text/html" title="서울시 빅데이터캠퍼스 공모전" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/">&lt;p&gt;2021년 9월 13일부터 10월 21일까지 진행한 서울시 빅데이터캠퍼스 공모전에 참가하였다. 공모전이 끝난지는 무려 한달(…)이 지났지만 후기 작성을 미루다가 지금에서야 후기를 작성하려 한다.&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">Question 1: 유효한 팰린드롬</summary></entry><entry><title type="html">문자열 조작 추가문제</title><link href="http://localhost:4000/algorithm/python/chapter6-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="문자열 조작 추가문제" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/chapter6-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/algorithm/python/chapter6-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">&lt;h2 id=&quot;question-유효한-팰린드롬-2&quot;&gt;Question: 유효한 팰린드롬 2&lt;/h2&gt;
+
+&lt;p&gt;Given a string s, return true if the s can be palindrome after deleting at most one character from it.&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;입력:  s = “abca”&lt;/p&gt;
+&lt;p class=&quot;notice&quot;&gt;출력: true&lt;/p&gt;
+
+&lt;h3 id=&quot;내-풀이&quot;&gt;내 풀이&lt;/h3&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;validPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;          
+        &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# left값과 right값이 다를때 비교한다.
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;# s[left] 와 s[right] 중 어느 것이 palindrome이 되는 걸 막는지 모르므로 각자를 뺀 경우를 가정하여 변수를 생성한다.
+&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;two&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                
+            &lt;span class=&quot;c1&quot;&gt;# 두 변수 중 어느 하나라도 palindrome 이면 True를 리턴한다.
+&lt;/span&gt;                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;two&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;two&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;결과&quot;&gt;결과&lt;/h3&gt;
+
+&lt;p&gt;Runtime: 129 ms, faster than 71.74% of Python3 online submissions for Valid Palindrome II.
+Memory Usage: 14.4 MB, less than 92.13% of Python3 online submissions for Valid Palindrome II.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">Question: 유효한 팰린드롬 2</summary></entry><entry><title type="html">서울시 빅데이터캠퍼스 공모전</title><link href="http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/" rel="alternate" type="text/html" title="서울시 빅데이터캠퍼스 공모전" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/seoul-bigdata-contest/">&lt;p&gt;2021년 9월 13일부터 10월 21일까지 진행한 서울시 빅데이터캠퍼스 공모전에 참가하였다. 공모전이 끝난지는 무려 한달(…)이 지났지만 후기 작성을 미루다가 지금에서야 후기를 작성하려 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;주제-정하기&quot;&gt;주제 정하기&lt;/h2&gt;
 
@@ -1541,61 +1635,4 @@ RNN의 one-to-many, many-to-one, many-to-many의 경우에 대해 각각 computa
   &lt;li&gt;일반 RNN 구조는 간단하나 gradient flow의 어려움 때문에 잘 사용되지 않는다.&lt;/li&gt;
   &lt;li&gt;gradient flow 문제를 해결한 LSTM을 사용하는 것을 추천한다.&lt;/li&gt;
   &lt;li&gt;더 간단하지만 좋은 성능을 보이는 RNN 구조를 만드는 방향으로 현재 연구가 진행되고 있다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Process Sequence of Recurrent Neural Network</summary></entry><entry><title type="html">데이콘 경진대회 참여후기 part2</title><link href="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B02/" rel="alternate" type="text/html" title="데이콘 경진대회 참여후기 part2" /><published>2021-10-03T00:00:00+09:00</published><updated>2021-10-03T00:00:00+09:00</updated><id>http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B02</id><content type="html" xml:base="http://localhost:4000/data%20analysis/python/project/%EB%8D%B0%EC%9D%B4%EC%BD%98-%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B02/">&lt;p&gt;경진대회에서 1등이 사용한 코드를 보려고 했는데 아쉽게 1등한 팀이 코드를 공유하지 않아 3등 팀의 코드를 참고하였다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3등-팀의-코드를-보고-눈에-띈-점&quot;&gt;3등 팀의 코드를 보고 눈에 띈 점&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;seaborn의 kdeplot 함수를 통해 목적변수의 분포를 그래프로 나타내었다. 해당 그래프를 통해 정규화를 해야할지 말아야 할지 여부를 판단할 수 있다. 이번 경진대회의 중식계와 석식계 특징은 이미 정규분포의 형태를 띄고 있으므로 Min-Max-scale 같은 정규화를 실시하지 않았다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;월별 점심과 저녁때 사람수를 boxplot을 이용해 그래프로 나타내었다. 이를 통해 연말에 식수 인원이 제일 적다는 것을 파악하였다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;음식 메뉴를 처리하는 과정에서 밥, 국, 반찬의 세 개의 특징을 만들어 각 특징에 해당하는 메뉴를 분리했다. 그리고 레이블인코딩을 통해 각 메뉴를 숫자로 변경하였다. 나도 LabelEncoder 라이브러리를 이용하여 레이블인코딩을 시도해 보았지만 3등 팀은 다른 방법을 통해 레이블인코딩을 하였다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;음식 메뉴를 분리하는 과정에서 3개의 반찬 중에서 1개만 특징에 포함시켰다. 3개의 반찬 중 메인 반찬이라고 보이는 반찬은 딱히 보이지 않는데 특징의 수를 조금이라도 줄이기 위해 1개만 포함시킨 것일까?&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;점심에 구내식당을 이용한 사람이 저녁에도 그대로 이용할 확률이 높을 것이라는 가정을 하였다. 이를 확인하기 위해 석식계를 예측할 때 다음과 같은 두가지 방법으로 나누어서 예측을 하였다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;석식메뉴는 제외하고 점심메뉴로만 석식계를 예측하였다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;2. 석식메뉴로 석식계를 예측하였다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 두 가지 경우의 public score 중 1번이 더 높게 나와 점심에 구내식당을 이용한 사람이 저녁에도 그대로 이용할 확률이 높을 것이라는 가정이 맞다는 것을 확인할 수 있었다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;모델은 xgboost 를 이용하였다. 다만 최적의 파라미터를 찾을 때 나는 베이즈 최적화 방법을 이용한 반면 3등 팀은 그리드 서치 방법을 이용하였다. 그리드 서치를 위해 GridSearchCV 라이브러리를 이용하였다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/dacon_review5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;3등-팀의-코드를-보며-느낀-점&quot;&gt;3등 팀의 코드를 보며 느낀 점&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;데이터의 특징은 최대하게 간단하게 생성하였다. 나는 특징 수는 별로 생각하지 않고 학습에 도움이 될 것 같은 특징은 마구잡이로 추가했는데 이러한 특징들이 학습에 악영향을 미친 것 같다. feature_importance 와 corr 함수를 더 적극적으로 사용하여 중요한 특징들과 특징들간의 상관성을 파악을 하는 것이 중요하다.&lt;/li&gt;
-  &lt;li&gt;데이터 분석을 다양한 방법으로 실행하였다. 데이터 분석의 중요성을 이 대회를 통해 느낀만큼 데이터 분석을 위한 라이브러리들을 많이 공부해야겠다.&lt;/li&gt;
-  &lt;li&gt;문제에 대해 지나치게 어렵게 접근하면 진짜 중요한 것들이 보이지 않을 수 있으므로 간단하게 접근하는 태도가 필요하다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;처음으로 데이터 경진대회에 참여하여 private score 100등으로 마무리 하였지만 직접 배운 것들을 활용하고 코드를 작성하는 과정에서 많은 것들을 배워갈 수 있었다. 이 경진대회가 데이터 분석과 친해지기 위한 중요한 한 걸음이 되었으면 좋겠다😀😀&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="data analysis" /><category term="python" /><category term="project" /><summary type="html">경진대회에서 1등이 사용한 코드를 보려고 했는데 아쉽게 1등한 팀이 코드를 공유하지 않아 3등 팀의 코드를 참고하였다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="python" /><summary type="html">Process Sequence of Recurrent Neural Network</summary></entry></feed>
