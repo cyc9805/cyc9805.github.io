@@ -1,0 +1,1001 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- MATH EQUATION -->
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>문자열 조작 - yongchan’s website</title>
+<meta name="description" content="Question 1: 유효한 팰린드롬">
+
+
+  <meta name="author" content="yongchanchun">
+  
+  <meta property="article:author" content="yongchanchun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="yongchan's website">
+<meta property="og:title" content="문자열 조작">
+<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/">
+
+
+  <meta property="og:description" content="Question 1: 유효한 팰린드롬">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-14T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter6-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A1%B0%EC%9E%91/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yongchan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="yongchan's website Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Welcome to my website!!
+          <span class="site-subtitle">👋👋👋</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image/profile2.png" alt="yongchanchun" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">yongchanchun</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I’m trying to post on a daily basis<br />this may be hard but <strong>Nothing is achieved without trying!</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.facebook.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc"></label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂전체 글 수 27개
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Programming</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                
+                    
+                
+                    
+                        <li><a href="/categories/python" class="">Python (26)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/data analysis" class="">Data Analysis (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/computer vision" class="">Computer Vision (15)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/markdown" class="">Markdown (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/project" class="">Project (3)</a></li>
+                    
+                
+                    
+                
+            </ul>
+	    <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm (3)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="문자열 조작">
+    <meta itemprop="description" content="Question 1: 유효한 팰린드롬">
+    <meta itemprop="datePublished" content="2022-01-14T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">문자열 조작
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#question-1-유효한-팰린드롬">Question 1: 유효한 팰린드롬</a><ul><li><a href="#풀이-1-리스트로-변환">풀이 1: 리스트로 변환</a><ul><li><a href="#기억해야-할-함수">기억해야 할 함수</a></li><li><a href="#중요-내용">중요 내용</a></li></ul></li><li><a href="#풀이-2-데크-자료형을-이용한-최적화">풀이 2: 데크 자료형을 이용한 최적화</a><ul><li><a href="#기억해야-할-함수-1">기억해야 할 함수</a></li><li><a href="#중요-내용-1">중요 내용</a></li></ul></li><li><a href="#풀이-3-슬라이싱-사용">풀이 3: 슬라이싱 사용</a><ul><li><a href="#기억해야-할-함수-2">기억해야 할 함수</a></li><li><a href="#중요-내용-2">중요 내용</a></li></ul></li></ul></li><li><a href="#question-2-문자열-뒤집기">Question 2: 문자열 뒤집기</a><ul><li><a href="#풀이-1-투-포인터를-이용한-스왑">풀이 1: 투 포인터를 이용한 스왑</a><ul><li><a href="#중요-내용-3">중요 내용</a></li></ul></li><li><a href="#풀이-2-파이썬다운-방식">풀이 2: 파이썬다운 방식</a><ul><li><a href="#기억해야-할-함수-3">기억해야 할 함수</a></li><li><a href="#기억해야-할-내용">기억해야 할 내용</a></li></ul></li></ul></li><li><a href="#question-3-로그-파일-재정렬">Question 3: 로그 파일 재정렬</a><ul><li><a href="#풀이-1-람다와--연산자를-이용">풀이 1: 람다와 + 연산자를 이용</a><ul><li><a href="#기억해야-할-함수-4">기억해야 할 함수</a></li><li><a href="#기억해야-할-내용-1">기억해야 할 내용</a></li></ul></li></ul></li><li><a href="#question-4-가장-흔한-단어">Question 4: 가장 흔한 단어</a><ul><li><a href="#풀이-1-리스트-컴프리헨션-counter-객체-사용">풀이 1: 리스트 컴프리헨션, counter 객체 사용</a><ul><li><a href="#기억해야-할-함수-5">기억해야 할 함수</a></li><li><a href="#기억해야-할-내용-2">기억해야 할 내용</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="question-1-유효한-팰린드롬">Question 1: 유효한 팰린드롬</h2>
+
+<p class="notice">입력: ‘Taco cat’</p>
+<p class="notice">출력: true</p>
+
+<h3 id="풀이-1-리스트로-변환">풀이 1: 리스트로 변환</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">strs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span><span class="p">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="n">strs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">.</span><span class="n">lower</span><span class="p">())</span>
+    
+    <span class="c1"># 팰린드롬 여부 판별
+</span>    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">strs</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="n">strs</span><span class="p">.</span><span class="n">pop</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div></div>
+
+<h4 id="기억해야-할-함수">기억해야 할 함수</h4>
+<ol>
+  <li>isalnum(): 영문자, 숫자이면 True를 리턴하는 함수</li>
+  <li>pop(): 삭제할 인덱스를 입력하면 삭제될 값을 리턴하고 삭제가 진행된다.</li>
+  <li>lower(): 문자열을 모두 소문자로 변경한다.</li>
+</ol>
+
+<h4 id="중요-내용">중요 내용</h4>
+<ol>
+  <li>pop()은 리스트의 요소들을 다 검사해야 하기 때문에 코드 실행 시간은 O(n) 이다.</li>
+</ol>
+
+<hr />
+
+<h3 id="풀이-2-데크-자료형을-이용한-최적화">풀이 2: 데크 자료형을 이용한 최적화</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="c1"># 자료형 데크로 선언
+</span>    <span class="n">strs</span><span class="p">:</span> <span class="n">Deque</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">deque</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span><span class="p">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="n">strs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">.</span><span class="n">lower</span><span class="p">())</span>
+    
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">strs</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span> <span class="o">!=</span> <span class="n">strs</span><span class="p">.</span><span class="n">pop</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">False</span>
+            
+    <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div></div>
+
+<h4 id="기억해야-할-함수-1">기억해야 할 함수</h4>
+<ol>
+  <li>collections.deque(): 자료형을 데크로 선언한다.</li>
+  <li>popleft(): 가장 왼쪽에 위치한 요소를 삭제하고 삭제한 값을 리턴한다.</li>
+</ol>
+
+<h4 id="중요-내용-1">중요 내용</h4>
+<ol>
+  <li>popleft()는 리스트의 제일 왼쪽에 위치한 요소만 검사하므로 코드 실행 시간은 O(1) 이다.</li>
+</ol>
+
+<hr />
+
+<h3 id="풀이-3-슬라이싱-사용">풀이 3: 슬라이싱 사용</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="c1"># 정규식으로 불필요한 문자 필터링
+</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'[^a-z0-9]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span> <span class="o">==</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h4 id="기억해야-할-함수-2">기억해야 할 함수</h4>
+<ol>
+  <li>re.sub(치환할 문자, 치환하는 값, 문자열): 정규식으로 불필요한 문자를 필터링한다. ^는 not을 의미하므로 [^a-z0-9]는 영문자, 숫자를 제외한 문자를 공백으로 치환하라는 의미이다.</li>
+</ol>
+
+<h4 id="중요-내용-2">중요 내용</h4>
+<ol>
+  <li><strong>슬라이싱은 매우 빠르게 진행되므로 문자열을 조작할 때는 항상 슬라이싱을 우선으로 사용하자!</strong></li>
+  <li>s[:]는 문자열의 사본을 입력한다.</li>
+  <li>s[::-1]는 문자열을 뒤집는다.</li>
+  <li>s[::2]는 문자열을 2칸씩 앞으로 이동하며 슬라이싱한다.</li>
+</ol>
+
+<h2 id="question-2-문자열-뒤집기">Question 2: 문자열 뒤집기</h2>
+
+<p class="notice">입력: [‘h’, ‘e’, ‘l’, ‘l’, ‘o’]</p>
+<p class="notice">출력: [‘o’, ‘l’, ‘l’, ‘e’, ‘h’]</p>
+
+<h3 id="풀이-1-투-포인터를-이용한-스왑">풀이 1: 투 포인터를 이용한 스왑</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">reverseString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
+        <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
+        <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-3">중요 내용</h4>
+<ol>
+  <li>리턴 없이 문자열을 바꾸는 것이 핵심!</li>
+</ol>
+
+<hr />
+
+<h3 id="풀이-2-파이썬다운-방식">풀이 2: 파이썬다운 방식</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">reverseString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">reverse</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="기억해야-할-함수-3">기억해야 할 함수</h4>
+<ol>
+  <li>reverse(): 리스트에만 사용 가능. 리스트의 요소를 뒤집는다.</li>
+</ol>
+
+<h4 id="기억해야-할-내용">기억해야 할 내용</h4>
+<ol>
+  <li>문자열을 뒤집을 떄는 간단하게 슬라이싱을 이용한다 -&gt; s[::-1]</li>
+</ol>
+
+<h2 id="question-3-로그-파일-재정렬">Question 3: 로그 파일 재정렬</h2>
+
+<ol>
+  <li>로그의 가장 앞 부분은 식별자이다.</li>
+  <li>문자로 구성된 로그가 숫자로 구성된 로그보다 앞에 온다.</li>
+  <li>식별자는 순서에 영향을 끼치지 않지만, 문자가 동일한 경우 식별자 순으로 한다.</li>
+  <li>숫자 로그는 입력 순서대로 한다.</li>
+</ol>
+
+<h3 id="풀이-1-람다와--연산자를-이용">풀이 1: 람다와 + 연산자를 이용</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">reorderLogFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="n">letters</span><span class="p">,</span><span class="n">digits</span> <span class="o">=</span> <span class="p">[],[]</span>
+    <span class="k">for</span> <span class="n">log</span> <span class="ow">in</span> <span class="n">logs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">log</span><span class="p">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">].</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="n">digits</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">letters</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+
+    <span class="n">letters</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">letters</span><span class="o">+</span><span class="n">digits</span>
+</code></pre></div></div>
+<h4 id="기억해야-할-함수-4">기억해야 할 함수</h4>
+<ol>
+  <li>list.sort(key=function): function에 지정한 순서대로 리스트를 정렬한다.</li>
+  <li>list.isdigit(): 숫자여부를 판별하는 함수이다.</li>
+</ol>
+
+<h4 id="기억해야-할-내용-1">기억해야 할 내용</h4>
+<ol>
+  <li>[1,2,3] + [4,5,6] 의 연산을 수행하면 두 리스트가 append된 [1,2,3,4,5,6] 이 나온다.</li>
+  <li>람다 표현식은 다음과 같은 형태이다.
+    <ul>
+      <li>lambda x:x+2: x값을 받고 x+2를 리턴한다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="question-4-가장-흔한-단어">Question 4: 가장 흔한 단어</h2>
+
+<p class="notice">입력: paragraph = ‘bob hit a BALL, and the ball flew after it was hit’
+banned = [‘hit’]</p>
+<p class="notice">출력: ‘ball’</p>
+
+<h3 id="풀이-1-리스트-컴프리헨션-counter-객체-사용">풀이 1: 리스트 컴프리헨션, counter 객체 사용</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mostCommonWord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paragraph</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">banned</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s">'[^\w]'</span><span class="p">,</span><span class="s">' '</span><span class="p">,</span><span class="n">paragraph</span>
+            <span class="p">.</span><span class="n">lower</span><span class="p">().</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">banned</span> <span class="p">]</span>
+
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">counts</span><span class="p">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+<h4 id="기억해야-할-함수-5">기억해야 할 함수</h4>
+<ol>
+  <li>list.sort(key=function): function에 지정한 순서대로 리스트를 정렬한다.</li>
+  <li>list.isdigit(): 숫자여부를 판별하는 함수이다.</li>
+</ol>
+
+<h4 id="기억해야-할-내용-2">기억해야 할 내용</h4>
+<ol>
+  <li>[1,2,3] + [4,5,6] 의 연산을 수행하면 두 리스트가 append된 [1,2,3,4,5,6] 이 나온다.</li>
+  <li>람다 표현식은 다음과 같은 형태이다.
+    <ul>
+      <li>lambda x:x+2 는 x값을 받고 x+2를 리턴하는 람다식이다.</li>
+    </ul>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-14T00:00:00+09:00">January 14, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%AC%B8%EC%9E%90%EC%97%B4+%EC%A1%B0%EC%9E%91%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter6-%25EB%25AC%25B8%25EC%259E%2590%25EC%2597%25B4-%25EC%25A1%25B0%25EC%259E%2591%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter6-%25EB%25AC%25B8%25EC%259E%2590%25EC%2597%25B4-%25EC%25A1%25B0%25EC%259E%2591%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter6-%25EB%25AC%25B8%25EC%259E%2590%25EC%2597%25B4-%25EC%25A1%25B0%25EC%259E%2591%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/data%20analysis/python/project/seoul-bigdata-contest/" class="pagination--pager" title="서울시 빅데이터캠퍼스 공모전
+">Previous</a>
+    
+    
+      <a href="/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/" class="pagination--pager" title="배열
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter6-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">문자열 조작 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question: 유효한 팰린드롬 2
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter7-%EB%B0%B0%EC%97%B4/" rel="permalink">배열
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 7: 유효한 팰린드롬
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/data%20analysis/python/project/seoul-bigdata-contest/" rel="permalink">서울시 빅데이터캠퍼스 공모전
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">2021년 9월 13일부터 10월 21일까지 진행한 서울시 빅데이터캠퍼스 공모전에 참가하였다. 공모전이 끝난지는 무려 한달(…)이 지났지만 후기 작성을 미루다가 지금에서야 후기를 작성하려 한다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20vision/python/Assignment1/" rel="permalink">Assignment 1
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assignment 1은 파이썬 코드를 직접 작성하여 이미지 분류 모델을 직접 만드는 내용이다. 사용하는 모델로는 KNN, SVM, two-layer-net(deep learning network with one hidden layer) 이 있다. 이 모델들에 대해서는 예전에 배운...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/yongchanchun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 yongchan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
