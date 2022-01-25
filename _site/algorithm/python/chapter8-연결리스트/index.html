@@ -1,62 +1,97 @@
-<h2 id="question-7-유효한-팰린드롬">Question 7: 유효한 팰린드롬</h2>
+<h2 id="연결-리스트란">연결 리스트란?</h2>
+<p><img src="/assets/image/algo-ch8-1.png" alt="" width="50%" height="50%" class="align-center" /></p>
 
-<p class="notice">입력: ‘num = [2,7,11,15], target = 9’</p>
-<p class="notice">출력: [0,1]</p>
+<ul>
+  <li>Node : 데이터와 다음 데이터를 가리키는 주소(포인터)로 이루어져 있다.</li>
+  <li>Pointer : 각 노드에서 다음 데이터를 가리키는 주소값을 가진다.</li>
+  <li>Head : 링크드리스트에서 가장 시작점인 데이터를 의미한다.</li>
+  <li>Tail : 링크드리스트에서 가장 마지막 데이터를 의미</li>
+  <li>Next=None(또는 Null) : 다음 데이터가 없을 경우 포인터의 주소값은 None(또는 Null)이다</li>
+</ul>
 
-<h3 id="내-풀이">내 풀이</h3>
+<h3 id="연결-리스트-장단점">연결 리스트 장단점</h3>
+
+<ol>
+  <li>장점
+    <ul>
+      <li>배열은 미리 데이터 공간을 할당해야 하지만 링크드리스트는 미리 할당할 필요가 없다.</li>
+      <li>링크드리스트 수정시 시간복잡도 O(1)을 갖는다.</li>
+    </ul>
+  </li>
+  <li>단점
+    <ul>
+      <li>위 구조에서 보듯이 다음 데이터를 연결하기 위해선 별도의 주소 공간을 가져야 한다. -&gt; 저장공간 효율이 높지 않음</li>
+      <li>배열은 인덱스를 통해 데이터에 접근하므로 시간복잡도 O(1)을 갖지만 링크드리스트의 경우 O(n)을 갖는다. 즉, 연결 된 정보를 찾기 위해 주소를 확인하고 다음 데이터를 탐색하는 시간이 있기 때문에 접근 속도가 느리다.</li>
+      <li>중간데이터를 삭제시, 앞뒤 데이터를 연결하고 재구성하는 코드가 추가로 필요하다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="question-8-팰린드롬-연결-리스트">Question 8: 팰린드롬 연결 리스트</h2>
+
+<p class="notice">입력: 1-&gt;2-&gt;1</p>
+<p class="notice">출력: true</p>
+
+<h3 id="풀이-1-리스트-변환">풀이 1: 리스트 변환</h3>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">i</span><span class="o">!=</span><span class="n">j</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-</code></pre></div></div>
-
-<h3 id="결과">결과</h3>
-
-<p>시간 초과 에러가 떴다.</p>
-
-<h3 id="에러-이유">에러 이유</h3>
-
-<p>1부터 n까지의 값을 가진 리스트가 있다고 하자. i와 j는 0에서부터 n까지의 값을 가져 $O(n^2)$ 만큼의 실행시간이 걸린다. 그러나 nums[1]+nums[2] 가 타겟 값이 아닐 때 nums[2]+nums[1]는 검사할 필요가 없다. 따라서 위 코드는 불필요한 계산과정까지 수반하므로 코드 실행 시간이 길어지게 되어 시간 초과 에러가 난다.</p>
-
-<h3 id="풀이-1-브루트-포스로-계산">풀이 1: 브루트 포스로 계산</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">q</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">node</span> <span class="o">=</span> <span class="n">head</span>
+        
+        <span class="c1"># 연결 리스트를 리스트로 변환
+</span>        <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nb">next</span>
+            
+        <span class="c1"># 팰린드롬 판별
+</span>        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            
+        <span class="k">return</span> <span class="bp">True</span>
+            
 </code></pre></div></div>
 
 <h4 id="중요-내용">중요 내용</h4>
 <ol>
-  <li>브루트 포스는 배열을 반복하면서 모든 조합을 더해서 일일이 확인해보는 방법이다.</li>
-  <li>두번째 반복문에 시작값 i+1를 지정하여 불필요한 계산과정을 생략하였다.</li>
-  <li><strong><em>브루트 포스는 반복문이 m개 있을 때 $O(n^m)$ 만큼 걸리므로 시간 초과 에러가 뜰 수 있으므로 좋은 방법은 아니다!</em></strong></li>
+  <li>연결 리스트를 리스트로 변환한 후 pop함수를 사용하여 팰린드롬 여부를 판별하였다.</li>
+  <li>리스트로 변환하고 여기서 팰린드롬 여부를 판별하므로 실행 시간이 오래 걸린다.</li>
+  <li><strong>연결 리스트를 리스트로 변환하는 알고리즘을 잘 기억해 놓자!!</strong></li>
 </ol>
 
 <hr />
 
-<h3 id="풀이-2-in을-이용한-탐색">풀이 2: in을 이용한 탐색</h3>
+<h3 id="풀이-2-데크를-이용한-최적화">풀이 2: 데크를 이용한 최적화</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
-            <span class="n">complement</span> <span class="o">=</span> <span class="n">target</span><span class="o">-</span><span class="n">n</span>
-            <span class="k">if</span> <span class="n">complement</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]:</span>
-                <span class="k">return</span><span class="p">[</span><span class="n">nums</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:].</span><span class="n">index</span><span class="p">(</span><span class="n">complement</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">q</span><span class="p">:</span> <span class="n">Deque</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">deque</span><span class="p">()</span>
+            
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">node</span> <span class="o">=</span> <span class="n">head</span>
+        
+        <span class="c1"># 연결 리스트를 리스트로 변환
+</span>        <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nb">next</span>
+            
+        <span class="c1"># 팰린드롬 판별
+</span>        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">q</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span> <span class="o">!=</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            
+        <span class="k">return</span> <span class="bp">True</span>
 </code></pre></div></div>
-
-<h4 id="기억해야-할-함수">기억해야 할 함수</h4>
-<ol>
-  <li>list.index(찾을 값): 리스트에서 찾을 값의 인덱스를 리턴한다.</li>
-</ol>
 
 <h4 id="중요-내용-1">중요 내용</h4>
 <ol>
-  <li><strong>파이썬의 내부 함수로 구현된 in (풀이2)은 파이썬 레벨에서 매번 값을 비교하는 것(풀이1)에 비해 훨씬더 빨리 실행된다.</strong></li>
+  <li>일반 리스트로 풀이하면</li>
 </ol>
 
 <hr />
@@ -109,7 +144,7 @@
     <span class="k">else</span><span class="p">:</span>
       <span class="k">return</span> <span class="p">[</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">]</span>
 </code></pre></div></div>
-<h4 id="기억해야-할-함수-1">기억해야 할 함수</h4>
+<h4 id="기억해야-할-함수">기억해야 할 함수</h4>
 <ol>
   <li>list.sort(key= , reverse= ): 리스트를 key에 정한 함수대로 정렬한다. sorted 함수가 정렬된 값을 반환하는 반면 sort 함수는 적용한 리스트를 정렬하고 값을 리턴하지는 않는다.</li>
 </ol>
@@ -158,7 +193,7 @@
         <span class="k">return</span> <span class="n">volume</span>
 </code></pre></div></div>
 
-<h4 id="기억해야-할-함수-2">기억해야 할 함수</h4>
+<h4 id="기억해야-할-함수-1">기억해야 할 함수</h4>
 <ol>
   <li>max(num1, num2, num3): num1 ~ num3까지 최대 값을 리턴한다.</li>
 </ol>
@@ -224,7 +259,7 @@
 
 <hr />
 
-<h3 id="내-풀이-1">내 풀이</h3>
+<h3 id="내-풀이">내 풀이</h3>
 
 <p>브루트 포스 방법을 이용하였다</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
@@ -241,11 +276,11 @@
         <span class="k">return</span> <span class="n">three_sum</span>
 </code></pre></div></div>
 
-<h3 id="결과-1">결과</h3>
+<h3 id="결과">결과</h3>
 
 <p>시간 초과 에러가 떴다.</p>
 
-<h3 id="에러-이유-1">에러 이유</h3>
+<h3 id="에러-이유">에러 이유</h3>
 
 <p>해당 코드에는 반복문이 3개나 들어가 있어 실행 시간이 $O(n^3)$ 걸린다. 이 문제에서는 시간 복잡도를 $O(n^2)$ 이내로 요구하므로 다른 방법을 사용하는 것이 좋다.</p>
 
@@ -273,7 +308,7 @@
         <span class="k">return</span> <span class="n">results</span>
 </code></pre></div></div>
 
-<h4 id="기억해야-할-함수-3">기억해야 할 함수</h4>
+<h4 id="기억해야-할-함수-2">기억해야 할 함수</h4>
 <ol>
   <li>조건문에서 continue는 아래 구문을 실행하지 않고 건너뛴다.</li>
 </ol>
@@ -328,7 +363,7 @@
 <p class="notice">입력: [1,4,3,2]</p>
 <p class="notice">출력: 4</p>
 
-<h3 id="내-풀이-2">내 풀이</h3>
+<h3 id="내-풀이-1">내 풀이</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -339,7 +374,7 @@
             <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">arr_num</span><span class="o">-</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">arr_num</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span>
         <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></div>
-<h4 id="결과-2">결과</h4>
+<h4 id="결과-1">결과</h4>
 
 <p class="notice">Runtime: 541 ms, faster than 5.26% of Python3 online submissions for Array Partition I.
 <br />Memory Usage: 16.8 MB, less than 71.06% of Python3 online submissions for Array Partition I.</p>
@@ -416,7 +451,7 @@
 <p class="notice">출력: [24,12,8,6]</p>
 <p class="notice">주의: 나눗셈을 하지 않고 O(n)에 풀이하라</p>
 
-<h3 id="내-풀이-3">내 풀이</h3>
+<h3 id="내-풀이-2">내 풀이</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
@@ -437,7 +472,7 @@
         <span class="n">right</span><span class="p">.</span><span class="n">reverse</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">num</span><span class="o">*</span><span class="n">num2</span> <span class="k">for</span> <span class="n">num</span><span class="p">,</span><span class="n">num2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">)</span> <span class="p">)</span>
 </code></pre></div></div>
-<h4 id="결과-3">결과</h4>
+<h4 id="결과-2">결과</h4>
 
 <p class="notice">Runtime: 550 ms, faster than 5.03% of Python3 online submissions for Product of Array Except Self.
 <br />Memory Usage: 21.8 MB, less than 30.85% of Python3 online submissions for Product of Array Except Self.</p>
@@ -467,7 +502,7 @@
         <span class="k">return</span> <span class="n">out</span>
 </code></pre></div></div>
 
-<h4 id="기억해야-할-함수-4">기억해야 할 함수</h4>
+<h4 id="기억해야-할-함수-3">기억해야 할 함수</h4>
 <ol>
   <li>for i in range(3, -1, -1) 는 3부터 0까지 -1씩 줄여가며 반복한다.</li>
 </ol>
@@ -485,7 +520,7 @@
 <p class="notice">출력: 5</p>
 <p class="notice">주의: 나눗셈을 하지 않고 O(n)에 풀이하라</p>
 
-<h3 id="내-풀이-4">내 풀이</h3>
+<h3 id="내-풀이-3">내 풀이</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -495,17 +530,17 @@
                     <span class="n">max_num</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">max_num</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">max_num</span>
 </code></pre></div></div>
-<h4 id="결과-4">결과</h4>
+<h4 id="결과-3">결과</h4>
 
 <p>시간초과 에러가 떴다.</p>
 
-<h4 id="에러-이유-2">에러 이유</h4>
+<h4 id="에러-이유-1">에러 이유</h4>
 
 <p>브루트 포스 방법을 이용하였는데 반복문을 두번 이용해 시간 복잡도가 $O(n^2)$ 가 나왔다. 브루트 포스 방법은 가장 생각해내기 쉬운 풀이 방법이나 계산 과정이 너무 오래 걸리기 때문에 최대한 지양해야 한다고 배웠었다. <strong>브루트 포스 대신 다른 방법을 이용해 문제를 풀려는 습관을 들이자!!</strong></p>
 
 <hr />
 
-<h3 id="풀이-1-브루트-포스로-계산-1">풀이 1: 브루트 포스로 계산</h3>
+<h3 id="풀이-1-브루트-포스로-계산">풀이 1: 브루트 포스로 계산</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -533,7 +568,7 @@
             
 </code></pre></div></div>
 
-<h4 id="기억해야-할-함수-5">기억해야 할 함수</h4>
+<h4 id="기억해야-할-함수-4">기억해야 할 함수</h4>
 <ol>
   <li>sys.maxsize는 시스템상에서 표현할 수 있는 가장 큰 값을 표현한다.</li>
 </ol>
