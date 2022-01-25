@@ -91,27 +91,47 @@
 
 <h4 id="중요-내용-1">중요 내용</h4>
 <ol>
-  <li>일반 리스트로 풀이하면</li>
+  <li>일반 리스트로 풀이하면 pop(0)으로 첫번째 아이템을 가져올때 모든 값이 한 칸씩 시프팅되어 시간 복잡도가 O(n) 만큼 발생한다. 반면 popleft() 함수를 사용하면 시간 복잡도가 O(1) 만큼 발생한다.</li>
+  <li><strong>리스트를 데크형으로 변경하는 방법은 다음과 같은 한 줄이므로 매우 간단하므로 꼭 기억하자!</strong>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q</span><span class="p">:</span> <span class="n">Deque</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">deque</span><span class="p">()</span>
+</code></pre></div>    </div>
+  </li>
 </ol>
 
 <hr />
 
-<h3 id="풀이-3-첫-번째-수를-뺀-결과-키-조회">풀이 3: 첫 번째 수를 뺀 결과 키 조회</h3>
+<h3 id="풀이-3-런너를-이용한-풀이">풀이 3: 런너를 이용한 풀이</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-  <span class="n">nums_map</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
-    <span class="n">nums_map</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">i</span>
-  <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">target</span><span class="o">-</span><span class="n">n</span> <span class="ow">in</span> <span class="n">nums_map</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">nums_map</span><span class="p">[</span><span class="n">target</span><span class="o">-</span><span class="n">n</span><span class="p">]:</span>
-      <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">nums_map</span><span class="p">[</span><span class="n">target</span><span class="o">-</span><span class="n">n</span><span class="p">]]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">rev</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span>
+        
+        <span class="c1"># 런너를 이용해 역순 리스트 구현
+</span>        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">rev</span><span class="p">,</span> <span class="n">rev</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="p">,</span> <span class="n">rev</span><span class="p">,</span> <span class="n">slow</span><span class="p">.</span><span class="nb">next</span>
+        
+        <span class="c1"># 입력값이 홀수 일때 실행 됨
+</span>        <span class="k">if</span> <span class="n">fast</span><span class="p">:</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="p">.</span><span class="nb">next</span>
+            
+        <span class="c1"># 팰린드롬 여부 확인
+</span>        <span class="k">while</span> <span class="n">rev</span> <span class="ow">and</span> <span class="n">rev</span><span class="p">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">slow</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+            <span class="n">slow</span><span class="p">,</span> <span class="n">rev</span> <span class="o">=</span> <span class="n">slow</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">rev</span><span class="p">.</span><span class="nb">next</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="n">rev</span>
 </code></pre></div></div>
 
 <h4 id="중요-내용-2">중요 내용</h4>
 <ol>
-  <li>딕셔너리는 값을 조회하는데 O(1)이 걸리므로 반복문을 실행하는데 O(n)의 시간이 걸린다.</li>
-  <li>실행시간은 앞의 두 풀이 방법보다 훨씬 더 짧게 걸린다.</li>
+  <li>이 방법은 이전의 방법과는 달리 연결 리스트의 특징을 살린 풀이 방법이다.</li>
+  <li>여기서는 <strong>런너 기법</strong> 과 <strong>다중 할당</strong> 이 사용 되었다.</li>
+  <li>런너 기법: 빠른 런너는 두 칸씩 건너뛰고 느린 런너는 한 칸씩 건너뛴다. 빠른 런너가 연결 리스트에 끝에 도달하면 느린 런너는 연결 리스트의 중간 지점에 도달하는 방법을 이용한다.</li>
+  <li>다중 할당: 파이썬의 숫자는 불변 객체이기 때문에 다른 언어와는 다르게 다중 할당을 구현할 수 있다. <strong>연결 리스트를 역순하는 알고리즘은 자주 사용되므로 꼭 숙지하자!</strong></li>
 </ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rev</span><span class="p">,</span> <span class="n">rev</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="p">,</span> <span class="n">rev</span><span class="p">,</span> <span class="n">slow</span><span class="p">.</span><span class="nb">next</span>
+</code></pre></div></div>
 
 <hr />
 
