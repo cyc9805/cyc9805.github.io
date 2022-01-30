@@ -202,11 +202,12 @@ Memory Usage: 14.3 MB, less than 62.12% of Python3 online submissions for Merge 
   <li>이 풀이방법은 재귀적 구조를 이용하였다. list1과 list2의 첫번째 값부터 비교하면서 list1의 값이 더 크면 값을 서로 스와핑을 하고 list1이 None이 아닐때 다음 값으로 넘어간다.</li>
   <li>list1의 마지막에서의 처리는 다음과 같다: list1.next는 None이 되고 이것이 not list1이 True가 되면서 값이 스와핑 되어 list1의 마지막 값은 결국 4가 된다.</li>
   <li>파이썬에서의 변수 스와핑은 자주 쓰이는 구문이므로 반드시 기억하자!</li>
+  <li>self는 자기 인스턴스를 가리킨다.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span> 
+</code></pre></div>    </div>
+    <hr />
+  </li>
 </ol>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span> 
-</code></pre></div></div>
-<hr />
 
 <h2 id="question-15-역순-연결-리스트">Question 15: 역순 연결 리스트</h2>
 
@@ -439,5 +440,159 @@ functools.reduce(lambda x,y: x+y, [1,2,3,4,5]): ((((1+2)+3)+4)+5) = 15</li>
 <h4 id="중요-내용-7">중요 내용</h4>
 <ol>
   <li>이 풀이는 CPU를 구성하는 회로의 작동 원리인 <strong>연산 결과의 나머지만 취하고 몫은 자리 올림수 형태로 올리는 전가산기</strong>를 응용한 풀이 방법이다.</li>
+  <li>연결 리스트의 값을 삽입하기 위해서는 ListNode() 함수를 사용한다.</li>
+  <li>변수에 다른 연결 리스트를 정의하고 그 연결 리스트에 노드를 추가하거나 정의하면 해당 변수에도 그 변화가 적용된다. 단, 그 변수의 노드의 위치는 바뀌지 않는다.</li>
 </ol>
 
+<h2 id="question-17-페어의-노드-스왑">Question 17: 페어의 노드 스왑</h2>
+
+<p>연결 리스트를 받아 페어로 스왑하라</p>
+
+<p class="notice">입력: 1-&gt;2-&gt;4-&gt;5</p>
+<p class="notice">출력: 2-&gt;1-&gt;5-&gt;4</p>
+
+<h3 id="내-풀이-3">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">swapPairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rev</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">head</span><span class="p">:</span>
+            <span class="n">rev</span><span class="p">,</span> <span class="n">rev</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">rev</span><span class="p">,</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+            <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">node</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">rev</span>         
+                <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span>
+                <span class="n">rev</span> <span class="o">=</span> <span class="bp">None</span>
+                
+            <span class="k">elif</span> <span class="n">head</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">node</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">rev</span>
+            <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rev</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">root</span><span class="p">.</span><span class="nb">next</span>
+</code></pre></div></div>
+
+<h4 id="결과-3">결과</h4>
+<p class="notice">Runtime: 59 ms, faster than 9.89% of Python3 online submissions for Swap Nodes in Pairs.
+Memory Usage: 13.9 MB, less than 98.81% of Python3 online submissions for Swap Nodes in Pairs.</p>
+
+<ul>
+  <li>이전에 사용하였던 역순 알고리즘을 그대로 이용하였다.</li>
+  <li>전가산기 구현 때 사용하였던 root = head = ListNode(0) 알고리즘을 그대로 사용하였다.</li>
+</ul>
+
+<hr />
+
+<h3 id="풀이-1-값만-변경">풀이 1: 값만 변경</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">swapPairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span>
+        
+        <span class="k">while</span> <span class="n">cur</span> <span class="ow">and</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">cur</span><span class="p">.</span><span class="n">val</span><span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="n">val</span><span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span>
+        
+        <span class="k">return</span> <span class="n">head</span>
+            
+</code></pre></div></div>
+
+<h4 id="중요-내용-8">중요 내용</h4>
+<ol>
+  <li>연결 리스트의 구조는 그대로 유지하되 값만 서로 스와핑하는 방법이다.</li>
+  <li>그러나 변칙적인 풀이 방법이므로 최대한 지양해야한다.</li>
+</ol>
+
+<h3 id="풀이-2-반복-구조로-스왑">풀이 2: 반복 구조로 스왑</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">swapPairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+        <span class="n">prev</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">head</span> <span class="ow">and</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="c1"># b가 a(head)를 가리키도록
+</span>            <span class="n">b</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">head</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">b</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">head</span>
+
+            <span class="c1"># prev가 b를 가리키도록
+</span>            <span class="n">prev</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">b</span>
+
+            <span class="c1"># 다음 번 비교를 위해 이동
+</span>            <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span>
+        <span class="k">return</span> <span class="n">root</span><span class="p">.</span><span class="nb">next</span>
+            
+</code></pre></div></div>
+
+<h4 id="중요-내용-9">중요 내용</h4>
+<ol>
+  <li>b가 a, a가 b의 다음을 가리키도록 변경한다.</li>
+  <li>연결리스트의 구조를 변경할때는 <strong>노드가 다음노드를 가리키도록, 이전노드가 노드를 가리키도록 설정하는 것이 중요하다.</strong></li>
+</ol>
+
+<h3 id="풀이-3-재귀-구조로-스왑">풀이 3: 재귀 구조로 스왑</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">swapPairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">head</span> <span class="ow">and</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">head</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">swapPairs</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="nb">next</span><span class="p">)</span>
+            <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">head</span>
+            <span class="k">return</span> <span class="n">p</span>
+        <span class="k">return</span> <span class="n">head</span>
+            
+</code></pre></div></div>
+
+<h4 id="중요-내용-10">중요 내용</h4>
+<ol>
+  <li>연결리스트에서 재귀구조는 끝나는 값이 none일때가 나올 때 어떻게 처리할지를 설정하는 것이 가장 중요하다.</li>
+</ol>
+
+<h2 id="question-18-홀짝-연결-리스트">Question 18: 홀짝 연결 리스트</h2>
+
+<p>연결 리스트를 홀수 노드 다음에 짝수 노드가 오도록 재구성하라.</p>
+
+<p class="notice">입력: 1-&gt;2-&gt;3-&gt;4-&gt;5</p>
+<p class="notice">출력: 1-&gt;3-&gt;5-&gt;2-&gt;4</p>
+
+<h3 id="내-풀이-4">내 풀이</h3>
+
+<p>이 문제는 결국 풀지 못하였다(…)</p>
+
+<hr />
+
+<h3 id="풀이-1-반복-구조로-홀짝-노드-처리">풀이 1: 반복 구조로 홀짝 노드 처리</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">oddEvenList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">odd</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">even</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+        <span class="n">even_start</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+        
+        <span class="k">while</span> <span class="n">even</span> <span class="ow">and</span> <span class="n">even</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">odd</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">even</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">odd</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">even</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">odd</span><span class="p">,</span> <span class="n">even</span> <span class="o">=</span> <span class="n">odd</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">even</span><span class="p">.</span><span class="nb">next</span>
+        
+        <span class="n">odd</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">even_start</span>
+        
+        <span class="k">return</span> <span class="n">head</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-11">중요 내용</h4>
+<ol>
+  <li>홀수, 짝수 변수에 입력 연결 리스트를 부여한 후에 2칸씩 이동하며 연결 리스트를 만든다. 그리고 처음에 정의한 짝수 시작 노드를 홀수 연결 리스트에 연결한 후에 결과를 리턴한다.</li>
+</ol>
+
+<hr />
+
+<p>#</p>
