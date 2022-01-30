@@ -1,0 +1,37 @@
+<h2 id="question-유효한-팰린드롬-2">Question: 유효한 팰린드롬 2</h2>
+
+<p>Given an integer array nums, return true if the given array is monotonic, or false otherwise.
+monotonic은 증가만 하거나 감소만 하는 리스트를 말한다.</p>
+
+<p class="notice">입력:  nums = [6,5,4,4]</p>
+<p class="notice">출력: true</p>
+
+<h3 id="내-풀이">내 풀이</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">isMonotonic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+        
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span> 
+            <span class="k">return</span> <span class="bp">True</span>
+				
+        <span class="n">greater</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">smaller</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">greater</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">smaller</span> <span class="o">=</span> <span class="bp">True</span>
+
+            <span class="k">if</span> <span class="n">greater</span> <span class="ow">and</span> <span class="n">smaller</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">return</span> <span class="bp">True</span>
+            
+                
+</code></pre></div></div>
+
+<h3 id="결과">결과</h3>
+
+<p class="notice">A: Runtime: 1008 ms, faster than 73.39% of Python3 online submissions for Monotonic Array.
+Memory Usage: 28 MB, less than 97.48% of Python3 online submissions for Monotonic Array.</p>
+

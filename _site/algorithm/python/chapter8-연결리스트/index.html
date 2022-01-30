@@ -277,426 +277,167 @@ Memory Usage: 15.6 MB, less than 47.36% of Python3 online submissions for Revers
   <li>재귀 구조와 구조는 큰 차이가 없다.</li>
 </ol>
 
-<h2 id="question-8-빗물-트래핑">Question 8: 빗물 트래핑</h2>
+<h2 id="question-16-두-수의-덧셈">Question 16: 두 수의 덧셈</h2>
 
-<p>높이를 입력받아 비 온 후 얼마나 많은 물이 쌓일 수 있는지 계산</p>
+<p>역순으로 저장된 연결 리스트의 숫자를 더하라</p>
 
-<p class="notice">입력: [0,1,0,2,1,0,1,3,2,1,2,1]</p>
-<p class="notice">출력: 6</p>
-
-<p><img src="/assets/image/algo-ch7-2.png" alt="" width="50%" height="50%" class="align-center" /></p>
-
-<hr />
-
-<h3 id="내-풀이-투-포인터를-최대로-이용">내 풀이: 투 포인터를 최대로 이용</h3>
-
-<p>이 문제는 결국 풀지 못하였다. 문제를 보자마자 어떻게 풀어야 할지 감이 안오기도 했고 별 세 개의 난이도 문제이기 때문에 깊게 생각하지 않고 금방 포기한 것도 있었다.</p>
-
-<hr />
-
-<h3 id="풀이-1--투-포인터를-최대로-이용">풀이 1:  투 포인터를 최대로 이용</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">trap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">height</span><span class="p">:</span>
-            <span class="k">return</span>
-        
-        <span class="n">left_max</span><span class="p">,</span> <span class="n">right_max</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">volume</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
-            <span class="n">left_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">left</span><span class="p">],</span> <span class="n">left_max</span><span class="p">)</span>
-            <span class="n">right_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="n">right_max</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">left_max</span> <span class="o">&lt;=</span> <span class="n">right_max</span><span class="p">:</span>
-                <span class="n">volume</span> <span class="o">+=</span> <span class="n">left_max</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
-                <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">volume</span> <span class="o">+=</span> <span class="n">right_max</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">right</span><span class="p">]</span>
-                <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">volume</span>
-</code></pre></div></div>
-
-<h4 id="기억해야-할-함수">기억해야 할 함수</h4>
-<ol>
-  <li>max(num1, num2, num3): num1 ~ num3까지 최대 값을 리턴한다.</li>
-</ol>
-
-<h4 id="기억해야-할-내용">기억해야 할 내용</h4>
-<ol>
-  <li>포인터를 이용해 다양한 문제를 푸는 것이 가능할 것이라 생각하지 못했다. 포인터로 문제를 풀 떄의 알고리즘을 psuedocoding 해보았다.</li>
-</ol>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">함수</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">원하는</span> <span class="n">자료형</span><span class="p">:</span>
-        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-        <span class="k">while</span> <span class="n">left</span> <span class="n">와</span> <span class="n">right</span> <span class="n">비교</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">list</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="n">와</span> <span class="nb">list</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="n">비교</span><span class="p">:</span>
-                <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">원하는</span> <span class="n">값</span>
-</code></pre></div></div>
-<hr />
-
-<h3 id="풀이-2--스택-쌓기">풀이 2:  스택 쌓기</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">trap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">volume</span> <span class="o">=</span> <span class="mi">0</span>
-        
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)):</span>
-            <span class="c1"># 변곡점을 만나는 경우
-</span>            <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">[</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
-                <span class="n">top</span> <span class="o">=</span> <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">):</span>
-                    <span class="k">break</span>
-                
-                <span class="c1"># 이전과의 차이만큼 물 높이 처리
-</span>                <span class="n">distance</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-                <span class="n">waters</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">height</span><span class="p">[</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">top</span><span class="p">]</span>
-                
-                <span class="n">volume</span> <span class="o">+=</span> <span class="n">distance</span> <span class="o">*</span> <span class="n">waters</span>
-            
-            <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">volume</span>
-</code></pre></div></div>
-
-<h4 id="기억해야-할-내용-1">기억해야 할 내용</h4>
-<ol>
-  <li>
-    <p>이 방법은 현재 높이가 이전 높이보다 더 높을 때, 즉 꺾이는 부분 변곡점을 기준으로 격차만큼 물 높이 volume을 채우는 방법이다. 계속 스택으로 채워 나가다가 변곡점을 만날 때마다 스택에서 하나씩 꺼내면서 이전과의 차이만큼 물 높이를 채워 나간다.</p>
-  </li>
-  <li>
-    <p>for 문으로 한번만 실행하면 풀이가 가능하므로 코드 실행 시간은 O(n) 이다.</p>
-  </li>
-  <li>
-    <p>사실 잘 와닿는 방법은 아니다…</p>
-  </li>
-</ol>
-
-<h2 id="question-9-세-수의-합">Question 9: 세 수의 합</h2>
-
-<p class="notice">입력: nums = [-1,0,1,2,-1,-4]</p>
-<p class="notice">출력: [[-1,0,1], [-1,-1,2]]</p>
+<p class="notice">입력: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</p>
+<p class="notice">출력: 7 -&gt; 0 -&gt; 8</p>
 
 <hr />
 
 <h3 id="내-풀이-2">내 풀이</h3>
 
-<p>브루트 포스 방법을 이용하였다</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">threeSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-        <span class="n">three_sum</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">set_three_sum</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-                    <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">{</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]}</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">set_three_sum</span><span class="p">:</span>
-                        <span class="n">three_sum</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]])</span>
-                        <span class="n">set_three_sum</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]})</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">],</span> <span class="n">l2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
         
-        <span class="k">return</span> <span class="n">three_sum</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l1</span> <span class="ow">or</span> <span class="n">l2</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="k">def</span> <span class="nf">ll2list</span><span class="p">(</span><span class="n">ll1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]):</span>
+            <span class="n">q</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">while</span> <span class="n">ll1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">ll1</span><span class="p">.</span><span class="n">val</span><span class="p">)</span>
+                <span class="n">ll1</span><span class="o">=</span><span class="n">ll1</span><span class="p">.</span><span class="nb">next</span>
+            <span class="k">return</span> <span class="n">q</span>
+        
+        <span class="k">def</span> <span class="nf">revLl</span><span class="p">(</span><span class="n">ll2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]):</span>
+            <span class="n">rev</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">while</span> <span class="n">ll2</span><span class="p">:</span>
+                <span class="n">rev</span><span class="p">,</span> <span class="n">rev</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">ll2</span> <span class="o">=</span> <span class="n">ll2</span><span class="p">,</span> <span class="n">rev</span><span class="p">,</span> <span class="n">ll2</span><span class="p">.</span><span class="nb">next</span>
+            <span class="k">return</span> <span class="n">rev</span>
+            
+        <span class="k">def</span> <span class="nf">list2ll</span><span class="p">(</span><span class="n">l3</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+            <span class="n">result_node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">()</span>
+            
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l3</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">result_node</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">num</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">node</span> <span class="o">=</span> <span class="n">result_node</span>
+                    <span class="k">while</span> <span class="n">node</span><span class="p">.</span><span class="nb">next</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nb">next</span>
+                    <span class="n">node</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result_node</span>
+        
+        <span class="k">def</span> <span class="nf">list2int</span><span class="p">(</span><span class="n">l4</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+            <span class="n">num_str</span> <span class="o">=</span> <span class="s">''</span>
+            <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">l4</span><span class="p">:</span>
+                <span class="n">num_str</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_str</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">int2ll</span><span class="p">(</span><span class="n">integer</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">list2ll</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">integer</span><span class="p">)])</span>
+        
+        <span class="k">return</span> <span class="n">revLl</span><span class="p">(</span><span class="n">int2ll</span><span class="p">(</span><span class="n">list2int</span><span class="p">(</span><span class="n">ll2list</span><span class="p">(</span><span class="n">revLl</span><span class="p">(</span><span class="n">l1</span><span class="p">)))</span><span class="o">+</span> <span class="n">list2int</span><span class="p">(</span><span class="n">ll2list</span><span class="p">(</span><span class="n">revLl</span><span class="p">(</span><span class="n">l2</span><span class="p">)))))</span>
+    
 </code></pre></div></div>
 
-<h3 id="결과-2">결과</h3>
+<h4 id="결과-2">결과</h4>
+<p class="notice">Runtime: 127 ms, faster than 11.04% of Python3 online submissions for Add Two Numbers.
+Memory Usage: 14 MB, less than 99.82% of Python3 online submissions for Add Two Numbers.</p>
 
-<p>시간 초과 에러가 떴다.</p>
+<ul>
+  <li>다음과 같은 순서로 실행된다.
+    <ol>
+      <li>연결 리스트를 뒤집음</li>
+      <li>연결 리스트를 리스트로 변환</li>
+      <li>리스트를 정수형으로 변환한 뒤 두 정수를 더함</li>
+      <li>더한 정수 값을 리스트로 변환한 뒤 연결 리스트로 변환</li>
+      <li>
+        <h2 id="연결-리스트를-뒤집음">연결 리스트를 뒤집음</h2>
+      </li>
+    </ol>
+  </li>
+</ul>
 
-<h3 id="에러-이유">에러 이유</h3>
-
-<p>해당 코드에는 반복문이 3개나 들어가 있어 실행 시간이 $O(n^3)$ 걸린다. 이 문제에서는 시간 복잡도를 $O(n^2)$ 이내로 요구하므로 다른 방법을 사용하는 것이 좋다.</p>
-
-<hr />
-
-<h3 id="풀이-1--브루트-포스로-계산">풀이 1:  브루트 포스로 계산</h3>
+<h3 id="풀이-1-재귀-구조로-연결-2">풀이 1: 재귀 구조로 연결</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">threeSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
-        
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-                <span class="k">continue</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">j</span><span class="o">&gt;</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-                    <span class="k">continue</span>
-                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-                    <span class="k">if</span> <span class="n">k</span><span class="o">&gt;</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-                        <span class="k">continue</span>
-                    <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span><span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">results</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]])</span>
-        
-        <span class="k">return</span> <span class="n">results</span>
-</code></pre></div></div>
+    <span class="k">def</span> <span class="nf">reverseList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="n">node</span><span class="p">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="bp">None</span>
 
-<h4 id="기억해야-할-함수-1">기억해야 할 함수</h4>
-<ol>
-  <li>조건문에서 continue는 아래 구문을 실행하지 않고 건너뛴다.</li>
+        <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+            <span class="nb">next</span><span class="p">,</span> <span class="n">node</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">prev</span>
+            <span class="n">prev</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="nb">next</span>
+
+        <span class="k">return</span> <span class="n">prev</span>
+
+    <span class="c1"># 연결 리스트를 파이썬 리스트로 변환
+</span>    <span class="k">def</span> <span class="nf">toList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+        <span class="nb">list</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+            <span class="nb">list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nb">next</span>
+        <span class="k">return</span> <span class="nb">list</span>
+
+    <span class="c1"># 파이썬 리스트를 연결 리스트로 변환
+</span>    <span class="k">def</span> <span class="nf">toReversedLinkedList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="n">prev</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">node</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">prev</span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">node</span>
+
+        <span class="k">return</span> <span class="n">node</span>
+
+    <span class="c1"># 두 연결 리스트의 덧셈
+</span>    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">l2</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">toList</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">reverseList</span><span class="p">(</span><span class="n">l1</span><span class="p">))</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">toList</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">reverseList</span><span class="p">(</span><span class="n">l2</span><span class="p">))</span>
+
+        <span class="n">resultStr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">a</span><span class="p">)))</span> <span class="o">+</span> \
+                    <span class="nb">int</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">b</span><span class="p">)))</span>
+
+        <span class="c1"># 최종 계산 결과 연결 리스트 변환
+</span>        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">toReversedLinkedList</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resultStr</span><span class="p">))</span>
+            
+</code></pre></div></div>
+<h4 id="기억해야-할-함수">기억해야 할 함수</h4>
+<ol class="notice">
+  <li>map(function ,iterable): 함수를 반복 가능한 자료형(리스트, 튜플)에 적용한다. 반환은 함수가 적용된 반복 가능한 자료형이다.</li>
+  <li>functools.reduce(function, iterable): 반복 가능한 자료형에 함수를 누계 적용한다.
+<br />예시:
+functools.reduce(lambda x,y: x+y, [1,2,3,4,5]): ((((1+2)+3)+4)+5) = 15</li>
 </ol>
 
 <h4 id="중요-내용-6">중요 내용</h4>
 <ol>
-  <li>i&gt;0 and nums[i] == nums[i-1] 는 중복된 값은 계산하지 않고 건너뛰도록 한다.</li>
-  <li>내 풀이와 마찬가지로 시간 복잡도가 $O(n^3)$ 가 걸려 시간 초과 에러가 뜬다.</li>
+  <li>여기서는 내가 푼 방법과 비슷하나 풀이 방법은 더 간소화 하였다.</li>
+  <li>
+    <h2 id="함수-이름-또한-더-직관적이다-함수-이름을-변경되는-자료형을-기준으로-만들도록-하자">함수 이름 또한 더 직관적이다. <strong>함수 이름을 변경되는 자료형을 기준으로 만들도록 하자.</strong></h2>
+  </li>
 </ol>
 
-<hr />
-
-<h3 id="풀이-2-투-포인트로-합-계산">풀이 2: 투 포인트로 합 계산</h3>
+<h3 id="풀이-2-전가산기-구현">풀이 2: 전가산기 구현</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">threeSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-        <span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-                <span class="k">continue</span>
-                
-            <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-            <span class="k">while</span> <span class="n">left</span><span class="o">&lt;</span><span class="n">right</span><span class="p">:</span>
-                <span class="n">tot</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">right</span><span class="p">]</span>           
-                <span class="k">if</span> <span class="n">tot</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">elif</span> <span class="n">tot</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">right</span><span class="p">]])</span>
-                    <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
-                        <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-                    <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">right</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-                        <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-                    <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-                    <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-                    
-        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">],</span> <span class="n">l2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        
+        <span class="n">root</span> <span class="o">=</span> <span class="n">head</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">l1</span> <span class="ow">or</span> <span class="n">l2</span> <span class="ow">or</span> <span class="n">carry</span><span class="p">:</span>
+            <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># 두 입력값의 합 계산
+</span>            <span class="k">if</span> <span class="n">l1</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">+=</span> <span class="n">l1</span><span class="p">.</span><span class="n">val</span>
+                <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="p">.</span><span class="nb">next</span>
+            
+            <span class="k">if</span> <span class="n">l2</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">+=</span> <span class="n">l2</span><span class="p">.</span><span class="n">val</span>
+                <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">.</span><span class="nb">next</span>
+            
+            <span class="c1"># 가산 결과가 두 자리수가 될 경우 몫은 다음번 연산에 사용된다.
+</span>            <span class="n">carry</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="nb">sum</span> <span class="o">+</span> <span class="n">carry</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="n">head</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+        
+        <span class="k">return</span> <span class="n">root</span><span class="p">.</span><span class="nb">next</span>
 </code></pre></div></div>
 
 <h4 id="중요-내용-7">중요 내용</h4>
 <ol>
-  <li>이 방법은 직접 손으로 쓰면서 문제를 푸니 직관적으로 이해할 수 있었다. <strong><em>앞으로 이해가 가지 않는 알고리즘 일수록 손으로 수학문제를 풀듯 쓰면서 이해하자!</em></strong></li>
-  <li>투 포인터 방법은 리스트가 정렬되어 있을때 사용하는 것이 좋다!</li>
+  <li>이 풀이는 CPU를 구성하는 회로의 작동 원리인 <strong>연산 결과의 나머지만 취하고 몫은 자리 올림수 형태로 올리는 전가산기</strong>를 응용한 풀이 방법이다.</li>
 </ol>
 
-<h2 id="question-10-배열-파티션">Question 10: 배열 파티션</h2>
-
-<p>n개의 페어를 이용한 min(a,b)의 합으로 만들 수 있는 가장 큰 수를 출력하라.</p>
-
-<p class="notice">입력: [1,4,3,2]</p>
-<p class="notice">출력: 4</p>
-
-<h3 id="내-풀이-3">내 풀이</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">arr_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">):</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">arr_num</span><span class="o">-</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">],</span><span class="n">nums</span><span class="p">[</span><span class="n">arr_num</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span>
-        <span class="k">return</span> <span class="n">result</span>
-</code></pre></div></div>
-<h4 id="결과-3">결과</h4>
-
-<p class="notice">Runtime: 541 ms, faster than 5.26% of Python3 online submissions for Array Partition I.
-<br />Memory Usage: 16.8 MB, less than 71.06% of Python3 online submissions for Array Partition I.</p>
-
-<ul>
-  <li>위와 같은 화면이 뜨며 정상적으로 출력이 된다.</li>
-  <li>n이 홀수가 될 수도 있음을 가정하고 코드를 짰지만 이 문제에서는 n이 짝수만 될 수 있다.</li>
-  <li>시간 복잡도는 $O(n)$ 으로 문제가 요구하는 시간보다 길게 나온 것 같다.</li>
-</ul>
-
-<hr />
-
-<h3 id="풀이-1-오름차순-풀이">풀이 1: 오름차순 풀이</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">pair</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
-        
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
-            <span class="n">pair</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="nb">sum</span> <span class="o">+=</span> <span class="nb">min</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
-                <span class="n">pair</span> <span class="o">=</span> <span class="p">[]</span>
-       
-        <span class="k">return</span> <span class="nb">sum</span>
-</code></pre></div></div>
-
-<h4 id="중요-내용-8">중요 내용</h4>
-<ol>
-  <li>내 풀이와 시간 복잡도는 동일하게 $O(n)$로 나온다.</li>
-  <li>홀수번째 값은 반복문에 포함될 필요가 없으므로 불필요한 계산이 포함되어 있다.</li>
-</ol>
-
-<hr />
-
-<h3 id="풀이-2-짝수-번째-값-계산">풀이 2: 짝수 번째 값 계산</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
-        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
-        
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
-       
-        <span class="k">return</span> <span class="nb">sum</span>
-</code></pre></div></div>
-
-<h4 id="중요-내용-9">중요 내용</h4>
-<ol>
-  <li>정렬된 상태에서는 짝수 번째에 항상 작은 값이 위치해 있으므로 짝수 번 인덱스 값만 더하면 된다.</li>
-</ol>
-
-<h3 id="풀이-3-파이썬다운-방식">풀이 3: 파이썬다운 방식</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">arrayPairSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">nums</span><span class="p">)[::</span><span class="mi">2</span><span class="p">])</span>
-</code></pre></div></div>
-
-<h4 id="중요-내용-10">중요 내용</h4>
-<ol>
-  <li>list[::2]는 짝수 번째 요소만 슬라이싱 하라는 뜻이다.</li>
-</ol>
-
-<h2 id="question-11-자신을-제외한-배열의-곱">Question 11: 자신을 제외한 배열의 곱</h2>
-
-<p>배열을 입력받아 output[i]가 자신을 제외한 나머지 모든 요소의 곱셈 결과 되도록 출력하라.</p>
-
-<p class="notice">입력: [1,2,3,4]</p>
-<p class="notice">출력: [24,12,8,6]</p>
-<p class="notice">주의: 나눗셈을 하지 않고 O(n)에 풀이하라</p>
-
-<h3 id="내-풀이-4">내 풀이</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="n">left</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">right</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">left</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">left</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-                
-        <span class="n">nums</span><span class="p">.</span><span class="n">reverse</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">right</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">right</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">right</span><span class="p">.</span><span class="n">reverse</span><span class="p">()</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">num</span><span class="o">*</span><span class="n">num2</span> <span class="k">for</span> <span class="n">num</span><span class="p">,</span><span class="n">num2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">)</span> <span class="p">)</span>
-</code></pre></div></div>
-<h4 id="결과-4">결과</h4>
-
-<p class="notice">Runtime: 550 ms, faster than 5.03% of Python3 online submissions for Product of Array Except Self.
-<br />Memory Usage: 21.8 MB, less than 30.85% of Python3 online submissions for Product of Array Except Self.</p>
-
-<ul>
-  <li>왼쪽 부분을 곱한 값과 오른쪽 부분을 곱한 값을 서로 곱하였다.</li>
-  <li>시간 복잡도가 $O(n)$ 이지만 다소 불필요한 계산이 많이 들어가 빠르게 실행되지 않았다.</li>
-</ul>
-
-<hr />
-
-<h3 id="풀이-1-왼쪽-곱셈-결과에-오른쪽-값-곱셈">풀이 1: 왼쪽 곱셈 결과에 오른쪽 값 곱셈</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-            <span class="n">out</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                
-        <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">p</span>
-            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            
-        <span class="k">return</span> <span class="n">out</span>
-</code></pre></div></div>
-
-<h4 id="기억해야-할-함수-2">기억해야 할 함수</h4>
-<ol>
-  <li>for i in range(3, -1, -1) 는 3부터 0까지 -1씩 줄여가며 반복한다.</li>
-</ol>
-
-<h4 id="중요-내용-11">중요 내용</h4>
-<ol>
-  <li>원리는 내가 풀이한 방법과 비슷하지만 계산 과정을 훨씬 더 간단히 하였다.</li>
-</ol>
-
-<h2 id="question-12-주식을-사고팔기-가장-좋은-시점">Question 12: 주식을 사고팔기 가장 좋은 시점</h2>
-
-<p>한 번의 거래로 낼 수 있는 최대 이익을 산출하라</p>
-
-<p class="notice">입력: [7,1,5,3,6,4]</p>
-<p class="notice">출력: 5</p>
-<p class="notice">주의: 나눗셈을 하지 않고 O(n)에 풀이하라</p>
-
-<h3 id="내-풀이-5">내 풀이</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">max_num</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
-                    <span class="n">max_num</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">max_num</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">max_num</span>
-</code></pre></div></div>
-<h4 id="결과-5">결과</h4>
-
-<p>시간초과 에러가 떴다.</p>
-
-<h4 id="에러-이유-1">에러 이유</h4>
-
-<p>브루트 포스 방법을 이용하였는데 반복문을 두번 이용해 시간 복잡도가 $O(n^2)$ 가 나왔다. 브루트 포스 방법은 가장 생각해내기 쉬운 풀이 방법이나 계산 과정이 너무 오래 걸리기 때문에 최대한 지양해야 한다고 배웠었다. <strong>브루트 포스 대신 다른 방법을 이용해 문제를 풀려는 습관을 들이자!!</strong></p>
-
-<hr />
-
-<h3 id="풀이-1-브루트-포스로-계산">풀이 1: 브루트 포스로 계산</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">max_price</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">price</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
-                    <span class="n">max_price</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">prices</span><span class="p">,</span> <span class="n">max_price</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">max_price</span>
-</code></pre></div></div>
-
-<p>이 방법은 내 풀이 방법과 동일하므로 생략하도록 하겠다.</p>
-
-<h3 id="풀이-2-저점과-현재-값과의-차이-계산">풀이 2: 저점과 현재 값과의 차이 계산</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">profit</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">min_price</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">maxsize</span>
-        
-        <span class="k">for</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">prices</span><span class="p">:</span>
-            <span class="n">min_price</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">min_price</span><span class="p">)</span>
-            <span class="n">profit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">profit</span><span class="p">,</span> <span class="n">price</span><span class="o">-</span><span class="n">min_price</span><span class="p">)</span>
-        
-        <span class="k">return</span> <span class="n">profit</span>
-            
-</code></pre></div></div>
-
-<h4 id="기억해야-할-함수-3">기억해야 할 함수</h4>
-<ol>
-  <li>sys.maxsize는 시스템상에서 표현할 수 있는 가장 큰 값을 표현한다.</li>
-</ol>
-
-<h4 id="중요-내용-12">중요 내용</h4>
-<ol>
-  <li>최솟값과 최댓값을 갱신해야 하는 문제는 min과 max값을 초기에 지정해야 한다. 이 때 <strong>최댓값이 되어야 할 변수는 시스템이 표현할 수 있는 가장 작은 값, 최솟값은 시스템이 표현할 수 있는 가장 큰 값을 지정한다.</strong> 그래야 어떤 값이 들어오든 바로 갱신할 수 있다.</li>
-</ol>
