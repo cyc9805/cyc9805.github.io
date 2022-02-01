@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/algorithm/python/chapter9-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A2%E1%86%A8-%E1%84%8F%E1%85%B2/</loc>
+        
+        <lastmod>2022-01-31T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/algorithm/python/chapter7-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6/</loc>
         
         <lastmod>2022-01-29T00:00:00+09:00</lastmod>
