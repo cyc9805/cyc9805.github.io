@@ -9,25 +9,49 @@
   <head>
     <meta charset="utf-8">
     <!-- MATH EQUATION -->
-      <!-- begin _includes/seo.html --><title>Data Analysis - yongchan’s website</title>
-<meta name="description" content="Welcome to my website! I’m currently rebuilding my website">
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>연결리스트 추가문제 - yongchan’s website</title>
+<meta name="description" content="Question: 유효한 팰린드롬 2">
 
 
   <meta name="author" content="yongchanchun">
   
+  <meta property="article:author" content="yongchanchun">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="Data Analysis">
-<meta property="og:url" content="http://localhost:4000/categories/data%20analysis">
+<meta property="og:title" content="연결리스트 추가문제">
+<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter8-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
 
 
-  <meta property="og:description" content="Welcome to my website! I’m currently rebuilding my website">
-
-
-
+  <meta property="og:description" content="Question: 유효한 팰린드롬 2">
 
 
 
@@ -35,9 +59,14 @@
 
 
 
+  <meta property="article:published_time" content="2022-02-06T00:00:00+09:00">
 
 
-<link rel="canonical" href="http://localhost:4000/categories/data%20analysis">
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter8-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
 
 
 
@@ -88,7 +117,7 @@
 
   </head>
 
-  <body class="layout--archive">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -393,126 +422,317 @@
 
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="연결리스트 추가문제">
+    <meta itemprop="description" content="Question: 유효한 팰린드롬 2">
+    <meta itemprop="datePublished" content="2022-02-06T00:00:00+09:00">
     
-      <h1 id="page-title" class="page__title">Data Analysis</h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">연결리스트 추가문제
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#question-유효한-팰린드롬-2">Question: 유효한 팰린드롬 2</a><ul><li><a href="#내-풀이">내 풀이</a></li><li><a href="#결과">결과</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="question-유효한-팰린드롬-2">Question: 유효한 팰린드롬 2</h2>
+
+<p><img src="/assets/image/algo-ch9-extra-1.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p class="notice">입력:  head = [3,2,0,-4], pos = 1</p>
+<p class="notice">출력: true</p>
+
+<h3 id="내-풀이">내 풀이</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span>
+        
+        <span class="c1"># fast 와 slow는 연결리스트가 cycle구조일때 무조건 만나게 되있다.
+</span>        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span>
+            <span class="k">if</span> <span class="n">slow</span> <span class="o">==</span> <span class="n">fast</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<h3 id="결과">결과</h3>
+
+<p class="notice">Runtime: 82 ms, faster than 36.59% of Python3 online submissions for Linked List Cycle.
+<br />Memory Usage: 17.7 MB, less than 54.54% of Python3 online submissions for Linked List Cycle.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-02-06T00:00:00+09:00">February 6, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter8-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter8-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter8-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/python/chapter9-%EC%8A%A4%ED%83%9D-%ED%81%90/" class="pagination--pager" title="스택, 큐
+">Previous</a>
     
     
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="/data%20analysis/python/project/seoul-bigdata-contest/">서울시 빅데이터캠퍼스 공모전</a>
-            </span>
-            <small>
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.12.01
-              
-            </small>
-        </div>
-      </article>
-</div>
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
 
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="/data%20analysis/python/project/%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB-%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A2%E1%84%92%E1%85%AC-%E1%84%8E%E1%85%A1%E1%86%B7%E1%84%8B%E1%85%A7%E1%84%92%E1%85%AE%E1%84%80%E1%85%B52/">데이콘 경진대회 참여후기 part2</a>
-            </span>
-            <small>
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.03
-              
-            </small>
-        </div>
-      </article>
-</div>
+    </div>
 
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="/data%20analysis/python/project/%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB-%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A2%E1%84%92%E1%85%AC-%E1%84%8E%E1%85%A1%E1%86%B7%E1%84%8B%E1%85%A7%E1%84%92%E1%85%AE%E1%84%80%E1%85%B5/">데이콘 경진대회 참여후기 part1</a>
-            </span>
-            <small>
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.02
-              
-            </small>
-        </div>
-      </article>
-</div>
+    
+  </article>
 
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="/data%20analysis/python/Chapter-4-%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF-%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8-part2/">Chapter 4: 모델 구축 part2</a>
-            </span>
-            <small>
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.24
-              
-            </small>
-        </div>
-      </article>
-</div>
-
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="/data%20analysis/python/Chapter-4-%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF-%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8-part1/">Chapter 4: 모델 구축 part1</a>
-            </span>
-            <small>
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.21
-              
-            </small>
-        </div>
-      </article>
-</div>
-
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="/data%20analysis/python/Chapter-3-%E1%84%90%E1%85%B3%E1%86%A8%E1%84%8C%E1%85%B5%E1%86%BC%E1%84%89%E1%85%A2%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC-part2/">Chapter 3: 특징 생성 part2</a>
-            </span>
-            <small>
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.13
-              
-            </small>
-        </div>
-      </article>
-</div>
-
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="/data%20analysis/python/Chapter-3-%E1%84%90%E1%85%B3%E1%86%A8%E1%84%8C%E1%85%B5%E1%86%BC%E1%84%89%E1%85%A2%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC-part1/">Chapter 3: 특징 생성 part1</a>
-            </span>
-            <small>
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.13
-              
-            </small>
-        </div>
-      </article>
-</div>
-
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="/data%20analysis/python/Chapter-2-%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A2%E1%84%92%E1%85%AC%E1%84%8B%E1%85%B4-%E1%84%91%E1%85%A7%E1%86%BC%E1%84%80%E1%85%A1%E1%84%8C%E1%85%B5%E1%84%91%E1%85%AD/">Chapter 2: 경진대회의 평가지표</a>
-            </span>
-            <small>
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.08
-              
-            </small>
-        </div>
-      </article>
-</div>
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
 
 
-  </div>
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter9-%EC%8A%A4%ED%83%9D-%ED%81%90/" rel="permalink">스택, 큐
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 20: 팰린드롬 연결 리스트
+
+</p>
+  </article>
 </div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter7-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">배열 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question: 유효한 팰린드롬 2
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter8-%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8/" rel="permalink">연결리스트
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">연결 리스트란?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter6-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">문자열 조작 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question: 유효한 팰린드롬 2
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
     </div>
 
     
@@ -585,6 +805,30 @@
 <script src="/assets/js/lunr/lunr-en.js"></script>
 
 
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
 
 
 

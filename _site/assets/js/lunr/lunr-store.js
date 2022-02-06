@@ -178,4 +178,10 @@ var store = [{
         "tags": [],
         "url": "/algorithm/python/chapter9-%EC%8A%A4%ED%83%9D-%ED%81%90/",
         "teaser": null
+      },{
+        "title": "연결리스트 추가문제",
+        "excerpt":"Question: 유효한 팰린드롬 2      입력:  head = [3,2,0,-4], pos = 1  출력: true   내 풀이  class Solution:     def hasCycle(self, head: Optional[ListNode]) -&gt; bool:         if head is None:             return                  slow = fast = head                  # fast 와 slow는 연결리스트가 cycle구조일때 무조건 만나게 되있다.         while fast and fast.next:             slow = slow.next             fast = fast.next.next             if slow == fast:                 return True         return False   결과   Runtime: 82 ms, faster than 36.59% of Python3 online submissions for Linked List Cycle.  Memory Usage: 17.7 MB, less than 54.54% of Python3 online submissions for Linked List Cycle.   ","categories": ["algorithm","python"],
+        "tags": [],
+        "url": "/algorithm/python/chapter8-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/",
+        "teaser": null
       }]
