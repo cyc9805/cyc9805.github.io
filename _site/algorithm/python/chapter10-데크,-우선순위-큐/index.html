@@ -1,73 +1,183 @@
-<h2 id="question-20-linked-list-cycle">Question 20: Linked List Cycle</h2>
+<h2 id="question-26-원형-데크-디자인">Question 26: 원형 데크 디자인</h2>
 
-<p class="notice">괄호로 된 입력값이 올바른지 판단하라
-입력: (){}[]</p>
-<p class="notice">출력: true</p>
+<p class="notice">입력:
+<br />MyCircularDeque myCircularDeque = new MyCircularDeque(3);
+myCircularDeque.insertLast(1); 
+myCircularDeque.insertLast(2); 
+myCircularDeque.insertFront(3); 
+myCircularDeque.insertFront(4); 
+myCircularDeque.getRear();    <br />
+myCircularDeque.isFull();    <br />
+myCircularDeque.deleteLast();<br />
+myCircularDeque.insertFront(4); 
+myCircularDeque.getFront();</p>
 
-<h3 id="풀이-1-스택-일치-여부-판별">풀이 1: 스택 일치 여부 판별</h3>
+<p class="notice">출력: 
+<br /> True
+<br /> True
+<br /> True
+<br /> False
+<br /> 2
+<br /> True
+<br /> True
+<br /> True
+<br /> 4</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">isValid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="s">')'</span><span class="p">:</span><span class="s">'('</span><span class="p">,</span> <span class="s">']'</span><span class="p">:</span><span class="s">'['</span><span class="p">,</span><span class="s">'}'</span><span class="p">:</span><span class="s">'{'</span><span class="p">}</span>
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyCircularDeque</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">front</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">last</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">maxlen</span> <span class="o">=</span> <span class="n">k</span>
+
+    <span class="k">def</span> <span class="nf">insertFront</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">isFull</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">False</span>          
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">front</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">front</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">front</span> <span class="o">%</span> <span class="bp">self</span><span class="p">.</span><span class="n">maxlen</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">insertLast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">isFull</span><span class="p">():</span>            
+            <span class="k">return</span> <span class="bp">False</span>        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">last</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">last</span> <span class="o">%</span> <span class="bp">self</span><span class="p">.</span><span class="n">maxlen</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">last</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">return</span> <span class="bp">True</span>
         
-        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">char</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">table</span><span class="p">:</span>
-                <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="ow">not</span> <span class="n">stack</span> <span class="ow">or</span> <span class="n">table</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">!=</span> <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">():</span>
-                <span class="k">return</span> <span class="bp">False</span>
-            
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">deleteFront</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">front</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">front</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">front</span> <span class="o">%</span> <span class="bp">self</span><span class="p">.</span><span class="n">maxlen</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">deleteLast</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">last</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">last</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">last</span> <span class="o">%</span> <span class="bp">self</span><span class="p">.</span><span class="n">maxlen</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        
+    <span class="k">def</span> <span class="nf">getFront</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">()</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">front</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">getRear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">last</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">empty</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">empty</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">True</span> <span class="k">if</span> <span class="n">empty</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">)</span> <span class="k">else</span> <span class="bp">False</span>
+                
+
+    <span class="k">def</span> <span class="nf">isFull</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">d</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
             
 </code></pre></div></div>
 
-<h4 id="중요-내용">중요 내용</h4>
-<ol>
-  <li>stack 변수에 append 와 pop을 반복해나가는 알고리즘이다. 이렇게 리스트에 값을 추가하며 값을 제거해 나가는 알고리즘은 자주 쓰이는 방법이므로 꼭 숙지하도록 하자!</li>
-</ol>
+<ul>
+  <li>이전에 원형 큐 코드를 짤 때 사용하였던 투 포인터 방식, front와 last를 지정해서 값이 추가되거나 제거될때마다 위치가 바뀌는 방법으로 풀었다.</li>
+  <li>원형 데크의 크기가 1이 될 때를 고려하지 않아 결국 에러가 떴다.</li>
+</ul>
+
+<h4 id="결과">결과</h4>
+
+<p>IndexError: list assignment index out of range</p>
 
 <hr />
 
-<h2 id="question-21-중복-문자-제거">Question 21: 중복 문자 제거</h2>
+<h3 id="풀이-1-이중-연결-리스트를-이용한-데크-구현">풀이 1: 이중 연결 리스트를 이용한 데크 구현</h3>
 
-<p>중복된 문자를 제외하고 사전식 순서로 나열하라</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span>
 
-<p class="notice">입력: ‘cbacdcbc’</p>
-<p class="notice">출력: ‘acdb’</p>
+<span class="k">class</span> <span class="nc">MyCircularDeque</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">),</span> <span class="n">ListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">=</span> <span class="n">k</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="n">right</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">tail</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">tail</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
 
-<p>사전식 순서는 다음과 같은 규칙이 있는 것을 발견하였다.</p>
+    <span class="c1"># 이중 연결 리스트에 신규 노드 삽입
+</span>    <span class="k">def</span> <span class="nf">_add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">new</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">right</span>
+        <span class="n">node</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">new</span>
+        <span class="n">new</span><span class="p">.</span><span class="n">left</span><span class="p">,</span> <span class="n">new</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">n</span>
+        <span class="n">n</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">new</span>
 
-<ol>
-  <li>문자열을 앞에서부터 차례로 문자를 서로 비교한다.</li>
-  <li>문자가 문자열에서 한개 나타나면 해당 문자는 그대로 둔다.</li>
-  <li>문자가 문자열에서 여러개 나타나고 바로 뒤에 있는 문자보다 작으면 그대로 둔다.</li>
-</ol>
+    <span class="k">def</span> <span class="nf">_del</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">right</span>
+        <span class="n">node</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="n">n</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">node</span>
 
-<h3 id="풀이-1-재귀를-이용한-분리">풀이 1: 재귀를 이용한 분리</h3>
+    <span class="k">def</span> <span class="nf">insertFront</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">==</span> <span class="bp">self</span><span class="p">.</span><span class="n">k</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_add</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">True</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">removeDuplicateLetters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="c1"># 집합으로 정렬
-</span>        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
-            <span class="n">suffix</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">char</span><span class="p">):]</span>
-            <span class="c1"># 전체 집합과 접미사 집합이 일치할때 분리 진행
-</span>            <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">suffix</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">char</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">removeDuplicateLetters</span><span class="p">(</span><span class="n">suffix</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="s">''</span><span class="p">))</span>
-        <span class="k">return</span> <span class="s">''</span>
+    <span class="k">def</span> <span class="nf">insertLast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">==</span> <span class="bp">self</span><span class="p">.</span><span class="n">k</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_add</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">tail</span><span class="p">.</span><span class="n">left</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">deleteFront</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_del</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">deleteLast</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_del</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">tail</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">left</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">getFront</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">val</span> <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">getRear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">tail</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">val</span> <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">isFull</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="nb">len</span> <span class="o">==</span> <span class="bp">self</span><span class="p">.</span><span class="n">k</span>
 </code></pre></div></div>
 
-<h4 id="중요-내용-1">중요 내용</h4>
+<h4 id="중요-내용">중요 내용</h4>
 
 <ul>
-  <li>다음과 같은 순서로 재귀 구조가 실행된다.
-    <ol>
-      <li>문자열에서 중복된 문자를 제거하고 알파벳 순서로 정렬한다.</li>
-      <li>정렬한 문자 순서대로 반복문을 돈다.</li>
-      <li>접미사(suffix)는 iterator 로부터 슬라이싱한 값이다.</li>
-      <li>set(문자열)=set(suffix) 이면 suffix를 분리하고 iterator를 공백으로 만든다.</li>
-      <li>removeDuplicateLetters 함수에 suffix를 인수로 넣음으로써 1~4의 과정을 반복한다.</li>
-    </ol>
-  </li>
+  <li>연결리스트인 head와 tail이 이중으로 연결 되어있음을 이용한 풀이 방법이다.</li>
+  <li>insertFront는 self.head 다음에 ListNode(value) 값을 추가한다.</li>
+  <li>insertLast는 tail.left 다음에 ListNode(value) 값을 추가한다.</li>
+  <li>_add 함수는 기존에 node 다음에 이어져있던 n 사이에 new를 넣어 node-new-n 순서로 연결 리스트를 변형한다.</li>
+  <li>이중 연결리스트 방법으로 원형 데크를 풀게되면 원형의 이점을 전혀 살리지 못하여서 추천되는 방법은 아니다.</li>
 </ul>
 
 <h3 id="풀이-2-스택을-이용한-문자-제거">풀이 2: 스택을 이용한 문자 제거</h3>
@@ -92,7 +202,7 @@
   <li>collections.Counter(string): 문자열에서 각 문자가 나온 횟수만큼을 딕셔너리로 만들어 리턴한다.</li>
 </ol>
 
-<h4 id="중요-내용-2">중요 내용</h4>
+<h4 id="중요-내용-1">중요 내용</h4>
 <ol>
   <li>이 방법 또한 처음에는 이해하기 매우 어려웠으나 다음과 같은 규칙을 찾으니 이해하기 한결 수월해졌다.
     <ul>
@@ -111,7 +221,7 @@
 <p class="notice">입력: T = [73,74,75,71,69,72,76,73]</p>
 <p class="notice">출력: [1,1,4,2,1,1,0,0]</p>
 
-<h3 id="내-풀이">내 풀이</h3>
+<h3 id="내-풀이-1">내 풀이</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">dailyTemperatures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temperatures</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
@@ -136,7 +246,7 @@
   <li>예외처리가 많이 필요한 방법이여서 좋은 방법은 아니다.</li>
 </ul>
 
-<h4 id="결과">결과</h4>
+<h4 id="결과-1">결과</h4>
 <p>타임에러가 떴다.</p>
 
 <h3 id="풀이-1-스택-값-비교">풀이 1: 스택 값 비교</h3>
@@ -154,7 +264,7 @@
                 
 </code></pre></div></div>
 
-<h4 id="중요-내용-3">중요 내용</h4>
+<h4 id="중요-내용-2">중요 내용</h4>
 <ol>
   <li>days 변수에 temperatures의 요소의 갯수만큼 0을 사전에 부여한 후 반복문을 돌며 나중에 바꾸는 방법이다.</li>
   <li>기존 풀이 방법과는 다르게 stack에 요소의 값이 아닌 인덱스 값을 저장하였다.</li>
@@ -172,7 +282,7 @@
 <p class="notice">입력: stack.pop()</p>
 <p class="notice">출력: 2</p>
 
-<h3 id="내-풀이-1">내 풀이</h3>
+<h3 id="내-풀이-2">내 풀이</h3>
 
 <p>파이썬의 큐에 대해 아는 것이 거의 없어서 결국 풀지 못하였다.</p>
 
@@ -200,7 +310,7 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> 
 </code></pre></div></div>
 
-<h4 id="중요-내용-4">중요 내용</h4>
+<h4 id="중요-내용-3">중요 내용</h4>
 <ol>
   <li>파이썬에서의 큐의 구현은 데크(deque)를 이용한다.</li>
   <li>데크는 사용할 수 있는 함수가 append, popleft 이므로 이 두개의 함수를 이용해 스택을 구현해야 한다.</li>
@@ -217,7 +327,7 @@
 <p class="notice">입력: stack.pop()</p>
 <p class="notice">출력: 1</p>
 
-<h3 id="내-풀이-2">내 풀이</h3>
+<h3 id="내-풀이-3">내 풀이</h3>
 
 <p>결국 풀지 못하였다.</p>
 
@@ -247,7 +357,7 @@
             
 </code></pre></div></div>
 
-<h4 id="중요-내용-5">중요 내용</h4>
+<h4 id="중요-내용-4">중요 내용</h4>
 <ol>
   <li>큐를 이용해 스택을 구현할 때의 풀이와는 다르게 pop과 append를 한번에 같이 사용하면 삭제했다가 추가하는 과정을 무한 반복하기 때문에 이 방법은 사용할 수 없다.</li>
   <li>클래스 안의 함수에서 같은 클래스 안의 다른 함수를 구현할 때 다른 함수의 return 문은 값을 반환하는데 사용된다.</li>
@@ -274,7 +384,7 @@
 <br /> True
 <br /> False</p>
 
-<h3 id="내-풀이-3">내 풀이</h3>
+<h3 id="내-풀이-4">내 풀이</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyCircularQueue</span><span class="p">:</span>
 
@@ -316,7 +426,7 @@
 
 </code></pre></div></div>
 
-<h4 id="결과-1">결과</h4>
+<h4 id="결과-2">결과</h4>
 <p class="notice">Runtime: 85 ms, faster than 50.03% of Python3 online submissions for Design Circular Queue.
 Memory Usage: 14.5 MB, less than 96.23% of Python3 online submissions for Design Circular Queue</p>
 
@@ -372,7 +482,7 @@ Memory Usage: 14.5 MB, less than 96.23% of Python3 online submissions for Design
   <li>표현식 if 가정문 else 표현식: if, else문을 한 줄로 풀어서 쓸 수 있다.</li>
 </ol>
 
-<h4 id="중요-내용-6">중요 내용</h4>
+<h4 id="중요-내용-5">중요 내용</h4>
 <ol>
   <li>투 포인터 방법을 이용한 풀이 방법이다. front는 제일 앞의 값에 위치한 포인터이고, rear은 제일 뒤에 위치한 포인터이다.</li>
   <li>값을 추가하면 rear 포인터가 추가한 값으로 이동하고 값을 삭제하면 front 포인터가 삭제한 값 다음으로 넘어간다.</li>
