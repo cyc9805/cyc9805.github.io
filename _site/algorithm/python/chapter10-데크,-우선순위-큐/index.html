@@ -266,22 +266,24 @@ myCircularDeque.getFront();</p>
 
 <hr />
 
-<h2 id="question-23-큐를-이용한-스택-구현">Question 23: 큐를 이용한 스택 구현</h2>
+<h2 id="question-28-해시맵-디자인">Question 28: 해시맵 디자인</h2>
 
-<p>큐를 이용해 스택을 구현하라</p>
+<p>put, get, remove 기능을 제공하는 해시맵을 디자인 하라</p>
 
-<p class="notice">입력: stack.push(1)</p>
-<p class="notice">입력: stack.push(2)</p>
-<p class="notice">입력: stack.pop()</p>
-<p class="notice">출력: 2</p>
+<p class="notice">입력: 
+<br /> [“MyHashMap”, “put”, “put”, “get”, “get”, “put”, “get”, “remove”, “get”]
+<br /> [[], [1, 1], [2, 2], [1], [3], [2, 1], [2], [2], [2]]</p>
+
+<p class="notice">출력: 
+<br /> [null, null, null, 1, -1, null, 1, null, -1]</p>
 
 <h3 id="내-풀이-2">내 풀이</h3>
 
-<p>파이썬의 큐에 대해 아는 것이 거의 없어서 결국 풀지 못하였다.</p>
+<p>해시맵</p>
 
 <hr />
 
-<h3 id="풀이-1-push-할-때-큐를-이용해-재정렬">풀이 1: push() 할 때 큐를 이용해 재정렬</h3>
+<h3 id="풀이-1-개별-체이닝-방식을-이용한-해시-테이블-구현">풀이 1: 개별 체이닝 방식을 이용한 해시 테이블 구현</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyStack</span><span class="p">:</span>
 
