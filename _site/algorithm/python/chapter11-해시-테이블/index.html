@@ -129,7 +129,7 @@
 <p>J는 보석이며, S는 갖고 있는 돌이다. S에 보석이 몇 개가 들어있을까?</p>
 
 <p class="notice">입력: jewels = “aA”, stones = “aAAbbbb”</p>
-<p class="notice">입력: 3</p>
+<p class="notice">출력: 3</p>
 
 <hr />
 
@@ -244,3 +244,43 @@ Memory Usage: 13.9 MB, less than 80.19% of Python3 online submissions for Jewels
 <ol>
   <li>리스트 컴프리헨션을 이용한 반복문에 함수를 적용할 때는 괄호[]를 생략할 수 있다.</li>
 </ol>
+
+<h2 id="question-30-중복-문자-없는-가장-긴-부분-문자열">Question 30: 중복 문자 없는 가장 긴 부분 문자열</h2>
+
+<p>중복 문자가 없는 가장 긴 부분 문자열의 길이를 리턴하라.</p>
+
+<p class="notice">입력: s = “abcabcbb”</p>
+<p class="notice">출력: 3</p>
+
+<hr />
+
+<h3 id="내-풀이-2">내 풀이</h3>
+
+<p>결국 풀지 못하였다.</p>
+
+<h3 id="풀이-1-슬라이딩-윈도우오-투-포인터로-사이즈-조절">풀이 1: 슬라이딩 윈도우오 투 포인터로 사이즈 조절</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">used</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">max_length</span> <span class="o">=</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="c1"># 이미 등장했던 문자라면 `start` 위치 갱신
+</span>            <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">used</span> <span class="ow">and</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">used</span><span class="p">[</span><span class="n">char</span><span class="p">]:</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">used</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># 최대 부분 문자열 길이 갱신
+</span>                <span class="n">max_length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_length</span><span class="p">,</span> <span class="n">index</span> <span class="o">-</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># 현재 문자의 위치 삽입
+</span>            <span class="n">used</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span>
+
+        <span class="k">return</span> <span class="n">max_length</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-5">중요 내용</h4>
+<ul>
+  <li>슬라이딩 윈도우를 옮기면서 이미 등장했던 문자라면 start 위치를 갱신하며 푸는 방식이다.</li>
+  <li>배열 챕터에 나왔던 슬라이딩 윈도우와 투 포인터를 응용한 방법이다.</li>
+</ul>
+
+<hr />
