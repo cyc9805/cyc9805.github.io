@@ -35,10 +35,10 @@ $f(x,y,z)=(x+y)z$
 
 여기서 최적의 가중치를 찾기 위해서는 f 함수를 x,y,z 로 각각 미분한 값을 찾아야 한다. 한번에 이 값을 찾을 수 없으므로 f를 q와 z로, q를 x와 y로 미분한 값을 차례로 찾는다.
 
-![](/assets/image/lecture4-3.png)
+![](/assets/image/lecture4-3.png){: width="60%" height="60%"}{: .align-center}
 ![](/assets/image/lecture4-4.png)
 
-이 때, 연쇄법칙(chain rule)을 이용하여 원하는 미분 값을 얻을 수 있다. 즉, ***local gradient*** 와 ***upstream gradient*** (한국어로 대체 할만한 단어를 쓰지 못해 원어로 작성하겠다. ) 를 곱하는 것이다. 
+이 때, 연쇄법칙(chain rule)을 이용하여 원하는 미분 값을 얻을 수 있다. 즉, ***local gradient*** 와 ***upstream gradient*** 를 곱하는 것이다. 
 
 $\frac{\partial f}{\partial x}=\frac{\partial f}{\partial q}\frac{\partial q}{\partial x}=z=-4$
 
