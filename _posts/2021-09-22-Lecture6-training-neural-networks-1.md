@@ -20,7 +20,7 @@ categories:
 
 시그모이드 함수의 모습은 다음과 같다.
     
-![](/assets/image/lecture6-1.png)
+![](/assets/image/lecture6-1.png){: width="60%" height="60%"}{: .align-center}
 $\sigma(x)=1/(1+e^{-x})$ 
 
 이 함수는 입력 데이터를 0과 1사이로 변환한다. 그러나 이 함수에는 치명적인 단점 3개가 존재하기 때문에 잘 사용되지 않는데, 3가지 단점은 다음과 같다.
@@ -34,7 +34,7 @@ $\sigma(x)=1/(1+e^{-x})$
 
 tanh 함수의 모습은 다음과 같다.
 
-![](/assets/image/lecture6-2.png)
+![](/assets/image/lecture6-2.png){: width="60%" height="60%"}{: .align-center}
 
 이 함수는 출력값의 중심이 0이 되지 않는다는 점만 제외하면 시그모이드 함수와 같은 단점을 가지고 있어 마찬가지로 자주 사용되지는 않는다.
 
@@ -43,7 +43,7 @@ tanh 함수의 모습은 다음과 같다.
 
 ReLU의 모습은 다음과 같다.
 
-![](/assets/image/lecture6-3.png)    
+![](/assets/image/lecture6-3.png){: width="60%" height="60%"}{: .align-center} 
 $f(x)=max(0,x)$
 
 ReLU의 장점은 다음과 같다.
@@ -58,14 +58,14 @@ ReLU의 장점은 다음과 같다.
   2. 출력값의 중심이 0이 되지 않는다.
   3. 아래 사진과 같이 데이터들이 존재하는 지역 밖에 함수가 존재하면 dead ReLU, 즉 죽은 ReLU가 되어 더 이상 업데이트가 되지 않는 함수가 된다. 
   
-  ![](/assets/image/lecture6-4.png) 
+  ![](/assets/image/lecture6-4.png){: width="60%" height="60%"}{: .align-center}
 
 
 ### Leaky ReLU, PreReLU
 
 Leaky ReLU의 모습은 다음과 같다.
 
-![](/assets/image/lecture6-5.png) 
+![](/assets/image/lecture6-5.png){: width="60%" height="60%"}{: .align-center} 
 $f(x)=max(0.01x,x)$
 
 기본적인 형태는 ReLU와 비슷하나 ReLU에 비해 입력 데이터가 음수일때 gradient가 0으로 수렴하지 않는다는 장점을 가지고 있다. 
@@ -80,7 +80,7 @@ $f(x)=max(\alpha x,x)$
 
 ELU의 모습은 다음과 같다.
 
-![](/assets/image/lecture6-6.png)
+![](/assets/image/lecture6-6.png){: width="60%" height="60%"}{: .align-center}
 
 ReLU의 모든 장점을 공유하고 있으나 자연함수 $e$가 포함된 계산과정이 있기 때문에 계산하는 시간이 오래 걸린다는 단점이 있다.
 
