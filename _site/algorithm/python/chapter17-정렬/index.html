@@ -1,0 +1,1069 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- MATH EQUATION -->
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>정렬 - yongchan’s website</title>
+<meta name="description" content="들어가기 전에">
+
+
+  <meta name="author" content="yongchanchun">
+  
+  <meta property="article:author" content="yongchanchun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="yongchan's website">
+<meta property="og:title" content="정렬">
+<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC/">
+
+
+  <meta property="og:description" content="들어가기 전에">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-03-18T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yongchan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="yongchan's website Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Welcome to my website!!
+          <span class="site-subtitle">👋👋👋</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image/profile2.png" alt="yongchanchun" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">yongchanchun</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I’m trying to post on a daily basis<br />this may be hard but <strong>Nothing is achieved without trying!</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.facebook.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc"></label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂전체 글 수 44개
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Programming</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                
+                    
+                
+                    
+                        <li><a href="/categories/python" class="">Python (43)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/data analysis" class="">Data Analysis (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/computer vision" class="">Computer Vision (15)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/markdown" class="">Markdown (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/project" class="">Project (3)</a></li>
+                    
+                
+                    
+                
+            </ul>
+	    <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm (20)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="정렬">
+    <meta itemprop="description" content="들어가기 전에">
+    <meta itemprop="datePublished" content="2022-03-18T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">정렬
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#들어가기-전에">들어가기 전에</a><ul><li><a href="#버블-정렬">버블 정렬</a></li><li><a href="#병합-정렬">병합 정렬</a></li><li><a href="#퀵-정렬">퀵 정렬</a></li></ul></li><li><a href="#question-58-리스트-정렬">Question 58: 리스트 정렬</a><ul><li><a href="#풀이-1-병합-정렬">풀이 1: 병합 정렬</a><ul><li><a href="#중요-내용">중요 내용</a></li></ul></li><li><a href="#풀이-2-퀵-정렬">풀이 2: 퀵 정렬</a></li><li><a href="#풀이-3-내장-함수를-이용하는-실용적인-방법">풀이 3: 내장 함수를 이용하는 실용적인 방법</a><ul><li><a href="#중요-내용-1">중요 내용</a></li></ul></li></ul></li><li><a href="#question-59-구간-병합">Question 59: 구간 병합</a><ul><li><a href="#풀이-1-정렬하여-병합">풀이 1: 정렬하여 병합</a><ul><li><a href="#중요-내용-2">중요 내용</a></li></ul></li></ul></li><li><a href="#question-60-삽입-정렬-리스트">Question 60: 삽입 정렬 리스트</a><ul><li><a href="#풀이-1-삽입-정렬">풀이 1: 삽입 정렬</a><ul><li><a href="#중요-내용-3">중요 내용</a></li></ul></li><li><a href="#풀이-2-삽입-정렬의-비교-조건-개선">풀이 2: 삽입 정렬의 비교 조건 개선</a><ul><li><a href="#중요-내용-4">중요 내용</a></li></ul></li></ul></li><li><a href="#question-61-가장-큰-수">Question 61: 가장 큰 수</a><ul><li><a href="#풀이-1-삽입-정렬-1">풀이 1: 삽입 정렬</a><ul><li><a href="#중요-내용-5">중요 내용</a></li></ul></li></ul></li><li><a href="#question-62-유효한-애너그램">Question 62: 유효한 애너그램</a><ul><li><a href="#내-풀이">내 풀이</a><ul><li><a href="#결과">결과</a></li></ul></li><li><a href="#풀이-1-정렬을-이용한-비교">풀이 1: 정렬을 이용한 비교</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="들어가기-전에">들어가기 전에</h2>
+
+<h3 id="버블-정렬">버블 정렬</h3>
+
+<p>버블 정렬은 브루트 포스 방법으로 배열의 요소를 모두 하나씩 비교하여 정렬하는 알고리즘이다. 배열 전체를 쭉 살펴보는 것을 n번 하기 때문에 시간 복잡도는 항상 $O(n^2)$ 이다. 가장 비효율적인 알고리즘이기 때문에 최대한 사용을 지양해야 한다.</p>
+
+<h3 id="병합-정렬">병합 정렬</h3>
+
+<p>병합 정렬은 분할 정복 방법으로 배열의 모든 요소를 분해한뒤 정렬하여 다시 합치는 방법이다. 시간 복잡도는 $O(n logn)$ 이다. 병합 정렬의 작동 순서는 다음과 같다.</p>
+
+<p><img src="/assets/image/alg-ch17-1.png" alt="" width="60%" height="60%" class="align-center" /></p>
+
+<h3 id="퀵-정렬">퀵 정렬</h3>
+
+<p>퀵 정렬은 병합 정렬과 마찬가지로 분할 정복 알고리즘이며 피봇이라는 개념이 추가되어 피봇보다 작으면 왼쪽, 크면 오른쪽과 같은 방식으로 파티셔닝 하면서 쪼개 나간다. 시간 복잡도는 $O(n logn)$ 이다. 이때, 이미 정렬된 배열에 퀵 정렬을 적용하면 n번에 걸쳐 전체를 비교하기 때문에 버블 정렬과 다를 바 없는 최악의 성능을 보여준다. 퀵 정렬의 작동 순서는 다음과 같다.</p>
+
+<p><img src="/assets/image/alg-ch17-2.png" alt="" width="60%" height="60%" class="align-center" /></p>
+
+<h2 id="question-58-리스트-정렬">Question 58: 리스트 정렬</h2>
+
+<p>연결 리스트를 $O(n logn)$ 에 정렬하라.</p>
+
+<p class="notice">입력: 4-&gt;2-&gt;1-&gt;3</p>
+
+<p class="notice">출력: 1-&gt;2-&gt;3-&gt;4</p>
+
+<h3 id="풀이-1-병합-정렬">풀이 1: 병합 정렬</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="c1"># 두 정렬 리스트 병합
+</span>    <span class="k">def</span> <span class="nf">mergeTwoLists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">l2</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">l1</span> <span class="ow">and</span> <span class="n">l2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">l1</span><span class="p">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">l2</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+                <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l1</span>
+            <span class="n">l1</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">mergeTwoLists</span><span class="p">(</span><span class="n">l1</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">l1</span> <span class="ow">or</span> <span class="n">l2</span>
+
+    <span class="k">def</span> <span class="nf">sortList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">head</span> <span class="ow">and</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">head</span>
+
+        <span class="c1"># 런너 기법 활용
+</span>        <span class="n">half</span><span class="p">,</span> <span class="n">slow</span><span class="p">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">half</span><span class="p">,</span> <span class="n">slow</span><span class="p">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">slow</span><span class="p">,</span> <span class="n">slow</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">fast</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span>
+        <span class="n">half</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c1"># 분할 재귀 호출
+</span>        <span class="n">l1</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">sortList</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+        <span class="n">l2</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">sortList</span><span class="p">(</span><span class="n">slow</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">mergeTwoLists</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용">중요 내용</h4>
+<ol>
+  <li>sortList는 배열의 요소를 단일 아이템으로 쪼개는 함수이다.</li>
+  <li>mergeTwoLists는 배열의 요소를 정렬하면서 이어 붙이는 함수이다.</li>
+</ol>
+
+<h3 id="풀이-2-퀵-정렬">풀이 2: 퀵 정렬</h3>
+
+<p>파이썬을 이용하여 퀵 정렬을 할시 타임아웃이 떠서 풀지 못한다.</p>
+
+<h3 id="풀이-3-내장-함수를-이용하는-실용적인-방법">풀이 3: 내장 함수를 이용하는 실용적인 방법</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definition for singly-linked list.
+</span><span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">sortList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="c1"># 연결 리스트 -&gt; 파이썬 리스트
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">lst</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">p</span><span class="p">:</span>
+            <span class="n">lst</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+
+        <span class="c1"># 정렬
+</span>        <span class="n">lst</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+        <span class="c1"># 파이썬 리스트 -&gt; 연결 리스트
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)):</span>
+            <span class="n">p</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+        <span class="k">return</span> <span class="n">head</span>
+        
+</code></pre></div></div>
+
+<h4 id="중요-내용-1">중요 내용</h4>
+<ol>
+  <li>연결 리스트를 일반 리스트로 변경 후에 정렬한 뒤에 다시 연결 리스트로 변경하는 방법이다.</li>
+  <li>제일 직관적이면서 쉬운 방법이다.</li>
+</ol>
+
+<hr />
+
+<h2 id="question-59-구간-병합">Question 59: 구간 병합</h2>
+
+<p>겹치는 구간을 병합하라.</p>
+
+<p class="notice">입력:  [[1,3],[2,6],[8,10],[15,18]]</p>
+<p class="notice">출력: [[1,6],[8,10],[15,18]]</p>
+
+<hr />
+
+<h3 id="풀이-1-정렬하여-병합">풀이 1: 정렬하여 병합</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">intervals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+        <span class="n">merged</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">intervals</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">merged</span> <span class="ow">and</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">merged</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">merged</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">merged</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">merged</span> <span class="o">+=</span> <span class="n">i</span><span class="p">,</span>
+        <span class="k">return</span> <span class="n">merged</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-2">중요 내용</h4>
+<ol>
+  <li>merged 변수의 마지막 요소의 두번째 값(최댓값)과 입력값의 첫번째 값(최솟값)을 비교해가며 서로 겹치는지 확인한다.</li>
+  <li>콤마(,) 연산자는 중첩 리스트로 만들어주는 연산을 한다.</li>
+</ol>
+
+<hr />
+
+<h2 id="question-60-삽입-정렬-리스트">Question 60: 삽입 정렬 리스트</h2>
+
+<p>연결 리스트를 삽입 정렬로 정렬하라.</p>
+
+<p class="notice">입력: [4,2,1,3]</p>
+
+<p class="notice">출력: [1,2,3,4]</p>
+
+<hr />
+
+<h3 id="풀이-1-삽입-정렬">풀이 1: 삽입 정렬</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">insertionSortList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">head</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span> <span class="ow">and</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">head</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span>
+
+            <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="k">return</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span>
+        
+</code></pre></div></div>
+
+<h4 id="중요-내용-3">중요 내용</h4>
+
+<ul>
+  <li>head는 정렬을 할 대상이며, cur은 정렬을 끝낸 대상이다.</li>
+  <li>정렬을 끝낸 cur은 이미 정렬된 상태이므로, 정렬을 해야 할 대상 head와 비교하면서 더 작다면 계속 cur.next를 이용해 다음으로 이동한다.</li>
+  <li>찾은 cur 위치 다음에 head가 들어가고, head.next에는 cur.next를 연결해 계속 이어지게 한다. 그리고 head는 head.next 차례를 이어받는다.</li>
+  <li>마지막으로 cur=parent를 통해 다시 처음으로 되돌아가 처음부터 비교한다.</li>
+</ul>
+
+<hr />
+
+<h3 id="풀이-2-삽입-정렬의-비교-조건-개선">풀이 2: 삽입 정렬의 비교 조건 개선</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">insertionSortList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">head</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span> <span class="ow">and</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">head</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span>
+
+            <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="nb">next</span><span class="p">,</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+        
+            <span class="k">if</span> <span class="n">head</span> <span class="ow">and</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">head</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="k">return</span> <span class="n">parent</span><span class="p">.</span><span class="nb">next</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-4">중요 내용</h4>
+
+<ul>
+  <li>다음번 head가 cur보다 큰 상태라면 굳이 되돌아가지 않아도 된다. 따라서 불필요한 과정을 생략하기 위해 cur=parent 앞에 cur값이 head보다 큰 경우에만 돌아가도록 조건문을 추가하였다.</li>
+  <li>해당 조건문 하나로 기존 대비 10배 이상의 성능을 높일 수 있었다.</li>
+</ul>
+
+<hr />
+
+<h2 id="question-61-가장-큰-수">Question 61: 가장 큰 수</h2>
+
+<p>항목들을 조합하여 만들 수 있는 가장 큰 수를 구하라.</p>
+
+<p class="notice">입력: nums = [3,30,34,5,9]</p>
+<p class="notice">출력: “9534330”</p>
+
+<hr />
+
+<h3 id="풀이-1-삽입-정렬-1">풀이 1: 삽입 정렬</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">to_swap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n1</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">n2</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">str</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+    
+    
+    <span class="k">def</span> <span class="nf">largestNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">to_swap</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]):</span>
+                <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">nums</span><span class="p">))))</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-5">중요 내용</h4>
+
+<ol>
+  <li>to_swap은 숫자를 반대로 조합했을 때 더 큰지 여부를 체크하는 함수이다.</li>
+  <li>만약 더 크다면 해당 숫자가 배열의 그 전의 인덱스의 값보다 앞에 위치하게 된다.</li>
+  <li>1,2 과정은 while 문을 통해 반복하게 한다.</li>
+</ol>
+
+<hr />
+
+<h2 id="question-62-유효한-애너그램">Question 62: 유효한 애너그램</h2>
+
+<p>t가 s의 애너그램인지 판별하라.</p>
+
+<p class="notice">입력: s = “anagram”, t = “nagaram”</p>
+<p class="notice">출력: True</p>
+
+<hr />
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">isAnagram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>매우 간단하게 풀었다.</li>
+</ul>
+
+<h4 id="결과">결과</h4>
+
+<p>Runtime: 91 ms, faster than 22.28% of Python3 online submissions for Valid Anagram.
+Memory Usage: 15 MB, less than 20.23% of Python3 online submissions for Valid Anagram.</p>
+
+<h3 id="풀이-1-정렬을-이용한-비교">풀이 1: 정렬을 이용한 비교</h3>
+
+<p>내 풀이 방법과 동일하기 때문에 설명을 생략하겠다.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-18T00:00:00+09:00">March 18, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%A0%95%EB%A0%AC%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/python/chapter14-%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="이진트리 추가문제
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter14-%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">이진트리 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Trim a Binary Search Tree
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter15-%ED%9E%99/" rel="permalink">힙
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">들어가기 전에
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter14-%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">이진트리 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Validate Binary Search Tree
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter14-%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%AC2/" rel="permalink">트리 - part2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">들어가기 전에
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/yongchanchun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 yongchan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

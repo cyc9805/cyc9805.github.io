@@ -4,6 +4,150 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/algorithm/python/chapter17-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A7%E1%86%AF/</loc>
+        
+        <lastmod>2022-03-18T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter14-%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%90%E1%85%A1%E1%86%B7%E1%84%89%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6/</loc>
+        
+        <lastmod>2022-03-15T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter15-%E1%84%92%E1%85%B5%E1%86%B8/</loc>
+        
+        <lastmod>2022-03-14T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter14-%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6/</loc>
+        
+        <lastmod>2022-03-06T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter14-%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%B52/</loc>
+        
+        <lastmod>2022-03-01T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter14-%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%B51/</loc>
+        
+        <lastmod>2022-02-23T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter13-%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%85%E1%85%A9%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6/</loc>
+        
+        <lastmod>2022-02-22T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter11-%E1%84%92%E1%85%A2%E1%84%89%E1%85%B5-%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3%E1%86%AF-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6/</loc>
+        
+        <lastmod>2022-02-19T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter12-%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B3/</loc>
+        
+        <lastmod>2022-02-14T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/algorithm/python/chapter11-%E1%84%92%E1%85%A2%E1%84%89%E1%85%B5-%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3%E1%86%AF/</loc>
         
         <lastmod>2022-02-10T00:00:00+09:00</lastmod>
@@ -37,6 +181,22 @@
     
     <url>
         <loc>http://localhost:4000/algorithm/python/chapter8-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6/</loc>
+        
+        <lastmod>2022-02-06T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter10-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6/</loc>
         
         <lastmod>2022-02-06T00:00:00+09:00</lastmod>
         
@@ -119,6 +279,22 @@
         <loc>http://localhost:4000/algorithm/python/chapter7-%E1%84%87%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AF/</loc>
         
         <lastmod>2022-01-20T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/chapter7-%E1%84%87%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AF/</loc>
+        
+        <lastmod>2022-01-14T00:00:00+09:00</lastmod>
         
 
         
