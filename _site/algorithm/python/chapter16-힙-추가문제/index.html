@@ -34,8 +34,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-      <!-- begin _includes/seo.html --><title>Lecture 5: Convolutional Neural Networks - yongchan’s website</title>
-<meta name="description" content="History of Neural Networks">
+      <!-- begin _includes/seo.html --><title>이진트리 추가문제 - yongchan’s website</title>
+<meta name="description" content="Question 1: Trim a Binary Search Tree">
 
 
   <meta name="author" content="yongchanchun">
@@ -47,26 +47,26 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="Lecture 5: Convolutional Neural Networks">
-<meta property="og:url" content="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/">
+<meta property="og:title" content="이진트리 추가문제">
+<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter16-%ED%9E%99-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
 
 
-  <meta property="og:description" content="History of Neural Networks">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-09-19T00:00:00+09:00">
+  <meta property="og:description" content="Question 1: Trim a Binary Search Tree">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/">
+
+  <meta property="article:published_time" content="2022-03-22T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter16-%ED%9E%99-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
 
 
 
@@ -423,205 +423,17 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Lecture 5: Convolutional Neural Networks">
-    <meta itemprop="description" content="History of Neural Networks">
-    <meta itemprop="datePublished" content="2021-09-19T00:00:00+09:00">
+    <meta itemprop="headline" content="이진트리 추가문제">
+    <meta itemprop="description" content="Question 1: Trim a Binary Search Tree">
+    <meta itemprop="datePublished" content="2022-03-22T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 5: Convolutional Neural Networks
+          <h1 id="page-title" class="page__title" itemprop="headline">이진트리 추가문제
 </h1>
           
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#history-of-neural-networks">History of Neural Networks</a></li><li><a href="#convolutional-neural-networks">Convolutional Neural Networks</a><ul><li><a href="#parameters-of-cnn">Parameters of CNN</a></li><li><a href="#other-layers">Other layers</a></li><li><a href="#trends-of-cnn">Trends of CNN</a></li></ul></li></ul>
-
-            </nav>
-          </aside>
-        
-        <h2 id="history-of-neural-networks">History of Neural Networks</h2>
-
-<p>인공 신경망의 본격적인 연구가 이루어진 것은 비교적 최근이다. 컴퓨터가 개발되기 전에 사람들은 다음과 같은 이론은 내놓았다.</p>
-
-<ol>
-  <li>1957년에 Frank Rosenblatt는 알파벳을 인식하는 기계를 고안했다.</li>
-  <li>1986년에 역전파를 통해 최적의 가중치를 찾는 연구가 활발히 이루어졌다.</li>
-  <li>1998년에 LeCun, Bottou, Bengio, Haffner가 경사 하강법(gradient descent)를 처음으로 글자 인식에 적용해 보았다.</li>
-  <li>2012년에 Alex Krizhevsky가 AlexNet을 개발하였다. 이는 현대 CNN 모델의 근간이 된 중요한 모델이다.
- 5, 2021년 현재, CNN은 컴퓨터 비전 분야의 모든 곳에서 사용되고 있다.</li>
-</ol>
-
-<h2 id="convolutional-neural-networks">Convolutional Neural Networks</h2>
-
-<p>Convolutional Neural Networks (이하 CNN) 은 다음과 같은 방법으로 작동한다.</p>
-<ol>
-  <li>다음과 같은 <strong><em>이미지 데이터</em></strong> 와 <strong><em>필터</em></strong> 가 존재한다.</li>
-</ol>
-
-<p><img src="/assets/image/lecture5-1.png" alt="" />
-   <br /> 2. 아래 사진과 같이 필터가 입력 이미지 데이터를 특정한 순서대로 하나씩 훑어나간다. 그리고 필터에 입력된 숫자와 해당되는 입력 이미지 픽셀의 숫자와 내적한 값을 출력한다.</p>
-
-<p><img src="/assets/image/lecture5-2.png" alt="" /></p>
-
-<p><br /> 3. 이러한 과정을 한번 끝내게 되면 깊이가 1인 출력 이미지 데이터가 생성이 된다. 필터가 입력 이미지 데이터를 훑는 과정은 여러개의 필터에 의해서 연속적으로 이루어진다. 만약 필터의 개수가 6개라고 가정하면 최종적으로 출력되는 이미지 데이터의 깊이는 6이 된다.</p>
-
-<p><img src="/assets/image/lecture5-3.png" alt="" /></p>
-
-<p><br /> 4. CNN의 마지막 층은 항상 fully connected layer, 즉 최종 출력 데이터를 1차원으로 만드는 레이어가 적용이 된다.</p>
-
-<p><br /> 5. 여러개의 층(필터)를 많이 쌓을수록 모델은 이미지 데이터의 복잡한 디테일을 학습할 수 있게된다. 아래 사진에서는 층을 1개, 3개, 5개를 쌓았을때 모델이 학습하는 정도를 비교하고 있다.</p>
-
-<p><img src="/assets/image/lecture5-4.png" alt="" /></p>
-
-<h3 id="parameters-of-cnn">Parameters of CNN</h3>
-
-<p>다음은 CNN 모델을 만들기 위해서 지정해야 하는 파라미터이다.</p>
-
-<ol>
-  <li>Stride: 필터가 이미지 데이터를 훑고 지나갈때 몇 칸만큼 이동하는지 지정하는 인수이다.</li>
-  <li>Pad: 입력 이미지 데이터의 모서리에 얼마만큼의 픽셀을 추가할지를 지정하는 인수이다. 이때, 추가된 픽셀은 출력 이미지 데이터의 값에 영향을 주지 않도록 하기위해 값이 0으로 설정된다.</li>
-</ol>
-
-<p><img src="/assets/image/lecture5-5.png" alt="" /></p>
-
-<p>다음 식은 <strong><em>입력 이미지 데이터의 크기</em></strong> 를 N, <strong><em>필터의 크기</em></strong> 를 F, <strong><em>stride</em></strong> 를 S, <strong><em>pad</em></strong> 를 P 라고 할 때 출력되는 이미지 데이터의 크기 M을 알기 위해 사용되는 공식이다.</p>
-
-<p>$ M = {(N+2P-F)/S}+1 $</p>
-
-<h3 id="other-layers">Other layers</h3>
-
-<p>convolutional layer은 앞서 설명했다시피 필터에 입력된 숫자와 해당되는 입력 이미지 픽셀의 숫자와 내적한 값을 출력하는 방법으로 계산을 진행한다. convolutional layer외에도 다음과 같은 두가지의 layer 이 존재한다.</p>
-
-<ol>
-  <li>Pooling layer: 이미지 데이터에서 이루어지는 계산을 단순화 시키기 위해서 이미지의 크기를 줄이는 레이어이다.</li>
-</ol>
-
-<p><img src="/assets/image/lecture5-6.png" alt="" /></p>
-
-<p><br /> 2. Maxpooling layer: 이미지 데이터와 필터의 일치하는 픽셀의 내적 값을 구하는 대신 필터 안에 나타나는 이미지 데이터의 가장 큰 픽셀 값을 저장하는 레이어이다.</p>
-
-<p><img src="/assets/image/lecture5-7.png" alt="" /></p>
-
-<p>다음은 차 사진에 앞서 설명한 레이어들을 모두 적용했을때의 모습이다.</p>
-
-<p><img src="/assets/image/lecture5-8.png" alt="" /></p>
-
-<h3 id="trends-of-cnn">Trends of CNN</h3>
-
-<ul>
-  <li>필터의 크기를 줄이고 최대한 층을 많이 쌓는다.</li>
-  <li>Maxpooling layer과 fully connected layer을 빼고 오직 convolutional layer만 적용한다.</li>
-</ul>
-
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">computer vision</a><span class="sep">, </span>
-    
-      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-09-19T00:00:00+09:00">September 19, 2021</time></p>
-
-
-      </footer>
-
-      <section class="page__share">
-  
-
-  <a href="https://twitter.com/intent/tweet?text=Lecture+5%3A+Convolutional+Neural+Networks%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2FLecture5-Convolutional-Neural-Networks%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/computer%20vision/python/Lecture4-Backpropagation-and-Neural-Network/" class="pagination--pager" title="Lecture 4: Backpropagation and Neural Network
-">Previous</a>
-    
-    
-      <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/" class="pagination--pager" title="Chapter 4: 모델 구축 part1
-">Next</a>
-    
-  </nav>
-
-    </div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h4 class="page__related-title">You May Also Enjoy</h4>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/python/chapter16-%ED%9E%99-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">이진트리 추가문제
-</a>
-      
-    </h2>
-    
 
   <p class="page__meta">
     
@@ -642,12 +454,120 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Question 1: Trim a Binary Search Tree
+        </header>
+      
 
-</p>
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#question-1-trim-a-binary-search-tree">Question 1: Trim a Binary Search Tree</a><ul><li><a href="#내-풀이">내 풀이</a></li><li><a href="#결과">결과</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="question-1-trim-a-binary-search-tree">Question 1: Trim a Binary Search Tree</h2>
+
+<p>Given an integer array nums, reorder it such that nums[0] &lt; nums[1] &gt; nums[2] &lt; nums[3]….</p>
+
+<p>You may assume the input array always has a valid answer.</p>
+
+<p class="notice">입력: [1,5,1,1,6,4]</p>
+<p class="notice">출력: [1,6,1,5,1,4]</p>
+
+<h3 id="내-풀이">내 풀이</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">wiggleSort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">m</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">nums</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+       
+        <span class="k">if</span> <span class="n">m</span><span class="o">%</span><span class="mi">2</span><span class="p">:</span>
+            <span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span> 
+            <span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span>
+        
+        <span class="k">while</span> <span class="n">y</span> <span class="ow">or</span> <span class="n">z</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">y</span><span class="p">:</span>
+                <span class="n">nums</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">.</span><span class="n">pop</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">z</span><span class="p">:</span>
+                <span class="n">nums</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">return</span> 
+     
+</code></pre></div></div>
+
+<h3 id="결과">결과</h3>
+
+<p>Runtime: 186 ms, faster than 82.79% of Python3 online submissions for Wiggle Sort II.
+Memory Usage: 17.7 MB, less than 9.29% of Python3 online submissions for Wiggle Sort II.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-22T00:00:00+09:00">March 22, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%AC+%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter16-%25ED%259E%2599-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter16-%25ED%259E%2599-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter16-%25ED%259E%2599-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC/" class="pagination--pager" title="정렬
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
 
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
         
           
 
@@ -766,6 +686,47 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
     <p class="archive__item-excerpt" itemprop="description">들어가기 전에
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter14-%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">이진트리 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Validate Binary Search Tree
 
 </p>
   </article>
