@@ -263,7 +263,7 @@ var store = [{
         "url": "/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC/",
         "teaser": null
       },{
-        "title": "이진트리 추가문제",
+        "title": "힙 추가문제",
         "excerpt":"Question 1: Trim a Binary Search Tree   Given an integer array nums, reorder it such that nums[0] &lt; nums[1] &gt; nums[2] &lt; nums[3]….   You may assume the input array always has a valid answer.   입력: [1,5,1,1,6,4]  출력: [1,6,1,5,1,4]   내 풀이  class Solution:     def wiggleSort(self, nums: List[int]) -&gt; None:         x = sorted(nums)         m = len(x)         n = m // 2         nums.clear()                 if m%2:             y,z = x[:n+1], x[n+1:]         else:              y,z = x[:n], x[n:]                  while y or z:             if y:                 nums.append(y.pop())             if z:                 nums.append(z.pop())         return          결과   Runtime: 186 ms, faster than 82.79% of Python3 online submissions for Wiggle Sort II. Memory Usage: 17.7 MB, less than 9.29% of Python3 online submissions for Wiggle Sort II.   ","categories": ["algorithm","python"],
         "tags": [],
         "url": "/algorithm/python/chapter16-%ED%9E%99-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/",
