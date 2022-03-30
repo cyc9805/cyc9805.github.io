@@ -9,25 +9,49 @@
   <head>
     <meta charset="utf-8">
     <!-- MATH EQUATION -->
-      <!-- begin _includes/seo.html --><title>yongchan's website - Page 8</title>
-<meta name="description" content="Welcome to my website! I’m currently rebuilding my website">
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>정렬 추가문제 - yongchan’s website</title>
+<meta name="description" content="Question 1: Smallest Value of the Rearranged Number">
 
 
   <meta name="author" content="yongchanchun">
   
+  <meta property="article:author" content="yongchanchun">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="yongchan’s website">
-<meta property="og:url" content="http://localhost:4000/page8/">
+<meta property="og:title" content="정렬 추가문제">
+<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
 
 
-  <meta property="og:description" content="Welcome to my website! I’m currently rebuilding my website">
-
-
-
+  <meta property="og:description" content="Question 1: Smallest Value of the Rearranged Number">
 
 
 
@@ -35,15 +59,16 @@
 
 
 
+  <meta property="article:published_time" content="2022-03-28T00:00:00+09:00">
 
 
-<link rel="canonical" href="http://localhost:4000/page8/">
 
 
-  <link rel="prev" href="http://localhost:4000/page7/">
 
 
-  <link rel="next" href="http://localhost:4000/page9/">
+<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
+
+
 
 
 <script type="application/ld+json">
@@ -92,7 +117,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -397,34 +422,18 @@
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title"></h1>
-    
-    
-
-
-<h3 class="archive__subtitle">Recent Posts</h3>
-
-
-
-
-<div class="entries-list">
-  
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="정렬 추가문제">
+    <meta itemprop="description" content="Question 1: Smallest Value of the Rearranged Number">
+    <meta itemprop="datePublished" content="2022-03-28T00:00:00+09:00">
     
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part2/" rel="permalink">Chapter 4: 모델 구축 part2
-</a>
-      
-    </h2>
-    
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">정렬 추가문제
+</h1>
+          
 
   <p class="page__meta">
     
@@ -438,30 +447,145 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 minute read
+          less than 1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">본 챕터의 두 번째 파트는 신경망, 선형 모델, 랜덤 포레스트와 기타 모델등에 대해 다루고 있다.
+        </header>
+      
 
-</p>
-  </article>
-</div>
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#question-1-smallest-value-of-the-rearranged-number">Question 1: Smallest Value of the Rearranged Number</a><ul><li><a href="#내-풀이">내 풀이</a></li><li><a href="#결과">결과</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="question-1-smallest-value-of-the-rearranged-number">Question 1: Smallest Value of the Rearranged Number</h2>
+
+<p>You are given an integer num. Rearrange the digits of num such that its value is minimized and it does not contain any leading zeros.</p>
+
+<p>Return the rearranged number with minimal value.</p>
+
+<p>Note that the sign of the number does not change after rearranging the digits.</p>
+
+<p class="notice">입력: num = 310</p>
+<p class="notice">출력: 103</p>
+
+<h3 id="내-풀이">내 풀이</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">smallestNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+	
+        <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="n">num</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'-'</span><span class="p">:</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">ans</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ans</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'0'</span><span class="p">:</span>
+                        <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ans</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                        <span class="k">break</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+                    
+        <span class="k">return</span> <span class="n">ans</span>
+     
+</code></pre></div></div>
+
+<h3 id="결과">결과</h3>
+
+<p>Runtime: 45 ms, faster than 66.23% of Python3 online submissions for Smallest Value of the Rearranged Number.
+Memory Usage: 13.9 MB, less than 25.70% of Python3 online submissions for Smallest Value of the Rearranged Number.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
 
   
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
     
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-28T00:00:00+09:00">March 28, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%A0%95%EB%A0%AC+%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/python/chapter18-%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89/" class="pagination--pager" title="이진검색
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer%20vision/python/Lecture6-training-neural-networks-1/" rel="permalink">Lecture 6: Training Neural Networks 1
+        <a href="/algorithm/python/chapter18-%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89/" rel="permalink">이진검색
 </a>
       
     </h2>
@@ -486,23 +610,64 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Activation Functions
+    <p class="archive__item-excerpt" itemprop="description">들어가기 전에
 
 </p>
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/data%20analysis/python/Chapter-4-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95-part1/" rel="permalink">Chapter 4: 모델 구축 part1
+        <a href="/algorithm/python/chapter16-%ED%9E%99-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">힙 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Trim a Binary Search Tree
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC/" rel="permalink">정렬
 </a>
       
     </h2>
@@ -527,23 +692,23 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">챕터4는 데이터의 생성된 특징을 바탕으로 모델을 구축하는 방법에 대해 설명하고 있다. 이 장 또한 양이 상당히 많고 중요한 내용을 담고 있기 때문에 두 개의 파트로 나눠서 정리하기로 하였다.
+    <p class="archive__item-excerpt" itemprop="description">들어가기 전에
 
 </p>
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/" rel="permalink">Lecture 5: Convolutional Neural Networks
+        <a href="/algorithm/python/chapter14-%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">이진트리 추가문제
 </a>
       
     </h2>
@@ -568,128 +733,19 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">History of Neural Networks
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Trim a Binary Search Tree
 
 </p>
   </article>
 </div>
 
+        
+      </div>
+    </div>
   
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20vision/python/Lecture4-Backpropagation-and-Neural-Network/" rel="permalink">Lecture 4: Backpropagation and Neural Network
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">What is Backpropagation?
-
-</p>
-  </article>
-</div>
-
   
 </div>
 
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-      
-        <li><a href="/page7/">Previous</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-      
-      
-      <li><a href="#" class="disabled">&hellip;</a></li>
-    
-
-    
-    
-    
-
-    
-      
-        
-        
-        
-        <li><a href="/page6/">6</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page7/">7</a></li>
-      
-    
-      
-        <li><a href="/page8/" class="disabled current">8</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page9/">9</a></li>
-      
-    
-
-    
-    
-
-    
-      <li><a href="/page10/">10</a></li>
-    
-
-    
-    
-      <li><a href="/page9/">Next</a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
-</div>
     </div>
 
     
@@ -762,6 +818,30 @@
 <script src="/assets/js/lunr/lunr-en.js"></script>
 
 
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
 
 
 

@@ -34,7 +34,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-      <!-- begin _includes/seo.html --><title>정렬 - yongchan’s website</title>
+      <!-- begin _includes/seo.html --><title>이진검색 - yongchan’s website</title>
 <meta name="description" content="들어가기 전에">
 
 
@@ -47,8 +47,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="정렬">
-<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC/">
+<meta property="og:title" content="이진검색">
+<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter18-%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89/">
 
 
   <meta property="og:description" content="들어가기 전에">
@@ -59,14 +59,14 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
 
-  <meta property="article:published_time" content="2022-03-18T00:00:00+09:00">
+  <meta property="article:published_time" content="2022-03-27T00:00:00+09:00">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC/">
+<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter18-%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89/">
 
 
 
@@ -423,15 +423,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="정렬">
+    <meta itemprop="headline" content="이진검색">
     <meta itemprop="description" content="들어가기 전에">
-    <meta itemprop="datePublished" content="2022-03-18T00:00:00+09:00">
+    <meta itemprop="datePublished" content="2022-03-27T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">정렬
+          <h1 id="page-title" class="page__title" itemprop="headline">이진검색
 </h1>
           
 
@@ -462,7 +462,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#들어가기-전에">들어가기 전에</a><ul><li><a href="#버블-정렬">버블 정렬</a></li><li><a href="#병합-정렬">병합 정렬</a></li><li><a href="#퀵-정렬">퀵 정렬</a></li></ul></li><li><a href="#question-58-리스트-정렬">Question 58: 리스트 정렬</a><ul><li><a href="#풀이-1-병합-정렬">풀이 1: 병합 정렬</a><ul><li><a href="#중요-내용">중요 내용</a></li></ul></li><li><a href="#풀이-2-퀵-정렬">풀이 2: 퀵 정렬</a></li><li><a href="#풀이-3-내장-함수를-이용하는-실용적인-방법">풀이 3: 내장 함수를 이용하는 실용적인 방법</a><ul><li><a href="#중요-내용-1">중요 내용</a></li></ul></li></ul></li><li><a href="#question-59-구간-병합">Question 59: 구간 병합</a><ul><li><a href="#풀이-1-정렬하여-병합">풀이 1: 정렬하여 병합</a><ul><li><a href="#중요-내용-2">중요 내용</a></li></ul></li></ul></li><li><a href="#question-60-삽입-정렬-리스트">Question 60: 삽입 정렬 리스트</a><ul><li><a href="#풀이-1-삽입-정렬">풀이 1: 삽입 정렬</a><ul><li><a href="#중요-내용-3">중요 내용</a></li></ul></li><li><a href="#풀이-2-삽입-정렬의-비교-조건-개선">풀이 2: 삽입 정렬의 비교 조건 개선</a><ul><li><a href="#중요-내용-4">중요 내용</a></li></ul></li></ul></li><li><a href="#question-61-가장-큰-수">Question 61: 가장 큰 수</a><ul><li><a href="#풀이-1-삽입-정렬-1">풀이 1: 삽입 정렬</a><ul><li><a href="#중요-내용-5">중요 내용</a></li></ul></li></ul></li><li><a href="#question-62-유효한-애너그램">Question 62: 유효한 애너그램</a><ul><li><a href="#내-풀이">내 풀이</a><ul><li><a href="#결과">결과</a></li></ul></li><li><a href="#풀이-1-정렬을-이용한-비교">풀이 1: 정렬을 이용한 비교</a></li></ul></li><li><a href="#question-63-색-정렬">Question 63: 색 정렬</a><ul><li><a href="#풀이-1-피벗을-이용한-풀이">풀이 1: 피벗을 이용한 풀이</a><ul><li><a href="#중요-내용-6">중요 내용</a></li></ul></li></ul></li><li><a href="#question-64-원점에-k번째로-가까운-점">Question 64: 원점에 k번째로 가까운 점</a><ul><li><a href="#내-풀이-1">내 풀이</a><ul><li><a href="#결과-1">결과</a></li></ul></li><li><a href="#풀이-1-유클리드-거리의-우선순위-큐-순서">풀이 1: 유클리드 거리의 우선순위 큐 순서</a><ul><li><a href="#중요-내용-7">중요 내용</a></li></ul></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#들어가기-전에">들어가기 전에</a><ul><li><a href="#버블-정렬">버블 정렬</a></li><li><a href="#병합-정렬">병합 정렬</a></li><li><a href="#퀵-정렬">퀵 정렬</a></li></ul></li><li><a href="#question-58-리스트-정렬">Question 58: 리스트 정렬</a><ul><li><a href="#풀이-1-병합-정렬">풀이 1: 병합 정렬</a><ul><li><a href="#중요-내용">중요 내용</a></li></ul></li><li><a href="#풀이-2-퀵-정렬">풀이 2: 퀵 정렬</a></li><li><a href="#풀이-3-내장-함수를-이용하는-실용적인-방법">풀이 3: 내장 함수를 이용하는 실용적인 방법</a><ul><li><a href="#중요-내용-1">중요 내용</a></li></ul></li></ul></li><li><a href="#question-59-구간-병합">Question 59: 구간 병합</a><ul><li><a href="#풀이-1-정렬하여-병합">풀이 1: 정렬하여 병합</a><ul><li><a href="#중요-내용-2">중요 내용</a></li></ul></li></ul></li><li><a href="#question-60-삽입-정렬-리스트">Question 60: 삽입 정렬 리스트</a><ul><li><a href="#풀이-1-삽입-정렬">풀이 1: 삽입 정렬</a><ul><li><a href="#중요-내용-3">중요 내용</a></li></ul></li><li><a href="#풀이-2-삽입-정렬의-비교-조건-개선">풀이 2: 삽입 정렬의 비교 조건 개선</a><ul><li><a href="#중요-내용-4">중요 내용</a></li></ul></li></ul></li><li><a href="#question-61-가장-큰-수">Question 61: 가장 큰 수</a><ul><li><a href="#풀이-1-삽입-정렬-1">풀이 1: 삽입 정렬</a><ul><li><a href="#중요-내용-5">중요 내용</a></li></ul></li></ul></li><li><a href="#question-62-유효한-애너그램">Question 62: 유효한 애너그램</a><ul><li><a href="#내-풀이">내 풀이</a><ul><li><a href="#결과">결과</a></li></ul></li><li><a href="#풀이-1-정렬을-이용한-비교">풀이 1: 정렬을 이용한 비교</a></li></ul></li><li><a href="#question-63-색-정렬">Question 63: 색 정렬</a><ul><li><a href="#풀이-1-피벗을-이용한-풀이">풀이 1: 피벗을 이용한 풀이</a><ul><li><a href="#중요-내용-6">중요 내용</a></li></ul></li></ul></li><li><a href="#question-69-2d-행렬의-검색2">Question 69: 2D 행렬의 검색2</a><ul><li><a href="#내-풀이-1">내 풀이</a><ul><li><a href="#결과-1">결과</a></li></ul></li><li><a href="#풀이-1-첫-행의-맨-뒤에서-검색">풀이 1: 첫 행의 맨 뒤에서 검색</a><ul><li><a href="#중요-내용-7">중요 내용</a></li></ul></li><li><a href="#풀이-2-파이썬다운-방식">풀이 2: 파이썬다운 방식</a><ul><li><a href="#중요-내용-8">중요 내용</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -762,55 +762,86 @@ Memory Usage: 15 MB, less than 20.23% of Python3 online submissions for Valid An
   <li>1보다 작으면 왼쪽, 1이면 중간, 1보다 크면 오른쪽에 위치하도록 한다.</li>
 </ol>
 
-<h2 id="question-64-원점에-k번째로-가까운-점">Question 64: 원점에 k번째로 가까운 점</h2>
+<h2 id="question-69-2d-행렬의-검색2">Question 69: 2D 행렬의 검색2</h2>
 
-<p>평면상에 points 목록이 있을 때, 원점 (0,0) 에서 k번쨰로 가까운 점 목록을 순서대로 출력하라. 평면상 두 점의 거리는 유클리드 거리로 한다.</p>
+<p>$mxn$ 행렬에서 값을 찾아내는 효율적인 알고리즘을 구현하라. 행렬은 왼쪽에서 오른쪽, 위에서 아래로 오름차순으로 정렬되어 있다.</p>
 
-<p class="notice">입력: points = [[1,3],[-2,2]], k = 1</p>
-<p class="notice">출력: [[-2,2]]</p>
+<p class="notice">입력: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5</p>
+<p class="notice">출력: True</p>
 
 <hr />
 
 <h3 id="내-풀이-1">내 풀이</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">kClosest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-            
-        <span class="n">points</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-        
-        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="n">points</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">searchMatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">bisect</span><span class="p">.</span><span class="n">bisect_left</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">index</span> <span class="ow">and</span> <span class="n">lst</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
 <h4 id="결과-1">결과</h4>
 
-<p>Runtime: 912 ms, faster than 73.96% of Python3 online submissions for K Closest Points to Origin.
-Memory Usage: 20.4 MB, less than 56.62% of Python3 online submissions for K Closest Points to Origin.</p>
+<p>Runtime: 172 ms, faster than 90.95% of Python3 online submissions for Search a 2D Matrix II.
+Memory Usage: 20.5 MB, less than 43.81% of Python3 online submissions for Search a 2D Matrix II.</p>
 
-<h3 id="풀이-1-유클리드-거리의-우선순위-큐-순서">풀이 1: 유클리드 거리의 우선순위 큐 순서</h3>
+<h3 id="풀이-1-첫-행의-맨-뒤에서-검색">풀이 1: 첫 행의 맨 뒤에서 검색</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">kClosest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">K</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-        <span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
-            <span class="n">dist</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span>
-            <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
-            <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
-            <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">def</span> <span class="nf">searchMatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        
+        <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        
+        <span class="k">while</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            
+            <span class="k">elif</span> <span class="n">target</span> <span class="o">&lt;</span> <span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]:</span>
+                <span class="n">col</span> <span class="o">-=</span> <span class="mi">1</span>
+            
+            <span class="k">elif</span> <span class="n">target</span> <span class="o">&gt;</span> <span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]:</span>
+                <span class="n">row</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
 <h4 id="중요-내용-7">중요 내용</h4>
 
 <ol>
-  <li>내가 사용했던 풀이 방법과 비슷하나 여기서는 heapq 모듈을 사용하여 최솟값부터 차례로 출력하게 하였다.</li>
+  <li>row와 col의 초기 값을 다음과 같이 설정해도 코드가 정상적으로 실행된다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">row</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">while</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            
+            <span class="k">elif</span> <span class="n">target</span> <span class="o">&gt;</span> <span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]:</span>
+                <span class="n">col</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+            <span class="k">elif</span> <span class="n">target</span> <span class="o">&lt;</span> <span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]:</span>
+                <span class="n">row</span> <span class="o">-=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h3 id="풀이-2-파이썬다운-방식">풀이 2: 파이썬다운 방식</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">searchMatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">target</span> <span class="ow">in</span> <span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-8">중요 내용</h4>
+
+<ol>
+  <li>any() 함수는 포함된 값 중 어느 하나가 참이라면 항상 참으로 출력한다. 논리 연산의 OR과 비슷하다.</li>
+  <li>all() 함수는 모든 값이 참이어야 참을 리턴한다. 논리 연산의 AND와 비슷하다.</li>
 </ol>
 
 
@@ -841,7 +872,7 @@ Memory Usage: 20.4 MB, less than 56.62% of Python3 online submissions for K Clos
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-18T00:00:00+09:00">March 18, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-27T00:00:00+09:00">March 27, 2022</time></p>
 
 
       </footer>
@@ -849,22 +880,22 @@ Memory Usage: 20.4 MB, less than 56.62% of Python3 online submissions for K Clos
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%A0%95%EB%A0%AC%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter18-%25EC%259D%25B4%25EC%25A7%2584%25EA%25B2%2580%25EC%2583%2589%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter18-%25EC%259D%25B4%25EC%25A7%2584%25EA%25B2%2580%25EC%2583%2589%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter18-%25EC%259D%25B4%25EC%25A7%2584%25EA%25B2%2580%25EC%2583%2589%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/python/chapter14-%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="이진트리 추가문제
+      <a href="/algorithm/python/chapter16-%ED%9E%99-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="힙 추가문제
 ">Previous</a>
     
     
-      <a href="/algorithm/python/chapter16-%ED%9E%99-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="힙 추가문제
+      <a href="/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="정렬 추가문제
 ">Next</a>
     
   </nav>
@@ -930,47 +961,6 @@ Memory Usage: 20.4 MB, less than 56.62% of Python3 online submissions for K Clos
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/python/chapter18-%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89/" rel="permalink">이진검색
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          5 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">들어가기 전에
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
         <a href="/algorithm/python/chapter16-%ED%9E%99-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">힙 추가문제
 </a>
       
@@ -997,6 +987,47 @@ Memory Usage: 20.4 MB, less than 56.62% of Python3 online submissions for K Clos
 
 
     <p class="archive__item-excerpt" itemprop="description">Question 1: Trim a Binary Search Tree
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC/" rel="permalink">정렬
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">들어가기 전에
 
 </p>
   </article>
