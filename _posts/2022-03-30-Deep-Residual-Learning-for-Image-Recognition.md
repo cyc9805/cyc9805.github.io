@@ -14,12 +14,12 @@ categories:
 ## introduction
 
 - Network depth is of crucial importance for making better models.
-- Graph below shows that stacking more layers doesn't make model better. Rather, it increases error for both train and test data.
+- However, training and testing error rates increase when number of layer exceeds certain threshold. Graph below proves this. 
 
 ![](/assets/image/paper-review1-1.png)
 
-- Vanishing/exploding gradient is the cause for such problem.
-- In this paper, they proposed deep residual learning framework to address degradation problem.
+- Vanishing and exploding gradient is the cause for such problem.
+- In this paper, they focused on degradation, suggesting deep residual learning framework to address this problem.
 
 
 ## Deep Residual Learing
