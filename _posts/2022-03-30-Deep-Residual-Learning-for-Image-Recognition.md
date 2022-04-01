@@ -7,22 +7,22 @@ toc: true
 toc_sticky: true
 categories:
   - computer vision
-  - python
+  - Paper Review
 ---
 
 
-## introduction
+## Introduction
 
 - Network depth is of crucial importance for making better models.
 - However, training and testing error rates increase when number of layer exceeds certain threshold. Graph below proves this. 
 
 ![](/assets/image/paper-review1-1.png)
 
-- Vanishing and exploding gradient is the cause for such problem.
+- Vanishing and exploding gradient are the cause for such problem.
 - In this paper, they focused on degradation, suggesting deep residual learning framework to address this problem.
 
 
-## Deep Residual Learing
+## Deep Residual Learning
 
 ### Residual Learning
 
@@ -48,10 +48,10 @@ $y = F(x, {W_i}) + x$
 
 - function $F(x, {W_i})$ represents residual mapping to be learned
 - With 2-layer model, residual block is defined as:
-$F = W_2\sigma(W_1x)$
+  $F = W_2\sigma(W_1x)$
 - The equation above is interpreted as having shortcut connection to output $y$.
 - Shortcut connection resolves the previous issues of identity mapping by introducing neither extra parameters nor computational complexity.
-- When dimensions of $F$ and $x$ are different, adding linear projection $W_s$ is one option to make these two dimensions identical.
+- When dimensions of $F$ and $x$ are different, adding linear projection $W_s$ is  performed to make these two dimensions identical.
 - Above notations are about fully connected layers, but this is applicable to convolutional layers as well.
 
 
@@ -61,8 +61,8 @@ $F = W_2\sigma(W_1x)$
 - VGGNet with 34 weighted layers is used as plain network and VGGNet with shortcut connection inserted is used as resiudal network.
 - Following 2 options were used to prevent the problem of dimension increase.
 
- 1. Extra zero entries are padded for increasing dimension.
- 2. Projection techinque, which is adding $W_s$ to residual function, is used to match dimension.
+  1. Extra zero entries are padded for increasing dimension.
+  2. Projection techinque, which is adding $W_s$ to residual function, is used to match dimension.
 
  
 ## Experiments
@@ -80,9 +80,9 @@ $F = W_2\sigma(W_1x)$
 
 - Additionally, the classification tasks are given in these 3 different tasks:
 
-A. Zero padding shortcuts are used for increasing dimensions.
-B. Projection shortcuts are used for increasing dimensions.
-C. All shortcuts are projections.
+  1. Zero padding shortcuts are used for increasing dimensions.
+  2. Projection shortcuts are used for increasing dimensions.
+  3. All shortcuts are projections.
 
 Table below shows that all these three models are considerable better model than plain counterpart.
 
@@ -96,12 +96,13 @@ Small difference in errors for these 3 options exhibits that projection shortcut
 - Model used for classification follow the same form with that used in ImageNet classification, which has a total of 6n+2 weighted layers. Feature map sizes are 32, 16, 8, respectively.
 - Input images are 32x32 with per-pixel mean subtracted (This is probably done for scaling).
 - The last two layers consists of global average pooling and a 10-way fully-connected layer with softmax.
-- Graph below compares the error rate of plain networks and ResNet. Dashed line denotes training error and bold line denote testing error. 
+- Graph below compares the error rate of plain networks and ResNet. Dashed line denotes training error and bold line denotes testing error. 
 
 ![](/assets/image/paper-review1-5.png)
 
- 1. Error rate of deeper plain network is higher than that of shallower network for both training and test data. 
- 2. Unlike plain network, error rate of deeper ResNet is lower than that of shallower network. 
- 3. However, ResNet also suffers from overfitting problem when number of layer reaches 1202. Therefore, it is better to use adequate number of layers to prevent models from getting too complex.
+  1. Error rate of deeper plain network is higher than that of shallower network for both training and test data. 
+  2. Unlike plain network, error rate of deeper ResNet is lower than that of shallower network. 
+  3. However, ResNet also suffers from overfitting problem when number of layer reaches 1202. Therefore, it is better to use adequate number of layers to prevent models from getting too complex.
  
 ### Additional tests are conducted on PASCAL and MS COCO dataset. Both show similar results as ImageNet and CIFAR-10 .
+

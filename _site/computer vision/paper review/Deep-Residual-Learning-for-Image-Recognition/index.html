@@ -34,8 +34,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-      <!-- begin _includes/seo.html --><title>정렬 추가문제 - yongchan’s website</title>
-<meta name="description" content="Question 1: Smallest Value of the Rearranged Number">
+      <!-- begin _includes/seo.html --><title>Deep Residual Learning for Image Recognition - yongchan’s website</title>
+<meta name="description" content="Introduction">
 
 
   <meta name="author" content="yongchanchun">
@@ -47,26 +47,26 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="정렬 추가문제">
-<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
+<meta property="og:title" content="Deep Residual Learning for Image Recognition">
+<meta property="og:url" content="http://localhost:4000/computer%20vision/paper%20review/Deep-Residual-Learning-for-Image-Recognition/">
 
 
-  <meta property="og:description" content="Question 1: Smallest Value of the Rearranged Number">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-03-28T00:00:00+09:00">
+  <meta property="og:description" content="Introduction">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
+
+  <meta property="article:published_time" content="2022-03-30T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20vision/paper%20review/Deep-Residual-Learning-for-Image-Recognition/">
 
 
 
@@ -454,15 +454,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="정렬 추가문제">
-    <meta itemprop="description" content="Question 1: Smallest Value of the Rearranged Number">
-    <meta itemprop="datePublished" content="2022-03-28T00:00:00+09:00">
+    <meta itemprop="headline" content="Deep Residual Learning for Image Recognition">
+    <meta itemprop="description" content="Introduction">
+    <meta itemprop="datePublished" content="2022-03-30T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">정렬 추가문제
+          <h1 id="page-title" class="page__title" itemprop="headline">Deep Residual Learning for Image Recognition
 </h1>
           
 
@@ -478,7 +478,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          3 minute read
         
       </span>
     
@@ -493,53 +493,135 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#question-1-smallest-value-of-the-rearranged-number">Question 1: Smallest Value of the Rearranged Number</a><ul><li><a href="#내-풀이">내 풀이</a></li><li><a href="#결과">결과</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#introduction">Introduction</a></li><li><a href="#deep-residual-learning">Deep Residual Learning</a><ul><li><a href="#residual-learning">Residual Learning</a><ul><li><a href="#how-does-residual-learning-work">How does Residual Learning work?</a></li></ul></li><li><a href="#identity-mapping-by-shortcuts">identity Mapping by Shortcuts</a></li><li><a href="#network-architectures">Network Architectures</a></li></ul></li><li><a href="#experiments">Experiments</a><ul><li><a href="#imagenet-classification">ImageNet Classification</a></li><li><a href="#cifar-10-and-analysis">CIFAR-10 and Analysis</a></li><li><a href="#additional-tests-are-conducted-on-pascal-and-ms-coco-dataset-both-show-similar-results-as-imagenet-and-cifar-10-">Additional tests are conducted on PASCAL and MS COCO dataset. Both show similar results as ImageNet and CIFAR-10 .</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h2 id="question-1-smallest-value-of-the-rearranged-number">Question 1: Smallest Value of the Rearranged Number</h2>
+        <h2 id="introduction">Introduction</h2>
 
-<p>You are given an integer num. Rearrange the digits of num such that its value is minimized and it does not contain any leading zeros.</p>
+<ul>
+  <li>Network depth is of crucial importance for making better models.</li>
+  <li>However, training and testing error rates increase when number of layer exceeds certain threshold. Graph below proves this.</li>
+</ul>
 
-<p>Return the rearranged number with minimal value.</p>
+<p><img src="/assets/image/paper-review1-1.png" alt="" /></p>
 
-<p>Note that the sign of the number does not change after rearranging the digits.</p>
+<ul>
+  <li>Vanishing and exploding gradient are the cause for such problem.</li>
+  <li>In this paper, they focused on degradation, suggesting deep residual learning framework to address this problem.</li>
+</ul>
 
-<p class="notice">입력: num = 310</p>
-<p class="notice">출력: 103</p>
+<h2 id="deep-residual-learning">Deep Residual Learning</h2>
 
-<h3 id="내-풀이">내 풀이</h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">smallestNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-	
-        <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
+<h3 id="residual-learning">Residual Learning</h3>
 
-        <span class="n">num</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
-        
-        <span class="k">if</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'-'</span><span class="p">:</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">ans</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<ul>
+  <li>The goal of this techinque is to construct layers with identity mapping, which is to make the input and output identical.</li>
+  <li>Rather than directly fitting input data to output data, resiudal learning focuses on fitting input data to residual function, which is the residue of output and input data.</li>
+</ul>
 
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">ans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ans</span><span class="p">)):</span>
-                    <span class="k">if</span> <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'0'</span><span class="p">:</span>
-                        <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ans</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                        <span class="k">break</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
-                    
-        <span class="k">return</span> <span class="n">ans</span>
-     
-</code></pre></div></div>
+<h4 id="how-does-residual-learning-work">How does Residual Learning work?</h4>
 
-<h3 id="결과">결과</h3>
+<ul>
+  <li>
+    <p>Let us consider the equation below, which $H(x)$ stands for output data, $x$ for input data and $F(x)$ for residual function.</p>
 
-<p>Runtime: 45 ms, faster than 66.23% of Python3 online submissions for Smallest Value of the Rearranged Number.
-Memory Usage: 13.9 MB, less than 25.70% of Python3 online submissions for Smallest Value of the Rearranged Number.</p>
+    <p>$H(x) = F(x) + x$</p>
+  </li>
+  <li>To make identity mapping possible, $F(x)$ should become 0.</li>
+  <li>$F(x)$ is expressed as $F(x) = H(x) -x$</li>
+  <li>Now, the training process involves making $F(x)$ 0.</li>
+  <li>Dimensions of both input and ouput data should be identical to train residual function.</li>
+</ul>
+
+<h3 id="identity-mapping-by-shortcuts">identity Mapping by Shortcuts</h3>
+
+<ul>
+  <li>In this paper, blocks with residual learning is defined as follows:</li>
+</ul>
+
+<p>$y = F(x, {W_i}) + x$</p>
+
+<ul>
+  <li>function $F(x, {W_i})$ represents residual mapping to be learned</li>
+  <li>With 2-layer model, residual block is defined as:
+$F = W_2\sigma(W_1x)$</li>
+  <li>The equation above is interpreted as having shortcut connection to output $y$.</li>
+  <li>Shortcut connection resolves the previous issues of identity mapping by introducing neither extra parameters nor computational complexity.</li>
+  <li>When dimensions of $F$ and $x$ are different, adding linear projection $W_s$ is  performed to make these two dimensions identical.</li>
+  <li>Above notations are about fully connected layers, but this is applicable to convolutional layers as well.</li>
+</ul>
+
+<h3 id="network-architectures">Network Architectures</h3>
+
+<ul>
+  <li>This section introduces models that are used for evaluating the performace of residual network.</li>
+  <li>VGGNet with 34 weighted layers is used as plain network and VGGNet with shortcut connection inserted is used as resiudal network.</li>
+  <li>
+    <p>Following 2 options were used to prevent the problem of dimension increase.</p>
+
+    <ol>
+      <li>Extra zero entries are padded for increasing dimension.</li>
+      <li>Projection techinque, which is adding $W_s$ to residual function, is used to match dimension.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="experiments">Experiments</h2>
+
+<h3 id="imagenet-classification">ImageNet Classification</h3>
+
+<ul>
+  <li>Two networks are evaluated on the ImageNet 2012 classification dataset that consists of 1000 classes.</li>
+  <li>Plain network with 34 layer shows higher training error rate than that with 18 layer. This paper conjectures that this is not due to vanishing gradient, but it is due to having exponentially low convergence rates.</li>
+</ul>
+
+<p><img src="/assets/image/paper-review1-2.png" alt="" /></p>
+
+<ul>
+  <li>However, the situation is reveresed for residual networks. Residual networks with 34 layer shows lower training error rate than that with 18 layer.</li>
+</ul>
+
+<p><img src="/assets/image/paper-review1-3.png" alt="" /></p>
+
+<ul>
+  <li>
+    <p>Additionally, the classification tasks are given in these 3 different tasks:</p>
+
+    <ol>
+      <li>Zero padding shortcuts are used for increasing dimensions.</li>
+      <li>Projection shortcuts are used for increasing dimensions.</li>
+      <li>All shortcuts are projections.</li>
+    </ol>
+  </li>
+</ul>
+
+<p>Table below shows that all these three models are considerable better model than plain counterpart.</p>
+
+<p><img src="/assets/image/paper-review1-4.png" alt="" /></p>
+
+<p>Small difference in errors for these 3 options exhibits that projection shortcuts are not essential for building better performing model.</p>
+
+<h3 id="cifar-10-and-analysis">CIFAR-10 and Analysis</h3>
+
+<ul>
+  <li>CIFAR-10 dataset consists of 50k training images and 10k test images in 10 classes.</li>
+  <li>Model used for classification follow the same form with that used in ImageNet classification, which has a total of 6n+2 weighted layers. Feature map sizes are 32, 16, 8, respectively.</li>
+  <li>Input images are 32x32 with per-pixel mean subtracted (This is probably done for scaling).</li>
+  <li>The last two layers consists of global average pooling and a 10-way fully-connected layer with softmax.</li>
+  <li>Graph below compares the error rate of plain networks and ResNet. Dashed line denotes training error and bold line denotes testing error.</li>
+</ul>
+
+<p><img src="/assets/image/paper-review1-5.png" alt="" /></p>
+
+<ol>
+  <li>Error rate of deeper plain network is higher than that of shallower network for both training and test data.</li>
+  <li>Unlike plain network, error rate of deeper ResNet is lower than that of shallower network.</li>
+  <li>However, ResNet also suffers from overfitting problem when number of layer reaches 1202. Therefore, it is better to use adequate number of layers to prevent models from getting too complex.</li>
+</ol>
+
+<h3 id="additional-tests-are-conducted-on-pascal-and-ms-coco-dataset-both-show-similar-results-as-imagenet-and-cifar-10-">Additional tests are conducted on PASCAL and MS COCO dataset. Both show similar results as ImageNet and CIFAR-10 .</h3>
 
 
         
@@ -559,9 +641,9 @@ Memory Usage: 13.9 MB, less than 25.70% of Python3 online submissions for Smalle
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+      <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">computer vision</a><span class="sep">, </span>
     
-      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+      <a href="/categories/#paper-review" class="page__taxonomy-item" rel="tag">Paper Review</a>
     
     </span>
   </p>
@@ -569,7 +651,7 @@ Memory Usage: 13.9 MB, less than 25.70% of Python3 online submissions for Smalle
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-28T00:00:00+09:00">March 28, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-30T00:00:00+09:00">March 30, 2022</time></p>
 
 
       </footer>
@@ -577,23 +659,22 @@ Memory Usage: 13.9 MB, less than 25.70% of Python3 online submissions for Smalle
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%A0%95%EB%A0%AC+%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Deep+Residual+Learning+for+Image+Recognition%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpaper%2520review%2FDeep-Residual-Learning-for-Image-Recognition%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpaper%2520review%2FDeep-Residual-Learning-for-Image-Recognition%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter17-%25EC%25A0%2595%25EB%25A0%25AC-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpaper%2520review%2FDeep-Residual-Learning-for-Image-Recognition%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/python/chapter18-%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89/" class="pagination--pager" title="이진검색
+      <a href="/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="정렬 추가문제
 ">Previous</a>
     
     
-      <a href="/computer%20vision/paper%20review/Deep-Residual-Learning-for-Image-Recognition/" class="pagination--pager" title="Deep Residual Learning for Image Recognition
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -617,7 +698,7 @@ Memory Usage: 13.9 MB, less than 25.70% of Python3 online submissions for Smalle
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer%20vision/paper%20review/Deep-Residual-Learning-for-Image-Recognition/" rel="permalink">Deep Residual Learning for Image Recognition
+        <a href="/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">정렬 추가문제
 </a>
       
     </h2>
@@ -635,14 +716,14 @@ Memory Usage: 13.9 MB, less than 25.70% of Python3 online submissions for Smalle
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 minute read
+          less than 1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Introduction
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Smallest Value of the Rearranged Number
 
 </p>
   </article>

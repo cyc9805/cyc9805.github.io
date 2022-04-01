@@ -58,6 +58,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+<ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Paper Review" %}
+                        <li><a href="/categories/Paper Review" class="">Paper Review({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
   </ul>
 </nav>
