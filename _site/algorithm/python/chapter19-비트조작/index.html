@@ -1,0 +1,147 @@
+<h2 id="question-70-싱글-넘버">Question 70: 싱글 넘버</h2>
+
+<p>딱 하나를 제외하고 모든 엘리먼트는 2개씩 있다. 1개인 앨리먼트를 찾아라.</p>
+
+<p class="notice">입력: [2,2,1]</p>
+<p class="notice">출력: 1</p>
+
+<hr />
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">number_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">number_dict</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">number_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">i</span>
+</code></pre></div></div>
+
+<h4 id="결과">결과</h4>
+
+<p>Runtime: 309 ms, faster than 14.67% of Python3 online submissions for Single Number.
+Memory Usage: 17.3 MB, less than 5.65% of Python3 online submissions for Single Number.</p>
+
+<h3 id="풀이-1-xor-풀이">풀이 1: XOR 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span> 
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">, num:</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">^=</span> <span class="n">num</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용">중요 내용</h4>
+
+<ol>
+  <li>^은 이진수를 기준으로 XOR 연산을 수행한다.</li>
+  <li>배열의 모든 값을 XOR 하면, 두번 등장한 엘리먼트는 0으로 초기화되고 한번만 등장한 엘리먼트는 그 값을 온전히 보존한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+## Question 71: 해밍 거리
+
+두 정수를 입력받아 몇 비트가 다른지 계산하라.
+
+입력: x = 1, y = 4
+{:.notice}
+출력: 2
+{:.notice}
+
+---
+
+### 내 풀이
+
+```python
+class Solution:
+    def hammingDistance(self, x: int, y: int) -&gt; int:
+        one_count = bin(x^y)
+        print(one_count)
+        result = 0
+        for i in one_count:
+            if i == '1':
+                result += 1
+        return result
+</code></pre></div></div>
+
+<h4 id="결과-1">결과</h4>
+
+<p>Runtime: 65 ms, faster than 6.71% of Python3 online submissions for Hamming Distance.
+Memory Usage: 13.8 MB, less than 97.40% of Python3 online submissions for Hamming Distance.</p>
+
+<h3 id="풀이-1-xor-풀이-1">풀이 1: XOR 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">hammingDistance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">bin</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="n">y</span><span class="p">).</span><span class="n">count</span><span class="p">(</span><span class="s">'1'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-1">중요 내용</h4>
+
+<ol>
+  <li>count() 함수를 사용하여 내가 풀이한 방법보다 훨씬 더 간단하게 풀이하였다.</li>
+  <li>bin은 십진수로 된 정수를 입력받아 이진수로 된 문자열을 리턴한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+## Question 72: 두 정수의 합
+
+두 정수 a와 b의 합을 구하라. + 또는 - 연산자는 사용할 수 없다.
+
+입력: a = 1, b= 3
+{:.notice}
+출력: 4
+{:.notice}
+
+---
+
+
+### 풀이 1: 전가산기 구현
+
+```python
+class Solution:
+    def getSum(self, a: int, b: int) -&gt; int:
+        MASK = 0xFFFFFFFF
+        INT_MAX = 0x7FFFFFFF
+        
+        a_bin = bin(a &amp; MASK)[2:].zfill(32)
+        b_bin = bin(b &amp; MASK)[2:].zfill(32)
+        
+        result = []
+        carry = 0
+        sum = 0
+        for i in range(32):
+            A = int(a_bin[31-i])
+            B = int(b_bin[31-i])
+            
+            # 전가산기 구현
+            Q1 = A &amp; B
+            Q2 = A ^ B
+            Q3 = Q2 &amp; carry
+            sum = carry ^ Q2
+            carry = Q1 | Q3
+            
+            result.append(str(sum))
+        if carry == 1:
+            result.append('1')
+         
+        # 초과 자릿수 처리
+        result = int(''.join(result[::-1]), 2) &amp; MASK
+        
+        # 음수 처리
+        if result &gt; INT_MAX:
+            result = ~(result ^ MASK)
+        
+        return result
+</code></pre></div></div>
+
+<h4 id="중요-내용-2">중요 내용</h4>
+
+<ol>
+  <li>전가산기는 하위의 자리올림수 출력을 상위의 자리올림수 입력에 연결함으로써 임의의 자리수의 이진수 덧셈이 가능하다.</li>
+  <li>```</li>
+</ol>
+
