@@ -19,9 +19,8 @@ categories:
 
 ## Introduction
 
-- Since inception network tend to get very deep, replacing filter concatenation with inception architecture is very effective.
-- In this paper, they commpared two pure Inception variants, Inception-v3 and v4, with two other variants with similarly expensive Inception-ResNet variants.
-- Inception-v4 and Inception-ResNet-v2 both show state-of-the art performance, while ensembling them does not translate to expected performace boost.
+- Since inception network tend to get very deep, replacing filter concatenation stage of the Inception architecture with residual architecture is very effective.
+- In this paper, they compared two pure Inception variants, Inception-v3 and v4, to two other variants with similarly expensive Inception-ResNet variants.
 
 
 ## Architectural Choices
@@ -34,7 +33,7 @@ Large scale of Inception-v4 looks as follows:
 
 ![](/assets/image/paper-review2-1.png){: width="30%" height="30%"}{: .center}
 
-- Previous inception networks tend to be very conservative about changing the architectural choices, and had 
+- Previous inception networks tend to be very conservative about changing the architectural choices, and had various forms among structures. 
 - Inception-v4 tackled the problems that previous inception networks had by making uniform choices for the inception blocks.
 
 #### Stem
@@ -43,7 +42,7 @@ Large scale of Inception-v4 looks as follows:
 
 - 'V' in the figures indicates valid padding, which input grid size and output grid size differ.
 - figures not marked with 'V' indicates same padding, which input grid size matches output grid size.
-- ***Stem*** sturcture is used for input part of Inception-v4 and Inception-ResNet-v2 networks.
+- ***Stem*** structure is used for input part of Inception-v4 and Inception-ResNet-v2 networks.
 - Input size is 299x299x3, and output size is 35x35x384
 
 

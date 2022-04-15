@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-15T03:20:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</title><link href="http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/" rel="alternate" type="text/html" title="Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the%20Impact-of-Residual-Connections-on-Learning</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-15T04:36:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</title><link href="http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/" rel="alternate" type="text/html" title="Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the%20Impact-of-Residual-Connections-on-Learning</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Inception and residual network have yielded outbreaking performace in the 2015 ILSVRC challenge.&lt;/li&gt;
@@ -8,9 +8,8 @@
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Since inception network tend to get very deep, replacing filter concatenation with inception architecture is very effective.&lt;/li&gt;
-  &lt;li&gt;In this paper, they commpared two pure Inception variants, Inception-v3 and v4, with two other variants with similarly expensive Inception-ResNet variants.&lt;/li&gt;
-  &lt;li&gt;Inception-v4 and Inception-ResNet-v2 both show state-of-the art performance, while ensembling them does not translate to expected performace boost.&lt;/li&gt;
+  &lt;li&gt;Since inception network tend to get very deep, replacing filter concatenation stage of the Inception architecture with residual architecture is very effective.&lt;/li&gt;
+  &lt;li&gt;In this paper, they compared two pure Inception variants, Inception-v3 and v4, to two other variants with similarly expensive Inception-ResNet variants.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;architectural-choices&quot;&gt;Architectural Choices&lt;/h2&gt;
@@ -24,7 +23,7 @@
 &lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-1.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Previous inception networks tend to be very conservative about changing the architectural choices, and had&lt;/li&gt;
+  &lt;li&gt;Previous inception networks tend to be very conservative about changing the architectural choices, and had various forms among structures.&lt;/li&gt;
   &lt;li&gt;Inception-v4 tackled the problems that previous inception networks had by making uniform choices for the inception blocks.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -35,7 +34,7 @@
 &lt;ul&gt;
   &lt;li&gt;‘V’ in the figures indicates valid padding, which input grid size and output grid size differ.&lt;/li&gt;
   &lt;li&gt;figures not marked with ‘V’ indicates same padding, which input grid size matches output grid size.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Stem&lt;/em&gt;&lt;/strong&gt; sturcture is used for input part of Inception-v4 and Inception-ResNet-v2 networks.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Stem&lt;/em&gt;&lt;/strong&gt; structure is used for input part of Inception-v4 and Inception-ResNet-v2 networks.&lt;/li&gt;
   &lt;li&gt;Input size is 299x299x3, and output size is 35x35x384&lt;/li&gt;
 &lt;/ul&gt;
 

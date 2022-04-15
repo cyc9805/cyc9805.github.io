@@ -508,9 +508,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <h2 id="introduction">Introduction</h2>
 
 <ul>
-  <li>Since inception network tend to get very deep, replacing filter concatenation with inception architecture is very effective.</li>
-  <li>In this paper, they commpared two pure Inception variants, Inception-v3 and v4, with two other variants with similarly expensive Inception-ResNet variants.</li>
-  <li>Inception-v4 and Inception-ResNet-v2 both show state-of-the art performance, while ensembling them does not translate to expected performace boost.</li>
+  <li>Since inception network tend to get very deep, replacing filter concatenation stage of the Inception architecture with residual architecture is very effective.</li>
+  <li>In this paper, they compared two pure Inception variants, Inception-v3 and v4, to two other variants with similarly expensive Inception-ResNet variants.</li>
 </ul>
 
 <h2 id="architectural-choices">Architectural Choices</h2>
@@ -524,7 +523,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <p><img src="/assets/image/paper-review2-1.png" alt="" width="30%" height="30%" class="center" /></p>
 
 <ul>
-  <li>Previous inception networks tend to be very conservative about changing the architectural choices, and had</li>
+  <li>Previous inception networks tend to be very conservative about changing the architectural choices, and had various forms among structures.</li>
   <li>Inception-v4 tackled the problems that previous inception networks had by making uniform choices for the inception blocks.</li>
 </ul>
 
@@ -535,7 +534,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <ul>
   <li>‘V’ in the figures indicates valid padding, which input grid size and output grid size differ.</li>
   <li>figures not marked with ‘V’ indicates same padding, which input grid size matches output grid size.</li>
-  <li><strong><em>Stem</em></strong> sturcture is used for input part of Inception-v4 and Inception-ResNet-v2 networks.</li>
+  <li><strong><em>Stem</em></strong> structure is used for input part of Inception-v4 and Inception-ResNet-v2 networks.</li>
   <li>Input size is 299x299x3, and output size is 35x35x384</li>
 </ul>
 
