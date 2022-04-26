@@ -1,137 +1,189 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-26T02:34:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</title><link href="http://localhost:4000/computer%20vision/paper%20review/EfficientNet/" rel="alternate" type="text/html" title="Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning" /><published>2022-04-26T00:00:00+09:00</published><updated>2022-04-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/EfficientNet</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/EfficientNet/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-27T03:13:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</title><link href="http://localhost:4000/computer%20vision/paper%20review/EfficientNet/" rel="alternate" type="text/html" title="EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks" /><published>2022-04-26T00:00:00+09:00</published><updated>2022-04-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/EfficientNet</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/EfficientNet/">&lt;h2 id=&quot;1-abstract&quot;&gt;1. Abstract&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Inception and residual network have yielded outbreaking performace in the 2015 ILSVRC challenge.&lt;/li&gt;
-  &lt;li&gt;This paper proves that applying residual connection to inception networks accelerates the training process significantly.&lt;/li&gt;
+  &lt;li&gt;Scaling network depth, width and resolution leads to better performing model.&lt;/li&gt;
+  &lt;li&gt;However, choosing scaling value and which component to scale can be problematic.&lt;/li&gt;
+  &lt;li&gt;This paper proposes new scaling method that uniformly scale detph, width and resolution by using &lt;strong&gt;&lt;em&gt;compound coefficient&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Since inception network tend to get very deep, replacing filter concatenation stage of the Inception architecture with residual architecture is very effective.&lt;/li&gt;
-  &lt;li&gt;In this paper, they compared two pure Inception variants, Inception-v3 and v4, to two other variants with similarly expensive Inception-ResNet variants.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;architectural-choices&quot;&gt;Architectural Choices&lt;/h2&gt;
-
-&lt;h3 id=&quot;1-pure-inception-blocks&quot;&gt;1. Pure Inception blocks&lt;/h3&gt;
-
-&lt;h4 id=&quot;general-look&quot;&gt;General look&lt;/h4&gt;
-
-&lt;p&gt;Large scale of Inception-v4 looks as follows:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-1.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Previous inception networks tend to be very conservative about changing the architectural choices, and had various forms among structures.&lt;/li&gt;
-  &lt;li&gt;Inception-v4 tackled the problems that previous inception networks had by making uniform choices for the inception blocks.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;stem&quot;&gt;Stem&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-2.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;‘V’ in the figures indicates valid padding, which input grid size and output grid size differ.&lt;/li&gt;
-  &lt;li&gt;figures not marked with ‘V’ indicates same padding, which input grid size matches output grid size.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Stem&lt;/em&gt;&lt;/strong&gt; structure is used for input part of Inception-v4 and Inception-ResNet-v2 networks.&lt;/li&gt;
-  &lt;li&gt;Input size is 299x299x3, and output size is 35x35x384&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;inception-a&quot;&gt;Inception-A&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-3.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;inception-b&quot;&gt;Inception-B&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-4.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;inception-c&quot;&gt;Inception-C&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-5.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;k, l, m, n indicated varying filter sizes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;reduction-a&quot;&gt;Reduction-A&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-6.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;reduction-b&quot;&gt;Reduction-B&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-7.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;2-residual-inception-blocks&quot;&gt;2. Residual Inception Blocks&lt;/h3&gt;
-
-&lt;p&gt;Inception-ResNet-v1 and Inception-ResNet-v2 networks looks as follows:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-8-2.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-introduction&quot;&gt;2. Introduction&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Each Inception block starts with 1x1 convolution layer, which is used for scaling up the dimensionality of the filter banks. This later compensates to dimensionality reduction caused by inception block.&lt;/p&gt;
+    &lt;p&gt;Scaling ConvNets is done in various ways, but the most common way is to scale up by their depth, width and resolution.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Batch normalization is applied only on traditional layers, not on top on summations. This has significantly less GPU memory usage compared to model with BN applied to all layers.&lt;/p&gt;
+    &lt;p&gt;In previous work, scaling only one of these three components has been done, for scaling two or three dimensions requires tedious manual tuning with lots of resources.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;However, it is possible to balance all dimensions of network width, depth and resolution by scaling each of them with constant ratio. This process is called &lt;strong&gt;&lt;em&gt;compound scaling method&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There exists certain relationship between these three dimensions.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;inception-resnet-a&quot;&gt;Inception-resnet-A&lt;/h4&gt;
+&lt;h2 id=&quot;3-compound-model-scaling&quot;&gt;3. Compound Model Scaling&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-8.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;reduction-a-1&quot;&gt;Reduction-A&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-9.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;inception-resnet-b&quot;&gt;Inception-resnet-B&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-10.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;reduction-b-1&quot;&gt;Reduction-B&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-11.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;inception-resnet-c&quot;&gt;Inception-resnet-C&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-12.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;scaling-of-the-residuals&quot;&gt;Scaling of the residuals&lt;/h3&gt;
+&lt;h3 id=&quot;31-problem-formulation&quot;&gt;3.1. Problem Formulation&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;If number of filters exceed 1000, networks die, meaning last layer before average pooling starts to produce only zeros.&lt;/li&gt;
-  &lt;li&gt;This problem is solved by scaling down residuals before being added to the accumulated layer activations.&lt;/li&gt;
+  &lt;li&gt;ConvNet layer i can be defined as following function.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-13.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;training-methodology&quot;&gt;Training Methodology&lt;/h2&gt;
+&lt;p&gt;$Y_i = F_i(X_i)$&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Best models were achieved using RMSProp with a learning rate of 0.045.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Y_i is output tensor, F_i is operator and X_i is input shape with a shape of [$H_i, W_i, C_i$], where $H_i$ and $W_i$ are image height and width and $C_i$ is number of filters.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Therefore, the whole ConvNet is defined as follows:&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;experimental-results&quot;&gt;Experimental Results&lt;/h2&gt;
+&lt;p&gt;$N = F_1&lt;em&gt;F_2&lt;/em&gt;F_3&lt;em&gt;…&lt;/em&gt;F_k$&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The graph below shows the top-5 error evaluations of all four models. Inception with residual block converges much faster than pure Inception networks, while having similar performance.&lt;/li&gt;
+  &lt;li&gt;ConvNets are usually partitioned into multiple stages and all layers in each stage share same architecture. Therefore, ConvNet can be defined in different way:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-14.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-1.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Test on 144 crop images were also conducted. Ensembled Model, which consists of one pure Inception-v4 model and three Inception-ResNet-v2 models, was used for evalution. Table on the left refers to the error rate of single model while the right refers to error rate of ensembled model. Ensembled model showed slightly better performance than single model.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;$F_i^{L_i}$ denotes layer $F_i$ is repeated $L_i$ times in stage i.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Model scaling tries to expand network depth($L_i$), width($C_i$) and resolution($H_i, W_i$), without ** changing the predefined architecture $F_i$. **&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The goal of this network is trying to achieve target memory and target Flops by scaling with constant ratio. Such process is formulated as follows:&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-15.png&quot; alt=&quot;&quot; width=&quot;90%&quot; height=&quot;90%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-2.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Inception networks with residual connections, inception-resnet-v2, showed fastest training speed, while having similar performance with pure counterparts.&lt;/li&gt;
-  &lt;li&gt;Residual connections contribute heavily to improving training speed of inception networks.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="Paper Review" /><summary type="html">Abstract</summary></entry><entry><title type="html">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</title><link href="http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/" rel="alternate" type="text/html" title="Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the%20Impact-of-Residual-Connections-on-Learning</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+  &lt;li&gt;$w, d, r$ are coefficient for scaling network width, depth, and resolution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;32-scaling-dimensions&quot;&gt;3.2 Scaling Dimensions&lt;/h3&gt;
+
+&lt;p&gt;This section shows accuracy changes when scaling one of these dimensions is done.&lt;/p&gt;
+
+&lt;h4 id=&quot;depthd&quot;&gt;Depth($d$)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cons: Deeper network can capture richer and more complex features, and works generally well for new tasks.&lt;/li&gt;
+  &lt;li&gt;Pros: Accuracy gain decreases due to vanishing gradient problem.&lt;/li&gt;
+  &lt;li&gt;Solution: skip connection, batch normalization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;widthw&quot;&gt;Width($w$)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cons: Wider network tends to capture more fine-grained features and easier to train, due to small size of the model.&lt;/li&gt;
+  &lt;li&gt;Pros: Wide but shallow networks tends to have difficulties in finding higher level features.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;resolutionr&quot;&gt;Resolution($r$)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cons: With higher resolution input image, ConvNet can capture more fine-grained patterns.&lt;/li&gt;
+  &lt;li&gt;Pros: Accuracy gain diminishes for very high resolutions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Conclusion: Scaling one of these dimensions improves accuracy, but its gain decreases as the model gets bigger.&lt;/p&gt;
+
+&lt;h3 id=&quot;33-compound-scaling&quot;&gt;3.3 Compound Scaling&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Scaling dimensions are not independent to each other. For example, when image resolution gets higher, network should be wider to capture more fine-grained patterns. Therefore, 
+multiple dimensions should be scaled simultaneously rather than conventional single dimension scaling.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This paper proposes compound scaling method, which use a compound coefficient $\phi$ to uniformly scale all dimensions:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;depth: $d = \alpha^\phi$
+width: $w = \beta^\phi$
+resolution: $r = \gamma^\phi$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;$\phi$ denotes user-specified coefficient which is  controlled by avaliable resources.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;$\alpha, \beta, \gamma$ denotes the scaling value of depth, width and resolution.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Total FLOPS is increased by ($\alpha * \beta^2 * \gamma^2$)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4-efficientnet-architecture&quot;&gt;4. EfficientNet Architecture&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Since model scaling does not change the overall architecture $F_i$, having a good baseline network is crucial.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Neural architecture search is utilized to optimize both accuracy and FLOPS. The search result is named EfficientNet-B0 and the architecture looks as follows:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-3.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Starting from the baseline network EfficientNet-B0, compound scaling method is divided into two steps:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Step 1: Fix $\phi = 1$, and do the grid search to find best values for $\alpha, \beta, \gamma$. The results are $\alpha = 1.2, \beta = 1.1, \gamma = 1.15$, under the constraint of $\alpha * \beta^2 * \gamma^2 \approx 2$&lt;/p&gt;
+
+&lt;p&gt;Step 2: Fix $\alpha, \beta, \gamma$ as constant, and adjust $\phi$ with different values to make EfficientNet-B1 to B7.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-experiments&quot;&gt;5. Experiments&lt;/h2&gt;
+
+&lt;h3 id=&quot;51-scaling-up-mobilenets-and-resnets&quot;&gt;5.1 Scaling Up MobileNets and ResNets&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Scaling method is first applied to widely-used MobileNets and ResNet. Scaled models both show significant accuracy improvement compared to previous models.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-4.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;52-imagenet-results-for-efficientnet&quot;&gt;5.2 ImageNet Results for EfficientNet&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Scaling method is then applied to EfficientNet models. Number of parameters and FLOPs are both significantly lower than existing ConvNets, while accuracy is either similar or higher.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-5.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Latency is also measuered for EfficientNet-B1 and EfficeintNet-B7, and both run about 6 times faster than ResNet-152 and GPipe. This implies that EfficientNets are fast on real hardware.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;53-transfer-learning-results-for-efficientnet&quot;&gt;5.3 Transfer Learning Results for EfficientNet&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;EfficientNet is also evaluated on transfer learning dataset. Compared to other models with similar accuracy, EfficientNet show significantly less parameters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;6-discussion&quot;&gt;6. Discussion&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To discover the effect of compound scaling, ImageNet performance of different scaling method for the same EfficientNet-B0 has been compared. All scaling methods improve accuracy with the cost of more FLOPS, but compound scaling can further improve accuracy by up to 2.5%.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;7-conclusion&quot;&gt;7. Conclusion&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Compound model scaling, which scales the dimension of depth, width and resolution by constant ratio, highly saves resources while maintaining its performance.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="Paper Review" /><summary type="html">1. Abstract</summary></entry><entry><title type="html">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</title><link href="http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/" rel="alternate" type="text/html" title="Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the%20Impact-of-Residual-Connections-on-Learning</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Inception and residual network have yielded outbreaking performace in the 2015 ILSVRC challenge.&lt;/li&gt;
