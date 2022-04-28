@@ -43,11 +43,11 @@ $Y_i = F_i(X_i)$
 
 - Therefore, the whole ConvNet is defined as follows:
 
-$N = F_1*F_2*F_3*...*F_k$
+$N = F_1 * F_2 * F_3 * ... * F_k$
 
 - ConvNets are usually partitioned into multiple stages and all layers in each stage share same architecture. Therefore, ConvNet can be defined in different way:
 
-![](/assets/image/paper-review3-1.png){: width="30%" height="30%"}{: .center}
+![](/assets/image/paper-review3-1.png){: width="50%" height="50%"}{: .center}
 
 - $F_i^{L_i}$ denotes layer $F_i$ is repeated $L_i$ times in stage i.
 
@@ -55,7 +55,7 @@ $N = F_1*F_2*F_3*...*F_k$
 
 - The goal of this network is trying to achieve target memory and target Flops by scaling with constant ratio. Such process is formulated as follows:
 
-![](/assets/image/paper-review3-2.png){: width="30%" height="30%"}{: .center}
+![](/assets/image/paper-review3-2.png){: width="50%" height="50%"}{: .center}
 
 - $w, d, r$ are coefficient for scaling network width, depth, and resolution.
 

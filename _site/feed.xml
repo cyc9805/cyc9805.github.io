@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-27T03:13:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</title><link href="http://localhost:4000/computer%20vision/paper%20review/EfficientNet/" rel="alternate" type="text/html" title="EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks" /><published>2022-04-26T00:00:00+09:00</published><updated>2022-04-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/EfficientNet</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/EfficientNet/">&lt;h2 id=&quot;1-abstract&quot;&gt;1. Abstract&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-27T03:18:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</title><link href="http://localhost:4000/computer%20vision/paper%20review/EfficientNet/" rel="alternate" type="text/html" title="EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks" /><published>2022-04-26T00:00:00+09:00</published><updated>2022-04-26T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/EfficientNet</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/EfficientNet/">&lt;h2 id=&quot;1-abstract&quot;&gt;1. Abstract&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Scaling network depth, width and resolution leads to better performing model.&lt;/li&gt;
@@ -42,13 +42,13 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;$N = F_1&lt;em&gt;F_2&lt;/em&gt;F_3&lt;em&gt;…&lt;/em&gt;F_k$&lt;/p&gt;
+&lt;p&gt;$N = F_1 * F_2 * F_3 * … * F_k$&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;ConvNets are usually partitioned into multiple stages and all layers in each stage share same architecture. Therefore, ConvNet can be defined in different way:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-1.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-1.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -62,7 +62,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-2.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review3-2.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;$w, d, r$ are coefficient for scaling network width, depth, and resolution.&lt;/li&gt;
