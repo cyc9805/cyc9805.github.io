@@ -39,7 +39,7 @@ categories:
 
 $Y_i = F_i(X_i)$
 
-- Y_i is output tensor, F_i is operator and X_i is input shape with a shape of [$H_i, W_i, C_i$], where $H_i$ and $W_i$ are image height and width and $C_i$ is number of filters.
+- $Y_i$ is output tensor, $F_i$ is operator and $X_i$ is input shape with a shape of [$H_i, W_i, C_i$], where $H_i$ and $W_i$ are image height and width and $C_i$ is number of filters.
 
 - Therefore, the whole ConvNet is defined as follows:
 
