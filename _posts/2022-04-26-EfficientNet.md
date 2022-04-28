@@ -27,8 +27,6 @@ categories:
 
 - However, it is possible to balance all dimensions of network width, depth and resolution by scaling each of them with constant ratio. This process is called ***compound scaling method***.
 
-- There exists certain relationship between these three dimensions.
-
 
 
 ## 3. Compound Model Scaling
@@ -39,7 +37,7 @@ categories:
 
 $Y_i = F_i(X_i)$
 
-- $Y_i$ is output tensor, $F_i$ is operator and $X_i$ is input shape with a shape of [$H_i, W_i, C_i$], where $H_i$ and $W_i$ are image height and width and $C_i$ is number of filters.
+- $Y_i$ is output tensor, $F_i$ is operator and $X_i$ is input data with a shape of [$H_i, W_i, C_i$], where $H_i$ and $W_i$ are image height and width and $C_i$ is number of channels.
 
 - Therefore, the whole ConvNet is defined as follows:
 

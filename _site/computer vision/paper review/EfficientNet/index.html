@@ -518,9 +518,6 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   <li>
     <p>However, it is possible to balance all dimensions of network width, depth and resolution by scaling each of them with constant ratio. This process is called <strong><em>compound scaling method</em></strong>.</p>
   </li>
-  <li>
-    <p>There exists certain relationship between these three dimensions.</p>
-  </li>
 </ul>
 
 <h2 id="3-compound-model-scaling">3. Compound Model Scaling</h2>
@@ -535,7 +532,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <ul>
   <li>
-    <p>$Y_i$ is output tensor, $F_i$ is operator and $X_i$ is input shape with a shape of [$H_i, W_i, C_i$], where $H_i$ and $W_i$ are image height and width and $C_i$ is number of filters.</p>
+    <p>$Y_i$ is output tensor, $F_i$ is operator and $X_i$ is input data with a shape of [$H_i, W_i, C_i$], where $H_i$ and $W_i$ are image height and width and $C_i$ is number of channels.</p>
   </li>
   <li>
     <p>Therefore, the whole ConvNet is defined as follows:</p>
