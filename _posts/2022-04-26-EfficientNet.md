@@ -64,19 +64,19 @@ This section shows accuracy changes when scaling one of these dimensions is done
 
 #### Depth($d$)
 
-- Cons: Deeper network can capture richer and more complex features, and works generally well for new tasks.
-- Pros: Accuracy gain decreases due to vanishing gradient problem.
+- Pros: Deeper network can capture richer and more complex features, and works generally well for new tasks.
+- Cons: Accuracy gain decreases due to vanishing gradient problem.
 - Solution: skip connection, batch normalization
 
 #### Width($w$)
 
-- Cons: Wider network tends to capture more fine-grained features and easier to train, due to small size of the model. 
-- Pros: Wide but shallow networks tends to have difficulties in finding higher level features.
+- Pros: Wider network tends to capture more fine-grained features and easier to train, due to small size of the model. 
+- Cons: Wide but shallow networks tends to have difficulties in finding higher level features.
 
 #### Resolution($r$)
 
-- Cons: With higher resolution input image, ConvNet can capture more fine-grained patterns. 
-- Pros: Accuracy gain diminishes for very high resolutions.
+- Pros: With higher resolution input image, ConvNet can capture more fine-grained patterns. 
+- Cons: Accuracy gain diminishes for very high resolutions.
 
 
 Conclusion: Scaling one of these dimensions improves accuracy, but its gain decreases as the model gets bigger.
@@ -95,7 +95,7 @@ resolution: $r = \gamma^\phi$
 
 - $\phi$ denotes user-specified coefficient which is  controlled by avaliable resources. 
 
-- $\alpha, \beta, \gamma$ denotes the scaling value of depth, width and resolution. 
+- $\alpha, \beta, \gamma$ denotes constants that can be determined by grid search.
 
 - Total FLOPS is increased by ($\alpha * \beta^2 * \gamma^2$)
 
@@ -119,7 +119,7 @@ resolution: $r = \gamma^\phi$
 
 ### 5.1 Scaling Up MobileNets and ResNets
 
-- Scaling method is first applied to widely-used MobileNets and ResNet. Scaled models both show significant accuracy improvement compared to previous models.
+- Compound scaling method is first applied to widely-used MobileNets and ResNet. Scaled models both show significant accuracy improvement compared to previous models.
 
 ![](/assets/image/paper-review3-4.png){: width="50%" height="50%"}{: .center}
 
