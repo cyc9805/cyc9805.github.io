@@ -51,16 +51,16 @@ This section explains the process of finding text-line.
 
 ![](/assets/image/paper-review4-3.png){: width="60%" height="60%"}{: .center}
 
-$r$ is y - intercept.
-$\theta$ is rotation of the line.
-$d$ is the distance of the base line to the line of descenders.
+ - $r$ is y - intercept.
+ - <br> $\theta$ is rotation of the line.
+ - <br> $d$ is the distance of the base line to the line of descenders.
 
 3. Feature points are required for quality function. Feature point is defined as the center of the lower line of the bounding box.
 
 ![](/assets/image/paper-review4-4.png){: width="60%" height="60%"}{: .center}
 
 red dots are feature points.
-$\in$ is the parameter that decides the number of red dots within dotted lines.
+ - $\in$ is the parameter that decides the number of red dots within dotted lines.
 
 4. The goal of the quality function is to guide the parameter search to find good solutions that represent text-lines.
 
