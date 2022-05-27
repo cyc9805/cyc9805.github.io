@@ -35,10 +35,10 @@ categories:
   3. Distances of the text–lines to the alignment lines are computed.
   
 ![](/assets/image/paper-review4-1.png){: width="60%" height="60%"}{: .center}
-*Alignment line*
+*-> Alignment line*
 
 ![](/assets/image/paper-review4-2.png){: width="60%" height="60%"}{: .center}
-*Text-lines*
+*-> Text-lines*
 
 
 ## 3. Text-line finding
