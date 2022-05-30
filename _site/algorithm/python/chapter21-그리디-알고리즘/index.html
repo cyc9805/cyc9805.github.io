@@ -1,0 +1,1124 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- MATH EQUATION -->
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>그리디 알고리즘 - yongchan’s website</title>
+<meta name="description" content="Question 78: 주식을 사고팔기 가장 좋은 시점2">
+
+
+  <meta name="author" content="yongchanchun">
+  
+  <meta property="article:author" content="yongchanchun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="yongchan's website">
+<meta property="og:title" content="그리디 알고리즘">
+<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter21-%EA%B7%B8%EB%A6%AC%EB%94%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">
+
+
+  <meta property="og:description" content="Question 78: 주식을 사고팔기 가장 좋은 시점2">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-03T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter21-%EA%B7%B8%EB%A6%AC%EB%94%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yongchan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="yongchan's website Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Welcome to my website!!
+          <span class="site-subtitle">👋👋👋</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image/profile2.png" alt="yongchanchun" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">yongchanchun</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I’m trying to post on a daily basis<br />this may be hard but <strong>Nothing is achieved without trying!</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.facebook.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc"></label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂전체 글 수 60개
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Programming</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                
+                    
+                
+                    
+                        <li><a href="/categories/python" class="">Python (55)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/data analysis" class="">Data Analysis (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/computer vision" class="">Computer Vision (19)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/markdown" class="">Markdown (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/project" class="">Project (3)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+	    <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm (32)</a></li>
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Paper Review" class="">Paper Review(4)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="그리디 알고리즘">
+    <meta itemprop="description" content="Question 78: 주식을 사고팔기 가장 좋은 시점2">
+    <meta itemprop="datePublished" content="2022-05-03T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">그리디 알고리즘
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#question-78-주식을-사고팔기-가장-좋은-시점2">Question 78: 주식을 사고팔기 가장 좋은 시점2</a><ul><li><a href="#내-풀이">내 풀이</a><ul><li><a href="#결과">결과</a></li></ul></li><li><a href="#풀이-1-브루트-포스로-계산">풀이 1: 브루트 포스로 계산</a><ul><li><a href="#중요-내용">중요 내용</a></li></ul></li><li><a href="#풀이-2-큐를-이용한-최적화">풀이 2: 큐를 이용한 최적화</a><ul><li><a href="#중요-내용-1">중요 내용</a></li></ul></li></ul></li><li><a href="#question-79-키에-따른-대기열-구성">Question 79: 키에 따른 대기열 구성</a><ul><li><a href="#풀이-1-우선순위-큐">풀이 1: 우선순위 큐</a><ul><li><a href="#중요-내용-2">중요 내용</a></li></ul></li></ul></li><li><a href="#question-80-태스크-스케줄러">Question 80: 태스크 스케줄러</a><ul><li><a href="#풀이-1-투-포인터-슬라이딩-윈도우-이용">풀이 1: 투 포인터, 슬라이딩 윈도우 이용</a><ul><li><a href="#중요-내용-3">중요 내용</a></li></ul></li></ul></li><li><a href="#question-81-주유소">Question 81: 주유소</a><ul><li><a href="#풀이-1-모두-방문">풀이 1: 모두 방문</a><ul><li><a href="#중요-내용-4">중요 내용</a></li></ul></li><li><a href="#풀이-2-한-번-방문">풀이 2: 한 번 방문</a><ul><li><a href="#중요-내용-5">중요 내용</a></li></ul></li></ul></li><li><a href="#question-82-쿠키-부여">Question 82: 쿠키 부여</a><ul><li><a href="#풀이-1-그리디-알고리즘">풀이 1: 그리디 알고리즘</a><ul><li><a href="#중요-내용-6">중요 내용</a></li></ul></li><li><a href="#풀이-2-이진-검색">풀이 2: 이진 검색</a><ul><li><a href="#중요-내용-7">중요 내용</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="question-78-주식을-사고팔기-가장-좋은-시점2">Question 78: 주식을 사고팔기 가장 좋은 시점2</h2>
+
+<p>여러번의 거래로 낼 수 있는 최대 이익을 산출하라.</p>
+
+<p class="notice">입력: [7,1,5,3,6,4]</p>
+<p class="notice">출력: 7</p>
+
+<hr />
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">maxSlidingWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="p">]))</span>
+        
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h4 id="결과">결과</h4>
+
+<p>시간 초과 에러가 떴다.</p>
+
+<h3 id="풀이-1-브루트-포스로-계산">풀이 1: 브루트 포스로 계산</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">maxSlidingWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="p">]))</span>
+        
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용">중요 내용</h4>
+
+<ol>
+  <li>앞에 nums가 입력값이 없을때 예외 처리하는 것을 제외하고 내 풀이 방법과 동일하게 풀이하였다.</li>
+  <li>책에서는 풀이가 704ms 만큼 소모되었다고 나왔는데 실제로 계산해보니 시간 초과 에러가 떴다.</li>
+</ol>
+
+<h3 id="풀이-2-큐를-이용한-최적화">풀이 2: 큐를 이용한 최적화</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">maxSlidingWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">deque</span><span class="p">()</span>
+        <span class="n">current_max</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">'-inf'</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="n">window</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># 새로 추가된 값이 기존 최대값보다 큰 경우 교체
+</span>            <span class="k">if</span> <span class="n">current_max</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s">'-inf'</span><span class="p">):</span>
+                <span class="n">current_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="n">current_max</span><span class="p">:</span>
+                <span class="n">current_max</span> <span class="o">=</span> <span class="n">v</span>
+
+            <span class="n">results</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_max</span><span class="p">)</span>
+
+            <span class="c1"># 최대값이 윈도우에서 빠지면 초기화
+</span>            <span class="k">if</span> <span class="n">current_max</span> <span class="o">==</span> <span class="n">window</span><span class="p">.</span><span class="n">popleft</span><span class="p">():</span>
+                <span class="n">current_max</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">'-inf'</span><span class="p">)</span>
+                
+        <span class="k">return</span> <span class="n">results</span>
+        
+</code></pre></div></div>
+
+<h4 id="중요-내용-1">중요 내용</h4>
+
+<ol>
+  <li>윈도우 변수를 만들고 윈도우의 최댓값과 윈도우를 이동하면서 새로 추가되는 값간의 크기를 비교한다.</li>
+  <li>풀이1과 마찬가지로 책에서는 풀이가 156ms 만큼 소모되었다고 나왔는데 실제로 계산해보니 시간 초과 에러가 떴다.</li>
+</ol>
+
+<hr />
+
+<h2 id="question-79-키에-따른-대기열-구성">Question 79: 키에 따른 대기열 구성</h2>
+
+<p>여러 명의 사람들이 줄을 서 있다. 각각의 사람은 (h, k)의 두 정수 쌍을 갖는데, h는 그 사람의 키, k는 앞에 줄 서 있는 사람들 중 자신의 키 이상인 사람들의 수를 뜻한다. 이 값이 올바르도록 줄을 재정렬하는 알고리즘을 작성하라.</p>
+
+<p class="notice">입력: [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]</p>
+<p class="notice">출력: [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]</p>
+
+<hr />
+
+<h3 id="풀이-1-우선순위-큐">풀이 1: 우선순위 큐</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">reconstructQueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">people</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+        <span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">people</span><span class="p">:</span>
+            <span class="n">heapq</span><span class="p">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">person</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">while</span> <span class="n">heap</span><span class="p">:</span>
+            <span class="n">person</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">person</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-2">중요 내용</h4>
+
+<ol>
+  <li>이 문제는 첫번째 값이 큰 순서대로 두번째 값의 인덱스로 삽입하는 방법으로 풀 수 있다.</li>
+  <li>첫번째 값이 큰 순서대로 리스트를 추출하는 방법은 최대 힙(max heap) 방법을 사용하면 된다. 그러나 파이썬의 heapq는 최소 힙(min heap)만 지원하므로 첫번째 값을 음수로 바꾼 후에 heappop을 적용해 다시 음수를 적용하는 방법으로 풀어야 한다.</li>
+</ol>
+
+<hr />
+
+<h2 id="question-80-태스크-스케줄러">Question 80: 태스크 스케줄러</h2>
+
+<p>A부터 Z로 표현된 태스크가 있다. 간 간격마다 cpu는 한번의 태스크만 진행할 수 있고, n번의 간격 내에는 동일한 태스크를 실행할 수 없다. 더이 상 태스크를 진행할 수 없는 경우 idle  상태가 된다. 모든 태스크를 실행하기 위한 최소 간격을 출력하라.</p>
+
+<p class="notice">입력: tasks = [“A”,”A”,”A”,”B”,”B”,”B”], n = 2</p>
+<p class="notice">출력: 8</p>
+
+<hr />
+
+<h3 id="풀이-1-투-포인터-슬라이딩-윈도우-이용">풀이 1: 투 포인터, 슬라이딩 윈도우 이용</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">leastInterval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="n">collections</span><span class="p">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">sub_count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'most_common:</span><span class="si">{</span><span class="n">counter</span><span class="p">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+            <span class="c1"># 개수 순 추출
+</span>            <span class="k">for</span> <span class="n">task</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">counter</span><span class="p">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">sub_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span>                
+                <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'sub_count: </span><span class="si">{</span><span class="n">sub_count</span><span class="si">}</span><span class="s">, result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+                <span class="n">counter</span><span class="p">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+                <span class="c1"># 0 이하인 아이템을 목록에서 완전히 제거
+</span>                <span class="n">counter</span> <span class="o">+=</span> <span class="n">collections</span><span class="p">.</span><span class="n">Counter</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">counter</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">sub_count</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-3">중요 내용</h4>
+
+<ol>
+  <li>문제를 이해하기 어려워서 print문을 추가하였다.</li>
+  <li>n은 동일한 태스크 사이에 존재해야 하는 태스크의 개수이다.</li>
+  <li>counter 함수에서 collection.Counter()을 더하면 0이하의 값을 삭제한다.</li>
+  <li>most_common(n)에서 n은 counter 객체의 개수를 초과해도 정상적으로 작동한다.</li>
+</ol>
+
+<hr />
+
+<h2 id="question-81-주유소">Question 81: 주유소</h2>
+
+<p>원형으로 경로가 연결된 주유소 목록이 있다. 각 주유소는 gas[i] 만큼의 기름을 갖고 있으며, 다음 주유소로 이동하는데 cost[i]가 필요하다. 기름이 부족하면 이동할 수 없다고 할 때 모든 주유소를 방문할 수 있는 출발점의 인덱스를 출력하라.</p>
+
+<p class="notice">입력: gas = [1,2,3,4,5], cost = [3,4,5,1,2]</p>
+<p class="notice">출력: 3</p>
+
+<hr />
+
+<h3 id="풀이-1-모두-방문">풀이 1: 모두 방문</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">canCompleteCircuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gas</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">cost</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gas</span><span class="p">)):</span>
+            <span class="n">fuel</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">gas</span><span class="p">)</span> <span class="o">+</span> <span class="n">start</span><span class="p">):</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">gas</span><span class="p">)</span>
+
+                <span class="n">can_travel</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">if</span> <span class="n">gas</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">fuel</span> <span class="o">&lt;</span> <span class="n">cost</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
+                    <span class="n">can_travel</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">fuel</span> <span class="o">+=</span> <span class="n">gas</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">-</span> <span class="n">cost</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">can_travel</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">start</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-4">중요 내용</h4>
+
+<ol>
+  <li>주유소는 원형으로 연결되어 있으므로 인덱스 0에서 시작하지 않아도 모듈로 연산을 통해서 인덱스를 0부터 지정할 수 있다.</li>
+  <li>시작점을 바꿔가면서 모든 경로를 이동할 수 있는 연료가 있는지 확인한다.</li>
+</ol>
+
+<h3 id="풀이-2-한-번-방문">풀이 2: 한 번 방문</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">canCompleteCircuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gas</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">cost</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># 모든 주유소 방문 가능 여부 판별
+</span>        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">gas</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cost</span><span class="p">):</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="n">start</span><span class="p">,</span> <span class="n">fuel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gas</span><span class="p">)):</span>
+            <span class="c1"># 출발점이 안되는 지점 판별
+</span>            <span class="k">if</span> <span class="n">gas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">fuel</span> <span class="o">&lt;</span> <span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">fuel</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fuel</span> <span class="o">+=</span> <span class="n">gas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">start</span>
+        
+</code></pre></div></div>
+
+<h4 id="중요-내용-5">중요 내용</h4>
+
+<ol>
+  <li>시작점은 반드시 존재하므로 gas &gt; cost 인 지점이 반드시 존재한다. 따라서 해당점을 시작점으로 설정하고 모든 지점을 들를 수 있는 연료를 가지고 있는지 확인한다.</li>
+  <li>모든 지점을 방문하면서 성립되지 않는 경우는 출발점을 한 칸씩 뒤로 밀어낸다.</li>
+</ol>
+
+<hr />
+
+<h2 id="question-82-쿠키-부여">Question 82: 쿠키 부여</h2>
+
+<p>아이들에게 1개씩 쿠키를 나눠줘야 한다. 각 아이 child_i 마다 그리드 팩터 g_i를 갖고 있으며, 이는 아이가 만족하는 최소 쿠키의 크기를 말한다. 각 쿠키 cookie_j는 크기 s_j를 갖고 있으며, s_j &gt;= g_i 이어야 아이가 만족하며 쿠키를 받는다. 최대 몇명의 아이들에게 쿠키를 줄 수 있는지 출력하라.</p>
+
+<p class="notice">입력: g = [1,2,3], s = [1,1]</p>
+<p class="notice">출력: 1</p>
+
+<hr />
+
+<h3 id="풀이-1-그리디-알고리즘">풀이 1: 그리디 알고리즘</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">findContentChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">s</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">g</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+        <span class="n">child_i</span> <span class="o">=</span> <span class="n">cookie_j</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 만족하지 못할 때까지 그리디 진행
+</span>        <span class="k">while</span> <span class="n">child_i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="ow">and</span> <span class="n">cookie_j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">cookie_j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">g</span><span class="p">[</span><span class="n">child_i</span><span class="p">]:</span>
+                <span class="n">child_i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">cookie_j</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">child_i</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-6">중요 내용</h4>
+
+<ol>
+  <li>현재 가지고 있는 쿠키의 크기를 반복을 통해 각 아이가 원하는 최소 쿠키의 크기보다 큰지 점검한다.</li>
+</ol>
+
+<h3 id="풀이-2-이진-검색">풀이 2: 이진 검색</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">findContentChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">s</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">g</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">bisect</span><span class="p">.</span><span class="n">bisect_right</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h4 id="중요-내용-7">중요 내용</h4>
+
+<ol>
+  <li>하나의 리스트를 순회하면서 다른 하나는 이진 검색으로 찾는데, 찾아낸 인덱스가 현재 부여한 아이들보다 클 경우는 더 줄 수 있다는 말이 되므로 줄 수 있는 아이들의 수를 1명 더 늘린다.</li>
+  <li>bisect_right는 찾아낸 값의 다음 인덱스를 리턴한다.</li>
+</ol>
+
+<hr />
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-05-03T00:00:00+09:00">May 3, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EA%B7%B8%EB%A6%AC%EB%94%94+%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter21-%25EA%25B7%25B8%25EB%25A6%25AC%25EB%2594%2594-%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter21-%25EA%25B7%25B8%25EB%25A6%25AC%25EB%2594%2594-%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter21-%25EA%25B7%25B8%25EB%25A6%25AC%25EB%2594%2594-%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/computer%20vision/paper%20review/EfficientNet/" class="pagination--pager" title="EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks
+">Previous</a>
+    
+    
+      <a href="/algorithm/python/chapter22-%EB%B6%84%ED%95%A0-%EC%A0%95%EB%B3%B5/" class="pagination--pager" title="분할 정복
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/computer%20vision/paper%20review/Document-Inspection-Using-Text-Line-Alignment/" rel="permalink">Document Inspection Using Text-Line Alignment
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">1. Abstract
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/%EB%B0%B0%EC%97%B4-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C2/" rel="permalink">배열 추가문제2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Container With Most Water
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/%EC%B9%B4%EC%B9%B4%EC%98%A4-%EA%B3%B5%EC%B1%84-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4/" rel="permalink">카카오 공채 문제 풀이
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: 비밀 지도
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter21-%EA%B7%B8%EB%A6%AC%EB%94%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">그리디 알고리즘 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Jump Game
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/yongchanchun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 yongchan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

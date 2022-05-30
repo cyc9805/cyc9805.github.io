@@ -52,8 +52,8 @@ This section explains the process of finding text-line.
 ![](/assets/image/paper-review4-3.png){: width="60%" height="60%"}{: .center}
 
  - $r$ is y - intercept.
- - <br> $\theta$ is rotation of the line.
- - <br> $d$ is the distance of the base line to the line of descenders.
+ - $\theta$ is rotation of the line.
+ - $d$ is the distance of the base line to the line of descenders.
 
 3. Feature points are required for quality function. Feature point is defined as the center of the lower line of the bounding box.
 
@@ -64,7 +64,7 @@ red dots are feature points.
 
 4. The goal of the quality function is to guide the parameter search to find good solutions that represent text-lines.
 
-5. Quality function basically finds the parameter which includes most number of feature points within 2*\in range. Consider feature points as ${x_1, x_2, ... , x_n}$, then quality function is defined as follows: 
+5. Quality function basically finds the parameter which includes most number of feature points within 2* $\in$ range. Consider feature points as ${x_1, x_2, ... , x_n}$, then quality function is defined as follows: 
 
 ![](/assets/image/paper-review4-5.png){: width="60%" height="60%"}{: .center}
 
@@ -80,14 +80,14 @@ This section explains the process of finding alignment lines.
  - center alignment line: vertical line that contains the center points of text-lines.
 
  
-2. Alignment line is defined as follows:
+<br> 2. Alignment line is defined as follows:
 
 ![](/assets/image/paper-review4-6.png){: width="50%" height="50%"}{: .center}
 
- - $\left| \overrightarrow{n}\right|$ is norm of the vector
- - $\alpha$ is the rotation angle of $\left| \overrightarrow{n}\right|$
+ - $\lvert \overrightarrow{n} \rvert$ is norm of the vector
+ - $\alpha$ is the rotation angle of $ \lvert \overrightarrow{n} \rvert $
 
-3. Alignment line is defined using quality function. Parameters are decided for alignment line that include most amounts of feature points.
+<br> 3. Alignment line is defined using quality function. Parameters are decided for alignment line that include most amounts of feature points.
 
 
 ## 5. Decision making
@@ -98,8 +98,8 @@ This section explains the process of finding alignment lines.
 
 ![](/assets/image/paper-review4-7.png){: width="50%" height="50%"}{: .center}
 
- - $P(f|d)$ is the probability of having a forged line given a distance $d$ between the line's point to each respective alignment line.
- - $p(d|f)$ is the likelihood of observing a distance $d$ given the information that the line is forged.
+ - $P(f\lvert d)$ is the probability of having a forged line given a distance $d$ between the line's point to each respective alignment line.
+ - $p(d\lvert f)$ is the likelihood of observing a distance $d$ given the information that the line is forged.
  - $P(f)$ is sensitivity parameter that is set manually.
  
 - For each text-line, 3 decisions are made. ***Line is considered as forged if at least one of the three decides that the line is forged.***

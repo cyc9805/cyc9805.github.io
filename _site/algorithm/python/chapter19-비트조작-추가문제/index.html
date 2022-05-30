@@ -34,7 +34,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-      <!-- begin _includes/seo.html --><title>비트 조작 - yongchan’s website</title>
+      <!-- begin _includes/seo.html --><title>비트 조작 추가문제 - yongchan’s website</title>
 <meta name="description" content="Question 1: Single Number 2">
 
 
@@ -47,7 +47,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="비트 조작">
+<meta property="og:title" content="비트 조작 추가문제">
 <meta property="og:url" content="http://localhost:4000/algorithm/python/chapter19-%EB%B9%84%ED%8A%B8%EC%A1%B0%EC%9E%91-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">
 
 
@@ -301,7 +301,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
       <li>
-            📂전체 글 수 54개
+            📂전체 글 수 60개
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
@@ -314,7 +314,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/python" class="">Python (50)</a></li>
+                        <li><a href="/categories/python" class="">Python (55)</a></li>
                     
                 
                     
@@ -354,7 +354,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/computer vision" class="">Computer Vision (18)</a></li>
+                        <li><a href="/categories/computer vision" class="">Computer Vision (19)</a></li>
                     
                 
                     
@@ -417,7 +417,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/algorithm" class="">Algorithm (27)</a></li>
+                        <li><a href="/categories/algorithm" class="">Algorithm (32)</a></li>
                     
                 
                     
@@ -438,7 +438,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/Paper Review" class="">Paper Review(3)</a></li>
+                        <li><a href="/categories/Paper Review" class="">Paper Review(4)</a></li>
                     
                 
             </ul>
@@ -454,7 +454,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="비트 조작">
+    <meta itemprop="headline" content="비트 조작 추가문제">
     <meta itemprop="description" content="Question 1: Single Number 2">
     <meta itemprop="datePublished" content="2022-04-11T00:00:00+09:00">
     
@@ -462,7 +462,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">비트 조작
+          <h1 id="page-title" class="page__title" itemprop="headline">비트 조작 추가문제
 </h1>
           
 
@@ -478,7 +478,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -493,7 +493,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#question-1-single-number-2">Question 1: Single Number 2</a><ul><li><a href="#내-풀이">내 풀이</a><ul><li><a href="#결과">결과</a></li></ul></li><li><a href="#풀이-1-xor-풀이">풀이 1: XOR 풀이</a><ul><li><a href="#중요-내용">중요 내용</a></li></ul></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#question-1-single-number-2">Question 1: Single Number 2</a><ul><li><a href="#내-풀이">내 풀이</a><ul><li><a href="#결과">결과</a></li></ul></li><li><a href="#풀이-1-xor-풀이">풀이 1: XOR 풀이</a><ul><li><a href="#중요-내용">중요 내용</a></li></ul></li></ul></li><li><a href="#question-2-missing-number">Question 2: Missing Number</a><ul><li><a href="#내-풀이-1">내 풀이</a><ul><li><a href="#결과-1">결과</a></li></ul></li><li><a href="#풀이-1-xor-풀이-1">풀이 1: XOR 풀이</a><ul><li><a href="#중요-내용-1">중요 내용</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -546,6 +546,58 @@ Memory Usage: 16 MB, less than 48.42% of Python3 online submissions for Single N
 
 <hr />
 
+<h2 id="question-2-missing-number">Question 2: Missing Number</h2>
+
+<p>Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.</p>
+
+<p class="notice">입력: nums = [9,6,4,2,3,5,7,0,1]</p>
+<p class="notice">출력: 8</p>
+
+<hr />
+
+<h3 id="내-풀이-1">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">missingNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">max_num</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">all_num</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">max_num</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">all_num</span><span class="p">:</span>
+                <span class="n">all_num</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_num</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">all_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">max_num</span><span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<h4 id="결과-1">결과</h4>
+
+<p>Runtime: 6242 ms, faster than 5.00% of Python3 online submissions for Missing Number.
+Memory Usage: 15.4 MB, less than 17.18% of Python3 online submissions for Missing Number.</p>
+
+<h3 id="풀이-1-xor-풀이-1">풀이 1: XOR 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">missingNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">currxor</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">allxor</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">currxor</span> <span class="o">^=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">allxor</span> <span class="o">^=</span> <span class="n">i</span>
+        <span class="k">return</span> <span class="n">currxor</span> <span class="o">^</span> <span class="n">allxor</span>
+       
+</code></pre></div></div>
+
+<h4 id="중요-내용-1">중요 내용</h4>
+
+<ol>
+  <li>currxor은 nums에 저장된 숫자를 xor한 연산이고 allxor은 실제로 n 까지 xor 했을때의 연산이다.</li>
+  <li>currxor 과 allxor을 비교하여 다른 비트만 추출하여 결과로 리턴한다.</li>
+</ol>
+
 
         
       </section>
@@ -582,7 +634,7 @@ Memory Usage: 16 MB, less than 48.42% of Python3 online submissions for Single N
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EB%B9%84%ED%8A%B8+%EC%A1%B0%EC%9E%91%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter19-%25EB%25B9%2584%25ED%258A%25B8%25EC%25A1%25B0%25EC%259E%2591-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EB%B9%84%ED%8A%B8+%EC%A1%B0%EC%9E%91+%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter19-%25EB%25B9%2584%25ED%258A%25B8%25EC%25A1%25B0%25EC%259E%2591-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter19-%25EB%25B9%2584%25ED%258A%25B8%25EC%25A1%25B0%25EC%259E%2591-%25EC%25B6%2594%25EA%25B0%2580%25EB%25AC%25B8%25EC%25A0%259C%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -622,89 +674,7 @@ Memory Usage: 16 MB, less than 48.42% of Python3 online submissions for Single N
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer%20vision/paper%20review/EfficientNet/" rel="permalink">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          4 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">1. Abstract
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/" rel="permalink">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Abstract
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/python/chapter20-%EC%B5%9C%EB%8C%80-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%94%A9-%EC%9C%88%EB%8F%84%EC%9A%B0/" rel="permalink">최대 슬라이딩 윈도우
+        <a href="/computer%20vision/paper%20review/Document-Inspection-Using-Text-Line-Alignment/" rel="permalink">Document Inspection Using Text-Line Alignment
 </a>
       
     </h2>
@@ -729,7 +699,7 @@ Memory Usage: 16 MB, less than 48.42% of Python3 online submissions for Single N
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Question 75: 최대 슬라이딩 윈도우
+    <p class="archive__item-excerpt" itemprop="description">1. Abstract
 
 </p>
   </article>
@@ -745,7 +715,7 @@ Memory Usage: 16 MB, less than 48.42% of Python3 online submissions for Single N
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/python/chapter19-%EB%B9%84%ED%8A%B8%EC%A1%B0%EC%9E%91/" rel="permalink">비트 조작
+        <a href="/algorithm/python/%EB%B0%B0%EC%97%B4-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C2/" rel="permalink">배열 추가문제2
 </a>
       
     </h2>
@@ -763,14 +733,96 @@ Memory Usage: 16 MB, less than 48.42% of Python3 online submissions for Single N
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 minute read
+          less than 1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Question 70: 싱글 넘버
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Container With Most Water
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/%EC%B9%B4%EC%B9%B4%EC%98%A4-%EA%B3%B5%EC%B1%84-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4/" rel="permalink">카카오 공채 문제 풀이
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: 비밀 지도
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter21-%EA%B7%B8%EB%A6%AC%EB%94%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">그리디 알고리즘 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Jump Game
 
 </p>
   </article>

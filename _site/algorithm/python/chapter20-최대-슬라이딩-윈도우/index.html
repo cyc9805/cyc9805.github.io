@@ -301,7 +301,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
       <li>
-            📂전체 글 수 54개
+            📂전체 글 수 60개
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
@@ -314,7 +314,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/python" class="">Python (50)</a></li>
+                        <li><a href="/categories/python" class="">Python (55)</a></li>
                     
                 
                     
@@ -354,7 +354,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/computer vision" class="">Computer Vision (18)</a></li>
+                        <li><a href="/categories/computer vision" class="">Computer Vision (19)</a></li>
                     
                 
                     
@@ -417,7 +417,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/algorithm" class="">Algorithm (27)</a></li>
+                        <li><a href="/categories/algorithm" class="">Algorithm (32)</a></li>
                     
                 
                     
@@ -438,7 +438,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/Paper Review" class="">Paper Review(3)</a></li>
+                        <li><a href="/categories/Paper Review" class="">Paper Review(4)</a></li>
                     
                 
             </ul>
@@ -634,15 +634,18 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
         <span class="c1"># 오른쪽 포인터 이동
 </span>        <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
-            <span class="n">missing</span> <span class="o">-=</span> <span class="n">need</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> 
+        
+            <span class="c1"># char이 need에 키로 들어가 있고 need에 해당하는 value 값이 0보다 크면 missing 에서 1을 뺀다.
+</span>            <span class="n">missing</span> <span class="o">-=</span> <span class="n">need</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> 
             <span class="n">need</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
         
             <span class="k">if</span> <span class="n">missing</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="ow">and</span> <span class="n">need</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">need</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-                    
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">end</span> <span class="ow">or</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">:</span>
+                
+                <span class="c1"># 슬라이딩 윈도우를 했을때 윈도우의 크기가 이전 윈도우보다 같거나 작을시에만 실행함    
+</span>                <span class="k">if</span> <span class="ow">not</span> <span class="n">end</span> <span class="ow">or</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">:</span>
                     <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span>
                     <span class="n">need</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="n">missing</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -690,7 +693,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <ol>
   <li>current_count는 오른쪽 포인터가 이동하면서 만든 딕셔너리이고 t_count는 t의 요소의 개수를 나타낸 딕셔너리이다. 이 두개의 변수의 AND 연산 결과를 t_count와 비교하여 같으면 왼쪽 포인터를 이동하고, 다르면 이동하지 않는다.</li>
-  <li>그러나 이 풀이방법은 AND 연산이 무겁기 떄문에 시간 초과 에러가 뜬다.</li>
+  <li>그러나 이 풀이방법은 AND 연산이 무겁기 때문에 시간 초과 에러가 뜬다.</li>
 </ol>
 
 <hr />
@@ -781,7 +784,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 ">Previous</a>
     
     
-      <a href="/algorithm/python/chapter19-%EB%B9%84%ED%8A%B8%EC%A1%B0%EC%9E%91-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="비트 조작
+      <a href="/algorithm/python/chapter19-%EB%B9%84%ED%8A%B8%EC%A1%B0%EC%9E%91-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="비트 조작 추가문제
 ">Next</a>
     
   </nav>
@@ -806,7 +809,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer%20vision/paper%20review/EfficientNet/" rel="permalink">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks
+        <a href="/computer%20vision/paper%20review/Document-Inspection-Using-Text-Line-Alignment/" rel="permalink">Document Inspection Using Text-Line Alignment
 </a>
       
     </h2>
@@ -824,7 +827,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 minute read
+          3 minute read
         
       </span>
     
@@ -847,48 +850,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/computer%20vision/paper%20review/Inception-v4,Inception-ResNet-and-the-Impact-of-Residual-Connections-on-Learning/" rel="permalink">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Abstract
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/python/chapter19-%EB%B9%84%ED%8A%B8%EC%A1%B0%EC%9E%91-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">비트 조작
+        <a href="/algorithm/python/%EB%B0%B0%EC%97%B4-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C2/" rel="permalink">배열 추가문제2
 </a>
       
     </h2>
@@ -913,7 +875,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Question 1: Single Number 2
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Container With Most Water
 
 </p>
   </article>
@@ -929,7 +891,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/python/chapter19-%EB%B9%84%ED%8A%B8%EC%A1%B0%EC%9E%91/" rel="permalink">비트 조작
+        <a href="/algorithm/python/%EC%B9%B4%EC%B9%B4%EC%98%A4-%EA%B3%B5%EC%B1%84-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4/" rel="permalink">카카오 공채 문제 풀이
 </a>
       
     </h2>
@@ -947,14 +909,55 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 minute read
+          2 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Question 70: 싱글 넘버
+    <p class="archive__item-excerpt" itemprop="description">Question 1: 비밀 지도
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/chapter21-%EA%B7%B8%EB%A6%AC%EB%94%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="permalink">그리디 알고리즘 추가문제
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Question 1: Jump Game
 
 </p>
   </article>
