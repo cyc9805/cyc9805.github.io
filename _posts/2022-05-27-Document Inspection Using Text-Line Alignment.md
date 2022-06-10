@@ -51,20 +51,20 @@ This section explains the process of finding text-line.
 
 ![](/assets/image/paper-review4-3.png){: width="60%" height="60%"}{: .center}
 
- - $r$ is y - intercept.
- - $\theta$ is rotation of the line.
- - $d$ is the distance of the base line to the line of descenders.
+  - $r$ is y - intercept.
+  - $\theta$ is rotation of the line.
+  - $d$ is the distance of the base line to the line of descenders.
 
-3. Feature points are required for quality function. Feature point is defined as the center of the lower line of the bounding box.
+<br>  3. Feature points are required for quality function. Feature point is defined as the center of the lower line of the bounding box.
 
 ![](/assets/image/paper-review4-4.png){: width="60%" height="60%"}{: .center}
 
-red dots are feature points.
- - $\in$ is the parameter that decides the number of red dots within dotted lines.
+  - red dots are feature points.
+  - $\in$ is the parameter that decides the number of red dots within dotted lines.
 
-4. The goal of the quality function is to guide the parameter search to find good solutions that represent text-lines.
+<br>  4. The goal of the quality function is to guide the parameter search to find good solutions that represent text-lines.
 
-5. Quality function basically finds the parameter which includes most number of feature points within 2* $\in$ range. Consider feature points as ${x_1, x_2, ... , x_n}$, then quality function is defined as follows: 
+<br>  5. Quality function basically finds the parameter which includes most number of feature points within 2* $\in$ range. Consider feature points as ${x_1, x_2, ... , x_n}$, then quality function is defined as follows: 
 
 ![](/assets/image/paper-review4-5.png){: width="60%" height="60%"}{: .center}
 
@@ -75,19 +75,19 @@ This section explains the process of finding alignment lines.
 
 1. Left, center and right alignment line are looked for. Each lines are defined as follows:
 
- - left alignment line: vertical line where left–aligned and justified text–lines have their starting point
- - right alignment line: vertical line where right–aligned and justified text–lines have their end point.
- - center alignment line: vertical line that contains the center points of text-lines.
+  - left alignment line: vertical line where left–aligned and justified text–lines have their starting point
+  - right alignment line: vertical line where right–aligned and justified text–lines have their end point.
+  - center alignment line: vertical line that contains the center points of text-lines.
 
  
-<br> 2. Alignment line is defined as follows:
+<br>  2. Alignment line is defined as follows:
 
 ![](/assets/image/paper-review4-6.png){: width="50%" height="50%"}{: .center}
 
- - $\lvert \overrightarrow{n} \rvert$ is norm of the vector
- - $\alpha$ is the rotation angle of $ \lvert \overrightarrow{n} \rvert $
+  - $\lvert \overrightarrow{n} \rvert$ is norm of the vector
+  - $\alpha$ is the rotation angle of $ \lvert \overrightarrow{n} \rvert $
 
-<br> 3. Alignment line is defined using quality function. Parameters are decided for alignment line that include most amounts of feature points.
+<br>  3. Alignment line is defined using quality function. Parameters are decided for alignment line that include most amounts of feature points.
 
 
 ## 5. Decision making
