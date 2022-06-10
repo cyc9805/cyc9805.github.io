@@ -73,7 +73,7 @@ This section explains the process of finding text-line.
 
 This section explains the process of finding alignment lines.
 
-1. Left, center and right alignment line are looked for. Each lines are defined as follows:
+<br>  1. Left, center and right alignment line are looked for. Each lines are defined as follows:
 
   - left alignment line: vertical line where left–aligned and justified text–lines have their starting point
   - right alignment line: vertical line where right–aligned and justified text–lines have their end point.

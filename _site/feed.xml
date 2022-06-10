@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-10T16:32:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Document Inspection Using Text-Line Alignment</title><link href="http://localhost:4000/computer%20vision/paper%20review/Document-Inspection-Using-Text-Line-Alignment/" rel="alternate" type="text/html" title="Document Inspection Using Text-Line Alignment" /><published>2022-05-27T00:00:00+09:00</published><updated>2022-05-27T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Document%20Inspection%20Using%20Text-Line%20Alignment</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Document-Inspection-Using-Text-Line-Alignment/">&lt;h2 id=&quot;1-abstract&quot;&gt;1. Abstract&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-10T16:35:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Document Inspection Using Text-Line Alignment</title><link href="http://localhost:4000/computer%20vision/paper%20review/Document-Inspection-Using-Text-Line-Alignment/" rel="alternate" type="text/html" title="Document Inspection Using Text-Line Alignment" /><published>2022-05-27T00:00:00+09:00</published><updated>2022-05-27T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Document%20Inspection%20Using%20Text-Line%20Alignment</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Document-Inspection-Using-Text-Line-Alignment/">&lt;h2 id=&quot;1-abstract&quot;&gt;1. Abstract&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -69,8 +69,8 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/paper-review4-4.png&quot; alt=&quot;&quot; width=&quot;60%&quot; height=&quot;60%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;red dots are feature points.&lt;/p&gt;
 &lt;ul&gt;
+  &lt;li&gt;red dots are feature points.&lt;/li&gt;
   &lt;li&gt;$\in$ is the parameter that decides the number of red dots within dotted lines.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -84,9 +84,7 @@
 
 &lt;p&gt;This section explains the process of finding alignment lines.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Left, center and right alignment line are looked for. Each lines are defined as follows:&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;br /&gt;  1. Left, center and right alignment line are looked for. Each lines are defined as follows:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;left alignment line: vertical line where left–aligned and justified text–lines have their starting point&lt;/li&gt;
