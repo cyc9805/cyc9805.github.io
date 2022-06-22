@@ -1,28 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-23T05:30:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">해시 테이블 추가문제</title><link href="http://localhost:4000/algorithm/python/%ED%95%B4%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="해시 테이블 추가문제" /><published>2022-06-22T00:00:00+09:00</published><updated>2022-06-22T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%ED%95%B4%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%ED%95%B4%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">&lt;h2 id=&quot;프로그래머스-level-2---위장&quot;&gt;프로그래머스 level 2 - 위장&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-23T05:34:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">해시 테이블 추가문제</title><link href="http://localhost:4000/algorithm/python/%ED%95%B4%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="해시 테이블 추가문제" /><published>2022-06-22T00:00:00+09:00</published><updated>2022-06-22T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%ED%95%B4%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%ED%95%B4%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/">&lt;h2 id=&quot;프로그래머스-level-2---위장&quot;&gt;프로그래머스 level 2 - 위장&lt;/h2&gt;
 
 &lt;p&gt;스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.
 예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.&lt;/p&gt;
 
 &lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;종류&lt;/th&gt;
+      &lt;th&gt;이름&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;종류&lt;/td&gt;
-      &lt;td&gt;이름&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;얼굴&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;얼굴&lt;/td&gt;
       &lt;td&gt;동그란 안경, 검정 선글라스&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;상의&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;상의&lt;/td&gt;
       &lt;td&gt;파란색 티셔츠&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;하의&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;하의&lt;/td&gt;
       &lt;td&gt;청바지&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;겉옷&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;겉옷&lt;/td&gt;
       &lt;td&gt;긴 코트&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -61,7 +63,7 @@
 
 &lt;h4 id=&quot;결과&quot;&gt;결과&lt;/h4&gt;
 
-&lt;p&gt;정확성: 96.4
+&lt;p&gt;정확성: 96.4 &lt;br /&gt;
 합계: 96.4 / 100.0&lt;/p&gt;
 
 &lt;h3 id=&quot;풀이-1-경우의-수를-이용해-풀기&quot;&gt;풀이 1: 경우의 수를 이용해 풀기&lt;/h3&gt;
