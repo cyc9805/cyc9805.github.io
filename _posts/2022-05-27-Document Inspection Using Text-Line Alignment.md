@@ -92,7 +92,7 @@ This section explains the process of finding alignment lines.
 
 ## 5. Decision making
 
-- Since distribution of the distances of the forged lines cannot be precisely measured due to lack of real-world data. However, the following reasonable assumption can be made: forging person tends to get the forged lines as accurately aligned to the others as possible. Therefore, we can model ***the distribution of the distances of the forged lines as normally distributed with the mean equal to zero and a standard deviation of about 10pix***, which corresponds to about approximately half the width of the x character for normal text sizes.
+- Distribution of the distances of the forged lines cannot be precisely measured due to lack of real-world data. However, the following reasonable assumption can be made: forging person tends to get the forged lines as accurately aligned to the others as possible. Therefore, we can model ***the distribution of the distances of the forged lines as normally distributed with the mean equal to zero and a standard deviation of about 10pix***, which corresponds to about approximately half the width of the x character for normal text sizes.
 
 - Using Bayes theorm, formulation of the problem is made as follows:
 
