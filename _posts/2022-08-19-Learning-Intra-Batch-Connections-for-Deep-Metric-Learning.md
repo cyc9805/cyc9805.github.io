@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks"
+title:  "Learning Intra-Batch Connections for Deep Metric Learning"
 comments: true
 use_math: true
 toc: true
@@ -11,56 +11,54 @@ categories:
 ---
 
 
-## 1. Abstract
+## 1. Introduction
 
-- Scaling network depth, width and resolution leads to better performing model.
-- However, choosing scaling value and which component to scale can be problematic.
-- This paper proposes new scaling method that uniformly scale detph, width and resolution by using ***compound coefficient***
+- Metric learning is a techinque which takes the input image and scale it down to more compact, embedding space. In that embedding space, samples with same class should be closer than the ones with different clasess.
 
+- Various loss functions were used to map the input data into embedding space. ***Contrastive loss*** minimizes the distance between positive pair while maximizing the distance otherwise. ***Triplet loss*** takes the triplet of images and pushes the anchor to be closer to the positive sample than the negative one.
 
+- The problem around contrastive loss and triplet loss is that ***the vast majority of pairs (or triplets) are not important enough to contribute to the loss***. In other words, it is important for loss functions to consider the global structure of the dataset and upadate the loss regarding that matter. Contextual classification loss functions and Group loss are the recent works that addresses this problem, but the global structure is captured using a handcrafted rule instead of learning. 
 
-## 2. Introduction
-
-- Scaling ConvNets is done in various ways, but the most common way is to scale up by their depth, width and resolution.
-
-- In previous work, scaling only one of these three components has been done, for scaling two or three dimensions requires tedious manual tuning with lots of resources.
-
-- However, it is possible to balance all dimensions of network width, depth and resolution by scaling each of them with constant ratio. This process is called ***compound scaling method***.
+- The model proposed in this paper utilizes MPN(Message Passing Network) to allow the samples in a mini-batch to communicate with each other. More specifically, the input samples are the results of the images passed into CNN(Convolutional Neural Network).
 
 
+## 2. Related Work
 
-## 3. Compound Model Scaling
+1. Metric Learning Losses: Metric learning loss includes contrastive loss and triplet loss. N-pair loss is the recent work where an anchor and a positive samples are compared to N-1 negative samples at the same time.
 
-### 3.1. Problem Formulation
+2. Sampling and Ensembles: Since not all data are informative, ***intelligent sampling*** is introduced to better sample the necessary data. At the same time, ensembling technique was applied to metric learning, and showed better result than the single network trained on the same loss.
 
-- ConvNet layer i can be defined as following function.
+3. Global Metric Learning Losses: Global metric learning losses utilizes proxy data points, which approximates original data points so that a triplet loss over the proxies is a tight upper bound of the loss over original samples. 
 
-$Y_i = F_i(X_i)$
+4. Classification Losses for Metric Learning: It is shown that a carefully designed classification loss function can outperform triplet-based functions in metric learning. One exmaple, SoftTriple loss develops a classification loss where each class is represented by K centers. Other example, Group Loss replaces softmax function with other contextual module, considering all the samples in the mini batch at the same time.
 
-- $Y_i$ is output tensor, $F_i$ is operator and $X_i$ is input data with a shape of [$H_i, W_i, C_i$], where $H_i$ and $W_i$ are image height and width and $C_i$ is number of channels.
-
-- Therefore, the whole ConvNet is defined as follows:
-
-$N = F_1 * F_2 * F_3 * ... * F_k$
-
-- ConvNets are usually partitioned into multiple stages and all layers in each stage share same architecture. Therefore, ConvNet can be defined in different way:
-
-![](/assets/image/paper-review3-1.png){: width="50%" height="50%"}{: .center}
-
-- $F_i^{L_i}$ denotes layer $F_i$ is repeated $L_i$ times in stage i.
-
-- Model scaling tries to expand network depth($L_i$), width($C_i$) and resolution($H_i, W_i$), without **changing the predefined architecture $F_i$.**
-
-- The goal of this network is trying to achieve target memory and target Flops by scaling with constant ratio. Such process is formulated as follows:
-
-![](/assets/image/paper-review3-2.png){: width="50%" height="50%"}{: .center}
-
-- $w, d, r$ are coefficient for scaling network width, depth, and resolution.
+5. Message Passing Networks: The main idea of this network is that not only the embeded nodes and edges are considered, but also those of the neighbors in the graph, as well as the overall graph topology. This network have revolutionized the field of NLP(Neural Language Processing) and Computer Vision, especially object detection.
 
 
-### 3.2 Scaling Dimensions
+### 3. Methodology
 
-This section shows accuracy changes when scaling one of these dimensions is done.
+#### 3.1 Overview
+
+The proposed method works as following step:
+
+1. Embed the image into higher dimension using CNN and fully connected graph. 
+2. Pass through message passing network to refine the initial embedding feature vectors by using dot-prodcut self attention.
+3. Perform classification and optimize both the MPN and backbone CNN using cross entropy loss.
+
+#### 3.2 Feature Initialization and Graph Construction
+
+The global structure of the embedding space is formulated by following graph:
+
+\gamma = $(V, E)$
+
+- $V$ represents the nodes. In other words, they are the images passed to the network
+- $E$ represents edges, which connects nodes showing the importance of each edges to others.
+- Since considering all the data into account takes huge amount of resource computationally, mini-batches consisting of $n$ randomly sampled class with $p$ randomly chosen samples per class is considered. 
+- Then the MPN is structed to make relations between mini-batches.
+
+#### 3.3 Message Passing Network
+
+Message Passing Network is applied to 
 
 #### Depth($d$)
 
