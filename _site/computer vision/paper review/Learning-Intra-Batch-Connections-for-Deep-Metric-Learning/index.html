@@ -478,7 +478,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          6 minute read
+          4 minute read
         
       </span>
     
@@ -493,7 +493,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-related-work">2. Related Work</a><ul><li><a href="#3-methodology">3. Methodology</a><ul><li><a href="#31-overview">3.1 Overview</a></li><li><a href="#32-feature-initialization-and-graph-construction">3.2 Feature Initialization and Graph Construction</a></li><li><a href="#33-message-passing-network">3.3 Message Passing Network</a></li><li><a href="#depthd">Depth($d$)</a></li><li><a href="#widthw">Width($w$)</a></li><li><a href="#resolutionr">Resolution($r$)</a></li></ul></li><li><a href="#33-compound-scaling">3.3 Compound Scaling</a></li></ul></li><li><a href="#4-efficientnet-architecture">4. EfficientNet Architecture</a></li><li><a href="#5-experiments">5. Experiments</a><ul><li><a href="#51-scaling-up-mobilenets-and-resnets">5.1 Scaling Up MobileNets and ResNets</a></li><li><a href="#52-imagenet-results-for-efficientnet">5.2 ImageNet Results for EfficientNet</a></li><li><a href="#53-transfer-learning-results-for-efficientnet">5.3 Transfer Learning Results for EfficientNet</a></li></ul></li><li><a href="#6-discussion">6. Discussion</a></li><li><a href="#7-conclusion">7. Conclusion</a></li></ul>
+              <ul class="toc__menu"><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-related-work">2. Related Work</a><ul><li><a href="#3-methodology">3. Methodology</a><ul><li><a href="#31-overview">3.1 Overview</a></li><li><a href="#32-feature-initialization-and-graph-construction">3.2 Feature Initialization and Graph Construction</a></li><li><a href="#33-message-passing-network">3.3 Message Passing Network</a></li><li><a href="#34-optimization">3.4 Optimization</a></li><li><a href="#35-inference">3.5 Inference</a></li></ul></li><li><a href="#4-experiments">4. Experiments</a><ul><li><a href="#41-implementation-details">4.1 Implementation details</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -575,124 +575,37 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>As stated in introduction section, not all samples are important for updating decision boundary between classes. Therefore, attention score, $\alpha$ is added to every message passing step to weigh importance of each samples to other samples.</p>
 
-<p>$h_i^{l+1} = \sum_{j\in N_i}\alpha_(ij)^{i}W^{l}h_j^{l}$</p>
+<p>$h_i^{l+1} = \sum_{j\in N_i}\alpha_{ij}^{i}W^{l}h_j^{l}$</p>
 
 <ul>
-  <li>$\alpha_ij^{i}$ is the attention score between node $i$ and $j$.</li>
+  <li>$\alpha_{ij}^{i}$ is the attention score between node $i$ and $j$.</li>
 </ul>
 
-<h4 id="depthd">Depth($d$)</h4>
+<p>Skip connection is then applied to the attention block, $f(h_{i}^{l+1})$. This step is formulated as follows:</p>
+
+<p>Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$
+Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$</p>
 
 <ul>
-  <li>Pros: Deeper network can capture richer and more complex features, and works generally well for new tasks.</li>
-  <li>Cons: Accuracy gain decreases due to vanishing gradient problem.</li>
-  <li>Solution: skip connection, batch normalization</li>
+  <li>F stands for fully connected layer. Therefore, FF represents two fully connected layers.</li>
+  <li>Result after normalization, $g(h_{i}^{l+1})$, is then passed to the next message passing step.</li>
 </ul>
 
-<h4 id="widthw">Width($w$)</h4>
+<p>Below illustration shows how the attention score makes the image coming from the same class closer while the opposite further as the message passing steps progress.</p>
 
-<ul>
-  <li>Pros: Wider network tends to capture more fine-grained features and easier to train, due to small size of the model.</li>
-  <li>Cons: Wide but shallow networks tends to have difficulties in finding higher level features.</li>
-</ul>
+<p><img src="/assets/image/paper-review5-1.png" alt="" width="50%" height="50%" class="center" /></p>
 
-<h4 id="resolutionr">Resolution($r$)</h4>
+<h4 id="34-optimization">3.4 Optimization</h4>
 
-<ul>
-  <li>Pros: With higher resolution input image, ConvNet can capture more fine-grained patterns.</li>
-  <li>Cons: Accuracy gain diminishes for very high resolutions.</li>
-</ul>
+<p>Fully connected layer is applied after the last message passing step and cross entropy loss is used to classify. Since the last cross entropy loss is not used during test time, auxiliary cross entropy loss is also applied to the backbone CNN.</p>
 
-<p>Conclusion: Scaling one of these dimensions improves accuracy, but its gain decreases as the model gets bigger.</p>
+<h4 id="35-inference">3.5 Inference</h4>
 
-<h3 id="33-compound-scaling">3.3 Compound Scaling</h3>
+<p>The experiments done to test the performance of the model do not use the last cross entropy loss because MPN requires batch of samples.</p>
 
-<ul>
-  <li>
-    <p>Scaling dimensions are not independent to each other. For example, when image resolution gets higher, network should be wider to capture more fine-grained patterns. Therefore, 
-multiple dimensions should be scaled simultaneously rather than conventional single dimension scaling.</p>
-  </li>
-  <li>
-    <p>This paper proposes compound scaling method, which use a compound coefficient $\phi$ to uniformly scale all dimensions:</p>
-  </li>
-</ul>
+<h3 id="4-experiments">4. Experiments</h3>
 
-<p>depth: $d = \alpha^\phi$
-width: $w = \beta^\phi$
-resolution: $r = \gamma^\phi$</p>
-
-<ul>
-  <li>
-    <p>$\phi$ denotes user-specified coefficient which is  controlled by avaliable resources.</p>
-  </li>
-  <li>
-    <p>$\alpha, \beta, \gamma$ denotes constants that can be determined by grid search.</p>
-  </li>
-  <li>
-    <p>Total FLOPS is increased by ($\alpha * \beta^2 * \gamma^2$)</p>
-  </li>
-</ul>
-
-<h2 id="4-efficientnet-architecture">4. EfficientNet Architecture</h2>
-
-<ul>
-  <li>
-    <p>Since model scaling does not change the overall architecture $F_i$, having a good baseline network is crucial.</p>
-  </li>
-  <li>
-    <p>Neural architecture search is utilized to optimize both accuracy and FLOPS. The search result is named EfficientNet-B0 and the architecture looks as follows:</p>
-  </li>
-</ul>
-
-<p><img src="/assets/image/paper-review3-3.png" alt="" width="50%" height="50%" class="center" /></p>
-
-<ul>
-  <li>Starting from the baseline network EfficientNet-B0, compound scaling method is divided into two steps:</li>
-</ul>
-
-<p>Step 1: Fix $\phi = 1$, and do the grid search to find best values for $\alpha, \beta, \gamma$. The results are $\alpha = 1.2, \beta = 1.1, \gamma = 1.15$, under the constraint of $\alpha * \beta^2 * \gamma^2 \approx 2$</p>
-
-<p>Step 2: Fix $\alpha, \beta, \gamma$ as constant, and adjust $\phi$ with different values to make EfficientNet-B1 to B7.</p>
-
-<h2 id="5-experiments">5. Experiments</h2>
-
-<h3 id="51-scaling-up-mobilenets-and-resnets">5.1 Scaling Up MobileNets and ResNets</h3>
-
-<ul>
-  <li>Compound scaling method is first applied to widely-used MobileNets and ResNet. Scaled models both show significant accuracy improvement compared to previous models.</li>
-</ul>
-
-<p><img src="/assets/image/paper-review3-4.png" alt="" width="50%" height="50%" class="center" /></p>
-
-<h3 id="52-imagenet-results-for-efficientnet">5.2 ImageNet Results for EfficientNet</h3>
-
-<ul>
-  <li>Scaling method is then applied to EfficientNet models. Number of parameters and FLOPs are both significantly lower than existing ConvNets, while accuracy is either similar or higher.</li>
-</ul>
-
-<p><img src="/assets/image/paper-review3-5.png" alt="" width="50%" height="50%" class="center" /></p>
-
-<ul>
-  <li>Latency is also measuered for EfficientNet-B1 and EfficeintNet-B7, and both run about 6 times faster than ResNet-152 and GPipe. This implies that EfficientNets are fast on real hardware.</li>
-</ul>
-
-<h3 id="53-transfer-learning-results-for-efficientnet">5.3 Transfer Learning Results for EfficientNet</h3>
-
-<ul>
-  <li>EfficientNet is also evaluated on transfer learning dataset. Compared to other models with similar accuracy, EfficientNet show significantly less parameters.</li>
-</ul>
-
-<h2 id="6-discussion">6. Discussion</h2>
-
-<ul>
-  <li>To discover the effect of compound scaling, ImageNet performance of different scaling method for the same EfficientNet-B0 has been compared. All scaling methods improve accuracy with the cost of more FLOPS, but compound scaling can further improve accuracy by up to 2.5%.</li>
-</ul>
-
-<h2 id="7-conclusion">7. Conclusion</h2>
-
-<ul>
-  <li>Compound model scaling, which scales the dimension of depth, width and resolution by constant ratio, highly saves resources while maintaining its performance.</li>
-</ul>
+<h4 id="41-implementation-details">4.1 Implementation details</h4>
 
         
       </section>
