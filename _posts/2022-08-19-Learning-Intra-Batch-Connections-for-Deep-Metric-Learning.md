@@ -49,16 +49,29 @@ The proposed method works as following step:
 
 The global structure of the embedding space is formulated by following graph:
 
-\gamma = $(V, E)$
+$\gamma = (V, E)$
 
 - $V$ represents the nodes. In other words, they are the images passed to the network
 - $E$ represents edges, which connects nodes showing the importance of each edges to others.
 - Since considering all the data into account takes huge amount of resource computationally, mini-batches consisting of $n$ randomly sampled class with $p$ randomly chosen samples per class is considered. 
-- Then the MPN is structed to make relations between mini-batches.
+- Then the MPN is structured to make relations between mini-batches.
+- CNN is used for embeddings.
 
 #### 3.3 Message Passing Network
 
-Message Passing Network is applied to 
+Message Passing Network is applied to embeddings to exchange information between mini-batches. The message passing process is formulated as follows:
+
+$h_i^{l+1} = \sum_{j\in N_i}W^{l}h_j^{l}$
+
+- h_i^{l+1} is an updated feature of node $i$ at step $l+1$.
+- $h_j^{l}$ is features of neighboring node $i$ at step $l$.
+- $W^{l}$ is the weight matrix of message between node $i$ and its neighboring node $j$.
+
+As stated in introduction section, not all samples are important for updating decision boundary between classes. Therefore, attention score, $\alpha$ is added to every message passing step to weigh importance of each samples to other samples. 
+
+$h_i^{l+1} = \sum_{j\in N_i}\alpha_ij^{i}W^{l}h_j^{l}$
+
+- $\alpha_ij^{i}$ is the attention score between node $i$ and $j$. 
 
 #### Depth($d$)
 
