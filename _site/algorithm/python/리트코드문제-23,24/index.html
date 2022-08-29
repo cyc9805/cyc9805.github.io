@@ -1,0 +1,105 @@
+<h2 id="11-container-with-most-water">11. Container with Most Water</h2>
+
+<p>You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+Return the maximum amount of water a container can store.
+Notice that you may not slant the container.</p>
+
+<p class="notice">입력: s = [1,8,6,2,5,4,8,3,7]</p>
+<p class="notice">출력: 49</p>
+
+<h3 id="내-풀이">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">maxArea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>    
+        <span class="n">max_volume</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">height</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">height</span><span class="p">[</span><span class="n">right</span><span class="p">]:</span>
+                <span class="n">max_volume</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span> <span class="n">max_volume</span><span class="p">)</span>
+                <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">max_volume</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span> <span class="n">max_volume</span><span class="p">)</span>
+                <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+        
+        <span class="k">return</span> <span class="n">max_volume</span>
+</code></pre></div></div>
+
+<ul>
+  <li>left와 right 포인트를 지정한다. 이때, 두개의 포인트는 제일 끝에서부터 시작한다.</li>
+  <li>left와 right 위치에 있는 기둥을 비교하여 (더 짧은 기둥의 높이) * (왼쪽과 오른쪽 기둥의 거리) 만큼을 최대 높이로 지정한다.</li>
+  <li>반복문을 돌때는 제일 끝에 있는 기둥끼리 비교하므로 제일 끝에 있는 기둥의 거리부터 시작한다.</li>
+</ul>
+
+<h4 id="결과">결과</h4>
+
+<p>Runtime: 1285 ms, faster than 31.93% of Python3 online submissions for Container With Most Water.
+Memory Usage: 27.4 MB, less than 85.10% of Python3 online submissions for Container With Most Water.</p>
+
+<hr />
+
+<h2 id="24-swap-nodes-in-pairs">24. Swap Nodes in Pairs</h2>
+
+<p>Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list’s nodes (i.e., only nodes themselves may be changed.)</p>
+<ul>
+  <li>I can be placed before V (5) and X (10) to make 4 and 9.</li>
+  <li>X can be placed before L (50) and C (100) to make 40 and 90.</li>
+  <li>C can be placed before D (500) and M (1000) to make 400 and 900.</li>
+  <li>Given an integer, convert it to a roman numeral.</li>
+</ul>
+
+<p class="notice">입력: head = [1,2,3,4]</p>
+<p class="notice">출력: [2,1,4,3]</p>
+
+<h3 id="내-풀이-1">내 풀이</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">swapPairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+        <span class="n">prev</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">head</span> <span class="ow">and</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">back</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">head</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">back</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">back</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">head</span>
+            <span class="n">prev</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">back</span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+            
+        <span class="k">return</span> <span class="n">start</span><span class="p">.</span><span class="nb">next</span>
+</code></pre></div></div>
+
+<ul>
+  <li>back은 head 다음 노드이다.</li>
+  <li>head의 다음 노드를 back의 다음 노드와 연결시킨다.</li>
+  <li>back의 다음 노드를 head와 연결시킨다.</li>
+  <li>head의 전 노드, prev를 back에 연결 시킨다.</li>
+  <li>prev와 head를 각각 다음 노드로 움직인다.</li>
+</ul>
+
+<h4 id="결과-1">결과</h4>
+
+<p>Runtime: 48 ms, faster than 53.60% of Python3 online submissions for Swap Nodes in Pairs.
+Memory Usage: 13.8 MB, less than 97.50% of Python3 online submissions for Swap Nodes in Pairs.</p>
+
+<h3 id="풀이-1-재귀구조">풀이 1: 재귀구조</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">swapPairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">head</span> <span class="ow">and</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">head</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">swapPairs</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="nb">next</span><span class="p">)</span>
+            <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">head</span>
+            <span class="k">return</span> <span class="n">p</span>
+        
+        <span class="k">return</span> <span class="n">head</span>
+</code></pre></div></div>
+
+<h4 id="중요내용">중요내용</h4>
+
+<ul>
+  <li>p는 head의 다음 노드이다.</li>
+  <li>p의 다음노드, 즉 head의 다음 다음 노드를 swapPairs에 재귀로 넣어준다.</li>
+  <li>제일 끝에 있는 노드부터 차례대로 스와핑이 된다.</li>
+</ul>
