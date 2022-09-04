@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-08-31T02:19:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">리트코드 문제 23, 24</title><link href="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-23,24/" rel="alternate" type="text/html" title="리트코드 문제 23, 24" /><published>2022-08-30T00:00:00+09:00</published><updated>2022-08-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-23,24</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-23,24/">&lt;h2 id=&quot;23-merge-k-sorted-lists&quot;&gt;23. Merge K sorted Lists&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-03T00:34:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">리트코드 문제 23, 24</title><link href="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-23,24/" rel="alternate" type="text/html" title="리트코드 문제 23, 24" /><published>2022-08-30T00:00:00+09:00</published><updated>2022-08-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-23,24</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-23,24/">&lt;h2 id=&quot;23-merge-k-sorted-lists&quot;&gt;23. Merge K sorted Lists&lt;/h2&gt;
 
 &lt;p&gt;You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
 Merge all the linked-lists into one sorted linked-list and return it.&lt;/p&gt;
@@ -91,12 +91,6 @@ Merge all the linked-lists into one sorted linked-list and return it.&lt;/p&gt;
 &lt;h2 id=&quot;24-swap-nodes-in-pairs&quot;&gt;24. Swap Nodes in Pairs&lt;/h2&gt;
 
 &lt;p&gt;Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list’s nodes (i.e., only nodes themselves may be changed.)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;I can be placed before V (5) and X (10) to make 4 and 9.&lt;/li&gt;
-  &lt;li&gt;X can be placed before L (50) and C (100) to make 40 and 90.&lt;/li&gt;
-  &lt;li&gt;C can be placed before D (500) and M (1000) to make 400 and 900.&lt;/li&gt;
-  &lt;li&gt;Given an integer, convert it to a roman numeral.&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;p class=&quot;notice&quot;&gt;입력: head = [1,2,3,4]&lt;/p&gt;
 &lt;p class=&quot;notice&quot;&gt;출력: [2,1,4,3]&lt;/p&gt;
