@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-06T21:55:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">리트코드 문제 36, 38</title><link href="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39/" rel="alternate" type="text/html" title="리트코드 문제 36, 38" /><published>2022-08-30T00:00:00+09:00</published><updated>2022-08-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39/">&lt;h2 id=&quot;36-valid-sudoku&quot;&gt;36. Valid Sudoku&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-11T03:33:26+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">리트코드 문제 36, 38</title><link href="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39/" rel="alternate" type="text/html" title="리트코드 문제 36, 38" /><published>2022-08-30T00:00:00+09:00</published><updated>2022-08-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39/">&lt;h2 id=&quot;36-valid-sudoku&quot;&gt;36. Valid Sudoku&lt;/h2&gt;
 
 &lt;p&gt;Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:&lt;/p&gt;
 
@@ -452,13 +452,13 @@ Memory Usage: 13.9 MB, less than 80.47% of Python3 online submissions for Intege
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Metric learning is a techinque which takes the input image and scale it down to more compact, embedding space. In that embedding space, samples with same class should be closer than the ones with different clasess.&lt;/p&gt;
+    &lt;p&gt;Metric learning is a techinque which takes the input image and scale it down to more compact, embedding space. In that embedding space, samples with same class should be closer than the ones with different classes.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Various loss functions were used to map the input data into embedding space. &lt;strong&gt;&lt;em&gt;Contrastive loss&lt;/em&gt;&lt;/strong&gt; minimizes the distance between positive pair while maximizing the distance otherwise. &lt;strong&gt;&lt;em&gt;Triplet loss&lt;/em&gt;&lt;/strong&gt; takes the triplet of images and pushes the anchor to be closer to the positive sample than the negative one.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;The problem around contrastive loss and triplet loss is that &lt;strong&gt;&lt;em&gt;the vast majority of pairs (or triplets) are not important enough to contribute to the loss&lt;/em&gt;&lt;/strong&gt;. In other words, it is important for loss functions to consider the global structure of the dataset and upadate the loss regarding that matter. Contextual classification loss functions and Group loss are the recent works that addresses this problem, but the global structure is captured using a handcrafted rule instead of learning.&lt;/p&gt;
+    &lt;p&gt;The problem around contrastive loss and triplet loss is that &lt;strong&gt;&lt;em&gt;the vast majority of pairs (or triplets) are not important enough to contribute to the loss&lt;/em&gt;&lt;/strong&gt;. In other words, it is important for loss functions to consider the global structure of the dataset and update the loss regarding that matter. Contextual classification loss functions and Group loss are the recent works that addresses this problem, but the global structure is captured using a handcrafted rule instead of learning.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;The model proposed in this paper utilizes MPN(Message Passing Network) to allow the samples in a mini-batch to communicate with each other. More specifically, the input samples are the results of the images passed into CNN(Convolutional Neural Network).&lt;/p&gt;
@@ -518,7 +518,7 @@ Memory Usage: 13.9 MB, less than 80.47% of Python3 online submissions for Intege
 &lt;p&gt;$h_i^{l+1} = \sum_{j\in N_i}W^{l}h_j^{l}$&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;h_i^{l+1} is an updated feature of node $i$ at step $l+1$.&lt;/li&gt;
+  &lt;li&gt;$h_i^{l+1}$ is an updated feature of node $i$ at step $l+1$.&lt;/li&gt;
   &lt;li&gt;$h_j^{l}$ is features of neighboring node $i$ at step $l$.&lt;/li&gt;
   &lt;li&gt;$W^{l}$ is the weight matrix of message between node $i$ and its neighboring node $j$.&lt;/li&gt;
 &lt;/ul&gt;
@@ -533,7 +533,7 @@ Memory Usage: 13.9 MB, less than 80.47% of Python3 online submissions for Intege
 
 &lt;p&gt;Skip connection is then applied to the attention block, $f(h_{i}^{l+1})$. This step is formulated as follows:&lt;/p&gt;
 
-&lt;p&gt;Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$
+&lt;p&gt;Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$ \n
 Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$&lt;/p&gt;
 
 &lt;ul&gt;
@@ -543,7 +543,7 @@ Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$&lt;/p&
 
 &lt;p&gt;Below illustration shows how the attention score makes the image coming from the same class closer while the opposite further as the message passing steps progress.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review5-1.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review5-1.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;34-optimization&quot;&gt;3.4 Optimization&lt;/h4&gt;
 

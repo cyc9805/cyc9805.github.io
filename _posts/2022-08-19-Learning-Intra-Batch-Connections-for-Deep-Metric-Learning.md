@@ -13,11 +13,11 @@ categories:
 
 ## 1. Introduction
 
-- Metric learning is a techinque which takes the input image and scale it down to more compact, embedding space. In that embedding space, samples with same class should be closer than the ones with different clasess.
+- Metric learning is a techinque which takes the input image and scale it down to more compact, embedding space. In that embedding space, samples with same class should be closer than the ones with different classes.
 
 - Various loss functions were used to map the input data into embedding space. ***Contrastive loss*** minimizes the distance between positive pair while maximizing the distance otherwise. ***Triplet loss*** takes the triplet of images and pushes the anchor to be closer to the positive sample than the negative one.
 
-- The problem around contrastive loss and triplet loss is that ***the vast majority of pairs (or triplets) are not important enough to contribute to the loss***. In other words, it is important for loss functions to consider the global structure of the dataset and upadate the loss regarding that matter. Contextual classification loss functions and Group loss are the recent works that addresses this problem, but the global structure is captured using a handcrafted rule instead of learning. 
+- The problem around contrastive loss and triplet loss is that ***the vast majority of pairs (or triplets) are not important enough to contribute to the loss***. In other words, it is important for loss functions to consider the global structure of the dataset and update the loss regarding that matter. Contextual classification loss functions and Group loss are the recent works that addresses this problem, but the global structure is captured using a handcrafted rule instead of learning. 
 
 - The model proposed in this paper utilizes MPN(Message Passing Network) to allow the samples in a mini-batch to communicate with each other. More specifically, the input samples are the results of the images passed into CNN(Convolutional Neural Network).
 
@@ -63,7 +63,7 @@ Message Passing Network is applied to embeddings to exchange information between
 
 $h_i^{l+1} = \sum_{j\in N_i}W^{l}h_j^{l}$
 
-- h_i^{l+1} is an updated feature of node $i$ at step $l+1$.
+- $h_i^{l+1}$ is an updated feature of node $i$ at step $l+1$.
 - $h_j^{l}$ is features of neighboring node $i$ at step $l$.
 - $W^{l}$ is the weight matrix of message between node $i$ and its neighboring node $j$.
 
@@ -75,7 +75,7 @@ $h_i^{l+1} = \sum_{j\in N_i}\alpha_{ij}^{i}W^{l}h_j^{l}$
 
 Skip connection is then applied to the attention block, $f(h_{i}^{l+1})$. This step is formulated as follows:
 
-Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$
+Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$ \n
 Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$
 
 - F stands for fully connected layer. Therefore, FF represents two fully connected layers.
@@ -83,7 +83,7 @@ Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$
 
 Below illustration shows how the attention score makes the image coming from the same class closer while the opposite further as the message passing steps progress. 
 
-![](/assets/image/paper-review5-1.png){: width="50%" height="50%"}{: .center}
+![](/assets/image/paper-review5-1.png){: width="80%" height="80%"}{: .center}
 
 
 #### 3.4 Optimization
