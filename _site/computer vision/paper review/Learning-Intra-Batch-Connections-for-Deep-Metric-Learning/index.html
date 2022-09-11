@@ -106,3 +106,62 @@ Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$</p>
 <h3 id="4-experiments">4. Experiments</h3>
 
 <h4 id="41-implementation-details">4.1 Implementation details</h4>
+
+<ol>
+  <li><strong>Backbone CNN model</strong>: ResNet50 pretrained on ILSVRC 2012-CLS dataset</li>
+  <li><strong>Preprocessing</strong>: Resized the cropped images to 224x224 during train time, and resized the images to 256x256 and take a center crop of size 227x227 during test time.</li>
+  <li><strong>Training parameters</strong>: Train all networks for 70 epochs using RAdam optimizer</li>
+  <li><strong>Evaluation metrics</strong>: Two commonly used evaluation metrics were used
+    <ul>
+      <li>Recall@K : Evaluates the retrieval performance by computing the percentage of images whose K nearest neighbors contain at least one sample of 			        the same class as the query image.</li>
+      <li>NMI: Evaluates how much the knowledge about the ground truth classes increases given the clustering obtained by the K-means algorithm.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="42-comparison-to-state-of-the-art">4.2 Comparison to state-of-the-art</h4>
+
+<p><img src="/assets/image/paper-review-6-6" alt="" width="80%" height="80%" class="center" /></p>
+
+<ul>
+  <li>Bold number indicates the best result, Red indicates the second best result and Blue indicates the third best result.</li>
+  <li>The model proposed in this paper achieves state-of-the-art performance, scoring higher than all the current best methods.</li>
+</ul>
+
+<h4 id="43-ablation-studies-and-robustness-analysis">4.3 Ablation Studies and Robustness Analysis</h4>
+
+<ol>
+  <li>Adding auxiliary loss function (cross-entropy loss) at the top of the backbone CNN improves the performance of overall model.</li>
+</ol>
+
+<p><img src="/assets/image/paper-review-6-4" alt="" width="80%" height="80%" class="center" /></p>
+
+<ol>
+  <li>When compared to model with Group Loss, model with MPN shows less overfitness and better test result.</li>
+</ol>
+
+<p><img src="/assets/image/paper-review-6-3" alt="" width="80%" height="80%" class="center" /></p>
+
+<ol>
+  <li>Experiment was conducted to find out the best number of message passing steps and attention heads of MPN. The numbers show the relative difference to the best model. Therefore, the combination marked with 0.0 is the parameter that shows the best result.</li>
+</ol>
+
+<p><img src="/assets/image/paper-review-6-2" alt="" width="80%" height="80%" class="center" /></p>
+
+<ol>
+  <li>Since Group Loss shows the performance increase by using an ensemble at test time, experiment was conducted on MPN ensembles using 2 and 5 networks. In all cases, MPN ensembles show better result than Group Loss ensembles.</li>
+</ol>
+
+<p><img src="/assets/image/paper-review-6-1" alt="" width="80%" height="80%" class="center" /></p>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<ol>
+  <li>
+    <p>This paper proposes new model that utilizes all intra-batch relations in the mini-batch to promote similar embeddings for images coming from the same class, and dissimilar embeddings for images coming from different classes.</p>
+  </li>
+  <li>
+    <p>This new model performs better than all the current best method, while using same number of parameters</p>
+  </li>
+</ol>
+
