@@ -83,8 +83,8 @@
 
 <p>Skip connection is then applied to the attention block, $f(h_{i}^{l+1})$. This step is formulated as follows:</p>
 
-<p>Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$ 
-\n Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$</p>
+<p>Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$  <br />
+<br /> Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$</p>
 
 <ul>
   <li>F stands for fully connected layer. Therefore, FF represents two fully connected layers.</li>
@@ -134,14 +134,17 @@
   <li>Adding auxiliary loss function (cross-entropy loss) at the top of the backbone CNN improves the performance of overall model.</li>
 </ol>
 
-<p><img src="/assets/image/paper-review-6-4" alt="" width="80%" height="80%" class="center" />
-\n 2. When compared to model with Group Loss, model with MPN shows less overfitness and better test result.</p>
+<p><img src="/assets/image/paper-review-6-4" alt="" width="80%" height="80%" class="center" /></p>
 
-<p><img src="/assets/image/paper-review-6-3" alt="" width="80%" height="80%" class="center" />
-\n 3. Experiment was conducted to find out the best number of message passing steps and attention heads of MPN. The numbers show the relative difference to the best model. Therefore, the combination marked with 0.0 is the parameter that shows the best result.</p>
+<p><br /> 2. When compared to model with Group Loss, model with MPN shows less overfitness and better test result.</p>
 
-<p><img src="/assets/image/paper-review-6-2" alt="" width="80%" height="80%" class="center" />
-\n 4. Since Group Loss shows the performance increase by using an ensemble at test time, experiment was conducted on MPN ensembles using 2 and 5 networks. In all cases, MPN ensembles show better result than Group Loss ensembles.</p>
+<p><img src="/assets/image/paper-review-6-3" alt="" width="80%" height="80%" class="center" /></p>
+
+<p><br /> 3. Experiment was conducted to find out the best number of message passing steps and attention heads of MPN. The numbers show the relative difference to the best model. Therefore, the combination marked with 0.0 is the parameter that shows the best result.</p>
+
+<p><img src="/assets/image/paper-review-6-2" alt="" width="80%" height="80%" class="center" /></p>
+
+<p><br /> 4. Since Group Loss shows the performance increase by using an ensemble at test time, experiment was conducted on MPN ensembles using 2 and 5 networks. In all cases, MPN ensembles show better result than Group Loss ensembles.</p>
 
 <p><img src="/assets/image/paper-review-6-1" alt="" width="80%" height="80%" class="center" /></p>
 
