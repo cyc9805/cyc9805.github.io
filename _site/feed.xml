@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-11T18:23:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">리트코드 문제 36, 38</title><link href="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39/" rel="alternate" type="text/html" title="리트코드 문제 36, 38" /><published>2022-08-30T00:00:00+09:00</published><updated>2022-08-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39/">&lt;h2 id=&quot;36-valid-sudoku&quot;&gt;36. Valid Sudoku&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-11T18:33:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">리트코드 문제 36, 38</title><link href="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39/" rel="alternate" type="text/html" title="리트코드 문제 36, 38" /><published>2022-08-30T00:00:00+09:00</published><updated>2022-08-30T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%EB%AC%B8%EC%A0%9C-38,39/">&lt;h2 id=&quot;36-valid-sudoku&quot;&gt;36. Valid Sudoku&lt;/h2&gt;
 
 &lt;p&gt;Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:&lt;/p&gt;
 
@@ -533,8 +533,8 @@ Memory Usage: 13.9 MB, less than 80.47% of Python3 online submissions for Intege
 
 &lt;p&gt;Skip connection is then applied to the attention block, $f(h_{i}^{l+1})$. This step is formulated as follows:&lt;/p&gt;
 
-&lt;p&gt;Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$ \n
-Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$&lt;/p&gt;
+&lt;p&gt;Step 1: $f(h_{i}^{l+1}) = LayerNorm(h_{i}^{l+1} + h_{i}^{l}))$ 
+\n Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;F stands for fully connected layer. Therefore, FF represents two fully connected layers.&lt;/li&gt;
@@ -584,23 +584,14 @@ Step 2: $g(h_{i}^{l+1}) = LayerNorm(FF(f(h_{i}^{l+1})) + f(h_{i}^{l+1}))$&lt;/p&
   &lt;li&gt;Adding auxiliary loss function (cross-entropy loss) at the top of the backbone CNN improves the performance of overall model.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review-6-4&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review-6-4&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;
+\n 2. When compared to model with Group Loss, model with MPN shows less overfitness and better test result.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;When compared to model with Group Loss, model with MPN shows less overfitness and better test result.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review-6-3&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;
+\n 3. Experiment was conducted to find out the best number of message passing steps and attention heads of MPN. The numbers show the relative difference to the best model. Therefore, the combination marked with 0.0 is the parameter that shows the best result.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review-6-3&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Experiment was conducted to find out the best number of message passing steps and attention heads of MPN. The numbers show the relative difference to the best model. Therefore, the combination marked with 0.0 is the parameter that shows the best result.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review-6-2&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Since Group Loss shows the performance increase by using an ensemble at test time, experiment was conducted on MPN ensembles using 2 and 5 networks. In all cases, MPN ensembles show better result than Group Loss ensembles.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review-6-2&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;
+\n 4. Since Group Loss shows the performance increase by using an ensemble at test time, experiment was conducted on MPN ensembles using 2 and 5 networks. In all cases, MPN ensembles show better result than Group Loss ensembles.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/paper-review-6-1&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
