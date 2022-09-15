@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-1,2/</loc>
+        
+        <lastmod>2022-08-30T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/algorithm/python/%E1%84%85%E1%85%B5%E1%84%90%E1%85%B3%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-38,39/</loc>
         
         <lastmod>2022-08-30T00:00:00+09:00</lastmod>
