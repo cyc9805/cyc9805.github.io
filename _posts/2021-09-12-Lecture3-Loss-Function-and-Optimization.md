@@ -8,6 +8,7 @@ use_math: true
 categories:
   - computer vision
   - python
+  - cs231n
 ---
 
 

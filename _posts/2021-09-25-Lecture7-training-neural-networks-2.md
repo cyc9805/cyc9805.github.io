@@ -8,6 +8,7 @@ toc_sticky: true
 categories:
   - computer vision
   - python
+  - cs231n
 ---
 
 

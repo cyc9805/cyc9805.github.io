@@ -1,0 +1,1093 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- MATH EQUATION -->
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>Lecture 12: Visualizing and Understanding CNN - yongchan’s website</title>
+<meta name="description" content="지금까지 CNN의 작동 원리와 CNN을 통해 컴퓨터가 이미지를 읽고 처리하는 과정을 알아보았다. 그렇다면 CNN의 각 층에서 이미지가 어떠한 형식으로 나타나게 될까? CNN의 작동 과정을 좀 더 직관적으로 알기 위해 시각화 하는 방법에 대해 이 단원은 다루고 있다.">
+
+
+  <meta name="author" content="yongchanchun">
+  
+  <meta property="article:author" content="yongchanchun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="yongchan's website">
+<meta property="og:title" content="Lecture 12: Visualizing and Understanding CNN">
+<meta property="og:url" content="http://localhost:4000/computer%20vision/python/cs231n/Lecture12-Visualizing-and-Understanding-the-CNN/">
+
+
+  <meta property="og:description" content="지금까지 CNN의 작동 원리와 CNN을 통해 컴퓨터가 이미지를 읽고 처리하는 과정을 알아보았다. 그렇다면 CNN의 각 층에서 이미지가 어떠한 형식으로 나타나게 될까? CNN의 작동 과정을 좀 더 직관적으로 알기 위해 시각화 하는 방법에 대해 이 단원은 다루고 있다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-11-05T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20vision/python/cs231n/Lecture12-Visualizing-and-Understanding-the-CNN/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yongchan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="yongchan's website Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Welcome to my website!!
+          <span class="site-subtitle">👋👋👋</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image/profile2.png" alt="yongchanchun" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">yongchanchun</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I’m trying to post on a daily basis<br />this may be hard but <strong>Nothing is achieved without trying!</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.facebook.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc"></label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂전체 글 수 78개
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Programming</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                
+                    
+                
+                    
+                        <li><a href="/categories/python" class="">Python (72)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/data analysis" class="">Data Analysis (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/computer vision" class="">Computer Vision (23)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/markdown" class="">Markdown (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/project" class="">Project (3)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+	    <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm (46)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Paper Review" class="">Paper Review(5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cs236" class="">cs236(3)</a></li>
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cs231n" class="">cs231n(15)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Lecture 12: Visualizing and Understanding CNN">
+    <meta itemprop="description" content="지금까지 CNN의 작동 원리와 CNN을 통해 컴퓨터가 이미지를 읽고 처리하는 과정을 알아보았다. 그렇다면 CNN의 각 층에서 이미지가 어떠한 형식으로 나타나게 될까? CNN의 작동 과정을 좀 더 직관적으로 알기 위해 시각화 하는 방법에 대해 이 단원은 다루고 있다.">
+    <meta itemprop="datePublished" content="2021-11-05T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 12: Visualizing and Understanding CNN
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#whats-going-on-inside-convolutional-layer">What’s going on inside convolutional layer?</a><ul><li><a href="#first-layer-visualize-filters">First Layer: Visualize Filters</a></li><li><a href="#last-layer">Last Layer</a></li><li><a href="#last-layer-dimensionality-reduction">Last Layer: Dimensionality reduction</a></li></ul></li><li><a href="#maximally-activating-patches">Maximally Activating Patches</a></li><li><a href="#saliency-maps">Saliency Maps</a></li><li><a href="#intermediate-features-via-guided-backprop">Intermediate features via guided backprop</a></li><li><a href="#gradient-ascent">Gradient Ascent</a></li><li><a href="#utilzing-gradent-ascent">Utilzing Gradent Ascent</a><ul><li><a href="#deepdream">DeepDream</a></li><li><a href="#feature-inversion">Feature Inversion</a></li><li><a href="#texture-synthesis">Texture Synthesis</a></li><li><a href="#natural-style-transfer">Natural Style Transfer</a></li><li><a href="#fast-style-transfer">Fast Style Transfer</a></li></ul></li><li><a href="#summary">Summary</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>지금까지 CNN의 작동 원리와 CNN을 통해 컴퓨터가 이미지를 읽고 처리하는 과정을 알아보았다. 그렇다면 CNN의 각 층에서 이미지가 어떠한 형식으로 나타나게 될까? CNN의 작동 과정을 좀 더 직관적으로 알기 위해 시각화 하는 방법에 대해 이 단원은 다루고 있다.</p>
+
+<h2 id="whats-going-on-inside-convolutional-layer">What’s going on inside convolutional layer?</h2>
+
+<p>각 레이어에서 필터가 이미지를 훑고 지나가 지나간 이미지에 대한 정보를 저장하게 된다. 이렇게 저장한 이미지를 시각화하면 각 필터가 이미지에서 어떠한 정보를 찾으려고 하는지에 대해 알 수 있다. 다음은 각 CNN 모델에서 레이어별로 필터가 어떠한 정보를 찾아내었는지에 대해 나타난 사진이다.</p>
+
+<h3 id="first-layer-visualize-filters">First Layer: Visualize Filters</h3>
+
+<p>먼저 첫번째 레이어가 어떠한 정보를 찾아내었는지 확인해보자.</p>
+
+<p><img src="/assets/image/lecture12-1.png" alt="" /></p>
+
+<p>여기서 AlexNet의 64x3x11x11은 11x11 크기의 64개의 필터가 R,G,B 각각의 값 별로 이미지 픽셀에 가중치 값을 곱한 결과이다. 위의 사진에서 알 수 있듯이 첫번째 레이어는 대체적으로 이미지의 low-level 특징들, 즉 이미지에 나타난 점, 선, 패턴 등에 대해서 찾으려고 한다.</p>
+
+<h3 id="last-layer">Last Layer</h3>
+
+<p>마지막 레이어는 fully connected layer 이므로 4096 차원을 가지고 있는 벡터 데이터이다. 이 레이어는 주로 이미지의 문맥적인(semantic) 특징들을 찾는다. 최근접 이웃(Nearest Neighbor) 방법을 이용해 테스트 이미지와 특징이 비슷한 이미지를 찾으면 사진이 알맞게 분류되는 것을 확인할 수 있다.</p>
+
+<p><img src="/assets/image/lecture12-2.png" alt="" width="50%" height="50%" class="align-center" /></p>
+
+<h3 id="last-layer-dimensionality-reduction">Last Layer: Dimensionality reduction</h3>
+
+<p>4096 차원이나 되는 마지막 레이어를 한번에 시각화하기란 거의 불가능한 작업이다. 따라서 이를 한번에 시각화하기 위해 차원을 축소해야 할 필요성이 있다. 이를 하기위한 간단한 알고리즘으로 PCA(Principle Component Analysis)가 있지만 여기서는 좀더 복잡한 t-SNE 알고리즘을 사용하였다.</p>
+
+<p>다음은 imageNET의 이미지들에 t-SNE를 적용하여 시각화하는 과정이다.</p>
+
+<ol>
+  <li>이미지들을 CNN을 통해 훈련시켜 마지막 레이어에 저장된 4096 차원의 벡터를 추출한다.</li>
+  <li>t-SNE를 통해 2차원으로 데이터를 축소한 후 2차원 좌표에 위치시켜 나타낸다.</li>
+  <li>비슷한 특징을 가진 이미지끼리 군집을 형성하게 된다.</li>
+</ol>
+
+<p><img src="/assets/image/lecture12-3.png" alt="" width="60%" height="60%" class="align-center" /></p>
+
+<h2 id="maximally-activating-patches">Maximally Activating Patches</h2>
+
+<p>특정 레이어가 어떠한 정보를 찾는지 알기 위해서 Maximally Activating Patches 방법을 이용한다. 이 방법은 특정 레이어의 특정 채널을 선택한 후 여러 이미지를 통과시켜 학습하는 값들은 저장한다. 그리고 최대로 활성화하는데 사용되는 값을 선택해 이를 시각화한다. 이 방법을 통해 시각화한 결과를 보면 특정 레이어의 특정 채널은 이미지에서 비슷한 정보를 찾는다는 것을 알 수 있다.</p>
+
+<p><img src="/assets/image/lecture12-4.png" alt="" width="60%" height="60%" class="align-center" /></p>
+
+<h2 id="saliency-maps">Saliency Maps</h2>
+
+<p>이미지의 특정 부분을 가린 후에 CNN을 통해 훈련시키고 이를 분류한 결과가 가리지 않은 이미지를 훈련시킨 결과와 큰 차이를 보인다면 가린 부분이 분류하는데 굉장히 중요한 역할을 차지한다는 것을 알 수 있다. 이러한 과정을 이미지의 모든 부분에 적용시켜 이미지의 분류를 위해 중요한 부분을 찾은 결과를 Saliency Maps 라고 한다.</p>
+
+<p><img src="/assets/image/lecture12-5.png" alt="" width="60%" height="60%" class="align-center" /></p>
+
+<p>왼쪽 이미지에서 CNN은 이미지 분류의 중요한 역할을 차지하는 부분, 즉 강아지의 모습을 제대로 찾아내었다. 오른쪽 이미지 또한 과일을 제대로 찾아내었다.</p>
+
+<h2 id="intermediate-features-via-guided-backprop">Intermediate features via guided backprop</h2>
+
+<p>guided backprop 이란 일반 역전파 과정에서 양수 미분 값을 통해서만 역전파하는 것이다. 이렇게 하면 일반 역전파를 하는 것보다 더 깨끗한 이미지를 얻을 수 있다는 장점이 있다.</p>
+
+<p>그리고 이 guided backprop을 특정 레이어의 특정 뉴런에 적용하면 그 뉴런에 대한 이미지 픽셀의 미분 값을 얻을 수 있다. 그에 대한 결과로 다음과 같이 각 이미지당 뉴런이 찾는 특징들에 대해 알 수 있다.</p>
+
+<p><img src="/assets/image/lecture12-6.png" alt="" /></p>
+
+<h2 id="gradient-ascent">Gradient Ascent</h2>
+
+<p>gradient descent가 손실 값을 최소화하기 위해 각 뉴런에 연결된 가중치 값을 변경하였다면 gradient ascent는 각 클래스별 점수를 최대로 하기 위해 가중치 값은 그대로 유지하고 이미지의 픽셀 값만 변화 시킨다. gradient ascent를 공식으로 나타내면 다음과 같다.</p>
+
+<p>$I^{*}=argmax_If(I)+R(I)$</p>
+
+<p>여기서 $f(I)$ 는 뉴런에 저장된 값, $R(I)$는 Natural image regularizer이다. Natural image regularizer은 이미지 픽셀 값을 변화할 때 최대한 자연스러운 이미지가 만들어지도록 정규화해주는 변수이다. CNN을 통해 gradient ascent가 이루어지는 과정은 다음과 같다.</p>
+
+<ol>
+  <li>이미지의 모든 픽셀 값에 0을 부여한다.</li>
+</ol>
+
+<p><img src="/assets/image/lecture12-7.png" alt="" /></p>
+
+<p>다음 과정을 반복한다:</p>
+
+<ol>
+  <li>CNN으로 클래스별 점수를 계산한다.</li>
+  <li>역전파를 하며 이미지의 각 픽셀에 대한 뉴런의 미분 값을 계산한다.</li>
+  <li>픽셀 값에 작은 변화를 준다.</li>
+</ol>
+
+<p>다음은 gradient ascent를 통해 이미지를 변경한 모습이다.</p>
+
+<p><img src="/assets/image/lecture12-8.png" alt="" /></p>
+
+<p>약간은 가시성이 떨어지는 배경 속에 레이블에 해당하는 모습이 희미하게 나타나는 것을 확인할 수 있다.</p>
+
+<h2 id="utilzing-gradent-ascent">Utilzing Gradent Ascent</h2>
+
+<p>지금까지 배운 내용을 활용하여 재밌으면서 기발한 활동들을 해볼 수 있다.</p>
+
+<h3 id="deepdream">DeepDream</h3>
+
+<p>Gradient Ascent가 각 클래스별 점수를 최대로 만들기 위해 이미지 픽셀에 변화를 주었다면, DeepDream은 레이어의 활성화 함수를 통해 계산한 값을 최대로 만들기 위해 이미지 픽셀에 변화를 준다. 즉, DeepDream은 다음과 같은 과정을 통해 작동한다.</p>
+
+<ol>
+  <li>이미지와 CNN의 한 레이어를 선택한다.</li>
+  <li>선택한 레이어의 활성화 함수를 통해 계산한 값에 대한 미분 값을 구한다.</li>
+  <li>계산한 미분 값을 통해 역전파를 하여 이미지의 픽셀 값을 변화시킨다.</li>
+</ol>
+
+<p>다음과 같은 하늘 이미지에 DeepDream을 적용한다고 하자.</p>
+
+<p><img src="/assets/image/lecture12-9.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>다음은 CNN에서 높은 레이어를 선택한 후 DeepDream을 적용한 모습이다.</p>
+
+<p><img src="/assets/image/lecture12-10.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>다음은 CNN에서 낮은 레이어를 선택한 후 DeepDream을 적용한 모습이다.</p>
+
+<p><img src="/assets/image/lecture12-11.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>위 두 사진에서 알 수 있듯이 높은 레이어를 선택하면 높은 레벨의 이미지들(개, 고양이, 물고기 등)이 하늘에 나타나지만 낮은 레이어를 선택하면 낮은 레벨의 이미지들(모서리, 알 수 없는 이상한 패턴들 등)이 하늘에 나타나는 것을 알 수 있다.</p>
+
+<h3 id="feature-inversion">Feature Inversion</h3>
+
+<p>Feature Inversion은 학습한 CNN모델의 특정 레이어를 통해 이미지를 만드는 방법이다. Gradient Ascent와 같은 개념을 공유하나 차이점이라면 Gradient Ascent가 각 클래스별 점수를 최대로 만들기 위해 픽셀 값을 조정하였다면 Feature Inversion은 원래 이미지와 다시 만든 이미지의 차이를 줄이기 위해 픽셀 값을 조정한다. 다음은 각 레이어별로 Feature Inversion을 적용한 모습이다.</p>
+
+<p><img src="/assets/image/lecture12-12.png" alt="" width="100%" height="100%" class="align-center" /></p>
+
+<p>높은 레이어를 선택할수록 높은 레벨의 특징들이 선택된다. 즉, 낮은 레이어일수록 낮은 레벨의 특징들(색, 물체의 테두리, 전체적인 윤곽등)을 학습하고 높은 레이어일수록 높은 레벨의 특징들(주로 semantic 하다.)을 학습한다.</p>
+
+<h3 id="texture-synthesis">Texture Synthesis</h3>
+
+<p>Texture synthesis란 다음과 같이 작은 입력 이미지를 이어 붙여서 큰 이미지를 만드는 과정이다.</p>
+
+<p><img src="/assets/image/lecture12-13.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>Texture synthesis를 하기 위한 간단한 알고리즘으로 최근접 이웃(Nearest Neighbor)이 있지만 이 강의에서는 Neural Texture Synthesis 알고리즘을 이용하였다. 이 알고리즘의 원리는 다음과 같다.</p>
+
+<ol>
+  <li>CNN의 각 레이어에는 CxHxW 크기를 가진 특징 행렬이 있는데, 이 행렬은 C차원의 특징 벡터가 HxW 만큼 있는 것으로 이해할 수 있다.</li>
+  <li>HxW 상의 C 특징 벡터 2개를 선택한 후 이 둘의 외적 값을 구한다.</li>
+  <li>과정2를 HxW상의 모든 특징 벡터에 적용한 후 계산된 값의 평균 값을 구한다.</li>
+  <li>평균 값의 결과로 CxC gram matrix가 나타나는데, 이 행렬은 이미지의 텍스쳐에 대한 정보가 담겨 있다.</li>
+  <li>2~4의 과정을 모든 레이어에 대해 실행한다.</li>
+  <li>이렇게 gram matrix가 포함된 CNN을 새로운 이미지(노이즈가 있는 것이 좋다)에 적용하여 gradient ascent를 통해 CNN에 저장된 텍스쳐대로 이미지를 재구성할 수 있다.</li>
+</ol>
+
+<p><img src="/assets/image/lecture12-14.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>다음은 Texture synthesis를 이용하여 이미지를 재구성한 결과이다.</p>
+
+<p><img src="/assets/image/lecture12-15.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<h3 id="natural-style-transfer">Natural Style Transfer</h3>
+
+<p>Natural Style Transfer란 앞서 배운 feature inversion과 texture synthesis을 동시에 적용하여 이미지의 스타일을 바꾸는 과정이다. 여기서 스타일을 바꾸고 싶은 이미지를 <strong>content image</strong>, 변경하고 싶은 스타일이 적용된 이미지를 <strong>style image</strong> 라고 한다. Natural Style Transfer 이 일어나는 원리는 상당히 간단하다.</p>
+
+<ol>
+  <li>style image에 texture synthesis를 적용하여 CNN에 텍스쳐에 대한 정보를 추가한다.</li>
+  <li>content image을 텍스쳐에 대한 정보가 추가된 CNN에 적용하여 feature inversion을 통해 노이즈가 있는 이미지(output image)를 새로운 스타일이 적용된 content image로 재구성한다.</li>
+</ol>
+
+<p><img src="/assets/image/lecture12-16.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>다음과 같이 Natural Style Transfer을 통해 같은 이미지를 다양한 스타일로 변화시킬 수 있다.</p>
+
+<p><img src="/assets/image/lecture12-17.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>여기서 content image와 style image의 가중치 값을 변화시키며 다른 느낌의 이미지를 재구성해 나갈 수 있다.</p>
+
+<p><img src="/assets/image/lecture12-18.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<h3 id="fast-style-transfer">Fast Style Transfer</h3>
+
+<p>Natural Style Transfer 의 단점은 순전파와 역전파가 지나치게 많이 일어나 처리과정이 매우 느리다는 것이다. 이때 content와 style 이미지를 먼저 학습시켜 CNN모델을 만든 후 다른 content 이미지를 적용하면 한 번의 순전파 과정만 일어나기 때문에 매우 빠른 속도로 스타일을 변경할 수 있다. 다음은 이러한 과정을 적용해 실시간으로 이미지를 재구성해 나가는 모습이다.</p>
+
+<p><img src="/assets/image/lecture12-19.gif" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>CNN이 작동하는 원리를 알기 위한 방법은 매우 다양하다.</p>
+
+<ol>
+  <li><strong>활성화 값을 통한 방법</strong>: 최근접 이웃, 차원 축소, Maximally Activating Patches,</li>
+  <li><strong>미분을 통한 방법</strong>: saliency maps, feature inversion</li>
+  <li><strong>이를 활용한 방법</strong>: DeepDream, Style Transfer</li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">computer vision</a><span class="sep">, </span>
+    
+      <a href="/categories/#cs231n" class="page__taxonomy-item" rel="tag">cs231n</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-11-05T00:00:00+09:00">November 5, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Lecture+12%3A+Visualizing+and+Understanding+CNN%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fcs231n%2FLecture12-Visualizing-and-Understanding-the-CNN%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fcs231n%2FLecture12-Visualizing-and-Understanding-the-CNN%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fcs231n%2FLecture12-Visualizing-and-Understanding-the-CNN%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/computer%20vision/python/cs231n/Lecture11-Detection-and-Segmentation/" class="pagination--pager" title="Lecture 11: Detection and Segementation
+">Previous</a>
+    
+    
+      <a href="/computer%20vision/python/cs231n/Lecture13-Generative-Models/" class="pagination--pager" title="Lecture 13: Generative Models
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/" rel="permalink">Lecture 3: Maximum Likelihood Learning
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">4번째 강의는 Maximum Likelihood Learning에 대해 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture3-Autoregressive-Models/" rel="permalink">Lecture 3: Autoregressive Model
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">3번째 강의는 Autoregressive Model에 대해 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="permalink">Lecture 1&amp;2: Introduction and Background to Deep Generative Model
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-13,14/" rel="permalink">프로그래머스 문제 9, 10
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">야간 전술보행
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/yongchanchun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 yongchan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

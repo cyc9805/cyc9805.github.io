@@ -4,9 +4,153 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/</loc>
+        
+        <lastmod>2023-01-07T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/cs236/computer%20vision/python/Lecture3-Autoregressive-Models/</loc>
+        
+        <lastmod>2023-01-04T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/</loc>
+        
+        <lastmod>2023-01-03T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-13,14/</loc>
+        
+        <lastmod>2022-11-21T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-11,12/</loc>
+        
+        <lastmod>2022-11-14T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-9,10/</loc>
+        
+        <lastmod>2022-11-07T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-7,8/</loc>
+        
+        <lastmod>2022-10-25T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-5,6/</loc>
+        
+        <lastmod>2022-10-02T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-3,4/</loc>
+        
+        <lastmod>2022-09-26T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-1,2/</loc>
         
-        <lastmod>2022-08-30T00:00:00+09:00</lastmod>
+        <lastmod>2022-09-18T00:00:00+09:00</lastmod>
         
 
         
@@ -21,6 +165,22 @@
     
     <url>
         <loc>http://localhost:4000/algorithm/python/%E1%84%85%E1%85%B5%E1%84%90%E1%85%B3%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-38,39/</loc>
+        
+        <lastmod>2022-09-11T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-3,4/</loc>
         
         <lastmod>2022-08-30T00:00:00+09:00</lastmod>
         
@@ -724,7 +884,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Assignment1/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Assignment1/</loc>
         
         <lastmod>2021-11-16T00:00:00+09:00</lastmod>
         
@@ -740,7 +900,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture14-Reinforcement-Learning/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture14-Reinforcement-Learning/</loc>
         
         <lastmod>2021-11-13T00:00:00+09:00</lastmod>
         
@@ -756,7 +916,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture13-Generative-Models/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture13-Generative-Models/</loc>
         
         <lastmod>2021-11-08T00:00:00+09:00</lastmod>
         
@@ -772,7 +932,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture12-Visualizing-and-Understanding-the-CNN/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture12-Visualizing-and-Understanding-the-CNN/</loc>
         
         <lastmod>2021-11-05T00:00:00+09:00</lastmod>
         
@@ -788,7 +948,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture11-Detection-and-Segmentation/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture11-Detection-and-Segmentation/</loc>
         
         <lastmod>2021-10-10T00:00:00+09:00</lastmod>
         
@@ -804,7 +964,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture10-Recurrent-Neural-Network/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture10-Recurrent-Neural-Network/</loc>
         
         <lastmod>2021-10-07T00:00:00+09:00</lastmod>
         
@@ -852,7 +1012,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture8-Deep-Learning_Software/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture8-Deep-Learning_Software/</loc>
         
         <lastmod>2021-10-01T00:00:00+09:00</lastmod>
         
@@ -868,7 +1028,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture9-CNN-Architectures/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture9-CNN-Architectures/</loc>
         
         <lastmod>2021-09-30T00:00:00+09:00</lastmod>
         
@@ -884,7 +1044,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture7-training-neural-networks-2/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture7-training-neural-networks-2/</loc>
         
         <lastmod>2021-09-25T00:00:00+09:00</lastmod>
         
@@ -916,7 +1076,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture6-training-neural-networks-1/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture6-training-neural-networks-1/</loc>
         
         <lastmod>2021-09-22T00:00:00+09:00</lastmod>
         
@@ -948,7 +1108,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture5-Convolutional-Neural-Networks/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture5-Convolutional-Neural-Networks/</loc>
         
         <lastmod>2021-09-19T00:00:00+09:00</lastmod>
         
@@ -964,7 +1124,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture4-Backpropagation-and-Neural-Network/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture4-Backpropagation-and-Neural-Network/</loc>
         
         <lastmod>2021-09-16T00:00:00+09:00</lastmod>
         
@@ -1012,7 +1172,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture3-Loss-Function-and-Optimization/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture3-Loss-Function-and-Optimization/</loc>
         
         <lastmod>2021-09-12T00:00:00+09:00</lastmod>
         
@@ -1044,7 +1204,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture2-Image-Classification-pipeline/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture2-Image-Classification-pipeline/</loc>
         
         <lastmod>2021-09-11T00:00:00+09:00</lastmod>
         
@@ -1060,7 +1220,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/computer%20vision/python/Lecture1-Introduction-to-CNN-for-Visual-Recognition/</loc>
+        <loc>http://localhost:4000/computer%20vision/python/cs231n/Lecture1-Introduction-to-CNN-for-Visual-Recognition/</loc>
         
         <lastmod>2021-09-11T00:00:00+09:00</lastmod>
         

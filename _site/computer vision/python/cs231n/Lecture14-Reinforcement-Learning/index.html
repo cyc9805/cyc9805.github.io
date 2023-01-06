@@ -1,0 +1,1049 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- MATH EQUATION -->
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>Lecture 14: Reinforcement Learning - yongchan’s website</title>
+<meta name="description" content="이번 단원에서는 강화 학습(reinforcement learning)에 대해서 다루고 있다.">
+
+
+  <meta name="author" content="yongchanchun">
+  
+  <meta property="article:author" content="yongchanchun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="yongchan's website">
+<meta property="og:title" content="Lecture 14: Reinforcement Learning">
+<meta property="og:url" content="http://localhost:4000/computer%20vision/python/cs231n/Lecture14-Reinforcement-Learning/">
+
+
+  <meta property="og:description" content="이번 단원에서는 강화 학습(reinforcement learning)에 대해서 다루고 있다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-11-13T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20vision/python/cs231n/Lecture14-Reinforcement-Learning/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yongchan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="yongchan's website Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Welcome to my website!!
+          <span class="site-subtitle">👋👋👋</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image/profile2.png" alt="yongchanchun" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">yongchanchun</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I’m trying to post on a daily basis<br />this may be hard but <strong>Nothing is achieved without trying!</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.facebook.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc"></label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂전체 글 수 78개
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Programming</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                
+                    
+                
+                    
+                        <li><a href="/categories/python" class="">Python (72)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/data analysis" class="">Data Analysis (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/computer vision" class="">Computer Vision (23)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/markdown" class="">Markdown (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/project" class="">Project (3)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+	    <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm (46)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Paper Review" class="">Paper Review(5)</a></li>
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cs236" class="">cs236(3)</a></li>
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cs231n" class="">cs231n(15)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Lecture 14: Reinforcement Learning">
+    <meta itemprop="description" content="이번 단원에서는 강화 학습(reinforcement learning)에 대해서 다루고 있다.">
+    <meta itemprop="datePublished" content="2021-11-13T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Lecture 14: Reinforcement Learning
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#what-is-reinforcement-learning">What is reinforcement learning?</a><ul><li><a href="#formulation-of-reinforcement-learning">Formulation of reinforcement learning</a></li></ul></li><li><a href="#value-function-and-q-value-function">Value function and Q-value function</a><ul><li><a href="#value-function">Value function</a></li><li><a href="#q-value-function">Q-value function</a></li><li><a href="#bellman-equation">Bellman equation</a></li><li><a href="#q-learning">Q-learning</a></li><li><a href="#playing-atari-game">Playing Atari game</a></li><li><a href="#policy-gradients">Policy Gradients</a></li></ul></li><li><a href="#reinforce-in-action-recurrent-attention-model-ram">REINFORCE in action: Recurrent Attention Model (RAM)</a></li><li><a href="#summary">Summary</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>이번 단원에서는 강화 학습(reinforcement learning)에 대해서 다루고 있다.</p>
+
+<h2 id="what-is-reinforcement-learning">What is reinforcement learning?</h2>
+
+<p>강화학습(reinforcement learning)은 어떤 환경 안에서 정의된 에이전트가 현재의 상태를 인식하여, 선택 가능한 행동들 중 보상을 최대화하는 행동 혹은 행동 순서를 선택하는 방법이다. 강화학습이 일어나는 과정은 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture14-1.png" alt="" /></p>
+
+<ol>
+  <li>에이전트가 $s_t$ 상태에 놓인다.</li>
+  <li>에이전트가 $a_t$ 행동을 취한다.</li>
+  <li>에이전트가 취한 행동에 따른 보상을 받는다.</li>
+</ol>
+
+<p>위 과정과 같이 행동과 그에 따른 보상을 받는 것을 반복하며 강화학습이 일어나게 된다.</p>
+
+<h3 id="formulation-of-reinforcement-learning">Formulation of reinforcement learning</h3>
+
+<p>강화학습은 Markov property을 활용하여 나타낼 수 있다. Markov property란 이 세계의 모든 상태들을 수식으로 나타낸 것이다. 이 수식의 형태는 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture14-2.png" alt="" /></p>
+
+<p>Markov property를 이용하여 에이전트가 취할 행동을 확률적으로 나타낸 것이 Markov Decision Process이다. 이 과정은 다음과 같은 순서로 일어난다.</p>
+
+<p><img src="/assets/image/lecture14-3.png" alt="" /></p>
+
+<p>여기서 policy (한글로 직역시 정책이나 표현이 어색하여 영단어 그대로 사용할 것이다) $\pi$란 S에서 어떠한 A를 선택할지 결정하는 함수이다. <strong>따라서 최대 보상을 받기 위한 $\pi^{*}$를 찾는 것이 강화학습의 목적이다.</strong></p>
+
+<h2 id="value-function-and-q-value-function">Value function and Q-value function</h2>
+
+<h3 id="value-function">Value function</h3>
+
+<p>Value function이란 s상태에 놓인 에이전트가 policy를 따랐을때 받는 누적 보상을 나타내는 함수이다. 상태가 얼마나 좋은지 평가하기 위해 사용되는 함수이다. 이 함수의 형태는 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture14-4.png" alt="" /></p>
+
+<h3 id="q-value-function">Q-value function</h3>
+
+<p>Q-value function이란 s상태에 놓인 에이전트가 a행동을 취한 후 policy를 따랐을때 받는 누적 보상을 나타내는 함수이다. s와 a로 함수가 나타나기 때문에 상태-행동 짝이 얼마나 좋은지 평가하기 위한 지표로 사용된다. 이 함수의 형태는 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture14-5.png" alt="" /></p>
+
+<h3 id="bellman-equation">Bellman equation</h3>
+
+<p>Bellman equation은 Q-value function에서 가장 높은 누적 보상 값을 만족하는 상태-행동 짝으로 나타낸 함수이다. 즉, $Q^{*}$은 다음과 같은 수식을 만족한다.</p>
+
+<p><img src="/assets/image/lecture14-6.png" alt="" /></p>
+
+<p>이때 $Q_{i}(s,a)$ 의 다음 값인 $Q_{i+1}(s,a)$를 알고 있는 경우 이 값을 Bellman equation에 대입하여 무한대로 보내면 $Q_{i}$는 $Q^{*}$로 수렴하여 값을 얻을 수 있게 된다. 그러나 이렇게 계산을 하게되면 모든 상태-행동 짝에 대해 Q값을 구해야하므로 계산량이 엄청나게 많아지게 된다. 따라서 이를 해결하기 위한 방법으로 고안된 것이 Q-learning 이다.</p>
+
+<h3 id="q-learning">Q-learning</h3>
+
+<p>Q-learning은 Bellman equation을 인공신경망으로 치환하여 치환한 인공신경망으로 대신 계산하는 방법이다.
+여기서 순전파와 역전파를 할때 손실함수, gradient update 의 모습을 다음과 같은 수식으로 나타낼 수 있다.</p>
+
+<p><img src="/assets/image/lecture14-7.png" alt="" /></p>
+
+<p>위의 함수에서 $y_i$는 타겟 값, 즉 $Q_{i}$를 나타낸다. 따라서 최적의 $Q_{i}$를 찾기 위한 s,a와 가중치 값을 정하는 것이 이 인공신경망의 목적이라고 할 수 있다.</p>
+
+<h3 id="playing-atari-game">Playing Atari game</h3>
+
+<p>아타리 게임에 강화학습을 적용해보았다. 여기서,</p>
+<ol>
+  <li>목표는 <strong>가장 높은 점수를 내는 것</strong>,</li>
+  <li>상태는 <strong>게임 화면의 픽셀</strong>,</li>
+  <li>행동은 <strong>앞,뒤,좌,우와 같은 게임 컨트롤</strong>,</li>
+  <li>보상은 <strong>점수의 증가/감소</strong> 이다.</li>
+</ol>
+
+<p>행동이 4번 있다고 했을 때 다음과 같이 입력 값과 출력 값이 나타나게 된다.</p>
+
+<p><img src="/assets/image/lecture14-8.png" alt="" /></p>
+
+<p>즉, 4번의 행동에 대한 4개의 상태-행동 짝이 나타나게 된다. 여기서 순전파 과정이 한번만 일어나 Q-value를 구할 수 있기 때문에 계산이 매우 간단해진다.</p>
+
+<h3 id="policy-gradients">Policy Gradients</h3>
+
+<p>Q-learning은 사실 모든 행동에 대한 상태-행동 짝을 구해야하므로 필요없는 계산이 매우 많아질 수 있다. 만약 로봇이 물체를 집는 모습을 가정하자. 이때 이러한 행동을 하기까지 모든 중간과정의 상태-행동 값을 구해야 한다. 하지만 특정 상태에서 특정 행동을 바로 행할 수 있는 policy를 배우면 이러한 중간 과정은 생략되고 로봇은 바로 물체를 집을 수 있게 된다. 이러한 최적의 policy를 구하기 위한 방법이 바로 policy Gradient 이다. Policy Gradient의 원리는 다음과 같다.</p>
+
+<p>인수로 나타낼 수 있는(parametrized) 여러개의 policy가 속한 집합이 있다고 하자. 그 집합의 모습은 다음과 같다.</p>
+
+<p><img src="/assets/image/lecture14-9.png" alt="" width="50%" height="50%" class="align-center" /></p>
+
+<p>그리고 각 policy의 값은 다음과 같이 나타낼 수 있다.</p>
+
+<p><img src="/assets/image/lecture14-10.png" alt="" width="50%" height="50%" class="align-center" /></p>
+
+<p>여기서 우리가 찾고 싶은 것은 최적의 policy 값, 즉 가장 큰 policy 값이다.</p>
+
+<p><img src="/assets/image/lecture14-11.png" alt="" width="50%" height="50%" class="align-center" /></p>
+
+<p>최적의 policy 값을 찾기 위해서는 policy 인수에 gradient ascent를 적용하면 된다. gradient ascent를 하는 과정은 상당히 복잡해져 이 과정은 생략하도록 하겠다. 이 과정을 REINFORCE 알고리즘이라고 하는데, 간단하게 이 알고리즘에 대한 결과만 설명하도록 하겠다.</p>
+
+<p><img src="/assets/image/lecture14-12.png" alt="" width="50%" height="50%" class="align-center" /></p>
+
+<p>여기서 $r(\tau)$는 각 policy에 대한 보상값이다. 위 식은 다음과 같이 해석할 수 있다.</p>
+<ol>
+  <li>만약 $r(\tau)$가 높으면 행동을 증가시킨다.</li>
+  <li>만약 $r(\tau)$가 낮으면 행동을 감소시킨다.</li>
+</ol>
+
+<p>따라서 $r(\tau)$가 따르는 경로가 좋은 경우(중간 행동들에 대한 보상들이 높은 경우) 그 경로에 해당하는 모든 행동이 좋다고 해석할 수 있다. 그러나 사실 그것은 최적의 policy가 나타나기 위한 모든 행동들이 평균되어 나타난 값이므로 어떠한 행동이 가장 좋은 행동인지에 대해서는 알지 못하게 된다. 따라서 이를 알기 위해서 variance reduction, 즉 표본의 분산을 줄이는 작업을 해야한다. 이 과정에 대해서는 다소 복잡하고 도움이 되는 내용이 아니라 판단되어 생략하도록 하겠다.</p>
+
+<h2 id="reinforce-in-action-recurrent-attention-model-ram">REINFORCE in action: Recurrent Attention Model (RAM)</h2>
+
+<p>RAM이란 이미지를 분류할때 이미지의 모든 픽셀이 아닌 특정 픽셀만 보고 바로 분류를 할 수 있게 만드는 모델이다. 이 모델의 분류 과정은 다음과 같이 이루어진다. 먼저 강화학습의 목적, 상태, 행동, 보상을 정의하자.</p>
+
+<ol>
+  <li>목표는 <strong>이미지 분류</strong>,</li>
+  <li>상태는 <strong>이미지의 일정 부분</strong>,</li>
+  <li>행동은 <strong>어떠한 이미지의 일정 부분의 중심(x,y 좌표)을 볼 것인가</strong>,</li>
+  <li>보상은 <strong>제대로 분류를 하면 1, 분류를 하지 못하면 0을 부여한다</strong> 이다.</li>
+</ol>
+
+<p>다음은 모델을 통해 이미지에서 분류를 위한 중요한 부분을 찾아나가는 과정이다.</p>
+
+<p><img src="/assets/image/lecture14-12.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>이렇게 차례로 좌표값을 바꾸며 보상에 따른 상태를 바꾸게 되는 과정을 반복하다보면 이미지를 알맞게 분류할 수 있게 된다.</p>
+
+<hr />
+<p>이 강의는 알파고의 원리에 대해서도 가볍게 다루고 있다. 알파고도 강화학습의 결과라는 것 정도만 기억하고 있으면 될 것이다.</p>
+
+<h2 id="summary">Summary</h2>
+
+<ol>
+  <li>
+    <p>Policy gradient: Q-learning의 계산의 복잡성 문제를 보완하기 위해 만들어진 방법이다. 가장 보편적으로 사용되는 방법이나 표본의 분산문제 때문에 variance reduction을 실행해야 한다.</p>
+  </li>
+  <li>
+    <p>Q-learning: 모든 행동-상태 짝에 대한 Q값을 구해야 하기 때문에 policy gradient 보다 다소 복잡한 계산을 요구한다. Policy gradient보단 보편적이진 않지만 한번 작동에 성공하면 더 좋은 성능을 낸다.</p>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">computer vision</a><span class="sep">, </span>
+    
+      <a href="/categories/#cs231n" class="page__taxonomy-item" rel="tag">cs231n</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-11-13T00:00:00+09:00">November 13, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Lecture+14%3A+Reinforcement+Learning%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fcs231n%2FLecture14-Reinforcement-Learning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fcs231n%2FLecture14-Reinforcement-Learning%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fcs231n%2FLecture14-Reinforcement-Learning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/computer%20vision/python/cs231n/Lecture13-Generative-Models/" class="pagination--pager" title="Lecture 13: Generative Models
+">Previous</a>
+    
+    
+      <a href="/computer%20vision/python/cs231n/Assignment1/" class="pagination--pager" title="Assignment 1
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/" rel="permalink">Lecture 3: Maximum Likelihood Learning
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">4번째 강의는 Maximum Likelihood Learning에 대해 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture3-Autoregressive-Models/" rel="permalink">Lecture 3: Autoregressive Model
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">3번째 강의는 Autoregressive Model에 대해 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="permalink">Lecture 1&amp;2: Introduction and Background to Deep Generative Model
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-13,14/" rel="permalink">프로그래머스 문제 9, 10
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">야간 전술보행
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/yongchanchun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 yongchan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

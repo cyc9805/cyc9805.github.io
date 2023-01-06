@@ -7,6 +7,7 @@ toc_sticky: true
 categories:
   - computer vision
   - python
+  - cs231n
 ---
 
 원래는 Lecture 3를 정리하기 전에 Lecture 2를 정리했어야 했는데 밀린 Lecture을 듣다가 이제서야 정리를 한다. 

@@ -65,6 +65,20 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+<ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "cs236" %}
+                        <li><a href="/categories/cs236" class="">cs236({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+<ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "cs231n" %}
+                        <li><a href="/categories/cs231n" class="">cs231n({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
   </ul>
 </nav>
