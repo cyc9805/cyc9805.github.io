@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Lecture 3: Maximum Likelihood Learning"
+title:  "Lecture 4: Maximum Likelihood Learning"
 comments: true
 toc: true
 toc_sticky: true
