@@ -461,7 +461,7 @@ var store = [{
         "url": "/cs236/computer%20vision/python/Lecture3-Autoregressive-Models/",
         "teaser": null
       },{
-        "title": "Lecture 3: Maximum Likelihood Learning",
+        "title": "Lecture 4: Maximum Likelihood Learning",
         "excerpt":"4번째 강의는 Maximum Likelihood Learning에 대해 다루고 있다.                        ","categories": ["cs236","computer vision","python"],
         "tags": [],
         "url": "/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/",
