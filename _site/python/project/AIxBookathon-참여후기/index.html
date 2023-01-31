@@ -9,8 +9,33 @@
   <head>
     <meta charset="utf-8">
     <!-- MATH EQUATION -->
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
       <!-- begin _includes/seo.html --><title>제4회 AI x Bookathon 참여후기 - yongchan’s website</title>
-<meta name="description" content="지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
+<meta name="description" content="  지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
 
 
   <meta name="author" content="yongchanchun">
@@ -26,7 +51,7 @@
 <meta property="og:url" content="http://localhost:4000/python/project/AIxBookathon-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/">
 
 
-  <meta property="og:description" content="지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
+  <meta property="og:description" content="  지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
 
 
 
@@ -276,7 +301,7 @@
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
       <li>
-            📂전체 글 수 81개
+            📂전체 글 수 82개
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
@@ -289,7 +314,7 @@
                     
                 
                     
-                        <li><a href="/categories/python" class="">Python (73)</a></li>
+                        <li><a href="/categories/python" class="">Python (74)</a></li>
                     
                 
                     
@@ -337,7 +362,7 @@
                     
                 
                     
-                        <li><a href="/categories/computer vision" class="">Computer Vision (25)</a></li>
+                        <li><a href="/categories/computer vision" class="">Computer Vision (26)</a></li>
                     
                 
                     
@@ -464,7 +489,7 @@
                     
                 
                     
-                        <li><a href="/categories/cs236" class="">cs236(3)</a></li>
+                        <li><a href="/categories/cs236" class="">cs236(4)</a></li>
                     
                 
             </ul>
@@ -504,7 +529,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="제4회 AI x Bookathon 참여후기">
-    <meta itemprop="description" content="지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
+    <meta itemprop="description" content="  지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
     <meta itemprop="datePublished" content="2022-01-26T00:00:00+09:00">
     
 
@@ -539,7 +564,15 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.</p>
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#데이터-크롤링">데이터 크롤링</a></li><li><a href="#데이터-전처리">데이터 전처리</a></li><li><a href="#모델-훈련">모델 훈련</a><ul><li><a href="#1-gpt3-기반-모델-사용하기">1. GPT3 기반 모델 사용하기</a></li><li><a href="#2-gpt2-기반-모델-사용하기">2. GPT2 기반 모델 사용하기</a></li><li><a href="#3-논문-참고">3. 논문 참고</a></li><li><a href="#4-에피소드별-주제-선정">4. 에피소드별 주제 선정</a></li></ul></li><li><a href="#본선">본선</a></li><li><a href="#후기">후기</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>  지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.</p>
 
 <ol>
   <li>데이터 크롤링</li>
@@ -551,7 +584,7 @@
 
 <h2 id="데이터-크롤링">데이터 크롤링</h2>
 
-<p>우리는 데이터를 다음 사이트들로부터 크롤링을 하였다.</p>
+<p>  우리는 데이터를 다음 사이트들로부터 크롤링을 하였다.</p>
 
 <ol>
   <li>글틴</li>
@@ -561,48 +594,46 @@
   <li>모두의 말뭉치</li>
 </ol>
 
-<p>우리는 최대한 많은 수필 데이터를 수집한 후 Language Model에 학습할 계획을 세웠기 때문에 각 사이트 별로 약 10MB에 해당되는 데이터를 크롤링 하였다.</p>
+<p>  우리는 최대한 많은 수필 데이터를 수집한 후 Language Model에 학습할 계획을 세웠기 때문에 각 사이트 별로 약 10MB에 해당되는 데이터를 크롤링 하였다.</p>
 
 <h2 id="데이터-전처리">데이터 전처리</h2>
-<p>우리는 <a href="https://arxiv.org/pdf/2105.09680.pdf">KLUE: Korean Language Understanding Evaluation</a> 논문에서 사용된 전처리 방법을 참고 하였다. 해당 논문은 다음과 같은 방법을 이용하였다.</p>
+<p>  우리는 <a href="https://arxiv.org/pdf/2105.09680.pdf">KLUE: Korean Language Understanding Evaluation</a> 논문에서 사용된 전처리 방법을 참고 하였다. 해당 논문은 다음과 같은 방법을 이용하였다.</p>
 
-<ol>
-  <li>Noise Filtering: 의미 없이 나열되는 공백과 문자(hashtag, HTML tag, copyright tag등)들을 제거하였다.</li>
-  <li>Toxic Content Removal: 성 차별적인 문장이나 혐오 표현들이 포함된 문장을 삭제하였다.</li>
-  <li>PII Removal: 개인정보와 관련된 문장, 즉 \@gildong 와 같은 이메일, 다른 유저를 멘션하는 키워드, 웹페이지 주소를 삭제하였다.</li>
-</ol>
+<p><strong>1. Noise Filtering</strong>: 의미 없이 나열되는 공백과 문자(hashtag, HTML tag, copyright tag등)들을 제거하였다.
+<strong>2. Toxic Content Removal</strong>: 성 차별적인 문장이나 혐오 표현들이 포함된 문장을 삭제하였다.
+<strong>3. PII Removal</strong>: 개인정보와 관련된 문장, 즉 @gildong 와 같은 이메일, 다른 유저를 멘션하는 키워드, 웹페이지 주소를 삭제하였다.</p>
 
 <h2 id="모델-훈련">모델 훈련</h2>
-<p>우리는 사용할 모델과 모델 훈련 전략을 다음과 같이 세웠다.</p>
+<p>  우리는 사용할 모델과 모델 훈련 전략을 다음과 같이 세웠다.</p>
 
 <h3 id="1-gpt3-기반-모델-사용하기">1. GPT3 기반 모델 사용하기</h3>
 
-<p>가장 최신 language model인 GPT3를 사용하는 것이 가장 좋은 성능을 보일 것이라고 생각해 처음에는 GPT3를 사용할 계획을 세웠다. 그러나 사용할 수 있는 GPU의 성능이 별로 좋지 않아 학습하는 시간이 너무 오래 걸릴 것이고 GPU의 메모리가 충분하지 않았기 때문에 우리는 GPT3보다 이전에 나온 모델인 GPT2 기반 모델을 사용하기로 결정하였다.</p>
+<p>  가장 최신 language model인 GPT3를 사용하는 것이 가장 좋은 성능을 보일 것이라고 생각해 처음에는 GPT3를 사용할 계획을 세웠다. 그러나 사용할 수 있는 GPU의 성능이 별로 좋지 않아 학습하는 시간이 너무 오래 걸릴 것이고 GPU의 메모리가 충분하지 않았기 때문에 우리는 GPT3보다 이전에 나온 모델인 GPT2 기반 모델을 사용하기로 결정하였다.</p>
 
 <h3 id="2-gpt2-기반-모델-사용하기">2. GPT2 기반 모델 사용하기</h3>
 
-<p>우리는 Huggingface 사이트에서 여러 GPT2 모델을 발견하였다. 그 중에서 한국어 데이터셋으로 추가 학습한 SKT-KoGPT2 모델을 사용하기로 하였다. 이렇게 pretrained된 KoGPT2를 우리가 크롤링해서 수집한 데이터로 fine-tuning 시켰다.</p>
+<p>  우리는 Huggingface 사이트에서 여러 GPT2 모델을 발견하였다. 그 중에서 한국어 데이터셋으로 추가 학습한 SKT-KoGPT2 모델을 사용하기로 하였다. 이렇게 pretrained된 KoGPT2를 우리가 크롤링해서 수집한 데이터로 fine-tuning 시켰다.</p>
 
 <h3 id="3-논문-참고">3. 논문 참고</h3>
 
-<p>기본 베이스 모델인 KoGPT2에 프롬프트 문장을 넣어서 다음 문장을 생성하였더니 조금만 많이 생성해도 문장의 일관성이 유지되지 않는다는 사실을 파악했다. 따라서 우리는 문장의 일관성을 유지하는 동시에 문장을 생성하는 우리 팀 만의 novelty를 가질 수 있는 방법을 찾기 위해 논문을 찾아 보았다. 그 중 참고한 논문은 <strong><a href="https://aclanthology.org/2021.naacl-main.341.pdf">Progressive Generation of Long Text with Pretrained Language Models</a></strong> 으로, left-to-right fashion이 아닌 아래 그림에 나타난 방법으로 문장을 생성하게 된다.</p>
+<p>  기본 베이스 모델인 KoGPT2에 프롬프트 문장을 넣어서 다음 문장을 생성하였더니 조금만 많이 생성해도 문장의 일관성이 유지되지 않는다는 사실을 파악했다. 따라서 우리는 문장의 일관성을 유지하는 동시에 문장을 생성하는 우리 팀 만의 novelty를 가질 수 있는 방법을 찾기 위해 논문을 찾아 보았다. 그 중 참고한 논문은 <strong><a href="https://aclanthology.org/2021.naacl-main.341.pdf">Progressive Generation of Long Text with Pretrained Language Models</a></strong> 으로, left-to-right fashion이 아닌 아래 그림에 나타난 방법으로 문장을 생성하게 된다.</p>
 
 <p><img src="/assets/image/bookathon-1.png" alt="" width="80%" height="80%" class="align-center" /></p>
 
-<p>위 그림의 process를 간단하게 설명하면 다음과 같다.</p>
+<p>  위 그림의 process를 간단하게 설명하면 다음과 같다.</p>
 
 <ul>
-  <li>output text인 $y_t$는 intermediate sequence인 $c_k$를 conditioning 하여 생성된다.</li>
-  <li>여기서 $c_k$는 vocabulary set인 $V_k$ 으로부터 생성된 sequence 이다.</li>
-  <li>$V_k$는 $k$가 커질수록 사이즈가 커지게 된다.</li>
+  <li>output text인 $y_t$ 는 intermediate sequence인 $c_k$ 를 conditioning 하여 생성된다.</li>
+  <li>여기서 $c_k$ 는 vocabulary set인 $V_k$ 으로부터 생성된 sequence 이다.</li>
+  <li>$V_k$ 는 $k$ 가 커질수록 사이즈가 커지게 된다.</li>
   <li>따라서 위 그림과 같이 처음에는 중요한 단어들(여기서 단어들의 중요도를 tf-idf로 구한다)이 먼저 생성이 되고 덜 중요한 단어들이 점차 생성되며 문단을 생성하게 된다.</li>
 </ul>
 
-<p>해당 논문에 사용된 코드를 fork하여 koGPT2와 koBART(해당 논문에서 GPT2와 BART를 사용하였기 때문에 해당 기반 모델을 사용하였다)를 그대로 해당 코드에 적용해 보았다. 그러나 pytorch hub에서 koBART를 불러오는 과정에서 문제가 생겼고 이 문제를 해결하려고 하였지만 대회까지 남은 시간이 많이 없었기 때문에 다른 방법을 찾을 수 밖에 없었다.</p>
+<p>  해당 논문에 사용된 코드를 fork하여 koGPT2와 koBART(해당 논문에서 GPT2와 BART를 사용하였기 때문에 해당 기반 모델을 사용하였다)를 그대로 해당 코드에 적용해 보았다. 그러나 pytorch hub에서 koBART를 불러오는 과정에서 문제가 생겼고 이 문제를 해결하려고 하였지만 대회까지 남은 시간이 많이 없었기 때문에 다른 방법을 찾을 수 밖에 없었다.</p>
 
 <h3 id="4-에피소드별-주제-선정">4. 에피소드별 주제 선정</h3>
 
-<p>우리는 koGPT2를 아무리 적절하게 훈련을 시켜도 2만자 내외의 문장을 일관되게 생성해 낼 수 없을 것이라고 판단하고 인공지능 모델이 글을 처음부터 끝까지 써 내려가는 작가가 아닌 인간이 직접 플롯을 구성하고 해당 플롯 안에서 적절한 문장을 생성해 내는 보조작가의 역할을 부여하기로 하였다. 따라서 우리는 다음과 같은 방법으로 수필을 생성해내기로 하였다.</p>
+<p>  우리는 koGPT2를 아무리 적절하게 훈련을 시켜도 2만자 내외의 문장을 일관되게 생성해 낼 수 없을 것이라고 판단하고 인공지능 모델이 글을 처음부터 끝까지 써 내려가는 작가가 아닌 인간이 직접 플롯을 구성하고 해당 플롯 안에서 적절한 문장을 생성해 내는 보조작가의 역할을 부여하기로 하였다. 따라서 우리는 다음과 같은 방법으로 수필을 생성해내기로 하였다.</p>
 
 <ol>
   <li>직접 플롯을 구성한다.</li>
@@ -614,31 +645,31 @@
   <li>문장을 n개 생성하고 그 중 마음에 드는 문장을 선택한 뒤 다음 프롬프트로 넣는다.</li>
 </ol>
 
-<p>우리는 위와 같은 방법대로 작동하는 pipeline을 구축하였다.</p>
+<p>  우리는 위와 같은 방법대로 작동하는 pipeline을 구축하였다.</p>
 
 <h2 id="본선">본선</h2>
 
-<p>본선에서 주어진 주제는 ‘담대함’ 이였다. 우리는 ‘담대한’을 주체성을 찾는 과정, 즉 터부시되는 경계를 깨트리고 다음 단계로 나아가는 원동력이라고 생각하였다. 이러한 속성이 모더니즘의 기조인 전통적인 기반에서 급진적으로 벗어나려는 시도와 상당히 유사하다는 발상을 하게 되었다. 여기서 우리는 모더니즘에서 더 나아가 모더니즘을 대표하는 화가인 모네를 떠올렸고 ‘주인공이 모네의 작품과 타인을 만나며 자신의 삶을 담대하게 맞서 나간다’ 라는 스토리를 구상하였다. 
+<p>  본선에서 주어진 주제는 ‘담대함’ 이였다. 우리는 ‘담대한’을 주체성을 찾는 과정, 즉 터부시되는 경계를 깨트리고 다음 단계로 나아가는 원동력이라고 생각하였다. 이러한 속성이 모더니즘의 기조인 전통적인 기반에서 급진적으로 벗어나려는 시도와 상당히 유사하다는 발상을 하게 되었다. 여기서 우리는 모더니즘에서 더 나아가 모더니즘을 대표하는 화가인 모네를 떠올렸고 ‘주인공이 모네의 작품과 타인을 만나며 자신의 삶을 담대하게 맞서 나간다’ 라는 스토리를 구상하였다. 
  우리가 선정한 에피소드 별 키워드는 다음과 같다.</p>
 
-<p>Episode 1) 회상, 모네
- Episode 2) 평범
- Episode 3) 인생의 전환점
- Episode 4) 주체성, 꿈
- Episode 5) 담대함, 변화
- Episode 6) 이동, 회상
- Episode 7) 갈등, 회상
- Episode 8) 갈등, 이별, 친구
- Episode 9) 현실, 순응, 공부
- Episode 10) 추억, 담대</p>
+<p>Episode 1) 회상, 모네 <br />
+ Episode 2) 평범 <br />
+ Episode 3) 인생의 전환점 <br />
+ Episode 4) 주체성, 꿈 <br />
+ Episode 5) 담대함, 변화 <br />
+ Episode 6) 이동, 회상 <br />
+ Episode 7) 갈등, 회상 <br />
+ Episode 8) 갈등, 이별, 친구 <br />
+ Episode 9) 현실, 순응, 공부 <br />
+ Episode 10) 추억, 담대 <br /></p>
 
-<p>대회에 사용된 코드와 최종적으로 생성한 수필은 아래 링크에서 찾아볼 수 있다.
+<p>  대회에 사용된 코드와 최종적으로 생성한 수필은 아래 링크에서 찾아볼 수 있다. <br />
  <a href="https://github.com/cyc9805/AIxBookathon/blob/main/README.md">github</a></p>
 
 <h2 id="후기">후기</h2>
 
-<p>처음으로 참여한 NLP관련 대회였지만 최우수상이라는 좋은 성과를 거두어서 너무 좋았다. 최종 발표 시간에 다른 팀이 발표한 내용을 통해서도 많은 것을 배울 수 있었다. 특히 부족한 GPU 성능을 극복하기 위해 Gradient Accumulation 방법을 사용해 더 무거운 모델을 돌린 팀이 가장 인상적이였다. 
- 이 대회의 핵심은 <strong>‘얼마나 인공지능이 인간의 개입은 최소화 한 채로 좋은 글을 써 내려갈 수 있느냐’</strong> 가 아니라 <strong>‘얼마나 인공지능이 인간을 도와 좋은 글을 작성할 수 있도록 할 수 있느냐’</strong> 이라고 생각한다. 이러한 점은 부족한 GPU 성능 때문에 어쩔 수 없으나 수필의 결과물 보다는 수필을 만드는 과정이 좀 더 중요하게 평가되어야 하지 않냐는 개인적인 아쉬움이 든다. 언젠가는 인공지능이 인간의 개입 없이 글을 완전하게 생성하는 미래를 꿈꾸며 후기를 마치도록 하겠다.</p>
+<p>  처음으로 참여한 NLP관련 대회였지만 최우수상이라는 좋은 성과를 거두어서 너무 좋았다. 최종 발표 시간에 다른 팀이 발표한 내용을 통해서도 많은 것을 배울 수 있었다. 특히 부족한 GPU 성능을 극복하기 위해 Gradient Accumulation 방법을 사용해 더 무거운 모델을 돌린 팀이 가장 인상적이였다. 
+<br />   이 대회의 핵심은 <strong>‘얼마나 인공지능이 인간의 개입은 최소화 한 채로 좋은 글을 써 내려갈 수 있느냐’</strong> 가 아니라 <strong>‘얼마나 인공지능이 인간을 도와 좋은 글을 작성할 수 있도록 할 수 있느냐’</strong> 이라고 생각한다. 이러한 점은 부족한 GPU 성능 때문에 어쩔 수 없으나 수필의 결과물 보다는 수필을 만드는 과정이 좀 더 중요하게 평가되어야 하지 않냐는 개인적인 아쉬움이 든다. 언젠가는 인공지능이 인간의 개입 없이 글을 완전하게 생성하는 미래를 꿈꾸며 후기를 마치도록 하겠다.</p>
 
         
       </section>
@@ -797,7 +828,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="permalink">Lecture 1&amp;2: Introduction and Background to Deep Generative Model
+        <a href="/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/" rel="permalink">Lecture 1&amp;2: Introduction and Background to Deep Generative Model
 </a>
       
     </h2>
@@ -838,7 +869,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-13,14/" rel="permalink">프로그래머스 문제 9, 10
+        <a href="/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="permalink">Lecture 1&amp;2: Introduction and Background to Deep Generative Model
 </a>
       
     </h2>
@@ -856,14 +887,14 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 minute read
+          less than 1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">야간 전술보행
+    <p class="archive__item-excerpt" itemprop="description">첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.
 
 </p>
   </article>
