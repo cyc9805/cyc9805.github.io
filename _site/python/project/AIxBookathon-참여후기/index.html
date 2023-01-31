@@ -1,0 +1,981 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- MATH EQUATION -->
+      <!-- begin _includes/seo.html --><title>제4회 AI x Bookathon 참여후기 - yongchan’s website</title>
+<meta name="description" content="지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
+
+
+  <meta name="author" content="yongchanchun">
+  
+  <meta property="article:author" content="yongchanchun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="yongchan's website">
+<meta property="og:title" content="제4회 AI x Bookathon 참여후기">
+<meta property="og:url" content="http://localhost:4000/python/project/AIxBookathon-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/">
+
+
+  <meta property="og:description" content="지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-26T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/python/project/AIxBookathon-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yongchan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="yongchan's website Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Welcome to my website!!
+          <span class="site-subtitle">👋👋👋</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image/profile2.png" alt="yongchanchun" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">yongchanchun</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I’m trying to post on a daily basis<br />this may be hard but <strong>Nothing is achieved without trying!</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.facebook.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc"></label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂전체 글 수 81개
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Programming</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                
+                    
+                
+                    
+                        <li><a href="/categories/python" class="">Python (73)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/data analysis" class="">Data Analysis (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/computer vision" class="">Computer Vision (25)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/markdown" class="">Markdown (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/project" class="">Project (4)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+	    <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm (46)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Paper Review" class="">Paper Review(7)</a></li>
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cs236" class="">cs236(3)</a></li>
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cs231n" class="">cs231n(15)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="제4회 AI x Bookathon 참여후기">
+    <meta itemprop="description" content="지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.">
+    <meta itemprop="datePublished" content="2022-01-26T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">제4회 AI x Bookathon 참여후기
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.</p>
+
+<ol>
+  <li>데이터 크롤링</li>
+  <li>데이터 전처리</li>
+  <li>모델 훈련</li>
+  <li>본선</li>
+  <li>후기</li>
+</ol>
+
+<h2 id="데이터-크롤링">데이터 크롤링</h2>
+
+<p>우리는 데이터를 다음 사이트들로부터 크롤링을 하였다.</p>
+
+<ol>
+  <li>글틴</li>
+  <li>브런치</li>
+  <li>대표 에세이 문학회</li>
+  <li>동아신축문예</li>
+  <li>모두의 말뭉치</li>
+</ol>
+
+<p>우리는 최대한 많은 수필 데이터를 수집한 후 Language Model에 학습할 계획을 세웠기 때문에 각 사이트 별로 약 10MB에 해당되는 데이터를 크롤링 하였다.</p>
+
+<h2 id="데이터-전처리">데이터 전처리</h2>
+<p>우리는 <a href="https://arxiv.org/pdf/2105.09680.pdf">KLUE: Korean Language Understanding Evaluation</a> 논문에서 사용된 전처리 방법을 참고 하였다. 해당 논문은 다음과 같은 방법을 이용하였다.</p>
+
+<ol>
+  <li>Noise Filtering: 의미 없이 나열되는 공백과 문자(hashtag, HTML tag, copyright tag등)들을 제거하였다.</li>
+  <li>Toxic Content Removal: 성 차별적인 문장이나 혐오 표현들이 포함된 문장을 삭제하였다.</li>
+  <li>PII Removal: 개인정보와 관련된 문장, 즉 \@gildong 와 같은 이메일, 다른 유저를 멘션하는 키워드, 웹페이지 주소를 삭제하였다.</li>
+</ol>
+
+<h2 id="모델-훈련">모델 훈련</h2>
+<p>우리는 사용할 모델과 모델 훈련 전략을 다음과 같이 세웠다.</p>
+
+<h3 id="1-gpt3-기반-모델-사용하기">1. GPT3 기반 모델 사용하기</h3>
+
+<p>가장 최신 language model인 GPT3를 사용하는 것이 가장 좋은 성능을 보일 것이라고 생각해 처음에는 GPT3를 사용할 계획을 세웠다. 그러나 사용할 수 있는 GPU의 성능이 별로 좋지 않아 학습하는 시간이 너무 오래 걸릴 것이고 GPU의 메모리가 충분하지 않았기 때문에 우리는 GPT3보다 이전에 나온 모델인 GPT2 기반 모델을 사용하기로 결정하였다.</p>
+
+<h3 id="2-gpt2-기반-모델-사용하기">2. GPT2 기반 모델 사용하기</h3>
+
+<p>우리는 Huggingface 사이트에서 여러 GPT2 모델을 발견하였다. 그 중에서 한국어 데이터셋으로 추가 학습한 SKT-KoGPT2 모델을 사용하기로 하였다. 이렇게 pretrained된 KoGPT2를 우리가 크롤링해서 수집한 데이터로 fine-tuning 시켰다.</p>
+
+<h3 id="3-논문-참고">3. 논문 참고</h3>
+
+<p>기본 베이스 모델인 KoGPT2에 프롬프트 문장을 넣어서 다음 문장을 생성하였더니 조금만 많이 생성해도 문장의 일관성이 유지되지 않는다는 사실을 파악했다. 따라서 우리는 문장의 일관성을 유지하는 동시에 문장을 생성하는 우리 팀 만의 novelty를 가질 수 있는 방법을 찾기 위해 논문을 찾아 보았다. 그 중 참고한 논문은 <strong><a href="https://aclanthology.org/2021.naacl-main.341.pdf">Progressive Generation of Long Text with Pretrained Language Models</a></strong> 으로, left-to-right fashion이 아닌 아래 그림에 나타난 방법으로 문장을 생성하게 된다.</p>
+
+<p><img src="/assets/image/bookathon-1.png" alt="" width="80%" height="80%" class="align-center" /></p>
+
+<p>위 그림의 process를 간단하게 설명하면 다음과 같다.</p>
+
+<ul>
+  <li>output text인 $y_t$는 intermediate sequence인 $c_k$를 conditioning 하여 생성된다.</li>
+  <li>여기서 $c_k$는 vocabulary set인 $V_k$ 으로부터 생성된 sequence 이다.</li>
+  <li>$V_k$는 $k$가 커질수록 사이즈가 커지게 된다.</li>
+  <li>따라서 위 그림과 같이 처음에는 중요한 단어들(여기서 단어들의 중요도를 tf-idf로 구한다)이 먼저 생성이 되고 덜 중요한 단어들이 점차 생성되며 문단을 생성하게 된다.</li>
+</ul>
+
+<p>해당 논문에 사용된 코드를 fork하여 koGPT2와 koBART(해당 논문에서 GPT2와 BART를 사용하였기 때문에 해당 기반 모델을 사용하였다)를 그대로 해당 코드에 적용해 보았다. 그러나 pytorch hub에서 koBART를 불러오는 과정에서 문제가 생겼고 이 문제를 해결하려고 하였지만 대회까지 남은 시간이 많이 없었기 때문에 다른 방법을 찾을 수 밖에 없었다.</p>
+
+<h3 id="4-에피소드별-주제-선정">4. 에피소드별 주제 선정</h3>
+
+<p>우리는 koGPT2를 아무리 적절하게 훈련을 시켜도 2만자 내외의 문장을 일관되게 생성해 낼 수 없을 것이라고 판단하고 인공지능 모델이 글을 처음부터 끝까지 써 내려가는 작가가 아닌 인간이 직접 플롯을 구성하고 해당 플롯 안에서 적절한 문장을 생성해 내는 보조작가의 역할을 부여하기로 하였다. 따라서 우리는 다음과 같은 방법으로 수필을 생성해내기로 하였다.</p>
+
+<ol>
+  <li>직접 플롯을 구성한다.</li>
+  <li>플롯을 여러 개의 에피소드로 나눈다.</li>
+  <li>에피소드별 키워드를 선정한다.</li>
+  <li>키워드를 브런치에 검색한 뒤 나오는 브런치 데이터들을 크롤링한다.</li>
+  <li>크롤링한 데이터를 koGPT2에 fine-tuning 시켜 에피소드 별로 다른 모델을 생성한다.</li>
+  <li>처음 에피소드의 프롬프트 문장만 직접 작성한 뒤 그 이후로 나오는 문장은 인공지능 모델에게 맡긴다.</li>
+  <li>문장을 n개 생성하고 그 중 마음에 드는 문장을 선택한 뒤 다음 프롬프트로 넣는다.</li>
+</ol>
+
+<p>우리는 위와 같은 방법대로 작동하는 pipeline을 구축하였다.</p>
+
+<h2 id="본선">본선</h2>
+
+<p>본선에서 주어진 주제는 ‘담대함’ 이였다. 우리는 ‘담대한’을 주체성을 찾는 과정, 즉 터부시되는 경계를 깨트리고 다음 단계로 나아가는 원동력이라고 생각하였다. 이러한 속성이 모더니즘의 기조인 전통적인 기반에서 급진적으로 벗어나려는 시도와 상당히 유사하다는 발상을 하게 되었다. 여기서 우리는 모더니즘에서 더 나아가 모더니즘을 대표하는 화가인 모네를 떠올렸고 ‘주인공이 모네의 작품과 타인을 만나며 자신의 삶을 담대하게 맞서 나간다’ 라는 스토리를 구상하였다. 
+ 우리가 선정한 에피소드 별 키워드는 다음과 같다.</p>
+
+<p>Episode 1) 회상, 모네
+ Episode 2) 평범
+ Episode 3) 인생의 전환점
+ Episode 4) 주체성, 꿈
+ Episode 5) 담대함, 변화
+ Episode 6) 이동, 회상
+ Episode 7) 갈등, 회상
+ Episode 8) 갈등, 이별, 친구
+ Episode 9) 현실, 순응, 공부
+ Episode 10) 추억, 담대</p>
+
+<p>대회에 사용된 코드와 최종적으로 생성한 수필은 아래 링크에서 찾아볼 수 있다.
+ <a href="https://github.com/cyc9805/AIxBookathon/blob/main/README.md">github</a></p>
+
+<h2 id="후기">후기</h2>
+
+<p>처음으로 참여한 NLP관련 대회였지만 최우수상이라는 좋은 성과를 거두어서 너무 좋았다. 최종 발표 시간에 다른 팀이 발표한 내용을 통해서도 많은 것을 배울 수 있었다. 특히 부족한 GPU 성능을 극복하기 위해 Gradient Accumulation 방법을 사용해 더 무거운 모델을 돌린 팀이 가장 인상적이였다. 
+ 이 대회의 핵심은 <strong>‘얼마나 인공지능이 인간의 개입은 최소화 한 채로 좋은 글을 써 내려갈 수 있느냐’</strong> 가 아니라 <strong>‘얼마나 인공지능이 인간을 도와 좋은 글을 작성할 수 있도록 할 수 있느냐’</strong> 이라고 생각한다. 이러한 점은 부족한 GPU 성능 때문에 어쩔 수 없으나 수필의 결과물 보다는 수필을 만드는 과정이 좀 더 중요하게 평가되어야 하지 않냐는 개인적인 아쉬움이 든다. 언젠가는 인공지능이 인간의 개입 없이 글을 완전하게 생성하는 미래를 꿈꾸며 후기를 마치도록 하겠다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#project" class="page__taxonomy-item" rel="tag">project</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-01-26T00:00:00+09:00">January 26, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%A0%9C4%ED%9A%8C+AI+x+Bookathon+%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fproject%2FAIxBookathon-%25EC%25B0%25B8%25EC%2597%25AC%25ED%259B%2584%25EA%25B8%25B0%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fproject%2FAIxBookathon-%25EC%25B0%25B8%25EC%2597%25AC%25ED%259B%2584%25EA%25B8%25B0%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpython%2Fproject%2FAIxBookathon-%25EC%25B0%25B8%25EC%2597%25AC%25ED%259B%2584%25EA%25B8%25B0%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/python/chapter6-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="문자열 조작 추가문제
+">Previous</a>
+    
+    
+      <a href="/algorithm/python/chapter8-%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8/" class="pagination--pager" title="연결리스트
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/" rel="permalink">Lecture 4: Maximum Likelihood Learning
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">4번째 강의는 Maximum Likelihood Learning에 대해 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture3-Autoregressive-Models/" rel="permalink">Lecture 3: Autoregressive Model
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">3번째 강의는 Autoregressive Model에 대해 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="permalink">Lecture 1&amp;2: Introduction and Background to Deep Generative Model
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-13,14/" rel="permalink">프로그래머스 문제 9, 10
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">야간 전술보행
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/yongchanchun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 yongchan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
