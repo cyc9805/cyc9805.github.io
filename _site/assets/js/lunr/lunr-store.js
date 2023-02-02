@@ -467,6 +467,12 @@ var store = [{
         "url": "/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-13,14/",
         "teaser": null
       },{
+        "title": "Pytorch tools",
+        "excerpt":"view() vs shape() vs permute() vs transpose():  click here   ","categories": ["computer vision","python"],
+        "tags": [],
+        "url": "/computer%20vision/python/pytorch-tools/",
+        "teaser": null
+      },{
         "title": "Lecture 1&2: Introduction and Background to Deep Generative Model",
         "excerpt":"첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.                                    ","categories": ["cs236","computer vision","python"],
         "tags": [],

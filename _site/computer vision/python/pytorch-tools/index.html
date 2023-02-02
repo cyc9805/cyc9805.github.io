@@ -9,33 +9,8 @@
   <head>
     <meta charset="utf-8">
     <!-- MATH EQUATION -->
-      
-        <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    TeX: {
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-    tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$'] ],
-    processEscapes: true,
-  }
-});
-MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-      alert("Math Processing Error: "+message[1]);
-    });
-MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-      alert("Math Processing Error: "+message[1]);
-    });
-</script>
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-      <!-- begin _includes/seo.html --><title>Deep Residual Learning for Image Recognition - yongchan’s website</title>
-<meta name="description" content="Introduction">
+      <!-- begin _includes/seo.html --><title>Pytorch tools - yongchan’s website</title>
+<meta name="description" content="view() vs shape() vs permute() vs transpose(): click here">
 
 
   <meta name="author" content="yongchanchun">
@@ -47,26 +22,26 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="yongchan's website">
-<meta property="og:title" content="Deep Residual Learning for Image Recognition">
-<meta property="og:url" content="http://localhost:4000/computer%20vision/paper%20review/Deep-Residual-Learning-for-Image-Recognition/">
+<meta property="og:title" content="Pytorch tools">
+<meta property="og:url" content="http://localhost:4000/computer%20vision/python/pytorch-tools/">
 
 
-  <meta property="og:description" content="Introduction">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-03-30T00:00:00+09:00">
+  <meta property="og:description" content="view() vs shape() vs permute() vs transpose(): click here">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/computer%20vision/paper%20review/Deep-Residual-Learning-for-Image-Recognition/">
+
+  <meta property="article:published_time" content="2022-12-04T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/computer%20vision/python/pytorch-tools/">
 
 
 
@@ -528,15 +503,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Deep Residual Learning for Image Recognition">
-    <meta itemprop="description" content="Introduction">
-    <meta itemprop="datePublished" content="2022-03-30T00:00:00+09:00">
+    <meta itemprop="headline" content="Pytorch tools">
+    <meta itemprop="description" content="view() vs shape() vs permute() vs transpose():click here">
+    <meta itemprop="datePublished" content="2022-12-04T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Deep Residual Learning for Image Recognition
+          <h1 id="page-title" class="page__title" itemprop="headline">Pytorch tools
 </h1>
           
 
@@ -552,7 +527,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 minute read
+          less than 1 minute read
         
       </span>
     
@@ -567,135 +542,13 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#introduction">Introduction</a></li><li><a href="#deep-residual-learning">Deep Residual Learning</a><ul><li><a href="#residual-learning">Residual Learning</a><ul><li><a href="#how-does-residual-learning-work">How does Residual Learning work?</a></li></ul></li><li><a href="#identity-mapping-by-shortcuts">identity Mapping by Shortcuts</a></li><li><a href="#network-architectures">Network Architectures</a></li></ul></li><li><a href="#experiments">Experiments</a><ul><li><a href="#imagenet-classification">ImageNet Classification</a></li><li><a href="#cifar-10-and-analysis">CIFAR-10 and Analysis</a></li><li><a href="#additional-tests-are-conducted-on-pascal-and-ms-coco-dataset-both-show-similar-results-as-imagenet-and-cifar-10-">Additional tests are conducted on PASCAL and MS COCO dataset. Both show similar results as ImageNet and CIFAR-10 .</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#view-vs-shape-vs-permute-vs-transpose">view() vs shape() vs permute() vs transpose():</a></li></ul>
 
             </nav>
           </aside>
         
-        <h2 id="introduction">Introduction</h2>
-
-<ul>
-  <li>Network depth is of crucial importance for making better models.</li>
-  <li>However, training and testing error rates increase when number of layer exceeds certain threshold. Graph below proves this.</li>
-</ul>
-
-<p><img src="/assets/image/paper-review1-1.png" alt="" /></p>
-
-<ul>
-  <li>Vanishing and exploding gradient are the cause for such problem.</li>
-  <li>In this paper, they focused on degradation, suggesting deep residual learning framework to address this problem.</li>
-</ul>
-
-<h2 id="deep-residual-learning">Deep Residual Learning</h2>
-
-<h3 id="residual-learning">Residual Learning</h3>
-
-<ul>
-  <li>The goal of this techinque is to construct layers with identity mapping, which is to make the input and output identical.</li>
-  <li>Rather than directly fitting input data to output data, resiudal learning focuses on fitting input data to residual function, which is the residue of output and input data.</li>
-</ul>
-
-<h4 id="how-does-residual-learning-work">How does Residual Learning work?</h4>
-
-<ul>
-  <li>
-    <p>Let us consider the equation below, which $H(x)$ stands for output data, $x$ for input data and $F(x)$ for residual function.</p>
-
-    <p>$H(x) = F(x) + x$</p>
-  </li>
-  <li>To make identity mapping possible, $F(x)$ should become 0.</li>
-  <li>$F(x)$ is expressed as $F(x) = H(x) -x$</li>
-  <li>Now, the training process involves making $F(x)$ 0.</li>
-  <li>Dimensions of both input and ouput data should be identical to train residual function.</li>
-</ul>
-
-<h3 id="identity-mapping-by-shortcuts">identity Mapping by Shortcuts</h3>
-
-<ul>
-  <li>In this paper, blocks with residual learning is defined as follows:</li>
-</ul>
-
-<p>$y = F(x, {W_i}) + x$</p>
-
-<ul>
-  <li>function $F(x, {W_i})$ represents residual mapping to be learned</li>
-  <li>With 2-layer model, residual block is defined as:
-$F = W_2\sigma(W_1x)$</li>
-  <li>The equation above is interpreted as having shortcut connection to output $y$.</li>
-  <li>Shortcut connection resolves the previous issues of identity mapping by introducing neither extra parameters nor computational complexity.</li>
-  <li>When dimensions of $F$ and $x$ are different, adding linear projection $W_s$ is  performed to make these two dimensions identical.</li>
-  <li>Above notations are about fully connected layers, but this is applicable to convolutional layers as well.</li>
-</ul>
-
-<h3 id="network-architectures">Network Architectures</h3>
-
-<ul>
-  <li>This section introduces models that are used for evaluating the performace of residual network.</li>
-  <li>VGGNet with 34 weighted layers is used as plain network and VGGNet with shortcut connection inserted is used as resiudal network.</li>
-  <li>
-    <p>Following 2 options were used to prevent the problem of dimension increase.</p>
-
-    <ol>
-      <li>Extra zero entries are padded for increasing dimension.</li>
-      <li>Projection techinque, which is adding $W_s$ to residual function, is used to match dimension.</li>
-    </ol>
-  </li>
-</ul>
-
-<h2 id="experiments">Experiments</h2>
-
-<h3 id="imagenet-classification">ImageNet Classification</h3>
-
-<ul>
-  <li>Two networks are evaluated on the ImageNet 2012 classification dataset that consists of 1000 classes.</li>
-  <li>Plain network with 34 layer shows higher training error rate than that with 18 layer. This paper conjectures that this is not due to vanishing gradient, but it is due to having exponentially low convergence rates.</li>
-</ul>
-
-<p><img src="/assets/image/paper-review1-2.png" alt="" /></p>
-
-<ul>
-  <li>However, the situation is reveresed for residual networks. Residual networks with 34 layer shows lower training error rate than that with 18 layer.</li>
-</ul>
-
-<p><img src="/assets/image/paper-review1-3.png" alt="" /></p>
-
-<ul>
-  <li>
-    <p>Additionally, the classification tasks are given in these 3 different tasks:</p>
-
-    <ol>
-      <li>Zero padding shortcuts are used for increasing dimensions.</li>
-      <li>Projection shortcuts are used for increasing dimensions.</li>
-      <li>All shortcuts are projections.</li>
-    </ol>
-  </li>
-</ul>
-
-<p>Table below shows that all these three models are considerable better model than plain counterpart.</p>
-
-<p><img src="/assets/image/paper-review1-4.png" alt="" /></p>
-
-<p>Small difference in errors for these 3 options exhibits that projection shortcuts are not essential for building better performing model.</p>
-
-<h3 id="cifar-10-and-analysis">CIFAR-10 and Analysis</h3>
-
-<ul>
-  <li>CIFAR-10 dataset consists of 50k training images and 10k test images in 10 classes.</li>
-  <li>Model used for classification follow the same form with that used in ImageNet classification, which has a total of 6n+2 weighted layers. Feature map sizes are 32, 16, 8, respectively.</li>
-  <li>Input images are 32x32 with per-pixel mean subtracted (This is probably done for scaling).</li>
-  <li>The last two layers consists of global average pooling and a 10-way fully-connected layer with softmax.</li>
-  <li>Graph below compares the error rate of plain networks and ResNet. Dashed line denotes training error and bold line denotes testing error.</li>
-</ul>
-
-<p><img src="/assets/image/paper-review1-5.png" alt="" /></p>
-
-<ol>
-  <li>Error rate of deeper plain network is higher than that of shallower network for both training and test data.</li>
-  <li>Unlike plain network, error rate of deeper ResNet is lower than that of shallower network.</li>
-  <li>However, ResNet also suffers from overfitting problem when number of layer reaches 1202. Therefore, it is better to use adequate number of layers to prevent models from getting too complex.</li>
-</ol>
-
-<h3 id="additional-tests-are-conducted-on-pascal-and-ms-coco-dataset-both-show-similar-results-as-imagenet-and-cifar-10-">Additional tests are conducted on PASCAL and MS COCO dataset. Both show similar results as ImageNet and CIFAR-10 .</h3>
+        <h2 id="view-vs-shape-vs-permute-vs-transpose">view() vs shape() vs permute() vs transpose():</h2>
+<p><a href="https://sanghyu.tistory.com/3">click here</a></p>
 
 
         
@@ -717,7 +570,7 @@ $F = W_2\sigma(W_1x)$</li>
     
       <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">computer vision</a><span class="sep">, </span>
     
-      <a href="/categories/#paper-review" class="page__taxonomy-item" rel="tag">Paper Review</a>
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
     
     </span>
   </p>
@@ -725,7 +578,7 @@ $F = W_2\sigma(W_1x)$</li>
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-30T00:00:00+09:00">March 30, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-12-04T00:00:00+09:00">December 4, 2022</time></p>
 
 
       </footer>
@@ -733,22 +586,22 @@ $F = W_2\sigma(W_1x)$</li>
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Deep+Residual+Learning+for+Image+Recognition%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpaper%2520review%2FDeep-Residual-Learning-for-Image-Recognition%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Pytorch+tools%20http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fpytorch-tools%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpaper%2520review%2FDeep-Residual-Learning-for-Image-Recognition%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fpytorch-tools%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpaper%2520review%2FDeep-Residual-Learning-for-Image-Recognition%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcomputer%2520vision%2Fpython%2Fpytorch-tools%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/python/chapter17-%EC%A0%95%EB%A0%AC-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="정렬 추가문제
+      <a href="/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-13,14/" class="pagination--pager" title="프로그래머스 문제 9, 10
 ">Previous</a>
     
     
-      <a href="/algorithm/python/chapter18-%EC%9D%B4%EC%A7%84%EA%B2%80%EC%83%89-%EC%B6%94%EA%B0%80%EB%AC%B8%EC%A0%9C/" class="pagination--pager" title="이진 검색 추가문제
+      <a href="/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" class="pagination--pager" title="Lecture 1&amp;2: Introduction and Background to Deep Generative Model
 ">Next</a>
     
   </nav>
