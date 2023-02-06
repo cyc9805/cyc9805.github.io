@@ -1,137 +1,325 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-03T08:36:58+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Diffusion Models for Adversarial Purification</title><link href="http://localhost:4000/computer%20vision/paper%20review/Diffusion-Models-for-Adversarial-Purification/" rel="alternate" type="text/html" title="Diffusion Models for Adversarial Purification" /><published>2023-01-10T00:00:00+09:00</published><updated>2023-01-10T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Diffusion-Models-for-Adversarial-Purification</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Diffusion-Models-for-Adversarial-Purification/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Inception and residual network have yielded outbreaking performace in the 2015 ILSVRC challenge.&lt;/li&gt;
-  &lt;li&gt;This paper proves that applying residual connection to inception networks accelerates the training process significantly.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Since inception network tend to get very deep, replacing filter concatenation stage of the Inception architecture with residual architecture is very effective.&lt;/li&gt;
-  &lt;li&gt;In this paper, they compared two pure Inception variants, Inception-v3 and v4, to two other variants with similarly expensive Inception-ResNet variants.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;architectural-choices&quot;&gt;Architectural Choices&lt;/h2&gt;
-
-&lt;h3 id=&quot;1-pure-inception-blocks&quot;&gt;1. Pure Inception blocks&lt;/h3&gt;
-
-&lt;h4 id=&quot;general-look&quot;&gt;General look&lt;/h4&gt;
-
-&lt;p&gt;Large scale of Inception-v4 looks as follows:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-1.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Previous inception networks tend to be very conservative about changing the architectural choices, and had various forms among structures.&lt;/li&gt;
-  &lt;li&gt;Inception-v4 tackled the problems that previous inception networks had by making uniform choices for the inception blocks.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;stem&quot;&gt;Stem&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-2.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;‘V’ in the figures indicates valid padding, which input grid size and output grid size differ.&lt;/li&gt;
-  &lt;li&gt;figures not marked with ‘V’ indicates same padding, which input grid size matches output grid size.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Stem&lt;/em&gt;&lt;/strong&gt; structure is used for input part of Inception-v4 and Inception-ResNet-v2 networks.&lt;/li&gt;
-  &lt;li&gt;Input size is 299x299x3, and output size is 35x35x384&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;inception-a&quot;&gt;Inception-A&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-3.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;inception-b&quot;&gt;Inception-B&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-4.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;inception-c&quot;&gt;Inception-C&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-5.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;k, l, m, n indicated varying filter sizes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;reduction-a&quot;&gt;Reduction-A&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-6.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;reduction-b&quot;&gt;Reduction-B&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-7.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;2-residual-inception-blocks&quot;&gt;2. Residual Inception Blocks&lt;/h3&gt;
-
-&lt;p&gt;Inception-ResNet-v1 and Inception-ResNet-v2 networks looks as follows:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-8-2.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-07T06:09:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Understanding Diffusion Models Towards Adversarial Robustness</title><link href="http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness/" rel="alternate" type="text/html" title="Understanding Diffusion Models Towards Adversarial Robustness" /><published>2023-01-25T00:00:00+09:00</published><updated>2023-01-25T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness/">&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Each Inception block starts with 1x1 convolution layer, which is used for scaling up the dimensionality of the filter banks. This later compensates to dimensionality reduction caused by inception block.&lt;/p&gt;
+    &lt;p&gt;Diffusion model (이하 DM)은 likelihood-based 모델로, 생성하는 샘플 퀄리티가 좋은 동시에 GAN이 가지고 있던 mode collapse issue를 효과적으로 해결하고 있다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Batch normalization is applied only on traditional layers, not on top on summations. This has significantly less GPU memory usage compared to model with BN applied to all layers.&lt;/p&gt;
+    &lt;p&gt;DM은 input image에 노이즈를 주기적으로 추가하는 forward process와 노이즈를 제거해 나가는 reverse process로 구성되어 있다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Empirical research를 통해 DM이 adversarial attack을 효과적으로 제거한다는 것이 나타났지만 이에 대한 구체적인 이유에 대해서는 아직 연구되지 않았다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;이 논문에서는 DM이 adversarial attack을 &lt;strong&gt;1. 어떻게 효과적으로 제거하는지&lt;/strong&gt;와 이를 통해 &lt;strong&gt;2. DM을 통해 모델을 robust하게 만드는 새로운 framework인 DensePure&lt;/strong&gt;을 제시한다.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;inception-resnet-a&quot;&gt;Inception-resnet-A&lt;/h4&gt;
+&lt;h2 id=&quot;2-preliminaries-and-backgrounds&quot;&gt;2. Preliminaries and Backgrounds&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-8.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Continuous-Time Diffusion Model&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;reduction-a-1&quot;&gt;Reduction-A&lt;/h4&gt;
+&lt;p&gt;‘Score-based generative modeling through stochastic differential equations.’ 논문에서는 Score-based generative model들은 SDE(Stochastic Differential Equation) framework안에서 크게 두가지 요소인 diffusion forward process와 reverse process로 구성되어 있다고 주장하고 있다. 먼저 forward diffusion process은 다음과 같이 나타낼 수 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-9.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-1.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;inception-resnet-b&quot;&gt;Inception-resnet-B&lt;/h4&gt;
+&lt;p&gt;다음으로 reverse process는 다음과 같이 reverse-time SDE로 나타낼 수 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-10.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-2.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;reduction-b-1&quot;&gt;Reduction-B&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;strong&gt;2. Discrete-Time Diffusion Model(or DDPM)&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-11.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;‘Denoising Diffusion Probablistic Model’논문에서는 DDPM의 forward diffusion process를 다음과 같이 나타낸다.&lt;/p&gt;
 
-&lt;h4 id=&quot;inception-resnet-c&quot;&gt;Inception-resnet-C&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-3.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-12.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Reverse diffusion process는 다음과 같이 나타낸다.&lt;/p&gt;
 
-&lt;h3 id=&quot;scaling-of-the-residuals&quot;&gt;Scaling of the residuals&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-4.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 이 논문에서는 다음 step에서 노이즈를 제거한 샘플 분포의 분산을 $\beta_i$ ($i$번째 step에 주입한 노이즈의 양) 으로 고정하고, 평균인 $\mu_\theta (x_i, i)$ 만을 구하는 것으로 간단히 하였다. 손실 함수를 계산하는 과정이 워낙 복잡하기 때문에 이 과정을 생략하고 최종적인 손실 함수만을 나타내면 다음과 같이 나타낼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-5.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 공식은 곧 $i$번째 step에서 노이즈를 추가한 이미지를 입력 값으로 넣었을 때 추가한 노이즈의 양을 출력하는 네트워크를 구성하는 것을 목표로 한다는 것으로 이해할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;strong&gt;3. Randomized Smoothing&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;RS(Randomized Smoothing)은 $L_2$-norm에 해당되는 adversarial attack을 효과적으로 막기 위해 고안된 방법이다. 다음과 같은 방법으로 classifier을 smoothing 해줌으로써 classifier을 robust하게 만들어준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-6.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 $\sigma$는 모델의 robustness와 accuracy를 조절하는 parameter이다. 아직 해당 논문을 읽어보지 않았기 때문에 자세한 이해를 위해 추가로 읽어 볼 예정이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-theoretical-analysis&quot;&gt;3. Theoretical Analysis&lt;/h2&gt;
+
+&lt;p&gt;해당 섹션에서는 DM이 어떻게 adversarial attack을 효과적으로 제거하는지에 대해 다음과 같은 3가지 Theorem을 통해 밝혀내고 있다. 먼저 해당 섹션의 Theorem들은 다음과 같은 가정을 만족하고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-7.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;theorem-31&quot;&gt;Theorem 3.1&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Perturbed된 데이터 포인트인 $x_{a,t}$가 reverse-SDE를 거치고 난 후 purify된 데이터 포인트 $\hat{x}$ 는 다음과 같은 조건부 확률분포를 가진다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-8.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 공식을 통해 $\mathbb{P}$를 증가시키기 위해서는 $\left | x-x_a \right |_2^2$를 감소시켜야 하고, 이는 곧 $x$가 $x_a$ 주변으로 높은 밀도를 가져야 함을 알 수 있다. 따라서 다음과 같이 $\mathbb{P}$를 최대화하는 데이터 포인트 $x$를 선택하는 것으로 간단히 나타낼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-9.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;theorem-32&quot;&gt;Theorem 3.2&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;$f$가 classifier이고 $G(x_0)$가 $x_0$과 같은 class를 가지는 data region이라고 하자. 여기서 $P(\cdot ;\psi)$가 purification model 이라고 할 때 $G(x_0)$의 robust data region은 다음과 같이 정의할 수 있다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-10.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;위 식은 purified 된 $x$가 $x_0$과 같은 label을 가지는 $x$의 집합을 나타내는 robust data region이라고 해석할 수 있다. &lt;br /&gt; 또한 $x_0$의 robust radius는 다음과 같이 정의할 수 있다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-11.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 식은 곧 $x_0$을 둘러싸고 있는 $D(x_0 ; \psi)$ 의 maximum inclined ball의 반지름이다.&lt;/p&gt;
+
+&lt;p&gt;결국 Theorem 3.2를 통해 나타내고 싶은 것은 다음과 같다:
+&lt;br /&gt;  $x_a$가 Euculidean distance 상으로 $x_0$과 충분히 가까울 때 $x_a$는 $x_0$와 purified 된 sample인 $P(x_a;t)$과 같은 label semantics를 유지하고 같은 label로 분류 한다. 그러나 $x_a$가 $x_0$와 가깝지 않아도 $x_0$과 같은 label을 가지고 있는 다른 데이터 포인트, $ \tilde{x}$와 가까워도 $x_0$와 같은 label로 분류한다. 이것에 대한 증명을 다음 Theorem에서 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;theorem-33&quot;&gt;Theorem 3.3&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;1. $x_0$가 ground truth label을 가지고 있는 data point이고 $x_a$가 perturbed 된 $x_0$라면 purified된 $P(x_a;t)$는 다음과 같은 convex set에 포함될 때 $x_0$와 같은 label을 가진다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-12.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;2. 또한 $x_a$는 다음과 같은 convex set에 포함될 때 $x_0$과 같은 label을 가진다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-13.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 1과 2의 다른 점은 2는 $x_0$과 같은 레이블을 가진 다른 데이터 포인트 $\tilde{x}$를 사용한다는 점이다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;결국 robust radius인 $r(G(x_0);t$를 찾는 것이 이 문제의 핵심이라고 할 수 있다. 여기서 한가지 주의해야 할 점이 있다. 바로 $D_sub(x_0 ; t)$는 convex여도 $D(G(x_0);t)$는 convex가 아니라는 점이다. 따라서 $D(G(x_0);t)$를 해결하기 위해서는 다음과 같은 방법으로 문제에 접근해야 한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;non-convex optimization 방법을 이용해야 한다.&lt;/li&gt;
+  &lt;li&gt;$D_{sub}(x_0 ; t)$는 convex이므로 convex optimization을 이용해 해결해서 $r(G(x_0);t$에 대한 lower bound를 찾을 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이 논문에서는 2번의 방법으로 접근하고 있다. (그 이유에 대해서 간단하게 설명하고 있으나 convex optimization에 대해서 따로 공부를 하지 않아 이해를 하지 못했다. 추후에 공부한 후 이 부분에 대해서는 다시 작성하도록 하겠다.) 그러나 $D(G(x_0);t)$는 다른 sub region들을 합집합 한 것이므로 sub region보다 훨씬 더 커질 위험이 있다. 이것에 대해서 해당 논문에서는 아래와 같은 figure을 통해 설명하고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-14.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;따라서 reverse-SDE를 통해 정확한 값을 찾는 것 대신에 approximation 방법을 이용하고 있다. approximation 방법에는 예시로 score-based model을 사용해 reverse-SDE와의 KL-Divergence를 나타낸 것이 Theorem 3.4이다. &lt;br /&gt;
+  여기서 convex에 대해 아는 것이 거의 없었기 때문에 convexity를 보존하는 연산에 대해서 별도로 찾아보았다. convex set의 convexity를 보존하는 연산은 다음과 같다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Intersection&lt;/li&gt;
+  &lt;li&gt;Scaling and transition &lt;br /&gt;
+    예시) $C$가 convex set이고 $a$, $b$가 각각 scaling, transition scalar factor이면 $aC+b$ 또한 convex set이다.&lt;/li&gt;
+  &lt;li&gt;Affine images and preimages &lt;br /&gt;
+    예시) $f(x)=Ax+b$이고 C가 convex set이면 $f(C)$도 convex set이다. 또한 D가 convex set이면 $f^{-1}(D)$ 또한 convex set이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;theorem-34&quot;&gt;Theorem 3.4&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;$\lVert {\hat{x_\gamma} \rVert }_{\gamma \in  [0, t]}$ 와$\lVert {x^{\theta}_\gamma \rVert }_{\gamma \in  [0, t]}$가 각각 reverse-SDE, score-based diffusion model이라고 하면 이 두 분포의 KL-Divergence는 다음과 같이 나타낼 수 있다.&lt;/em&gt;&lt;/strong&gt;
+  &lt;img src=&quot;/assets/image/densepure-15.png&quot; alt=&quot;&quot; width=&quot;70%&quot; height=&quot;70%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-16.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;densepure&quot;&gt;DensePure&lt;/h2&gt;
+
+&lt;p&gt;지금까지 증명한 내용을 바탕으로 DM을 통해 모델을 robust하게 만드는 새로운 framework인 &lt;strong&gt;DensePure&lt;/strong&gt; 을 새로 제안하고 있다. 이 framework가 작동하는 순서는 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;입력값 $x$가 reverse process를 거쳐서 $rev(x)$를 얻는다.&lt;/li&gt;
+  &lt;li&gt;1번 과정을 K번 반복하여 ${rev(x)_1,…,rev(x)_K}$를 얻는다.&lt;/li&gt;
+  &lt;li&gt;${rev(x)_1,…,rev(x)_K}$를 classifier에 통과시켜 그 중에서 가장 많이 나온 label을 최종 예측값으로 설정한다. 이렇게 가장 많이 나오는 label을 찾는 과정을 Majority Vote, 줄여서 MV라고 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;또한 DensePure에&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Randomized Smoothing을 적용해 $L_2$-norm adversarial attack을 효과적으로 막는 것에 대한 증명과&lt;/li&gt;
+  &lt;li&gt;Improved Denoising Diffusion Probablistic Models에 사용된 Fast Sampling 기법을 사용해 더 빠르게 샘플링하는 과정에 대해서
+설명하고 있으나 중요한 내용은 아니므로 생략하도록 하겠다. &lt;br /&gt;
+  다음은 DensePure의 pipeline에 대해 나타낸 figure이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-17.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
+
+&lt;p&gt;아래는 다른 baseline method와의 성능 비교를 통해 나타난 결과이다. 데이터셋은 CIFAR-10, ImageNet을 사용하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-18.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 $\epsilon$은 adversarial attack에 의해 perturbed된 비율이고, 각 정확도 수치 옆에 괄호는 $\epsilon=0$ 일 때의 정확도이다. 즉, standard accuracy 이다. 또한 off-the-shelf는 모델이나 classifier의 별도의 학습을 요구하지 않는 plug-and-play manner로 작동하는 method를 지칭한다.
+  결과표를 보면 알 수 있듯이 다른 방법들과 비교를 했을 때 거의 모든 $\epsilon$에 대해서 SOTA를 달성하고 있다는 것을 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;또한 DensePure과 비슷하게 DM을 사용한 논문인’(certified!!) adversarial robustness for free!’ 와의 성능 비교를 하고있다. 다음 그래프는 CIFAR-10, ImageNet 데이터셋에 대한 비교 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-19.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;모든 noise scale $\sigma$에 대해서 DensePure가 더 좋은 성능을 보이는 것을 알 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;ablation-study&quot;&gt;Ablation study&lt;/h2&gt;
+
+&lt;p&gt;아래 figure은 Voting sample의 $K$값과 Fast sampling steps $b$에 대한 ablation study를 진행한 결과이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/densepure-20.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;결과표를 통해 다음과 같은 사실을 알 수 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$K$값이 증가할 때마다 정확도가 증가한다.&lt;/li&gt;
+  &lt;li&gt;MV(Majority Vote)가 사용되면 sampling step이 증가할 때마다 정확도가 증가하지만, MV(Majority Vote)가 사용되지 않으면 sampling step이 증가할 때마다 정확도가 감소한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;limitations&quot;&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;MV에 사용되는 reverse process 때문에 time complexity가 매우 높게 나타난다. 해당 논문에서는 이러한 문제를 극복하기 위해 fast sampling 방법을 사용했지만 문제가 완전히 해결된 것은 아니기 때문에 더 발전된 fast sampling 방법이 필요할 것이다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="Paper Review" /><summary type="html">1. Introduction</summary></entry><entry><title type="html">Diffusion Models for Adversarial Purification</title><link href="http://localhost:4000/computer%20vision/paper%20review/Diffusion-Models-for-Adversarial-Purification/" rel="alternate" type="text/html" title="Diffusion Models for Adversarial Purification" /><published>2023-01-10T00:00:00+09:00</published><updated>2023-01-10T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Diffusion-Models-for-Adversarial-Purification</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Diffusion-Models-for-Adversarial-Purification/">&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;If number of filters exceed 1000, networks die, meaning last layer before average pooling starts to produce only zeros.&lt;/li&gt;
-  &lt;li&gt;This problem is solved by scaling down residuals before being added to the accumulated layer activations.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Adversarial attack을 막는 방법에는 크게 두가지가 있다.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;Adversarial training: Adversarial sample을 학습시켜 해당 sample의 특징을 모델이 학습 하도록 만드는 방법이다.
+        &lt;ul&gt;
+          &lt;li&gt;장점: 거의 대부분의 경우에 SOTA를 보이고 있는 모델이다&lt;/li&gt;
+          &lt;li&gt;장점: 학습에 사용된 adversarial example만 막을 수 있다. 또한 별도의 훈련과정이 필요하므로 computationlly expensive 하다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Adversarial purification: Adversarial example을 생성 모델이 한번 purify 해주고 purified된 sample을 분류한다.
+        &lt;ul&gt;
+          &lt;li&gt;장점: plug-and-play manner으로 작동하므로 adversarial training과는 달리 별도의 훈련과정을 요구하지 않는다.&lt;/li&gt;
+          &lt;li&gt;단점: 생성모델이 가지고 있는 여러 문제(GAN의 경우에는 mode collapse) 때문에 adversarial training보다 성능이 좋지 않다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Diffusion model(이하 DM)은 likelihood based model로, GAN과 비교하여서 여러 장점을 가지고 있다. 이러한 장점 때문에 purification 성능이 더 좋을 것임이 기대된다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;해당 논문에서는 다음과 같은 contribution을 하고 있다.&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;pretrained된 DM의 forward and reverse process를 통해 adversarial purification을 수행하는 DiffPure을 제시한다.&lt;/li&gt;
+      &lt;li&gt;DM의 forward and reverse process가 어떻게 효과적으로 adversarial perturbation을 제거하는 동시에 label semantics를 유지하는지 알아본다.&lt;/li&gt;
+      &lt;li&gt;Adaptive attack을 막기 위해 reverse process에서 효과적으로 full gradient를 구하는 방법을 제시한다.&lt;/li&gt;
+      &lt;li&gt;Adaptive attack 벤치마크에서 SOTA를 보이고 있음을 여러 실험을 통해 증명한다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-13.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-background&quot;&gt;2. Background&lt;/h2&gt;
 
-&lt;h2 id=&quot;training-methodology&quot;&gt;Training Methodology&lt;/h2&gt;
+&lt;p&gt;해당 섹션에서는 ‘Score-based generative modeling through stochastic differential equations.’ 논문에서 제시하고 있는 continuous-time diffusion model에 대해서 간단하게 리뷰하고 있다.
+  먼저 foward diffusion process는 다음과 같이 나타낸다.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Best models were achieved using RMSProp with a learning rate of 0.045.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-1.png&quot; alt=&quot;&quot; width=&quot;30%&quot; height=&quot;30%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;experimental-results&quot;&gt;Experimental Results&lt;/h2&gt;
+&lt;p&gt;DM에는 크게 두가지 종류가 있는데, VE-SDE와 VP-SDE 이다. 이 논문에서는 VP-SDE를 purification model로 사용한다.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;The graph below shows the top-5 error evaluations of all four models. Inception with residual block converges much faster than pure Inception networks, while having similar performance.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;다음으로 sample generation은 다음과 같이 reverse-time SDE를 통하여 수행한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-14.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-2.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Test on 144 crop images were also conducted. Ensembled Model, which consists of one pure Inception-v4 model and three Inception-ResNet-v2 models, was used for evalution. Table on the left refers to the error rate of single model while the right refers to error rate of ensembled model. Ensembled model showed slightly better performance than single model.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;DM의 훈련은 다음과 같이 score function인 $s_\theta (\tilde{x}, t)$을 transition probability 인 $\bigtriangledown_{\tilde{x}} log_{p_{0t}}(\tilde{x}\mid x)$에 최대한 가까워 지도록 만드는 denosing score matching 방법을 이용한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/paper-review2-15.png&quot; alt=&quot;&quot; width=&quot;90%&quot; height=&quot;90%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-3.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+&lt;h2 id=&quot;3-method&quot;&gt;3. Method&lt;/h2&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Inception networks with residual connections, inception-resnet-v2, showed fastest training speed, while having similar performance with pure counterparts.&lt;/li&gt;
-  &lt;li&gt;Residual connections contribute heavily to improving training speed of inception networks.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="Paper Review" /><summary type="html">Abstract</summary></entry><entry><title type="html">Lecture 4: Maximum Likelihood Learning</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/" rel="alternate" type="text/html" title="Lecture 4: Maximum Likelihood Learning" /><published>2023-01-07T00:00:00+09:00</published><updated>2023-01-07T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/">&lt;p&gt;4번째 강의는 Maximum Likelihood Learning에 대해 다루고 있다.&lt;/p&gt;
+&lt;h3 id=&quot;31-diffusion-purification&quot;&gt;3.1 Diffusion purification&lt;/h3&gt;
+
+&lt;p&gt;해당 섹션에서는 adversarial example인 $x_a$에 foward process를 통해 노이즈를 추가하고 다시 reverse process를 통해 노이즈를 제거하면 example이 가지고 있던 adversarial feature들이 사라지고 clean image로 변경된다고 주장하고 있다. 즉, 다음과 같은 정리를 내세웠다. (여기서 정리에 대한 증명은 길어서 생략하도록 하겠다.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;${x(t)}_{t\in[0,1]}$가 foward SDE, $p_t$가 clean data 분포, $q_t$가 adversarial sample 분포일 때 증명을 통해 다음과 같이 forward SDE가 일어날수록 $p_t$와 $q_t$는 서로 가까워진다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-4.png&quot; alt=&quot;&quot; width=&quot;20%&quot; height=&quot;20%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;DM의 forward, reverse process를 통해 adversarial example이 clean image에 가까워진다는 것을 증명했으므로 forward, reverse process가 일어나는 과정에 대해서 살펴보면 각각 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Forward process: 이 논문에서는 DM으로 VP-SDE를 사용한다. VP-SDE는 다음과 같은 공식으로 timestep $t^{\ast}$에 노이즈가 추가된 이미지를 구할 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-5.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;   2. Reverse process: Euler-Maruyama solver로 reverse-time SDE를 다음과 같이 풀 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-6.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 식에서 $sdeint$의 입력값은 차례대로 initial value, drift coefficient, diffusion coefficient, Wiener process, initial time, 와 end time 이다. $f_{rev}$와 $g_{rev}$는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-7.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 핵심은 diffusion을 하는 timestep인 $t^{\ast}$를 정하는 것이다. 최적의 $t^{\ast}$은 다음과 같은 정리를 통해서 구할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;만약 score function이 $\lvert \tilde{x}(0)-x \rvert \leq \frac{1}{2}C_s$를 만족한다고 가정하면 clean data $x$와 purified data $\tilde{x}(0)$와의 L2 거리의 upper bound는 다음과 같이 구할 수 있다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-8.png&quot; alt=&quot;&quot; width=&quot;45%&quot; height=&quot;45%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-9.png&quot; alt=&quot;&quot; width=&quot;40%&quot; height=&quot;40%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;purified image가 최대한 clean image와 유사한 label semantics를 가져야 하므로 $\lvert \tilde{x}(0)-x \rvert$를 작게 하는 $t^{\ast}$를 찾아야 한다. 그러기 위해서는 $\gamma(t^{\ast})$가 작아야 하고, 이는 곧 $t^{\ast}$가 작아야 한다는 의미이므로 $t^{\ast}$를 최대한 작게 설정해야 한다.&lt;/p&gt;
+
+&lt;p&gt;첫번째와 두번째 정리를 통해 $t^{\ast}$ 값에 따라 adversarial sample에서 perturbation을 purify하는 정도와 purified image가 가지는 label semantics간에는 trade-off가 있다는 것을 알 수 있다. 따라서 최적의 $t^{\ast}$를 잘 선택하는 것이 중요하다. 이 논문에서는 perturbation이 작은 경우가 많다고 하였기 때문에 $t^{\ast}$값을 작게 설정하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;32-adaptive-attack-to-diffusion-purification&quot;&gt;3.2 Adaptive attack to diffusion purification&lt;/h3&gt;
+
+&lt;p&gt;강한 adaptive attack 같은 경우는 SDE solver의 full gradient를 계산한다. 그러나 이러한 과정은 매우 computationally expensive하므로 해당 논문에서는 adjoint method를 이용하여 $O(1)$의 공간 복잡도로 연산을 수행하였다. 해당 방법의 자세한 내용은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-10.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Adjoint method에 대해서는 ‘scalable gradients for stochastic differential equations’논문에 자세하게 나와있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-experiments&quot;&gt;4. Experiments&lt;/h2&gt;
+
+&lt;p&gt;모델의 robustness를 평가하는 대표적인 벤치마크인 RobustBench의 SOTA모델들과 비교를 하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;experimental-settings&quot;&gt;Experimental settings&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Dataset은 CIFAR-10, CelebA-HQ, ImageNet을 사용하였다.&lt;/li&gt;
+  &lt;li&gt;Classifier은 ResNet, WideResNet, ViT를 사용하였다.&lt;/li&gt;
+  &lt;li&gt;Adversarial attack 방법에는 AutoAttack의 $l_\infty $, $l_2$와 StAdv, BPDA+EOT를 사용하였다.&lt;/li&gt;
+  &lt;li&gt;Evaluation metric으로는 clean data에 대한 평가인 standard accuracy, purified data에 대한 평가인 robust accuracy를 사용하였다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;comparision-with-the-sate-of-the-art&quot;&gt;Comparision with the sate-of-the-art&lt;/h3&gt;
+
+&lt;p&gt;먼저 AutoAttack $l_\infty (\epsilon = 8/255) $를 CIFAR-10에 적용했을 때 결과이다. DiffPure이 SOTA를 모든 평가지표에서 달성하고 있다는 사실을 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-11.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음은 CIFAR-10에 $l_2 (\epsilon = 0.5)$ AutoAttack을 각기 다른 classifier을 적용했을 때 결과이다. 추가적인 데이터의 학습이 없이도 SOTA모델과 성능이 비슷하거나 더 좋다는 것을 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-12.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;마지막은 AutoAttack $l_\infty (\epsilon = 4/255)$을 ImageNet에 적용했을 때 결과이다. 마찬가지로 모든 classifier에서 SOTA임을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-13.png&quot; alt=&quot;&quot; width=&quot;50%&quot; height=&quot;50%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;defense-against-unseen-threats&quot;&gt;Defense against unseen threats&lt;/h3&gt;
+
+&lt;p&gt;Adversarial training의 주요한 단점은 훈련되지 않은 adversarial attack에 대해서는 잘 대처하지 못한다는 것이다. 따라서 훈련되지 않은 attack을 가했을 때 adversarial training과 DiffPure의 결과를 비교해 보았다. 아래 표에서 회색으로 칠해진 숫자는 해당 모델이 훈련된 attack이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-14.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;결과표를 보면 알 수 있듯이 adversarial training은 훈련되지 않은 attack에 대해서는 매우 낮은 robust accuracy를 보이고 있음을 알 수 있다. 반면 DiffPure은 standard accuracy, robust accuracy 모두 월등하게 높은 것을 알 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;comparision-with-other-purification-methods&quot;&gt;Comparision with other purification methods&lt;/h3&gt;
+
+&lt;p&gt;다음은 다른 purification methods들과 $l_\infty$ BPOT+EOT attack을 가했을 때의 결과를 비교한 표이다. 데이터셋은 Celeb-A-HQ, CIFAR-10을 사용하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/diffpure-15.png&quot; alt=&quot;&quot; width=&quot;90%&quot; height=&quot;90%&quot; class=&quot;center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;standard accuracy에 대해서는 다시 아쉬운 결과지만 robust accuracy가 다른 방법들보다 매우 높게 나타났다는 사실을 알 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;limitations&quot;&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;이 논문에서는 DiffPure에 대해서 다음과 같은 한계점 또한 제시하고 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Purification process가 diffusion timestep에 비례해서 나타나므로 매우 시간이 오래 걸려서 실제 상황에 적용하기가 어렵다.&lt;/li&gt;
+  &lt;li&gt;DM은 이미지 색상에 매우 민감하므로 색상에 대한 attack은 막기가 힘들다.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yongchanchun</name></author><category term="computer vision" /><category term="Paper Review" /><summary type="html">1. Introduction</summary></entry><entry><title type="html">Lecture 4: Maximum Likelihood Learning</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/" rel="alternate" type="text/html" title="Lecture 4: Maximum Likelihood Learning" /><published>2023-01-07T00:00:00+09:00</published><updated>2023-01-07T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture4-Maximum-likelihood-learning/">&lt;p&gt;4번째 강의는 Maximum Likelihood Learning에 대해 다루고 있다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch3-2.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
@@ -171,7 +359,9 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch2-13.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch2-14.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="cs236" /><category term="computer vision" /><category term="python" /><summary type="html">3번째 강의는 Autoregressive Model에 대해 다루고 있다.</summary></entry><entry><title type="html">Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="alternate" type="text/html" title="Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model" /><published>2023-01-03T00:00:00+09:00</published><updated>2023-01-03T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture1&amp;2-Introduction-to-Deep-Generative-Model</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture1&amp;2-Introduction-to-Deep-Generative-Model/">&lt;p&gt;첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch2-14.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="cs236" /><category term="computer vision" /><category term="python" /><summary type="html">3번째 강의는 Autoregressive Model에 대해 다루고 있다.</summary></entry><entry><title type="html">Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/" rel="alternate" type="text/html" title="Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model" /><published>2023-01-03T00:00:00+09:00</published><updated>2023-01-03T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/">&lt;p&gt;첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-1.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-2.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
@@ -193,9 +383,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-11.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-12.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="cs236" /><category term="computer vision" /><category term="python" /><summary type="html">첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.</summary></entry><entry><title type="html">Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/" rel="alternate" type="text/html" title="Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model" /><published>2023-01-03T00:00:00+09:00</published><updated>2023-01-03T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/">&lt;p&gt;첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-1.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-12.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="cs236" /><category term="computer vision" /><category term="python" /><summary type="html">첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.</summary></entry><entry><title type="html">Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="alternate" type="text/html" title="Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model" /><published>2023-01-03T00:00:00+09:00</published><updated>2023-01-03T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture1&amp;2-Introduction-to-Deep-Generative-Model</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture1&amp;2-Introduction-to-Deep-Generative-Model/">&lt;p&gt;첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-2.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
@@ -524,144 +712,4 @@
 &lt;ul&gt;
   &lt;li&gt;주어진 문자열을 리스트러 split한 뒤에 나온 각 단어의 첫번째 문자가 숫자인지, 대문자 인지 여부를 if 문으로 체크한다.&lt;/li&gt;
   &lt;li&gt;여기서 c.isdigit()는 해당 character가 숫자인지 파악하는 메소드이다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">N-queen</summary></entry><entry><title type="html">프로그래머스 문제 7, 8</title><link href="http://localhost:4000/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-7,8/" rel="alternate" type="text/html" title="프로그래머스 문제 7, 8" /><published>2022-10-25T00:00:00+09:00</published><updated>2022-10-25T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-7,8</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-7,8/">&lt;h2 id=&quot;괄호-회전하기&quot;&gt;괄호 회전하기&lt;/h2&gt;
-
-&lt;p&gt;다음 규칙을 지키는 문자열을 올바른 괄호 문자열이라고 정의합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;(), [], {} 는 모두 올바른 괄호 문자열입니다.&lt;/li&gt;
-  &lt;li&gt;만약 A가 올바른 괄호 문자열이라면, (A), [A], {A} 도 올바른 괄호 문자열입니다. 예를 들어, [] 가 올바른 괄호 문자열이므로, ([]) 도 올바른 괄호 문자열입니다.&lt;/li&gt;
-  &lt;li&gt;만약 A, B가 올바른 괄호 문자열이라면, AB 도 올바른 괄호 문자열입니다. 예를 들어, {} 와 ([]) 가 올바른 괄호 문자열이므로, {}([]) 도 올바른 괄호 문자열입니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;대괄호, 중괄호, 그리고 소괄호로 이루어진 문자열 s가 매개변수로 주어집니다. 이 s를 왼쪽으로 x (0 ≤ x &amp;lt; (s의 길이)) 칸만큼 회전시켰을 때 s가 올바른 괄호 문자열이 되게 하는 x의 개수를 return 하도록 solution 함수를 완성해주세요.&lt;/p&gt;
-
-&lt;p class=&quot;notice&quot;&gt;입력: “&lt;a href=&quot;&quot;&gt;&lt;/a&gt;{}”&lt;/p&gt;
-&lt;p class=&quot;notice&quot;&gt;출력: 3&lt;/p&gt;
-
-&lt;h3 id=&quot;내-풀이&quot;&gt;내 풀이&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;par_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;)&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;(&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;]&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;[&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;}&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;{&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;chk_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;par_s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par_s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-            
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;     
-        &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chk_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;chk_valid 함수는 회전한 괄호가 유효한지 아닌지 판단하는 함수이다. 이 함수의 판단 로직은 ‘유효한 괄호’ 문제에서 다루었으므로 자세한 내용은 생략한다.&lt;/li&gt;
-  &lt;li&gt;for문으로 제일 왼쪽의 문자를 나머지 문자열에 이어 붙여서 한칸씩 회전한 문자열의 유효한 괄호여부를 확인한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;순위-검색&quot;&gt;순위 검색&lt;/h2&gt;
-
-&lt;p&gt;지원자가 지원서에 입력한 4가지의 정보와 획득한 코딩테스트 점수를 하나의 문자열로 구성한 값의 배열 info, 개발팀이 궁금해하는 문의조건이 문자열 형태로 담긴 배열 query가 매개변수로 주어질 때,
-각 문의조건에 해당하는 사람들의 숫자를 순서대로 배열에 담아 return 하도록 solution 함수를 완성해 주세요. 이때, 제한사항은 다음과 같습니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;info 배열 각 원소의 값은 지원자가 지원서에 입력한 4가지 값과 코딩테스트 점수를 합친 “개발언어 직군 경력 소울푸드 점수” 형식입니다.&lt;/li&gt;
-  &lt;li&gt;개발언어는 cpp, java, python 중 하나입니다.&lt;/li&gt;
-  &lt;li&gt;직군은 backend, frontend 중 하나입니다.&lt;/li&gt;
-  &lt;li&gt;경력은 junior, senior 중 하나입니다.&lt;/li&gt;
-  &lt;li&gt;소울푸드는 chicken, pizza 중 하나입니다.&lt;/li&gt;
-  &lt;li&gt;점수는 코딩테스트 점수를 의미하며, 1 이상 100,000 이하인 자연수입니다.&lt;/li&gt;
-  &lt;li&gt;query의 각 문자열은 “[조건] X” 형식입니다.&lt;/li&gt;
-  &lt;li&gt;[조건]은 “개발언어 and 직군 and 경력 and 소울푸드” 형식의 문자열입니다.&lt;/li&gt;
-  &lt;li&gt;언어는 cpp, java, python, - 중 하나입니다.&lt;/li&gt;
-  &lt;li&gt;직군은 backend, frontend, - 중 하나입니다.&lt;/li&gt;
-  &lt;li&gt;경력은 junior, senior, - 중 하나입니다.&lt;/li&gt;
-  &lt;li&gt;소울푸드는 chicken, pizza, - 중 하나입니다.&lt;/li&gt;
-  &lt;li&gt;’-‘ 표시는 해당 조건을 고려하지 않겠다는 의미입니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p class=&quot;notice&quot;&gt;입력: info=[“java backend junior pizza 150”,”python frontend senior chicken 210”,”python frontend senior chicken 150”,”cpp backend senior pizza 260”,”java backend junior chicken 80”,”python backend senior chicken 50”]
-query=[“java and backend and junior and pizza 100”,”python and frontend and senior and chicken 200”,”cpp and - and senior and pizza 250”,”- and backend and senior and - 150”,”- and - and - and chicken 100”,”- and - and - and - 150”]&lt;/p&gt;
-
-&lt;p class=&quot;notice&quot;&gt;출력: [1,1,1,1,2,4]&lt;/p&gt;
-
-&lt;h3 id=&quot;내-풀이-1&quot;&gt;내 풀이&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;info_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;split_i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos; &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;            
-        &lt;span class=&quot;n&quot;&gt;info_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;split_q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos; and &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;split_q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split_q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos; &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;-&apos;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;split_q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;split_q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;-&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;            
-        &lt;span class=&quot;n&quot;&gt;query_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split_q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;corresponding_i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;criteria&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;criteria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;corresponding_i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;corresponding_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-   
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;info의 지원서를 리스트로 만들고 query의 문의조건도 리스트로 만들어서 두 개의 리스트를 교집합 연산을 통해 지원서와 문의조건 일치 여부를 파악한다.&lt;/li&gt;
-  &lt;li&gt;정확성 테스트는 통과했으나 효율성에서 문제가 생겼다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;풀이-1&quot;&gt;풀이 1&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;bisect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;itertools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collections&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;infomap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;binarys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itertools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repeat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;binary&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;binarys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;binary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;-&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt; 
-            &lt;span class=&quot;n&quot;&gt;infomap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;infomap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;infomap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;answers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# 1,2,3번째 조건에 맞는 key의 value를 찾고 그 중에서 문의 조건에서 설정한 점수보다 낮은 점수의 개수를 찾음
-&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bisect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bisect_left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;infomap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;answers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;infomap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answers&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;하나의 info에서 나올 수 있는 16가지의 key를 만들어서 infomap[key]에 값을 추가해준다.&lt;/li&gt;
-  &lt;li&gt;이진 검색을 위해 infomap의 값들을 정렬한다.&lt;/li&gt;
-  &lt;li&gt;query의 값을 key로 만들고 이진 탐색으로 point 이상의 값 개수를 구한다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">괄호 회전하기</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">N-queen</summary></entry></feed>
