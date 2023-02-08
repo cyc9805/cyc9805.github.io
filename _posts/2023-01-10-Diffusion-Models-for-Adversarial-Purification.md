@@ -66,7 +66,7 @@ DM의 forward, reverse process를 통해 adversarial example이 clean image에 �
   
 ![](/assets/image/diffpure-5.png){: width="40%" height="40%"}{: .center}
 
-  <br>&nbsp;&nbsp; 2. Reverse process: Euler-Maruyama solver로 reverse-time SDE를 다음과 같이 풀 수 있다.
+  <br>&nbsp;&nbsp;&nbsp; 2. Reverse process: Euler-Maruyama solver로 reverse-time SDE를 다음과 같이 풀 수 있다.
   
 ![](/assets/image/diffpure-6.png){: width="40%" height="40%"}{: .center}
 
