@@ -180,6 +180,38 @@
     </url>
     
     <url>
+        <loc>http://localhost:4000/computer%20vision/paper%20review3434/Reliable-Evaluation-of-Adversarial-Robustness-with-an-Ensemble-of-Diverse-Parameter-free-Attacks/</loc>
+        
+        <lastmod>2022-10-20T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/computer%20vision/paper%20review/On-Adaptive-Attacks-to-Adversarial-Example-Defenses/</loc>
+        
+        <lastmod>2022-10-10T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-5,6/</loc>
         
         <lastmod>2022-10-02T00:00:00+09:00</lastmod>
@@ -197,22 +229,6 @@
     
     <url>
         <loc>http://localhost:4000/algorithm/python/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-3,4/</loc>
-        
-        <lastmod>2022-09-26T00:00:00+09:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/computer%20vision/paper%20review/On-Adaptive-Attacks-to-Adversarial-Example-Defenses/</loc>
         
         <lastmod>2022-09-26T00:00:00+09:00</lastmod>
         

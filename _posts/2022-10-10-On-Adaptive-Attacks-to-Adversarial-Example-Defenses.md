@@ -27,10 +27,10 @@ categories:
 
   White box attack이란 adversary가 defense 모델에 완전히 접근할 수 있는 공격을 지칭한다. 기본적으로 다음과 같은 공식으로 나타낼 수 있다.
   
-<br>$\lVert x-x' \RVert_p \le \epsilon$
+<br>$\lVert x-x' \rVert_p \le \epsilon$
 
   위 공식은 $p$-norm 만큼의 peturbation을 이미지 데이터 $x$에 가하여 오분류를 일으키게 하는 것으로 해석할 수 있다.
-  또 다른 White-box 계열의 attack 중에 adaptive attack이 있다. 해당 방법은 adversary가 defense 모델에 완전히 접근하여 최적화된 공격을 하는 것이다. 이 방법이 더욱 주목 받아야 하는 이유는, adversarial attack을 다룬 대다수의 논문은 기존의 공격 방법을 막을 수 있는 방법만 제시하였지, 새로운 adaptive attack 공격에 대한 방어 방법은 제시하지 못했기 때문이다. 다행이 adaptive attack에 대한 방어 방법을 제시하고 있는 논문은 점차 그 수가 많아지고 있는 추세이며, 그 중요성 또한 점점 주목받고 있다.
+  <br> 또 다른 White-box 계열의 attack 중에 adaptive attack이 있다. 해당 방법은 adversary가 defense 모델에 완전히 접근하여 최적화된 공격을 하는 것이다. 이 방법이 더욱 주목 받아야 하는 이유는, adversarial attack을 다룬 대다수의 논문은 기존의 공격 방법을 막을 수 있는 방법만 제시하였지, 새로운 adaptive attack 공격에 대한 방어 방법은 제시하지 못했기 때문이다. 다행이 adaptive attack에 대한 방어 방법을 제시하고 있는 논문은 점차 그 수가 많아지고 있는 추세이며, 그 중요성 또한 점점 주목받고 있다.
 
 ## 3. Why were all defenses still broken
 
@@ -51,4 +51,28 @@ categories:
   2. 모든 defense system에 적용할 수 있는 universal attack. 이에 대한 대표적인 예시로 BPDA와 EOT가 있다.
   
   그러나 이러한 defense system은 앞서 말했듯이 adaptive attack에 매우 취약하며, 위 두가지 공격방법에 대한 방어보다 adaptive attack에 대해 막을 수 있는 방법이 먼저 제시되야 할 것이다. 
+  
+### 3.3 Don't complicate the attack
+
+  많은 defense system들은 점점 복잡해지고 있다. defense system의 구조를 아래 figure과 같이 나타낼 수 있을 것이다.
+  
+![](/assets/image/adaptive-1.png){: width="50%" height="50%"}{: .center}
+
+ 즉, 이미지가 복잡한 전처리 과정을 거치고 feature embedding이 나오게 되고, 이것은 다시 MLP를 거친 후에 non-differentiable한 anomaly detector가 perturbed된 이미지인지 아닌지 여부를 판별한다. 이 방법은 adversary가 anomaly detector 자체를 미분하려고 할 때 효과적으로 막을 수 있는 방법이나, 만약 아래와 같은 예시처럼 이미지를 다른 class로 속이게 하는 perturbation을 추가하는 공격은 막을 수 없게 된다.
+
+![](/assets/image/adaptive-2.png){: width="50%" height="50%"}{: .center}
+
+
+## 4. Meta point
+
+  이 논문에서는 다음과 같은 메세지를 강조하고 있다.
+  <br> 'Don't convince reviewers, convince yourself'
+  
+  위 메세지를 통해 전달하고 싶은 내용은 다음과 같다.
+  
+  1. Adversarial attack 방법을 체크 리스트로 만들고 이를 하나씩 체크해 가며 본 논문에서 제시하는 defense system이 이러한 공격 방법을 막을 수 있다고 말하는 것은 부적절하다.
+  2. Adaptive attack에 대한 방어 성능도 반드시 제시해야 한다.
+
+
+  
   

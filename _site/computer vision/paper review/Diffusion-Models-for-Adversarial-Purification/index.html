@@ -301,7 +301,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
       <li>
-            📂전체 글 수 86개
+            📂전체 글 수 87개
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
@@ -315,6 +315,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                 
                     
                         <li><a href="/categories/python" class="">Python (75)</a></li>
+                    
+                
                     
                 
                     
@@ -354,6 +356,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                 
                     
                 
+                    
+                
             </ul>
             <ul>
                 
@@ -362,7 +366,9 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                     
                 
                     
-                        <li><a href="/categories/computer vision" class="">Computer Vision (30)</a></li>
+                        <li><a href="/categories/computer vision" class="">Computer Vision (31)</a></li>
+                    
+                
                     
                 
                     
@@ -400,6 +406,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                 
                     
                 
+                    
+                
             </ul>
             <ul>
                 
@@ -415,6 +423,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                 
                     
                         <li><a href="/categories/project" class="">Project (4)</a></li>
+                    
+                
                     
                 
                     
@@ -446,6 +456,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                 
                     
                 
+                    
+                
             </ul>
 <ul>
                 
@@ -469,8 +481,12 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                 
                     
                 
+                    
+                
             </ul>
 <ul>
+                
+                    
                 
                     
                 
@@ -503,6 +519,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
                 
                     
                         <li><a href="/categories/cs231n" class="">cs231n(15)</a></li>
+                    
+                
                     
                 
                     
@@ -552,7 +570,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          4 minute read
+          3 minute read
         
       </span>
     
@@ -567,7 +585,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-background">2. Background</a></li><li><a href="#3-method">3. Method</a><ul><li><a href="#31-diffusion-purification">3.1 Diffusion purification</a></li><li><a href="#32-adaptive-attack-to-diffusion-purification">3.2 Adaptive attack to diffusion purification</a></li></ul></li><li><a href="#4-experiments">4. Experiments</a><ul><li><a href="#experimental-settings">Experimental settings</a></li><li><a href="#comparision-with-the-sate-of-the-art">Comparision with the sate-of-the-art</a></li><li><a href="#defense-against-unseen-threats">Defense against unseen threats</a></li><li><a href="#comparision-with-other-purification-methods">Comparision with other purification methods</a></li></ul></li><li><a href="#limitations">Limitations</a></li></ul>
+              <ul class="toc__menu"><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-background">2. Background</a></li><li><a href="#3-method">3. Method</a><ul><li><a href="#31-diffusion-purification">3.1 Diffusion purification</a></li><li><a href="#32-adaptive-attack-to-diffusion-purification">3.2 Adaptive attack to diffusion purification</a></li></ul></li><li><a href="#4-experiments">4. Experiments</a><ul><li><a href="#experimental-settings">Experimental settings</a></li><li><a href="#comparision-with-the-sate-of-the-art">Comparision with the sate-of-the-art</a></li><li><a href="#defense-against-unseen-threats">Defense against unseen threats</a></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -618,11 +636,18 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>다음으로 sample generation은 다음과 같이 reverse-time SDE를 통하여 수행한다.</p>
 
-<p><img src="/assets/image/diffpure-2.png" alt="" width="50%" height="50%" class="center" /></p>
+<p><img src="/assets/image/diffpure-2.png" alt="" width="30%" height="30%" class="center" /></p>
 
-<p>DM의 훈련은 다음과 같이 score function인 $s_\theta (\tilde{x}, t)$을 transition probability 인 $\bigtriangledown_{\tilde{x}} log_{p_{0t}}(\tilde{x}\mid x)$에 최대한 가까워 지도록 만드는 denosing score matching 방법을 이용한다.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>DM의 훈련은 다음과 같이 score function인 $s_\theta (\tilde{x}, t)$을 transition probability 인 $\bigtriangledown_\tilde{x} log_p_{0t}(\tilde{x}</td>
+      <td>x)$에 최대한 가까워 지도록 만드는 denosing score matching 방법을 이용한다.</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><img src="/assets/image/diffpure-3.png" alt="" width="50%" height="50%" class="center" /></p>
+<p><img src="/assets/image/diffpure-3.png" alt="" width="30%" height="30%" class="center" /></p>
 
 <h2 id="3-method">3. Method</h2>
 
@@ -630,43 +655,45 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>해당 섹션에서는 adversarial example인 $x_a$에 foward process를 통해 노이즈를 추가하고 다시 reverse process를 통해 노이즈를 제거하면 example이 가지고 있던 adversarial feature들이 사라지고 clean image로 변경된다고 주장하고 있다. 즉, 다음과 같은 정리를 내세웠다. (여기서 정리에 대한 증명은 길어서 생략하도록 하겠다.)</p>
 
-<p><strong><em>${x(t)}_{t\in[0,1]}$가 foward SDE, $p_t$가 clean data 분포, $q_t$가 adversarial sample 분포일 때 증명을 통해 다음과 같이 forward SDE가 일어날수록 $p_t$와 $q_t$는 서로 가까워진다.</em></strong></p>
+<p><em>** ${x(t)}_{t\in[0,1]}$가 foward SDE, $p_t$가 clean data 분포, $q_t$가 adversarial sample 분포일 때 증명을 통해 다음과 같이 forward SDE가 일어날수록 $p_t$와 $q_t$는 서로 가까워진다. **</em></p>
 
-<p><img src="/assets/image/diffpure-4.png" alt="" width="20%" height="20%" class="center" /></p>
+<p><img src="/assets/image/diffpure-4.png" alt="" width="30%" height="30%" class="center" /></p>
 
 <p>DM의 forward, reverse process를 통해 adversarial example이 clean image에 가까워진다는 것을 증명했으므로 forward, reverse process가 일어나는 과정에 대해서 살펴보면 각각 다음과 같다.</p>
 
 <ol>
-  <li>Forward process: 이 논문에서는 DM으로 VP-SDE를 사용한다. VP-SDE는 다음과 같은 공식으로 timestep $t^{\ast}$에 노이즈가 추가된 이미지를 구할 수 있다.</li>
+  <li>Forward process: 이 논문에서는 DM으로 VP-SDE를 사용한다. VP-SDE는 다음과 같은 공식으로 timestep $t*$에 노이즈가 추가된 이미지를 구할 수 있다.</li>
 </ol>
 
-<p><img src="/assets/image/diffpure-5.png" alt="" width="40%" height="40%" class="center" /></p>
+<p><img src="/assets/image/diffpure-5.png" alt="" width="30%" height="30%" class="center" /></p>
 
-<p><br />    2. Reverse process: Euler-Maruyama solver로 reverse-time SDE를 다음과 같이 풀 수 있다.</p>
+<ol>
+  <li>Reverse process: Euler-Maruyama solver로 reverse-time SDE를 다음과 같이 풀 수 있다.</li>
+</ol>
 
-<p><img src="/assets/image/diffpure-6.png" alt="" width="40%" height="40%" class="center" /></p>
+<p><img src="/assets/image/diffpure-6.png" alt="" width="30%" height="30%" class="center" /></p>
 
-<p>위 식에서 $sdeint$의 입력값은 차례대로 initial value, drift coefficient, diffusion coefficient, Wiener process, initial time, 와 end time 이다. $f_{rev}$와 $g_{rev}$는 다음과 같다.</p>
+<p>위 식에서 $sdeint$의 입력값은 차례대로 initial value, drift coefficient, diffusion coefficient, Wiener process, initial time, 와 end time 이다. $f_rev$와 $g_rev$는 다음과 같다.</p>
 
-<p><img src="/assets/image/diffpure-7.png" alt="" width="40%" height="40%" class="center" /></p>
+<p><img src="/assets/image/diffpure-7.png" alt="" width="30%" height="30%" class="center" /></p>
 
-<p>여기서 핵심은 diffusion을 하는 timestep인 $t^{\ast}$를 정하는 것이다. 최적의 $t^{\ast}$은 다음과 같은 정리를 통해서 구할 수 있다.</p>
+<p>여기서 핵심은 diffusion을 하는 timestep인 $t<em>$를 정하는 것이다. 최적의 $t</em>$은 다음과 같은 정리를 통해서 구할 수 있다.</p>
 
-<p><strong><em>만약 score function이 $\lvert \tilde{x}(0)-x \rvert \leq \frac{1}{2}C_s$를 만족한다고 가정하면 clean data $x$와 purified data $\tilde{x}(0)$와의 L2 거리의 upper bound는 다음과 같이 구할 수 있다.</em></strong></p>
+<p><em>** 만약 score function이 $\lVert \tilde{x}(0)-x \RVert \leq \frac{1}{2}C_s$를 만족한다고 가정하면 clean data $x$와 purified data $\tilde{x}(0)$와의 L2 거리의 upper bound는 다음과 같이 구할 수 있다. **</em></p>
 
-<p><img src="/assets/image/diffpure-8.png" alt="" width="45%" height="45%" class="center" /></p>
+<p><img src="/assets/image/diffpure-8.png" alt="" width="30%" height="30%" class="center" /></p>
 
-<p><img src="/assets/image/diffpure-9.png" alt="" width="40%" height="40%" class="center" /></p>
+<p><img src="/assets/image/diffpure-9.png" alt="" width="30%" height="30%" class="center" /></p>
 
-<p>purified image가 최대한 clean image와 유사한 label semantics를 가져야 하므로 $\lvert \tilde{x}(0)-x \rvert$를 작게 하는 $t^{\ast}$를 찾아야 한다. 그러기 위해서는 $\gamma(t^{\ast})$가 작아야 하고, 이는 곧 $t^{\ast}$가 작아야 한다는 의미이므로 $t^{\ast}$를 최대한 작게 설정해야 한다.</p>
+<p>purified image가 최대한 clean image와 유사한 label semantics를 가져야 하므로 $\lVert \tilde{x}(0)-x \RVert$를 작게 하는 $t<em>$를 찾아야 한다. 그러기 위해서는 $\gamma(</em>t)$가 작아야 하고, 이는 곧 $t<em>$가 작아야 한다는 의미이므로 $t</em>$를 최대한 작게 설정해야 한다.</p>
 
-<p>첫번째와 두번째 정리를 통해 $t^{\ast}$ 값에 따라 adversarial sample에서 perturbation을 purify하는 정도와 purified image가 가지는 label semantics간에는 trade-off가 있다는 것을 알 수 있다. 따라서 최적의 $t^{\ast}$를 잘 선택하는 것이 중요하다. 이 논문에서는 perturbation이 작은 경우가 많다고 하였기 때문에 $t^{\ast}$값을 작게 설정하였다.</p>
+<p>첫번째와 두번째 정리를 통해 $t<em>$값에 따라 adversarial sample에서 perturbation을 purify하는 정도와 purified image가 가지는 label semantics간에는 trade-off가 있다는 것을 알 수 있다. 따라서 최적의 $t</em>$를 잘 선택하는 것이 중요하다. 이 논문에서는 perturbation이 작은 경우가 많다고 하였기 때문에 $t*$값을 작게 설정하였다.</p>
 
 <h3 id="32-adaptive-attack-to-diffusion-purification">3.2 Adaptive attack to diffusion purification</h3>
 
 <p>강한 adaptive attack 같은 경우는 SDE solver의 full gradient를 계산한다. 그러나 이러한 과정은 매우 computationally expensive하므로 해당 논문에서는 adjoint method를 이용하여 $O(1)$의 공간 복잡도로 연산을 수행하였다. 해당 방법의 자세한 내용은 다음과 같다.</p>
 
-<p><img src="/assets/image/diffpure-10.png" alt="" width="50%" height="50%" class="center" /></p>
+<p><img src="/assets/image/diffpure-10.png" alt="" width="30%" height="30%" class="center" /></p>
 
 <p>Adjoint method에 대해서는 ‘scalable gradients for stochastic differential equations’논문에 자세하게 나와있다.</p>
 
@@ -687,40 +714,19 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>먼저 AutoAttack $l_\infty (\epsilon = 8/255) $를 CIFAR-10에 적용했을 때 결과이다. DiffPure이 SOTA를 모든 평가지표에서 달성하고 있다는 사실을 알 수 있다.</p>
 
-<p><img src="/assets/image/diffpure-11.png" alt="" width="50%" height="50%" class="center" /></p>
+<p><img src="/assets/image/diffpure-11.png" alt="" width="30%" height="30%" class="center" /></p>
 
 <p>다음은 CIFAR-10에 $l_2 (\epsilon = 0.5)$ AutoAttack을 각기 다른 classifier을 적용했을 때 결과이다. 추가적인 데이터의 학습이 없이도 SOTA모델과 성능이 비슷하거나 더 좋다는 것을 알 수 있다.</p>
 
-<p><img src="/assets/image/diffpure-12.png" alt="" width="50%" height="50%" class="center" /></p>
+<p><img src="/assets/image/diffpure-12.png" alt="" width="30%" height="30%" class="center" /></p>
 
-<p>마지막은 AutoAttack $l_\infty (\epsilon = 4/255)$을 ImageNet에 적용했을 때 결과이다. 마찬가지로 모든 classifier에서 SOTA임을 확인할 수 있다.</p>
+<p>마지막은 AutoAttack $l_\infty (\epsilon = 4/255) $을 ImageNet에 적용했을 때 결과이다. 마찬가지로 모든 classifier에서 SOTA임을 확인할 수 있다.</p>
 
-<p><img src="/assets/image/diffpure-13.png" alt="" width="50%" height="50%" class="center" /></p>
+<p><img src="/assets/image/diffpure-13.png" alt="" width="30%" height="30%" class="center" /></p>
 
 <h3 id="defense-against-unseen-threats">Defense against unseen threats</h3>
 
-<p>Adversarial training의 주요한 단점은 훈련되지 않은 adversarial attack에 대해서는 잘 대처하지 못한다는 것이다. 따라서 훈련되지 않은 attack을 가했을 때 adversarial training과 DiffPure의 결과를 비교해 보았다. 아래 표에서 회색으로 칠해진 숫자는 해당 모델이 훈련된 attack이다.</p>
-
-<p><img src="/assets/image/diffpure-14.png" alt="" width="80%" height="80%" class="center" /></p>
-
-<p>결과표를 보면 알 수 있듯이 adversarial training은 훈련되지 않은 attack에 대해서는 매우 낮은 robust accuracy를 보이고 있음을 알 수 있다. 반면 DiffPure은 standard accuracy, robust accuracy 모두 월등하게 높은 것을 알 수 있다.</p>
-
-<h3 id="comparision-with-other-purification-methods">Comparision with other purification methods</h3>
-
-<p>다음은 다른 purification methods들과 $l_\infty$ BPOT+EOT attack을 가했을 때의 결과를 비교한 표이다. 데이터셋은 Celeb-A-HQ, CIFAR-10을 사용하였다.</p>
-
-<p><img src="/assets/image/diffpure-15.png" alt="" width="90%" height="90%" class="center" /></p>
-
-<p>standard accuracy에 대해서는 다시 아쉬운 결과지만 robust accuracy가 다른 방법들보다 매우 높게 나타났다는 사실을 알 수 있다.</p>
-
-<h2 id="limitations">Limitations</h2>
-
-<p>이 논문에서는 DiffPure에 대해서 다음과 같은 한계점 또한 제시하고 있다.</p>
-
-<ol>
-  <li>Purification process가 diffusion timestep에 비례해서 나타나므로 매우 시간이 오래 걸려서 실제 상황에 적용하기가 어렵다.</li>
-  <li>DM은 이미지 색상에 매우 민감하므로 색상에 대한 attack은 막기가 힘들다.</li>
-</ol>
+<p>Adversarial attack의</p>
 
 
         
