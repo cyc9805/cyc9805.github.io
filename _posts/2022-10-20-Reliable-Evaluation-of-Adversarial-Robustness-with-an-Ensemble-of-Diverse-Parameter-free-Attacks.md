@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 categories:
   - computer vision
-  - Paper Review
+  - Paper Review3434
 ---
 
 ## 1. Introduction
