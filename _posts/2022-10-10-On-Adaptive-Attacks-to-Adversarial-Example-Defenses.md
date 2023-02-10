@@ -56,22 +56,38 @@ categories:
 
   많은 defense system들은 점점 복잡해지고 있다. defense system의 구조를 아래 figure과 같이 나타낼 수 있을 것이다.
   
-![](/assets/image/adaptive-1.png){: width="50%" height="50%"}{: .center}
+![](/assets/image/adaptive-1.png){: width="70%" height="70%"}{: .center}
 
  즉, 이미지가 복잡한 전처리 과정을 거치고 feature embedding이 나오게 되고, 이것은 다시 MLP를 거친 후에 non-differentiable한 anomaly detector가 perturbed된 이미지인지 아닌지 여부를 판별한다. 이 방법은 adversary가 anomaly detector 자체를 미분하려고 할 때 효과적으로 막을 수 있는 방법이나, 만약 아래와 같은 예시처럼 이미지를 다른 class로 속이게 하는 perturbation을 추가하는 공격은 막을 수 없게 된다.
 
-![](/assets/image/adaptive-2.png){: width="50%" height="50%"}{: .center}
+![](/assets/image/adaptive-2.png){: width="70%" height="70%"}{: .center}
 
 
 ## 4. Meta point
 
   이 논문에서는 다음과 같은 메세지를 강조하고 있다.
-  <br> 'Don't convince reviewers, convince yourself'
+  <br> **'Don't convince reviewers, convince yourself'**
   
   위 메세지를 통해 전달하고 싶은 내용은 다음과 같다.
   
   1. Adversarial attack 방법을 체크 리스트로 만들고 이를 하나씩 체크해 가며 본 논문에서 제시하는 defense system이 이러한 공격 방법을 막을 수 있다고 말하는 것은 부적절하다.
   2. Adaptive attack에 대한 방어 성능도 반드시 제시해야 한다.
+  
+
+## 5. The problem
+
+  만약 자기가 제안한 defense system이 제안한 시점에 모든 공격에도 다 막을 수 있는 성능을 보였으나 시간이 지나고 해당 defense system을 뚫을 수 있는 공격이 개발되었다고 해보자. 그렇다면 어떻게 해야할까?
+  
+  1. 해당 논문에서 제안한 아이디어를 바탕으로 한 다른 defense system이 나올 수 있으므로 어떠한 공격에 취약한지 알려주는 내용을 늦게라도 추가해야 한다.
+  2. 만약 다른 논문에서 제안하고 있는 defense system이 특정 공격에 무너지는 결과를 보이면 해당 논문의 저자를 연락해서 이러한 사실을 알려야 한다.
+  
+## 6. Conclusion
+
+  해당 논문에서는 다음과 같은 3가지 사항을 강조한다.
+  
+  1. 일부 adversarial attack에 대한 defense system을 제안하는 것은 올바르지 않다. Adaptive attack을 포함한 모든 공격을 가했음에도 불구하고 robust한 defense system이라는 것을 여러 실험을 통해 증명해 낼 수 있어야 한다.
+  2. 최대한 쉬운 공격 방법부터 가해야 한다.
+  3. 만약 defense system이 특정 공격에 의해 뚫리면 뚫린 사실을 인정하고 더 발전된  defense system을 개발하는 것을 목표로 연구를 해야한다.
 
 
   

@@ -585,7 +585,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-backgrounds">2. Backgrounds</a><ul><li><a href="#21-whitebox-attacks">2.1 Whitebox Attacks</a></li></ul></li><li><a href="#3-why-were-all-defenses-still-broken">3. Why were all defenses still broken</a></li><li><a href="#3-observations">3. Observations</a><ul><li><a href="#31-dont-intentionally-obfuscate-gradients">3.1 Don’t intentionally obfuscate gradients</a></li><li><a href="#32-dont-bilndly-re-use-prior-attacks">3.2 Don’t bilndly re-use prior attacks</a></li><li><a href="#33-dont-complicate-the-attack">3.3 Don’t complicate the attack</a></li></ul></li><li><a href="#4-meta-point">4. Meta point</a></li></ul>
+              <ul class="toc__menu"><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-backgrounds">2. Backgrounds</a><ul><li><a href="#21-whitebox-attacks">2.1 Whitebox Attacks</a></li></ul></li><li><a href="#3-why-were-all-defenses-still-broken">3. Why were all defenses still broken</a></li><li><a href="#3-observations">3. Observations</a><ul><li><a href="#31-dont-intentionally-obfuscate-gradients">3.1 Don’t intentionally obfuscate gradients</a></li><li><a href="#32-dont-bilndly-re-use-prior-attacks">3.2 Don’t bilndly re-use prior attacks</a></li><li><a href="#33-dont-complicate-the-attack">3.3 Don’t complicate the attack</a></li></ul></li><li><a href="#4-meta-point">4. Meta point</a></li><li><a href="#5-the-problem">5. The problem</a></li><li><a href="#6-conclusion">6. Conclusion</a></li></ul>
 
             </nav>
           </aside>
@@ -643,22 +643,41 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>많은 defense system들은 점점 복잡해지고 있다. defense system의 구조를 아래 figure과 같이 나타낼 수 있을 것이다.</p>
 
-<p><img src="/assets/image/adaptive-1.png" alt="" width="50%" height="50%" class="center" /></p>
+<p><img src="/assets/image/adaptive-1.png" alt="" width="70%" height="70%" class="center" /></p>
 
 <p>즉, 이미지가 복잡한 전처리 과정을 거치고 feature embedding이 나오게 되고, 이것은 다시 MLP를 거친 후에 non-differentiable한 anomaly detector가 perturbed된 이미지인지 아닌지 여부를 판별한다. 이 방법은 adversary가 anomaly detector 자체를 미분하려고 할 때 효과적으로 막을 수 있는 방법이나, 만약 아래와 같은 예시처럼 이미지를 다른 class로 속이게 하는 perturbation을 추가하는 공격은 막을 수 없게 된다.</p>
 
-<p><img src="/assets/image/adaptive-2.png" alt="" width="50%" height="50%" class="center" /></p>
+<p><img src="/assets/image/adaptive-2.png" alt="" width="70%" height="70%" class="center" /></p>
 
 <h2 id="4-meta-point">4. Meta point</h2>
 
 <p>이 논문에서는 다음과 같은 메세지를 강조하고 있다.
-  <br /> ‘Don’t convince reviewers, convince yourself’</p>
+  <br /> <strong>‘Don’t convince reviewers, convince yourself’</strong></p>
 
 <p>위 메세지를 통해 전달하고 싶은 내용은 다음과 같다.</p>
 
 <ol>
   <li>Adversarial attack 방법을 체크 리스트로 만들고 이를 하나씩 체크해 가며 본 논문에서 제시하는 defense system이 이러한 공격 방법을 막을 수 있다고 말하는 것은 부적절하다.</li>
   <li>Adaptive attack에 대한 방어 성능도 반드시 제시해야 한다.</li>
+</ol>
+
+<h2 id="5-the-problem">5. The problem</h2>
+
+<p>만약 자기가 제안한 defense system이 제안한 시점에 모든 공격에도 다 막을 수 있는 성능을 보였으나 시간이 지나고 해당 defense system을 뚫을 수 있는 공격이 개발되었다고 해보자. 그렇다면 어떻게 해야할까?</p>
+
+<ol>
+  <li>해당 논문에서 제안한 아이디어를 바탕으로 한 다른 defense system이 나올 수 있으므로 어떠한 공격에 취약한지 알려주는 내용을 늦게라도 추가해야 한다.</li>
+  <li>만약 다른 논문에서 제안하고 있는 defense system이 특정 공격에 무너지는 결과를 보이면 해당 논문의 저자를 연락해서 이러한 사실을 알려야 한다.</li>
+</ol>
+
+<h2 id="6-conclusion">6. Conclusion</h2>
+
+<p>해당 논문에서는 다음과 같은 3가지 사항을 강조한다.</p>
+
+<ol>
+  <li>일부 adversarial attack에 대한 defense system을 제안하는 것은 올바르지 않다. Adaptive attack을 포함한 모든 공격을 가했음에도 불구하고 robust한 defense system이라는 것을 여러 실험을 통해 증명해 낼 수 있어야 한다.</li>
+  <li>최대한 쉬운 공격 방법부터 가해야 한다.</li>
+  <li>만약 defense system이 특정 공격에 의해 뚫리면 뚫린 사실을 인정하고 더 발전된  defense system을 개발하는 것을 목표로 연구를 해야한다.</li>
 </ol>
 
 
