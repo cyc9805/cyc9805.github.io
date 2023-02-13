@@ -32,7 +32,7 @@ categories:
 
 Adversarial example은 다음과 같이 생성된다.
 
-<br> $argmax_{k=1,...,K}g_k(z) \not\equiv  c$, $d(x_{orig}, z) \le \epsilon$
+<br> $argmax_{k=1,...,K}\,g_k(z)\neq c$, $d(x_{orig}, z) \le \epsilon$
 
 여기서 $z$는 adversarial sample, $c$는 perturb 되기 전에 분류되던 클래스이다.
 <br> 최적의 $z$를 찾기 위해 다음과 같은 surrogate 함수가 사용된다.
@@ -57,15 +57,15 @@ Adversarial example은 다음과 같이 생성된다.
   
   **1. Gradient step**: 먼저 Auto-PGD의 gradient step은 PGD의 gradient step에 momentum term을 추가한다.
   
-![](/assets/image/autoattack-2.png){: width="30%" height="30%"}{: .center}
+![](/assets/image/autoattack-2.png){: width="50%" height="50%"}{: .center}
 
   **2. Step size selection**: 다음과 같은 조건을 만족하면 step size를 반으로 나눈다. 그리고 step size에 해당하는 체크포인트를 $w_0 = 0, w_1,...,w_n$로 지정한다.
   
-![](/assets/image/autoattack-3.png){: width="30%" height="30%"}{: .center}
+![](/assets/image/autoattack-3.png){: width="50%" height="50%"}{: .center}
 
   만약 체크포인트 $w_j$가 반으로 나누어지면 $x^{(w_j+1)}$를 $x_max$로 설정하고 $f_max$에서부터 다시 시작해 exploitation phase로 $f$를 최대화 시킨다. 이 때 체크포인트 $w_j$에서만 step size를 감소시키는 것 뿐만이 아닌 다음과 같은 지속적인 감소를 통해 localized search를 하게 만든다.  
 
-![](/assets/image/autoattack-4.png){: width="30%" height="30%"}{: .center}
+![](/assets/image/autoattack-4.png){: width="50%" height="50%"}{: .center}
 
  $p_{j+1}-p_j$가 0.03만큼 감소하되, 최소 0.06가 되도록 만들었다.
   
