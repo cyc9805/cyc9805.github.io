@@ -123,7 +123,28 @@ categories:
 
 Adversarial training의 주요 단점이라고 한다면 훈련되지 않은 공격방법에는 취약하다는 것이다. 아래 표는 CIFAR-10에 adversarial training한 모델과의 성능을 비교한 표인데, 회색글자는 모델이 훈련된 공격 방법이다. 비교 결과 모든 공격방법에 대하여 diffpure이 높은 정확도를 보이고 있음을 알 수 있다.
 
-![](/assets/image/diffpure-14.png){: width="50%" height="50%"}{: .center}
+![](/assets/image/diffpure-14.png){: width="90%" height="90%"}{: .center}
+
+### Comparison with other purfication model
+
+Diffpure을 GAN을 사용한 다른 purification 방법과의 비교 또한 시행하였다. 여기서 AutoAttack과 같은 white-box adaptive attack을 가하면 최적화 또는 sampling loop 문제가 나타났기 떄문에 BPDA+EOT 공격 방법을 사용하였다. 데이터셋은 CelebA-HQ와 CIFAR-10을 사용하였고, 비교에 대한 결과는 아래표에 나와있다.
+
+![](/assets/image/diffpure-15.png){: width="100%" height="100%"}{: .center}
+
+여기서 ENC와 OPT는 GAN의 optimization-based, encoder-based inversion을 지칭한다. 두 데이터셋에서 Robust accuracy가 모두 SOTA 성능을 보이는 것을 알 수 있다.
+
+## Conclusion 
+
+- Adversarial example을 한번 분류기로 분류하기 전에 정화시키는 Diffpure 방법을 새롭게 제시하였다.
+
+- White-box adaptive attack에 대한 robustness를 평가하기 위해서는 full gradient를 구하는 작업이 필요한데, 이러한 작업에 adjoint method를 사용하였다.
+
+- Diffpure을 다른 SOTA 방법들과 비교하기 위해 실험을 진행하였다. 데이터셋은 CIFAR-10, ImageNet, CelebA-HQ를 사용하였고 classifier는 ResNet, WideResNet, ViT 를 사용하였다. 실험 결과 robust accuracy에서 이들을 모두 뛰어넘었다.
+
+- 그러나 다음과 같은 두 가지 한계점을 내포하고 있다. 
+
+  1. Purification을 하는 시간이 너무 오래 소요된다.
+  2. Diffusion model은 이미지의 색에 굉장히 민감하므로 색에 대한 공격은 효과적으로 방어하지 못한다.
 
 
   

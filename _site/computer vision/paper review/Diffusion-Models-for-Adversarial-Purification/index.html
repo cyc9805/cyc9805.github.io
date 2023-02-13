@@ -552,7 +552,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 minute read
+          4 minute read
         
       </span>
     
@@ -567,7 +567,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-background">2. Background</a></li><li><a href="#3-method">3. Method</a><ul><li><a href="#31-diffusion-purification">3.1 Diffusion purification</a></li><li><a href="#32-adaptive-attack-to-diffusion-purification">3.2 Adaptive attack to diffusion purification</a></li></ul></li><li><a href="#4-experiments">4. Experiments</a><ul><li><a href="#experimental-settings">Experimental settings</a></li><li><a href="#comparision-with-the-sate-of-the-art">Comparision with the sate-of-the-art</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-background">2. Background</a></li><li><a href="#3-method">3. Method</a><ul><li><a href="#31-diffusion-purification">3.1 Diffusion purification</a></li><li><a href="#32-adaptive-attack-to-diffusion-purification">3.2 Adaptive attack to diffusion purification</a></li></ul></li><li><a href="#4-experiments">4. Experiments</a><ul><li><a href="#experimental-settings">Experimental settings</a></li><li><a href="#comparision-with-the-sate-of-the-art">Comparision with the sate-of-the-art</a></li><li><a href="#defense-against-unseen-threats">Defense against unseen threats</a></li><li><a href="#comparison-with-other-purfication-model">Comparison with other purfication model</a></li></ul></li><li><a href="#conclusion">Conclusion</a></li></ul>
 
             </nav>
           </aside>
@@ -698,6 +698,42 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <p>마지막은 AutoAttack $l_\infty (\epsilon = 4/255) $을 ImageNet에 적용했을 때 결과이다. 마찬가지로 모든 classifier에서 SOTA임을 확인할 수 있다.</p>
 
 <p><img src="/assets/image/diffpure-13.png" alt="" width="50%" height="50%" class="center" /></p>
+
+<h3 id="defense-against-unseen-threats">Defense against unseen threats</h3>
+
+<p>Adversarial training의 주요 단점이라고 한다면 훈련되지 않은 공격방법에는 취약하다는 것이다. 아래 표는 CIFAR-10에 adversarial training한 모델과의 성능을 비교한 표인데, 회색글자는 모델이 훈련된 공격 방법이다. 비교 결과 모든 공격방법에 대하여 diffpure이 높은 정확도를 보이고 있음을 알 수 있다.</p>
+
+<p><img src="/assets/image/diffpure-14.png" alt="" width="90%" height="90%" class="center" /></p>
+
+<h3 id="comparison-with-other-purfication-model">Comparison with other purfication model</h3>
+
+<p>Diffpure을 GAN을 사용한 다른 purification 방법과의 비교 또한 시행하였다. 여기서 AutoAttack과 같은 white-box adaptive attack을 가하면 최적화 또는 sampling loop 문제가 나타났기 떄문에 BPDA+EOT 공격 방법을 사용하였다. 데이터셋은 CelebA-HQ와 CIFAR-10을 사용하였고, 비교에 대한 결과는 아래표에 나와있다.</p>
+
+<p><img src="/assets/image/diffpure-15.png" alt="" width="100%" height="100%" class="center" /></p>
+
+<p>여기서 ENC와 OPT는 GAN의 optimization-based, encoder-based inversion을 지칭한다. 두 데이터셋에서 Robust accuracy가 모두 SOTA 성능을 보이는 것을 알 수 있다.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<ul>
+  <li>
+    <p>Adversarial example을 한번 분류기로 분류하기 전에 정화시키는 Diffpure 방법을 새롭게 제시하였다.</p>
+  </li>
+  <li>
+    <p>White-box adaptive attack에 대한 robustness를 평가하기 위해서는 full gradient를 구하는 작업이 필요한데, 이러한 작업에 adjoint method를 사용하였다.</p>
+  </li>
+  <li>
+    <p>Diffpure을 다른 SOTA 방법들과 비교하기 위해 실험을 진행하였다. 데이터셋은 CIFAR-10, ImageNet, CelebA-HQ를 사용하였고 classifier는 ResNet, WideResNet, ViT 를 사용하였다. 실험 결과 robust accuracy에서 이들을 모두 뛰어넘었다.</p>
+  </li>
+  <li>
+    <p>그러나 다음과 같은 두 가지 한계점을 내포하고 있다.</p>
+
+    <ol>
+      <li>Purification을 하는 시간이 너무 오래 소요된다.</li>
+      <li>Diffusion model은 이미지의 색에 굉장히 민감하므로 색에 대한 공격은 효과적으로 방어하지 못한다.</li>
+    </ol>
+  </li>
+</ul>
 
 
         
