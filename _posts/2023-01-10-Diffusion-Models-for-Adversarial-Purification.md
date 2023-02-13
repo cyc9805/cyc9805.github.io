@@ -119,4 +119,11 @@ categories:
 
 ![](/assets/image/diffpure-13.png){: width="50%" height="50%"}{: .center}
 
+### Defense against unseen threats
+
+Adversarial training의 주요 단점이라고 한다면 훈련되지 않은 공격방법에는 취약하다는 것이다. 아래 표는 CIFAR-10에 adversarial training한 모델과의 성능을 비교한 표인데, 회색글자는 모델이 훈련된 공격 방법이다. 비교 결과 모든 공격방법에 대하여 diffpure이 높은 정확도를 보이고 있음을 알 수 있다.
+
+![](/assets/image/diffpure-14.png){: width="50%" height="50%"}{: .center}
+
+
   
