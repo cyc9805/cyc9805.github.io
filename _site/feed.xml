@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-14T03:52:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">Understanding Diffusion Models Towards Adversarial Robustness</title><link href="http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness/" rel="alternate" type="text/html" title="Understanding Diffusion Models Towards Adversarial Robustness" /><published>2023-01-25T00:00:00+09:00</published><updated>2023-01-25T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness/">&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-16T03:36:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">yongchan’s website</title><subtitle>Welcome to my website! I&apos;m currently rebuilding my website</subtitle><author><name>yongchanchun</name></author><entry><title type="html">제4회 AI x Bookathon 참여후기</title><link href="http://localhost:4000/python/project/AIxBookathon-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="제4회 AI x Bookathon 참여후기" /><published>2023-01-26T00:00:00+09:00</published><updated>2023-01-26T00:00:00+09:00</updated><id>http://localhost:4000/python/project/AIxBookathon-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/python/project/AIxBookathon-%EC%B0%B8%EC%97%AC%ED%9B%84%EA%B8%B0/">&lt;p&gt;  지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터 크롤링&lt;/li&gt;
+  &lt;li&gt;데이터 전처리&lt;/li&gt;
+  &lt;li&gt;모델 훈련&lt;/li&gt;
+  &lt;li&gt;본선&lt;/li&gt;
+  &lt;li&gt;후기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;데이터-크롤링&quot;&gt;데이터 크롤링&lt;/h2&gt;
+
+&lt;p&gt;  우리는 데이터를 다음 사이트들로부터 크롤링을 하였다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;글틴&lt;/li&gt;
+  &lt;li&gt;브런치&lt;/li&gt;
+  &lt;li&gt;대표 에세이 문학회&lt;/li&gt;
+  &lt;li&gt;동아신축문예&lt;/li&gt;
+  &lt;li&gt;모두의 말뭉치&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;  우리는 최대한 많은 수필 데이터를 수집한 후 Language Model에 학습할 계획을 세웠기 때문에 각 사이트 별로 약 10MB에 해당되는 데이터를 크롤링 하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;데이터-전처리&quot;&gt;데이터 전처리&lt;/h2&gt;
+&lt;p&gt;  우리는 &lt;a href=&quot;https://arxiv.org/pdf/2105.09680.pdf&quot;&gt;KLUE: Korean Language Understanding Evaluation&lt;/a&gt; 논문에서 사용된 전처리 방법을 참고 하였다. 해당 논문은 다음과 같은 방법을 이용하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Noise Filtering&lt;/strong&gt;: 의미 없이 나열되는 공백과 문자(hashtag, HTML tag, copyright tag등)들을 제거하였다.
+&lt;strong&gt;2. Toxic Content Removal&lt;/strong&gt;: 성 차별적인 문장이나 혐오 표현들이 포함된 문장을 삭제하였다.
+&lt;strong&gt;3. PII Removal&lt;/strong&gt;: 개인정보와 관련된 문장, 즉 @gildong 와 같은 이메일, 다른 유저를 멘션하는 키워드, 웹페이지 주소를 삭제하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;모델-훈련&quot;&gt;모델 훈련&lt;/h2&gt;
+&lt;p&gt;  우리는 사용할 모델과 모델 훈련 전략을 다음과 같이 세웠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-gpt3-기반-모델-사용하기&quot;&gt;1. GPT3 기반 모델 사용하기&lt;/h3&gt;
+
+&lt;p&gt;  가장 최신 language model인 GPT3를 사용하는 것이 가장 좋은 성능을 보일 것이라고 생각해 처음에는 GPT3를 사용할 계획을 세웠다. 그러나 사용할 수 있는 GPU의 성능이 별로 좋지 않아 학습하는 시간이 너무 오래 걸릴 것이고 GPU의 메모리가 충분하지 않았기 때문에 우리는 GPT3보다 이전에 나온 모델인 GPT2 기반 모델을 사용하기로 결정하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-gpt2-기반-모델-사용하기&quot;&gt;2. GPT2 기반 모델 사용하기&lt;/h3&gt;
+
+&lt;p&gt;  우리는 Huggingface 사이트에서 여러 GPT2 모델을 발견하였다. 그 중에서 한국어 데이터셋으로 추가 학습한 SKT-KoGPT2 모델을 사용하기로 하였다. 이렇게 pretrained된 KoGPT2를 우리가 크롤링해서 수집한 데이터로 fine-tuning 시켰다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-논문-참고&quot;&gt;3. 논문 참고&lt;/h3&gt;
+
+&lt;p&gt;  기본 베이스 모델인 KoGPT2에 프롬프트 문장을 넣어서 다음 문장을 생성하였더니 조금만 많이 생성해도 문장의 일관성이 유지되지 않는다는 사실을 파악했다. 따라서 우리는 문장의 일관성을 유지하는 동시에 문장을 생성하는 우리 팀 만의 novelty를 가질 수 있는 방법을 찾기 위해 논문을 찾아 보았다. 그 중 참고한 논문은 &lt;strong&gt;&lt;a href=&quot;https://aclanthology.org/2021.naacl-main.341.pdf&quot;&gt;Progressive Generation of Long Text with Pretrained Language Models&lt;/a&gt;&lt;/strong&gt; 으로, left-to-right fashion이 아닌 아래 그림에 나타난 방법으로 문장을 생성하게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/bookathon-1.png&quot; alt=&quot;&quot; width=&quot;80%&quot; height=&quot;80%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;  위 그림의 process를 간단하게 설명하면 다음과 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;output text인 $y_t$ 는 intermediate sequence인 $c_k$ 를 conditioning 하여 생성된다.&lt;/li&gt;
+  &lt;li&gt;여기서 $c_k$ 는 vocabulary set인 $V_k$ 으로부터 생성된 sequence 이다.&lt;/li&gt;
+  &lt;li&gt;$V_k$ 는 $k$ 가 커질수록 사이즈가 커지게 된다.&lt;/li&gt;
+  &lt;li&gt;따라서 위 그림과 같이 처음에는 중요한 단어들(여기서 단어들의 중요도를 tf-idf로 구한다)이 먼저 생성이 되고 덜 중요한 단어들이 점차 생성되며 문단을 생성하게 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;  해당 논문에 사용된 코드를 fork하여 koGPT2와 koBART(해당 논문에서 GPT2와 BART를 사용하였기 때문에 해당 기반 모델을 사용하였다)를 그대로 해당 코드에 적용해 보았다. 그러나 pytorch hub에서 koBART를 불러오는 과정에서 문제가 생겼고 이 문제를 해결하려고 하였지만 대회까지 남은 시간이 많이 없었기 때문에 다른 방법을 찾을 수 밖에 없었다.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-에피소드별-주제-선정&quot;&gt;4. 에피소드별 주제 선정&lt;/h3&gt;
+
+&lt;p&gt;  우리는 koGPT2를 아무리 적절하게 훈련을 시켜도 2만자 내외의 문장을 일관되게 생성해 낼 수 없을 것이라고 판단하고 인공지능 모델이 글을 처음부터 끝까지 써 내려가는 작가가 아닌 인간이 직접 플롯을 구성하고 해당 플롯 안에서 적절한 문장을 생성해 내는 보조작가의 역할을 부여하기로 하였다. 따라서 우리는 다음과 같은 방법으로 수필을 생성해내기로 하였다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;직접 플롯을 구성한다.&lt;/li&gt;
+  &lt;li&gt;플롯을 여러 개의 에피소드로 나눈다.&lt;/li&gt;
+  &lt;li&gt;에피소드별 키워드를 선정한다.&lt;/li&gt;
+  &lt;li&gt;키워드를 브런치에 검색한 뒤 나오는 브런치 데이터들을 크롤링한다.&lt;/li&gt;
+  &lt;li&gt;크롤링한 데이터를 koGPT2에 fine-tuning 시켜 에피소드 별로 다른 모델을 생성한다.&lt;/li&gt;
+  &lt;li&gt;처음 에피소드의 프롬프트 문장만 직접 작성한 뒤 그 이후로 나오는 문장은 인공지능 모델에게 맡긴다.&lt;/li&gt;
+  &lt;li&gt;문장을 n개 생성하고 그 중 마음에 드는 문장을 선택한 뒤 다음 프롬프트로 넣는다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;본선&quot;&gt;본선&lt;/h2&gt;
+
+&lt;p&gt;  본선에서 주어진 주제는 ‘담대함’ 이였다. 우리는 ‘담대한’을 주체성을 찾는 과정, 즉 터부시되는 경계를 깨트리고 다음 단계로 나아가는 원동력이라고 생각하였다. 이러한 속성이 모더니즘의 기조인 전통적인 기반에서 급진적으로 벗어나려는 시도와 상당히 유사하다는 발상을 하게 되었다. 여기서 우리는 모더니즘에서 더 나아가 모더니즘을 대표하는 화가인 모네를 떠올렸고 ‘주인공이 모네의 작품과 타인을 만나며 자신의 삶을 담대하게 맞서 나간다’ 라는 스토리를 구상하였다. 
+ 우리가 선정한 에피소드 별 키워드는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;Episode 1) 회상, 모네 &lt;br /&gt;
+ Episode 2) 평범 &lt;br /&gt;
+ Episode 3) 인생의 전환점 &lt;br /&gt;
+ Episode 4) 주체성, 꿈 &lt;br /&gt;
+ Episode 5) 담대함, 변화 &lt;br /&gt;
+ Episode 6) 이동, 회상 &lt;br /&gt;
+ Episode 7) 갈등, 회상 &lt;br /&gt;
+ Episode 8) 갈등, 이별, 친구 &lt;br /&gt;
+ Episode 9) 현실, 순응, 공부 &lt;br /&gt;
+ Episode 10) 추억, 담대 &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;  대회에 사용된 코드와 최종적으로 생성한 수필은 아래 링크에서 찾아볼 수 있다. &lt;br /&gt;
+ &lt;a href=&quot;https://github.com/cyc9805/AIxBookathon/blob/main/README.md&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;후기&quot;&gt;후기&lt;/h2&gt;
+
+&lt;p&gt;  처음으로 참여한 NLP관련 대회였지만 최우수상이라는 좋은 성과를 거두어서 너무 좋았다. 최종 발표 시간에 다른 팀이 발표한 내용을 통해서도 많은 것을 배울 수 있었다. 특히 부족한 GPU 성능을 극복하기 위해 Gradient Accumulation 방법을 사용해 더 무거운 모델을 돌린 팀이 가장 인상적이였다. 
+&lt;br /&gt;   이 대회의 핵심은 &lt;strong&gt;‘얼마나 인공지능이 인간의 개입은 최소화 한 채로 좋은 글을 써 내려갈 수 있느냐’&lt;/strong&gt; 가 아니라 &lt;strong&gt;‘얼마나 인공지능이 인간을 도와 좋은 글을 작성할 수 있도록 할 수 있느냐’&lt;/strong&gt; 이라고 생각한다. 이러한 점은 부족한 GPU 성능 때문에 어쩔 수 없으나 수필의 결과물 보다는 수필을 만드는 과정이 좀 더 중요하게 평가되어야 하지 않냐는 개인적인 아쉬움이 든다. 언젠가는 인공지능이 인간의 개입 없이 글을 완전하게 생성하는 미래를 꿈꾸며 후기를 마치도록 하겠다.&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="python" /><category term="project" /><summary type="html">  지난 3주(22.12.27~ 23.1.18) 동안 진행되었던 AI x Bookathon 대회에 대한 후기를 남기고자 한다. 해당 대회는 Language Model을 이용해 수필을 작성하는 해커톤 대회로, 예선과 본선으로 이루어져 있었다. 예선은 딥러닝의 기초 지식들에 대한 퀴즈를 푸는 형식으로 진행되었고 문제 난이도는 생각보다 어려워 풀면서 적잖이 당황했던 기억이 난다. 그렇게 예선을 통과하고 무박 2일로 진행하는 본선에 진출하게 되었는데, 본선에 대한 자세한 내용은 다음과 같은 순서로 진행하도록 하겠다.</summary></entry><entry><title type="html">Understanding Diffusion Models Towards Adversarial Robustness</title><link href="http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness/" rel="alternate" type="text/html" title="Understanding Diffusion Models Towards Adversarial Robustness" /><published>2023-01-25T00:00:00+09:00</published><updated>2023-01-25T00:00:00+09:00</updated><id>http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness</id><content type="html" xml:base="http://localhost:4000/computer%20vision/paper%20review/Understanding-Diffusion-Models-Towards-Adversarial-Robustness/">&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -372,9 +467,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch2-13.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch2-14.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="cs236" /><category term="computer vision" /><category term="python" /><summary type="html">3번째 강의는 Autoregressive Model에 대해 다루고 있다.</summary></entry><entry><title type="html">Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/" rel="alternate" type="text/html" title="Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model" /><published>2023-01-03T00:00:00+09:00</published><updated>2023-01-03T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/">&lt;p&gt;첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-1.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch2-14.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="cs236" /><category term="computer vision" /><category term="python" /><summary type="html">3번째 강의는 Autoregressive Model에 대해 다루고 있다.</summary></entry><entry><title type="html">Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="alternate" type="text/html" title="Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model" /><published>2023-01-03T00:00:00+09:00</published><updated>2023-01-03T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture1&amp;2-Introduction-to-Deep-Generative-Model</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture1&amp;2-Introduction-to-Deep-Generative-Model/">&lt;p&gt;첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-2.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
@@ -396,7 +489,9 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-11.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-12.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="cs236" /><category term="computer vision" /><category term="python" /><summary type="html">첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.</summary></entry><entry><title type="html">Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture1&2-Introduction-to-Deep-Generative-Model/" rel="alternate" type="text/html" title="Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model" /><published>2023-01-03T00:00:00+09:00</published><updated>2023-01-03T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture1&amp;2-Introduction-to-Deep-Generative-Model</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture1&amp;2-Introduction-to-Deep-Generative-Model/">&lt;p&gt;첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-12.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;</content><author><name>yongchanchun</name></author><category term="cs236" /><category term="computer vision" /><category term="python" /><summary type="html">첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.</summary></entry><entry><title type="html">Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model</title><link href="http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/" rel="alternate" type="text/html" title="Lecture 1&amp;amp;2: Introduction and Background to Deep Generative Model" /><published>2023-01-03T00:00:00+09:00</published><updated>2023-01-03T00:00:00+09:00</updated><id>http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model</id><content type="html" xml:base="http://localhost:4000/cs236/computer%20vision/python/Lecture1-Introduction-to-Deep-Generative-Model/">&lt;p&gt;첫번째와 두번째 강의는 Deep Generative Model에 대한 소개와 백그라운드 지식에 대해서 다루고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-1.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/cs236-ch1-2.png&quot; alt=&quot;related studies to computer vision&quot; /&gt;&lt;/p&gt;
 
@@ -654,75 +749,4 @@
   &lt;li&gt;person은 몇 번째 사람인지, turn은 자신의 몇 번째 차례인지 나타내는 변수이다.&lt;/li&gt;
   &lt;li&gt;만약 끝말을 잇지 않았거나, 말한 단어가 이미 다른 사람이 말한 단어일 경우 끝말잇기를 중단하고 [person, turn]을 리턴한다.&lt;/li&gt;
   &lt;li&gt;words에 대한 반복을 완료했을때 탈락자가 생기지 않으면 [0, 0]을 리턴한다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">예상 대진표</summary></entry><entry><title type="html">프로그래머스 문제 13, 14</title><link href="http://localhost:4000/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-9,10/" rel="alternate" type="text/html" title="프로그래머스 문제 13, 14" /><published>2022-11-07T00:00:00+09:00</published><updated>2022-11-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-9,10</id><content type="html" xml:base="http://localhost:4000/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-9,10/">&lt;h2 id=&quot;n-queen&quot;&gt;N-queen&lt;/h2&gt;
-
-&lt;p&gt;가로, 세로 길이가 n인 정사각형으로된 체스판이 있습니다. 체스판 위의 n개의 퀸이 서로를 공격할 수 없도록 배치하고 싶습니다. 체스판의 가로 세로의 세로의 길이 n이 매개변수로 주어질 때, n개의 퀸이 조건에 만족 하도록 배치할 수 있는 방법의 수를 return하는 solution함수를 완성해주세요.&lt;/p&gt;
-
-&lt;p class=&quot;notice&quot;&gt;입력: n=4&lt;/p&gt;
-&lt;p class=&quot;notice&quot;&gt;출력: 2&lt;/p&gt;
-
-&lt;h3 id=&quot;풀이&quot;&gt;풀이&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;check&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;work&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 근무,휴식 패턴 파악하고
-&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 남은 일수가 work 일수보다 낮으면 근무 인 날에 지나 감
-&lt;/span&gt;                &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 걸린 시간을 추가 해주고
-&lt;/span&gt;                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 게임끝
-&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;경비병의 감시구간을 하나씩 반복하면서 근무인 날에 화랑이가 지나갔는지 여부를 검사한다.&lt;/li&gt;
-  &lt;li&gt;만약 근무인 날에 화랑이가 지나갔으면 근무인 날을 list에 추가하고 그 중에서 최소 값을 리턴한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;jadencase-문자열-만들기&quot;&gt;JadenCase 문자열 만들기&lt;/h2&gt;
-
-&lt;p&gt;JadenCase란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은 소문자인 문자열입니다. 단, 첫 문자가 알파벳이 아닐 때에는 이어지는 알파벳은 소문자로 쓰면 됩니다. (첫 번째 입출력 예 참고)
-문자열 s가 주어졌을 때, s를 JadenCase로 바꾼 문자열을 리턴하는 함수, solution을 완성해주세요.제한 조건은 다음과 같습니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;s는 길이 1 이상 200 이하인 문자열입니다.&lt;/li&gt;
-  &lt;li&gt;s는 알파벳과 숫자, 공백문자(“ “)로 이루어져 있습니다.&lt;/li&gt;
-  &lt;li&gt;숫자는 단어의 첫 문자로만 나옵니다.&lt;/li&gt;
-  &lt;li&gt;숫자로만 이루어진 단어는 없습니다.&lt;/li&gt;
-  &lt;li&gt;공백문자가 연속해서 나올 수 있습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p class=&quot;notice&quot;&gt;입력: “3people unFollowed me”&lt;/p&gt;
-
-&lt;p class=&quot;notice&quot;&gt;출력: “3people Unfollowed Me”&lt;/p&gt;
-
-&lt;h3 id=&quot;내-풀이&quot;&gt;내 풀이&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s_split&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos; &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s_split_new&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;new_c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;new_c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;new_c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;new_c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;s_split_new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                                
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos; &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s_split_new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;주어진 문자열을 리스트러 split한 뒤에 나온 각 단어의 첫번째 문자가 숫자인지, 대문자 인지 여부를 if 문으로 체크한다.&lt;/li&gt;
-  &lt;li&gt;여기서 c.isdigit()는 해당 character가 숫자인지 파악하는 메소드이다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">N-queen</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>yongchanchun</name></author><category term="algorithm" /><category term="python" /><summary type="html">예상 대진표</summary></entry></feed>

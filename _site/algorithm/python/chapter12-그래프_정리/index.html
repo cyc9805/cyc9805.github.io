@@ -1,0 +1,57 @@
+<h2 id="그래프-순회">그래프 순회</h2>
+
+<p>그래프를 순회하는 방법에는 다음과 같이 크게 두가지가 있다.</p>
+
+<ol>
+  <li>DFS(Depth First Search): 깊이 우선 탐색 방법이다. 재귀 또는 스택으로 구현한다.</li>
+  <li>BFS(Breadth First Search): 너비 우선 탐색 방법이다. 큐로 구현한다.</li>
+</ol>
+
+<h3 id="dfs">DFS</h3>
+
+<ol>
+  <li>재귀</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">iterative_dfs</span><span class="p">(</span><span class="n">discovered</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+  <span class="n">discovered</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">discovered</span><span class="p">:</span>
+      <span class="n">discovered</span> <span class="o">=</span> <span class="n">iterative_dfs</span><span class="p">(</span><span class="n">discovered</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">discovered</span>
+</code></pre></div></div>
+
+<ol>
+  <li>스택</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">start_v</span><span class="p">):</span>
+  <span class="n">discovered</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_v</span><span class="p">]</span>
+  <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">discovered</span><span class="p">:</span>
+      <span class="n">discovered</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+        <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">discovered</span>
+</code></pre></div></div>
+
+<h3 id="bfs">BFS</h3>
+
+<ol>
+  <li>큐</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">start_v</span><span class="p">):</span>
+  <span class="n">discovered</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_v</span><span class="p">]</span>
+  <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+      <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">discovered</span><span class="p">:</span>
+        <span class="n">discovered</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">queue</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">discovered</span>
+</code></pre></div></div>
+
