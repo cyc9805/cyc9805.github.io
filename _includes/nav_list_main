@@ -37,6 +37,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+	    <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Natural Language Processing" %}
+                        <li><a href="/categories/Natural Language Processing" class="">Natural Language Processing ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "markdown" %}
