@@ -9,7 +9,7 @@ categories:
   - Natural Language Processing
 ---
 
-이번 발표 논문의 제목은 Enriching Word Vectors with Subword Information으로, 일명 FastText 방법을 새롭게 제시한 논문이다.
+이번 발표 논문의 제목은 An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale으로, 일명 Visual Transformer 방법을 새롭게 제시한 논문이다.
 
 ![related studies to natural language processing](/assets/image/ViT2.png)
 
