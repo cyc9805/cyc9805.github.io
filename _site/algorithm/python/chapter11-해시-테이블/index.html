@@ -1,4 +1,668 @@
-<h2 id="들어가기-전에">들어가기 전에</h2>
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- MATH EQUATION -->
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+      alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+      <!-- begin _includes/seo.html --><title>해시 테이블 - yongchan’s website</title>
+<meta name="description" content="들어가기 전에    해시: 해시 테이블에서 입력값을 고정 크기 값으로 매핑하는 과정을 해싱이라고 한다.   해시 함수: 해시를 하는데 사용되는 함수. 성능이 좋은 해시 함수들의 특징은 다음과 같다.            해시 함수 값 충돌의 최소화       쉽고 빠른 연산       해시 테이블 전체에 해시 값이 균일하게 분포       사용할 키의 모든 정보를 이용하여 해싱       해시 테이블 사용 효율이 높을 것           로드 팩터: 해시 테이블에 저장된 데이터 개수 n을 버킷의 개수 k로 나눈 것이다.   충돌: 해시 값이 같아져 동일한 공간에 같은 값이 선언되는 것이다. 충돌을 해결하기 위한 방법으로 두가지가 있다.            개별 체이닝: 키의 해시 값을 계산해 배열의 인덱스를 구한다. 만약 인덱스가 같다면 연결 리스트로 연결한다.">
+
+
+  <meta name="author" content="yongchanchun">
+  
+  <meta property="article:author" content="yongchanchun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="yongchan's website">
+<meta property="og:title" content="해시 테이블">
+<meta property="og:url" content="http://localhost:4000/algorithm/python/chapter11-%ED%95%B4%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94/">
+
+
+  <meta property="og:description" content="들어가기 전에    해시: 해시 테이블에서 입력값을 고정 크기 값으로 매핑하는 과정을 해싱이라고 한다.   해시 함수: 해시를 하는데 사용되는 함수. 성능이 좋은 해시 함수들의 특징은 다음과 같다.            해시 함수 값 충돌의 최소화       쉽고 빠른 연산       해시 테이블 전체에 해시 값이 균일하게 분포       사용할 키의 모든 정보를 이용하여 해싱       해시 테이블 사용 효율이 높을 것           로드 팩터: 해시 테이블에 저장된 데이터 개수 n을 버킷의 개수 k로 나눈 것이다.   충돌: 해시 값이 같아져 동일한 공간에 같은 값이 선언되는 것이다. 충돌을 해결하기 위한 방법으로 두가지가 있다.            개별 체이닝: 키의 해시 값을 계산해 배열의 인덱스를 구한다. 만약 인덱스가 같다면 연결 리스트로 연결한다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-10T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/python/chapter11-%ED%95%B4%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yongchan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="yongchan's website Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Welcome to my website!!
+          <span class="site-subtitle">👋👋👋</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image/profile2.png" alt="yongchanchun" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">yongchanchun</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I’m trying to post on a daily basis<br />this may be hard but <strong>Nothing is achieved without trying!</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.facebook.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc"></label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂전체 글 수 92개
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Programming</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                
+                    
+                
+                    
+                        <li><a href="/categories/python" class="">Python (79)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/data analysis" class="">Data Analysis (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/computer vision" class="">Computer Vision (30)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+	    <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Natural Language Processing" class="">Natural Language Processing (2)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/markdown" class="">Markdown (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/project" class="">Project (4)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+	    <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Algorithm (49)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Paper Review" class="">Paper Review(13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cs236" class="">cs236(3)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/cs231n" class="">cs231n(15)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+<ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/data engineering" class="">data engineering(1)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  
+
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="해시 테이블">
+    <meta itemprop="description" content="들어가기 전에  해시: 해시 테이블에서 입력값을 고정 크기 값으로 매핑하는 과정을 해싱이라고 한다.  해시 함수: 해시를 하는데 사용되는 함수. 성능이 좋은 해시 함수들의 특징은 다음과 같다.          해시 함수 값 충돌의 최소화      쉽고 빠른 연산      해시 테이블 전체에 해시 값이 균일하게 분포      사용할 키의 모든 정보를 이용하여 해싱      해시 테이블 사용 효율이 높을 것        로드 팩터: 해시 테이블에 저장된 데이터 개수 n을 버킷의 개수 k로 나눈 것이다.  충돌: 해시 값이 같아져 동일한 공간에 같은 값이 선언되는 것이다. 충돌을 해결하기 위한 방법으로 두가지가 있다.          개별 체이닝: 키의 해시 값을 계산해 배열의 인덱스를 구한다. 만약 인덱스가 같다면 연결 리스트로 연결한다.       ">
+    <meta itemprop="datePublished" content="2022-02-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">해시 테이블
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#들어가기-전에">들어가기 전에</a></li><li><a href="#question-28-해시맵-디자인">Question 28: 해시맵 디자인</a><ul><li><a href="#내-풀이">내 풀이</a></li><li><a href="#풀이-1-개별-체이닝-방식을-이용한-해시-테이블-구현">풀이 1: 개별 체이닝 방식을 이용한 해시 테이블 구현</a><ul><li><a href="#기억해야-할-함수">기억해야 할 함수</a></li><li><a href="#중요-내용">중요 내용</a></li></ul></li></ul></li><li><a href="#question-29-보석과-돌">Question 29: 보석과 돌</a><ul><li><a href="#내-풀이-1">내 풀이</a><ul><li><a href="#결과">결과</a></li></ul></li><li><a href="#풀이-1-해시-테이블을-이용한-풀이">풀이 1: 해시 테이블을 이용한 풀이</a><ul><li><a href="#중요-내용-1">중요 내용</a></li></ul></li><li><a href="#풀이-2-defaultdict를-이용한-비교-생략">풀이 2: defaultdict를 이용한 비교 생략</a><ul><li><a href="#중요-내용-2">중요 내용</a></li></ul></li><li><a href="#풀이-3-counter로-계산-생략">풀이 3: counter로 계산 생략</a><ul><li><a href="#중요-내용-3">중요 내용</a></li></ul></li><li><a href="#풀이-4-파이썬다운-방식">풀이 4: 파이썬다운 방식</a><ul><li><a href="#중요-내용-4">중요 내용</a></li></ul></li></ul></li><li><a href="#question-30-중복-문자-없는-가장-긴-부분-문자열-재풀이">Question 30: 중복 문자 없는 가장 긴 부분 문자열 (재풀이)</a><ul><li><a href="#내-풀이-2">내 풀이</a></li><li><a href="#풀이-1-슬라이딩-윈도우오-투-포인터로-사이즈-조절">풀이 1: 슬라이딩 윈도우오 투 포인터로 사이즈 조절</a><ul><li><a href="#중요-내용-5">중요 내용</a></li></ul></li></ul></li><li><a href="#question-31-상위-k-빈도-요소-재풀이">Question 31: 상위 K 빈도 요소 (재풀이)</a><ul><li><a href="#내-풀이-3">내 풀이</a><ul><li><a href="#결과-1">결과</a></li></ul></li><li><a href="#풀이-1-해시-테이블을-이용한-풀이-1">풀이 1: 해시 테이블을 이용한 풀이</a><ul><li><a href="#중요-내용-6">중요 내용</a></li></ul></li><li><a href="#풀이-2-파이썬다운-방식">풀이 2: 파이썬다운 방식</a><ul><li><a href="#중요-내용-7">중요 내용</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="들어가기-전에">들어가기 전에</h2>
 <ol>
   <li>해시: 해시 테이블에서 입력값을 고정 크기 값으로 매핑하는 과정을 해싱이라고 한다.</li>
   <li>해시 함수: 해시를 하는데 사용되는 함수. 성능이 좋은 해시 함수들의 특징은 다음과 같다.
@@ -362,3 +1026,343 @@ Memory Usage: 18.6 MB, less than 90.78% of Python3 online submissions for Top K 
 
 <hr />
 
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-02-10T00:00:00+09:00">February 10, 2022</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%ED%95%B4%EC%8B%9C+%ED%85%8C%EC%9D%B4%EB%B8%94%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter11-%25ED%2595%25B4%25EC%258B%259C-%25ED%2585%258C%25EC%259D%25B4%25EB%25B8%2594%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter11-%25ED%2595%25B4%25EC%258B%259C-%25ED%2585%258C%25EC%259D%25B4%25EB%25B8%2594%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2Fpython%2Fchapter11-%25ED%2595%25B4%25EC%258B%259C-%25ED%2585%258C%25EC%259D%25B4%25EB%25B8%2594%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/python/chapter10-%EB%8D%B0%ED%81%AC,-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%ED%81%90/" class="pagination--pager" title="데크, 우선순위 큐
+">Previous</a>
+    
+    
+      <a href="/algorithm/python/chapter12-%EA%B7%B8%EB%9E%98%ED%94%84/" class="pagination--pager" title="그래프
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/data%20engineering/python/RDD/" rel="permalink">Spark: Resilient Distributed Dataset 이란?
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">What is Resilient Distributed Dataset?
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/paper%20review/natural%20language%20processing/Visual-Transformer/" rel="permalink">An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">이번 발표 논문의 제목은 An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale으로, 일명 Visual Transformer 방법을 새롭게 제시한 논문이다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/paper%20review/natural%20language%20processing/python/Enriching-Word-Vectors-with-Subword-Information/" rel="permalink">Enriching Word Vectors with Subword Information
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">이번 발표 논문의 제목은 Enriching Word Vectors with Subword Information으로, 일명 FastText 방법을 새롭게 제시한 논문이다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/python/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-DP/" rel="permalink">프로그래머스 DP
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">1. 등굣길
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="mailto:cyc9805@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://www.facebook.com/yongchanchun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/cyc9805" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/yongchanskii" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 yongchan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'cyc9805/comments');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

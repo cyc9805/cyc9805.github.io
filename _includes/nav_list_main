@@ -86,6 +86,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+<ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "data engineering" %}
+                        <li><a href="/categories/data engineering" class="">data engineering({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
   </ul>
 </nav>
