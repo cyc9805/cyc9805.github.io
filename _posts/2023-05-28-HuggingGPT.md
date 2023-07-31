@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale"
+title:  "HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in HuggingFace"
 comments: true
 toc: true
 toc_sticky: true
