@@ -7,7 +7,7 @@ first_name: Yongchan
 middle_name:
 last_name: Chun
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
@@ -146,10 +146,10 @@ newsletter:
 collections:
   books:
     output: true
-  news:
-    defaults:
-      layout: post
-    output: true
+  # news:
+  #   defaults:
+  #     layout: post
+  #   output: true
   projects:
     output: true
 
@@ -246,15 +246,15 @@ terser:
 # Jekyll Archives
 # -----------------------------------------------------------------------------
 
-jekyll-archives:
-  posts:
-    enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
-    permalinks:
-      year: "/blog/:year/"
-      tags: "/blog/:type/:name/"
-      categories: "/blog/:type/:name/"
-  books:
-    enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
+# jekyll-archives:
+#   posts:
+#     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
+#     permalinks:
+#       year: "/blog/:year/"
+#       tags: "/blog/:type/:name/"
+#       categories: "/blog/:type/:name/"
+#   books:
+#     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
 display_tags: ["formatting", "images", "links", "math", "code", "blockquotes"] # these tags will be displayed on the front page of your blog
 display_categories: ["external-services"] # these categories will be displayed on the front page of your blog
@@ -264,8 +264,8 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Chun]
+  first_name: [Yongchan, YongChan]
 
   style: apa
   locale: en
@@ -340,6 +340,14 @@ external_links:
   rel: external nofollow noopener
   target: _blank
   exclude:
+    - _books
+    - _pages/repositories.md
+    - _pages/about_einstein.md
+    - _pages/blog.md
+    - _pages/books.md
+    - _pages/news.md
+    - _pages/teaching.md
+    - assets/jupyter/blog.ipynb
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images
