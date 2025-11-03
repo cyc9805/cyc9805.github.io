@@ -24,6 +24,32 @@
     abstract = "Automatic Term Extraction (ATE) identifies domain-specific expressions that are crucial for downstream tasks such as machine translation and information retrieval. Although large language models (LLMs) have significantly advanced various NLP tasks, their potential for ATE has scarcely been examined. We propose a retrieval-based prompting strategy that, in the few-shot setting, selects demonstrations according to syntactic rather than semantic similarity. This syntactic retrieval method is domain-agnostic and provides more reliable guidance for capturing term boundaries. We evaluate the approach in both in-domain and cross-domain settings, analyzing how lexical overlap between the query sentence and its retrieved examples affects performance. Experiments on three specialized ATE benchmarks show that syntactic retrieval improves F1-score. These findings highlight the importance of syntactic cues when adapting LLMs to terminology-extraction tasks."
 }
 
+@inproceedings{seo-etal-2025-koleg,
+    title = "{K}o{LEG}: On-the-Fly {K}orean Legal Knowledge Editing with Continuous Retrieval",
+    author = "Seo, Jaehyung  and
+      Jung, Dahyun  and
+      Lee, Jaewook  and
+      Chun, Yongchan  and
+      Kim, Dongjun  and
+      Ryu, Hwijung  and
+      Shin, Donghoon  and
+      Lim, Heuiseok",
+    editor = "Christodoulopoulos, Christos  and
+      Chakraborty, Tanmoy  and
+      Rose, Carolyn  and
+      Peng, Violet",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2025",
+    preview = {KoLEG.png},
+    month = nov,
+    year = "2025",
+    address = "Suzhou, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.findings-emnlp.489/",
+    pages = "9191--9217",
+    ISBN = "979-8-89176-335-7",
+    abstract = "Korean legal knowledge is subject to frequent temporal updates driven by societal needs and government policies. Even minor modifications to legal provisions can have significant consequences, yet continuously retraining large language models (LLMs) to incorporate such updates is resource-intensive and impractical. To address this, we propose KoLEG, an on-the-fly Korean Legal knowledge editing framework enhanced with continuous retrieval. KoLEG employs an Editing-Aware Learning Strategy and a LawEdit Retriever, which together adaptively integrate subtle linguistic nuances and continuous legislative amendments. To support this task, we construct the Korean Legislative Amendment Dataset, explicitly designed for continuous legal knowledge updates with attention to both temporal dynamics and linguistic subtleties. KoLEG outperforms existing locate-then-edit and retrieval-based editing methods, demonstrating superior effectiveness in legal knowledge editing while preserving linguistic capabilities. Furthermore, KoLEG maintains robust performance in sequential editing, improves performance on precedent application tasks, and is qualitatively validated by legal experts."
+}
+
 @misc{kim2025benchmarkprofilingmechanisticdiagnosis,
       title={Benchmark Profiling: Mechanistic Diagnosis of LLM Benchmarks}, 
       author={Dongjun Kim and Gyuho Shim and Yongchan Chun and Minhyuk Kim and Chanjun Park and Heuiseok Lim},
@@ -36,6 +62,7 @@
       primaryClass={cs.CL},
       url={https://arxiv.org/abs/2510.01232}, 
 }
+
 
 @misc{kim2024exploringcodingspotunderstanding,
       title={Exploring Coding Spot: Understanding Parametric Contributions to LLM Coding Performance}, 
