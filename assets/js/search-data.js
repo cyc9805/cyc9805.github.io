@@ -57,7 +57,19 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "projects-ai-based-service-development-and-operations",
+            },},{id: "news-our-paper-on-enhancing-information-extraction-has-been-accepted-to-acl-findings-2025-see-you-in-vienna",
+          title: 'Our paper on enhancing information extraction has been accepted to ACL Findings 2025....',
+          description: "",
+          section: "News",},{id: "news-two-papers-on-llm-interpretability-and-modification-have-been-accepted-to-emnlp-2025-see-you-in-suzhou",
+          title: 'Two papers on LLM interpretability and modification have been accepted to EMNLP 2025....',
+          description: "",
+          section: "News",},{id: "news-i-will-be-joining-lg-ai-research-as-a-research-intern-where-i-will-work-on-developing-foundation-llms",
+          title: 'I will be joining LG AI Research as a Research Intern, where I...',
+          description: "",
+          section: "News",},{id: "news-one-paper-on-uncertainty-estimation-has-been-accepted-to-cvpr-2026-see-you-in-denver",
+          title: 'One paper on uncertainty estimation has been accepted to CVPR 2026. See you...',
+          description: "",
+          section: "News",},{id: "projects-ai-based-service-development-and-operations",
           title: 'AI-based Service Development and Operations',
           description: "",
           section: "Projects",handler: () => {
