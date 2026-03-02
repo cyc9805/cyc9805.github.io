@@ -146,10 +146,10 @@ newsletter:
 collections:
   books:
     output: true
-  # news:
-  #   defaults:
-  #     layout: post
-  #   output: true
+  news:
+    defaults:
+      layout: post
+    output: true
   projects:
     output: true
 
@@ -345,7 +345,6 @@ external_links:
     - _pages/about_einstein.md
     - _pages/blog.md
     - _pages/books.md
-    - _pages/news.md
     - _pages/teaching.md
     - assets/jupyter/blog.ipynb
 

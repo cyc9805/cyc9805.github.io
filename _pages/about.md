@@ -10,9 +10,19 @@ subtitle:
 #   more_info: >
 #     <p>Seoul, South Korea</p>
 
+announcements:
+  enabled: true
+  scrollable: true
+  limit: 5
+
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
 ---
 
-I'm a Master's candidate at the [NLP&AI Lab](https://nlp.korea.ac.kr/) at Korea University, advised by [Heuiseok Lim](https://scholar.google.com/citations?user=HMTkz7oAAAAJ). My research covers several areas, including representation learning, retrieval-augmented generation (RAG), uncertainty estimation, and automatic speech recognition (ASR). Working across different modalities has given me a broad perspective on solving complex problems. Over time, my various experiences have converged toward one key challenge—the trustworthiness of AI. Currently, my work focuses on developing trustworthy AI systems for large pretrained models.
+I recently earned my M.S. in Computer Science and Engineering at Korea University, where I was a member of the [NLP&AI Lab](https://nlp.korea.ac.kr/) advised by [Heuiseok Lim](https://scholar.google.com/citations?user=HMTkz7oAAAAJ). My research focuses on improving the reliability of AI models, with an emphasis on:
+
+- Improving model interpretability to better understand model behavior and guide modifications
+- Calibrating model confidence so that certainty aligns more closely with actual correctness
+
+I welcome opportunities for discussion and collaboration. Please feel free to contact me via email or LinkedIn!
